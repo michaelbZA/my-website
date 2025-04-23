@@ -1,89 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A curated list of useful links and resources shared by [Your Name].">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Posts - Michael Brunger</title>
+  <meta name="description" content="Thoughts on web design, finance and life from Michael.">
+  <link rel="canonical" href="https://yourdomain.com/posts.html">
 
-    <title>Links - [Your Name]'s Personal Website</title>
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://yourdomain.com/index.html">
+  <meta property="og:title"       content="Posts - Michael Brunger">
+  <meta property="og:description" content="Thoughts on web design, finance and life from Michael.">
+  <meta property="og:image"       content="https://yourdomain.com/assets/preview.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Favicon & Manifest (optional) -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
 
-    <link rel="stylesheet" href="style.css">
+  <!-- Fonts -->
+  <link rel="preload" href="style.css" as="style">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Core reset & variables -->
+  <link rel="preload" href="css/base.css" as="style">
+  <link rel="stylesheet" href="css/base.css">
+ 
+  <!-- Layout (grid, containers, header/nav/footer layout) -->
+  <link rel="preload" href="css/layout.css" as="style">
+  <link rel="stylesheet" href="css/layout.css">
+ 
+  <!-- Components (cards, post-items, footer links, etc.) -->
+  <link rel="preload" href="css/components.css" as="style">
+  <link rel="stylesheet" href="css/components.css">
+ 
+  <!-- Utility helpers (text-centering, spacing, visually-hidden, etc.) -->
+  <link rel="preload" href="css/utilities.css" as="style">
+  <link rel="stylesheet" href="css/utilities.css">
 </head>
 <body>
-    <header class="site-header">
-        <div class="container">
-             <nav class="main-navigation">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="posts.html">Posts</a></li>
-                     <li class="active"><a href="links.html" aria-current="page">Links</a></li>
-                    <li><a href="contact.html">Contact Me</a></li>
-                    <li><a href="about.html">About Me</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <!-- Skip-link for keyboard users -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <main class="container">
-        <h1>Links & Resources</h1>
-        <p>Here are some links I find useful or interesting. </p>
+  <!-- Header & Main Navigation -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <nav class="main-nav" role="navigation" aria-label="Primary navigation">
+        <ul class="main-nav__list">
+          <li class="main-nav__item main-nav__item--active">
+            <a href="index.html" class="main-nav__link" aria-current="page">Home</a>
+          </li>
+          <li class="main-nav__item">
+            <a href="posts.html" class="main-nav__link">Posts</a>
+          </li>
+          <li class="main-nav__item">
+            <a href="links.html" class="main-nav__link">Links</a>
+          </li>
+          <li class="main-nav__item">
+            <a href="contact.html" class="main-nav__link">Contact</a>
+          </li>
+          <li class="main-nav__item">
+            <a href="about.html" class="main-nav__link">About</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-        <section class="link-category">
-            <h3>Web Development</h3>
-            <ul>
-                <li><a href="https://developer.mozilla.org/en-US/" target="_blank" rel="noopener noreferrer">MDN Web Docs</a> - Excellent resource for HTML, CSS, and JavaScript.</li>
-                <li><a href="https://css-tricks.com/" target="_blank" rel="noopener noreferrer">CSS-Tricks</a> - Practical articles and tips about CSS.</li>
-                <li><a href="https://web.dev/" target="_blank" rel="noopener noreferrer">web.dev by Google</a> - Learn about modern web capabilities.</li>
-                <li><a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer">Netlify</a> - Hosting platform (where this site might live!).</li>
-            </ul>
-        </section>
+  <main id="main-content" class="container" role="main">
+    <section class="links-page" aria-labelledby="links-title">
+      <h1 id="links-title">Useful Links</h1>
+      <ul class="links-list">
+        <li class="links-list__item">
+          <a href="https://example.com" class="links-list__link" target="_blank" rel="noopener">Example Site</a>
+        </li>
+        <!-- Repeat for each link -->
+      </ul>
+    </section>
+  </main>
 
-        <section class="link-category">
-            <h3>Design & Inspiration</h3>
-            <ul>
-                <li><a href="https://fonts.google.com/" target="_blank" rel="noopener noreferrer">Google Fonts</a> - Free, high-quality fonts (like Lato!).</li>
-                <li><a href="https://coolors.co/" target="_blank" rel="noopener noreferrer">Coolors</a> - Color palette generator.</li>
-                <li><a href="https://dribbble.com/" target="_blank" rel="noopener noreferrer">Dribbble</a> - Design inspiration platform.</li>
-            </ul>
-        </section>
-
-        <section class="link-category">
-             <h3>Other Tools</h3>
-             <ul>
-                 <li><a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">Visual Studio Code</a> - Popular code editor.</li>
-                 <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a> - Code hosting and version control.</li>
-             </ul>
-        </section>
-
-        </main>
-
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-contact">
-                <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-                <p>Connect: <a href="[Your LinkedIn URL]" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
-            </div>
-            <div class="footer-links">
-                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="posts.html">Posts</a></li>
-                    <li><a href="links.html">Links</a></li>
-                    <li><a href="contact.html">Contact Me</a></li>
-                    <li><a href="about.html">About Me</a></li>
-                </ul>
-            </div>
-             <div class="footer-legal">
-                <ul>
-                    <li><a href="terms.html">Terms of Service</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <p class="copyright">&copy; 2025 [Your Name]. All rights reserved.</p>
-        </div>
-    </footer>
+    <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-contact">
+        <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+        <p>Connect on <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+      </div>
+      <div class="footer-nav">
+        <ul class="footer-nav__list">
+          <li class="footer-nav__item"><a href="index.html" class="footer-nav__link">Home</a></li>
+          <li class="footer-nav__item"><a href="posts.html" class="footer-nav__link">Posts</a></li>
+          <li class="footer-nav__item"><a href="links.html" class="footer-nav__link">Links</a></li>
+          <li class="footer-nav__item"><a href="contact.html" class="footer-nav__link">Contact</a></li>
+          <li class="footer-nav__item"><a href="about.html" class="footer-nav__link">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-legal">
+        <ul class="footer-legal__list">
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <p class="site-footer__copyright">&copy; 2025 Michael Brunger. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>

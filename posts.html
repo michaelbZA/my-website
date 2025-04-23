@@ -1,81 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Read blog posts and articles by [Your Name] on various topics.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Posts - Michael Brunger</title>
+  <meta name="description" content="Thoughts on web design, finance and life from Michael.">
+  <link rel="canonical" href="https://yourdomain.com/posts.html">
 
-    <title>Posts - [Your Name]'s Personal Website</title>
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://yourdomain.com/index.html">
+  <meta property="og:title"       content="Posts - Michael Brunger">
+  <meta property="og:description" content="Thoughts on web design, finance and life from Michael.">
+  <meta property="og:image"       content="https://yourdomain.com/assets/preview.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Favicon & Manifest (optional) -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
 
-    <link rel="stylesheet" href="style.css">
+  <!-- Fonts -->
+  <link rel="preload" href="style.css" as="style">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Core reset & variables -->
+  <link rel="preload" href="css/base.css" as="style">
+  <link rel="stylesheet" href="css/base.css">
+ 
+  <!-- Layout (grid, containers, header/nav/footer layout) -->
+  <link rel="preload" href="css/layout.css" as="style">
+  <link rel="stylesheet" href="css/layout.css">
+ 
+  <!-- Components (cards, post-items, footer links, etc.) -->
+  <link rel="preload" href="css/components.css" as="style">
+  <link rel="stylesheet" href="css/components.css">
+ 
+  <!-- Utility helpers (text-centering, spacing, visually-hidden, etc.) -->
+  <link rel="preload" href="css/utilities.css" as="style">
+  <link rel="stylesheet" href="css/utilities.css">
 </head>
 <body>
-    <header class="site-header">
-        <div class="container">
-             <nav class="main-navigation">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active"><a href="posts.html" aria-current="page">Posts</a></li>
-                    <li><a href="links.html">Links</a></li>
-                    <li><a href="contact.html">Contact Me</a></li>
-                    <li><a href="about.html">About Me</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <!-- Skip-link for keyboard users -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <main class="container">
-        <h1>Posts</h1>
-        <p>Here you'll find a collection of my thoughts, articles, and updates.</p>
+  <!-- Header & Main Navigation -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <nav class="main-nav" role="navigation" aria-label="Primary navigation">
+        <ul class="main-nav__list">
+          <li class="main-nav__item main-nav__item--active">
+            <a href="index.html" class="main-nav__link" aria-current="page">Home</a>
+          </li>
+          <li class="main-nav__item">
+            <a href="posts.html" class="main-nav__link">Posts</a>
+          </li>
+          <li class="main-nav__item">
+            <a href="links.html" class="main-nav__link">Links</a>
+          </li>
+          <li class="main-nav__item">
+            <a href="contact.html" class="main-nav__link">Contact</a>
+          </li>
+          <li class="main-nav__item">
+            <a href="about.html" class="main-nav__link">About</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-        <div class="post-list">
-            <article id="post-slug-1"> <h2>Example Post Title One</h2>
-                <p class="post-meta">Published on: April 15, 2025</p>
-                <p>This is the full content or a longer summary of the first blog post. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</p>
-                </article>
+  <main id="main-content" class="container" role="main">
+    <section class="latest-posts" aria-labelledby="posts-heading">
+      <h1 id="posts-heading">All Posts</h1>
+      <div class="post-list">
+        <!-- Repeat for each post -->
+        <article class="post-list__item" aria-labelledby="post1-title">
+          <h2 id="post1-title">
+            <a href="post-slug-1.html" class="post-list__link">Example Post Title One</a>
+          </h2>
+          <p class="post-list__meta">Published on April 15, 2025</p>
+          <p>
+            A short excerpt of the post… 
+            <a href="post-slug-1.html" class="post-list__more">
+              Read more about “Example Post Title One”
+            </a>
+          </p>
+        </article>
+        <!-- … -->
+      </div>
+    </section>
+  </main>
 
-            <article id="post-slug-2">
-                <h2>Example Post Title Two</h2>
-                <p class="post-meta">Published on: April 10, 2025</p>
-                <p>Content for the second post goes here. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero.</p>
-                </article>
-
-            <article id="post-slug-3">
-                <h2>A Third Interesting Topic</h2>
-                <p class="post-meta">Published on: April 5, 2025</p>
-                <p>More placeholder text for the third article. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor.</p>
-                </article>
-
-             </div>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-contact">
-                <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-                <p>Connect: <a href="[Your LinkedIn URL]" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
-            </div>
-            <div class="footer-links">
-                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="posts.html">Posts</a></li>
-                    <li><a href="links.html">Links</a></li>
-                    <li><a href="contact.html">Contact Me</a></li>
-                    <li><a href="about.html">About Me</a></li>
-                </ul>
-            </div>
-             <div class="footer-legal">
-                <ul>
-                    <li><a href="terms.html">Terms of Service</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <p class="copyright">&copy; 2025 [Your Name]. All rights reserved.</p>
-        </div>
-    </footer>
+    <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-contact">
+        <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+        <p>Connect on <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+      </div>
+      <div class="footer-nav">
+        <ul class="footer-nav__list">
+          <li class="footer-nav__item"><a href="index.html" class="footer-nav__link">Home</a></li>
+          <li class="footer-nav__item"><a href="posts.html" class="footer-nav__link">Posts</a></li>
+          <li class="footer-nav__item"><a href="links.html" class="footer-nav__link">Links</a></li>
+          <li class="footer-nav__item"><a href="contact.html" class="footer-nav__link">Contact</a></li>
+          <li class="footer-nav__item"><a href="about.html" class="footer-nav__link">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-legal">
+        <ul class="footer-legal__list">
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <p class="site-footer__copyright">&copy; 2025 Michael Brunger. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
