@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Home - Michael Brunger</title>
+  <title>Posts - Michael Brunger</title>
   <meta name="description" content="Thoughts on web design, finance and life from Michael.">
-  <link rel="canonical" href="https://yourdomain.com/index.html">
+  <link rel="canonical" href="https://yourdomain.com/posts.html">
 
   <!-- Open Graph / Social Preview -->
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://yourdomain.com/index.html">
-  <meta property="og:title"       content="Home – Michael’s Personal Website">
+  <meta property="og:title"       content="Posts - Michael Brunger">
   <meta property="og:description" content="Thoughts on web design, finance and life from Michael.">
   <meta property="og:image"       content="https://yourdomain.com/assets/preview.png">
 
@@ -48,11 +48,13 @@
     <div class="container">
       <nav class="main-nav" role="navigation" aria-label="Primary navigation">
         <ul class="main-nav__list">
-          <li class="main-nav__item main-nav__item--active">
-            <a href="index.html" class="main-nav__link" aria-current="page">Home</a>
-          </li>
           <li class="main-nav__item">
-            <a href="posts.html" class="main-nav__link">Posts</a>
+            <a href="index.html" class="main-nav__link">Home</a>
+          </li>
+          <li class="main-nav__item main-nav__item--active">
+            <a href="posts.html" 
+            class="main-nav__link"
+            aria-current="page">Posts</a>
           </li>
           <li class="main-nav__item">
             <a href="links.html" class="main-nav__link">Links</a>
@@ -68,44 +70,31 @@
     </div>
   </header>
 
-  <!-- Main Content -->
   <main id="main-content" class="container" role="main">
-    <!-- Intro Section -->
-    <section class="intro" aria-labelledby="intro-heading">
-      <h1 id="intro-heading">Welcome! I’m Michael</h1>
-      <p>Hello there—this is where I share my thoughts on web design, finance, and life. Explore my latest posts or get in touch!</p>
-    </section>
+    <article class="post-content" aria-labelledby="post-title">
+      <h1 id="post-title">Example Post Title One</h1>
+      <p class="post-meta">Published on April 15, 2025</p>
 
-    <!-- Latest Posts -->
-    <section class="latest-posts" aria-labelledby="latest-posts-heading">
-      <h2 id="latest-posts-heading">Latest Posts</h2>
-      <div class="post-list">
-        <article class="post-list__item" aria-labelledby="post1-title">
-          <h3 id="post1-title">
-            <a href="posts.html#post-slug-1" class="post-list__link">Example Post Title One</a>
-          </h3>
-          <p class="post-list__meta">Published on April 15, 2025</p>
-          <p>This is a short excerpt or summary of the first blog post… <a href="posts.html#post-slug-1" class="post-list__more">Read more about “Example Post Title One”</a></p>
-        </article>
-
-        <article class="post-list__item" aria-labelledby="post2-title">
-          <h3 id="post2-title">
-            <a href="posts.html#post-slug-2" class="post-list__link">Example Post Title Two</a>
-          </h3>
-          <p class="post-list__meta">Published on April 10, 2025</p>
-          <p>Here’s another brief summary… <a href="posts.html#post-slug-2" class="post-list__more">Read more about “Example Post Title Two”</a></p>
-        </article>
-
-        <article class="post-list__item" aria-labelledby="post3-title">
-          <h3 id="post3-title">
-            <a href="posts.html#post-slug-3" class="post-list__link">A Third Interesting Topic</a>
-          </h3>
-          <p class="post-list__meta">Published on April 5, 2025</p>
-          <p>This excerpt teases the third post… <a href="posts.html#post-slug-3" class="post-list__more">Read more about “A Third Interesting Topic”</a></p>
-        </article>
+      <div class="post-content__body">
+        <p>Your first paragraph…</p>
+        <h2>A Subheading in the Post</h2>
+        <p>More content…</p>
+        <img
+          src="assets/example.jpg"
+          alt="Descriptive alt text"
+          class="post-content__image"
+        >
+        <blockquote>
+          A highlighted quote from the post…
+        </blockquote>
+        <pre><code>console.log('Hello, world!');</code></pre>
+        <!-- etc… -->
       </div>
-      <p><a href="posts.html" class="latest-posts__all">View all posts →</a></p>
-    </section>
+
+      <p>
+        <a href="posts.html" class="u-mt-2">← Back to all posts</a>
+      </p>
+    </article>
   </main>
 
   <!-- Footer -->
@@ -158,7 +147,7 @@
     </div>
   
     <div class="site-footer__bottom">
-      <p>&copy; 2025 Michael Brunger. All rights reserved.</p>
+      <p>&copy; 2025 Michael. All rights reserved.</p>
     </div>
   </footer>  
 </body>

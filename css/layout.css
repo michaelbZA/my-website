@@ -122,3 +122,9 @@
 .contact-form button:focus {
   background: var(--color-accent);
 }
+/* Highlight the active nav link */
+.main-nav__item--active .main-nav__link,
+.main-nav__link[aria-current="page"] {
+  background: var(--color-accent);
+  color: var(--color-background);
+}

@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Posts - Michael Brunger</title>
+  <title>Contact - Michael Brunger</title>
   <meta name="description" content="Thoughts on web design, finance and life from Michael.">
   <link rel="canonical" href="https://yourdomain.com/posts.html">
 
   <!-- Open Graph / Social Preview -->
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://yourdomain.com/index.html">
-  <meta property="og:title"       content="Posts - Michael Brunger">
+  <meta property="og:title"       content="Contact - Michael Brunger">
   <meta property="og:description" content="Thoughts on web design, finance and life from Michael.">
   <meta property="og:image"       content="https://yourdomain.com/assets/preview.png">
 
@@ -49,8 +49,8 @@
     <div class="container">
       <nav class="main-nav" role="navigation" aria-label="Primary navigation">
         <ul class="main-nav__list">
-          <li class="main-nav__item main-nav__item--active">
-            <a href="index.html" class="main-nav__link" aria-current="page">Home</a>
+          <li class="main-nav__item">
+            <a href="index.html" class="main-nav__link">Home</a>
           </li>
           <li class="main-nav__item">
             <a href="posts.html" class="main-nav__link">Posts</a>
@@ -61,8 +61,10 @@
           <li class="main-nav__item">
             <a href="contact.html" class="main-nav__link">Contact</a>
           </li>
-          <li class="main-nav__item">
-            <a href="about.html" class="main-nav__link">About</a>
+          <li class="main-nav__item main-nav__item--active">
+            <a href="about.html" 
+            class="main-nav__link"
+            aria-current="page">About</a>
           </li>
         </ul>
       </nav>
@@ -80,29 +82,57 @@
   </main>
 
     <!-- Footer -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-contact">
-        <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-        <p>Connect on <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-columns">
+        <!-- Column 1: Contact -->
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p>
+            <a href="mailto:your.email@example.com" class="footer-link">
+              <svg class="icon icon-email" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              </svg>
+              your.email@example.com
+            </a>
+          </p>
+          <p>
+            <a href="https://linkedin.com/in/yourprofile"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="footer-link">
+              <svg class="icon icon-linkedin" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 24V7h5v17H0zm7.5-17H12v2.3h.1c.6-1.1 2-2.3 4.1-2.3C21.5 7 24 9.5 24 14.5V24h-5v-8.7c0-2.1-.04-4.8-3-4.8-3 0-3.5 2.3-3.5 4.7V24h-5V7z"/>
+              </svg>
+              LinkedIn
+            </a>
+          </p>
+        </div>
+    
+        <!-- Column 2: Site Navigation -->
+        <div class="footer-col">
+          <h4>Site</h4>
+          <ul class="footer-nav__list">
+            <li class="footer-nav__item"><a href="index.html" class="footer-nav__link">Home</a></li>
+            <li class="footer-nav__item"><a href="posts.html" class="footer-nav__link">Posts</a></li>
+            <li class="footer-nav__item"><a href="links.html" class="footer-nav__link">Links</a></li>
+            <li class="footer-nav__item"><a href="about.html" class="footer-nav__link">About</a></li>
+            <li class="footer-nav__item"><a href="contact.html" class="footer-nav__link">Contact</a></li>
+          </ul>
+        </div>
+    
+        <!-- Column 3: Legal -->
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-legal__list">
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer-nav">
-        <ul class="footer-nav__list">
-          <li class="footer-nav__item"><a href="index.html" class="footer-nav__link">Home</a></li>
-          <li class="footer-nav__item"><a href="posts.html" class="footer-nav__link">Posts</a></li>
-          <li class="footer-nav__item"><a href="links.html" class="footer-nav__link">Links</a></li>
-          <li class="footer-nav__item"><a href="contact.html" class="footer-nav__link">Contact</a></li>
-          <li class="footer-nav__item"><a href="about.html" class="footer-nav__link">About</a></li>
-        </ul>
+    
+      <div class="site-footer__bottom">
+        <p>&copy; 2025 Michael Brunger. All rights reserved.</p>
       </div>
-      <div class="footer-legal">
-        <ul class="footer-legal__list">
-          <li><a href="terms.html">Terms of Service</a></li>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-        </ul>
-      </div>
-      <p class="site-footer__copyright">&copy; 2025 Michael Brunger. All rights reserved.</p>
-    </div>
-  </footer>
+    </footer>    
 </body>
 </html>

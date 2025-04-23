@@ -20,32 +20,94 @@
   }
   
   /* 3.1 FOOTER */
-  .site-footer {
-    background: var(--color-surface);
-    border-top: 1px solid var(--color-border);
-    text-align: center;
-    font-size: var(--fs-small);
-  }
-  .footer-nav__list,
-  .footer-legal__list {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--space-1);
-    margin-bottom: var(--space-2);
-  }
-  .footer-nav__link,
-  .footer-legal__list a {
-    color: var(--color-text);
-  }
-  .footer-nav__link:focus,
-  .footer-nav__link:hover,
-  .footer-legal__list a:focus,
-  .footer-legal__list a:hover {
-    color: var(--color-primary);
-    text-decoration: underline;
-  }
+  /* —— Footer Columns & Icons —— */
+/* —— Sleek Compact Footer —— */
+.site-footer {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-2) 0;           /* tighter vertical padding */
+  font-size: var(--fs-small);          /* overall smaller text */
+  color: var(--color-text);
+}
+
+/* Flex container stretches columns apart */
+.site-footer .container.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;      /* push cols to edges */
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: 0 var(--space-2);           /* horizontal gutters */
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+/* Each column flexes */
+.footer-col {
+  flex: 1 1 150px;                      /* grow, shrink, min-width */
+}
+
+/* Column headings */
+.footer-col h4 {
+  font-size: var(--fs-small);
+  margin-bottom: var(--space-1);
+  font-weight: 700;
+}
+
+/* Links with icons (slightly smaller icon) */
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--fs-small);
+  text-decoration: none;
+  margin-bottom: var(--space-1);
+}
+.footer-link .icon {
+  width: 0.875em;
+  height: 0.875em;
+  margin-right: var(--space-1);
+  fill: var(--color-text);
+  transition: fill 0.2s;
+}
+.footer-link:hover .icon,
+.footer-link:focus .icon {
+  fill: var(--color-primary);
+}
+
+/* Site & Legal lists */
+.footer-nav__list,
+.footer-legal__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-nav__item,
+.footer-legal__list li {
+  margin-bottom: var(--space-1);
+}
+.footer-nav__link,
+.footer-legal__list a {
+  font-size: var(--fs-small);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-nav__link:hover,
+.footer-nav__link:focus,
+.footer-legal__list a:hover,
+.footer-legal__list a:focus {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* Bottom bar */
+.site-footer__bottom {
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-1) 0;           /* even tighter padding */
+  text-align: center;
+  font-size: var(--fs-small);
+  color: #666;
+}
   
   /* —— Rich-text / Content Styling —— */
 .post-content__body,
