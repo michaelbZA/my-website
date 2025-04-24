@@ -1,0 +1,115 @@
+baseURL = "https://yoursite.com/"         # Your site's URL (with trailing slash)
+languageCode = "en-us"                    # Language code
+title = "Michael Brunger"                 # Site title
+theme = ["PaperMod"]                        # Your selected theme
+pagerSize = 10                            # Posts per page
+
+# Content settings
+enableRobotsTXT = true                    # Generate robots.txt
+buildDrafts = false                       # Set to true to build draft content
+buildFuture = false                       # Set to true to build future dated content
+enableEmoji = true                        # Enable emoji support in content
+enableGitInfo = false                     # Use Git commit dates for content
+
+# URL settings
+canonifyURLs = true                       # Convert all URLs to absolute
+relativeURLs = false                      # Use relative URLs
+
+# Taxonomies (categories, tags, etc)
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  series = "series"
+
+# Author information
+[author]
+  name = "Michael Brunger"
+  email = "michaelbrunger@gmail.com"
+
+# Menu configuration
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 10
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts/"
+    weight = 20
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 30
+  [[menu.main]]
+    identifier = "links"
+    name = "Links"
+    url = "/links/"
+    weight = 30
+  [[menu.main]]
+    identifier = "contact"
+    name = "Contact"
+    url = "/contact/"
+    weight = 30
+
+# Theme-specific parameters
+[params]
+  # Basic site parameters
+  description = "Michael Brunger's website"
+  keywords = ["keyword1", "keyword2", "keyword3"]
+  author = "Michael Brunger"
+  images = ["site-feature-image.jpg"]
+  DateFormat = "January 2, 2006"
+  defaultTheme = "auto"  # Options: light, dark, auto
+  disableThemeToggle = false
+  env = "production"     # Options: production, development
+  # PaperMod specific options
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowFullTextinRSS = true
+  ShowToc = true
+  
+  # Social media links
+  [params.social]
+    twitter = "yourhandle"
+    github = "yourusername"
+    linkedin = "yourprofile"
+    
+  # Analytics
+  [params.analytics.google]
+  SiteVerificationTag = "G-XXXXXXXX"
+  [params.analytics.bing]
+  SiteVerificationTag = "B-XXXXXXXX"
+  [params.analytics.yandex]
+  SiteVerificationTag = "Y-XXXXXXXX"
+
+    
+  # Home page settings
+  [params.homeInfoParams]
+    Title = "Welcome to My Blog"
+    Content = "This is a brief description of my website"
+    
+  # Cover image for posts
+  [params.cover]
+    linkFullImages = true
+    
+  # Search functionality
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    location = 0
+    distance = 1000
+    threshold = 0.4
+    minMatchCharLength = 0
+    keys = ["title", "permalink", "summary", "content"]
+
+# Privacy settings
+[privacy]
+  [privacy.x]
+    enableDNT = true
+    simple    = true
