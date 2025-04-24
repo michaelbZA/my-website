@@ -1,0 +1,203 @@
+/* ==========================================================================
+   1. ROOT / CSS VARIABLES
+   --------------------------------------------------------------------------
+   PaperMod already defines many --tw- and --accent variables. You can
+   override or define your own here for site-wide usage.
+   ========================================================================== */
+   :root {
+    /* Override PaperMod’s accent (if you want a hex instead of tailwind name) */
+    --accent: #1ABC9C;
+  
+    /* Add your own brand colors */
+    --brand-primary: #FF4081;
+    --brand-secondary: #374151;
+  
+    /* Default body text & background fallbacks */
+    --body-color: #333;
+    --bg-color: #fff;
+  }
+  
+  /* ==========================================================================
+     2. BASE TYPOGRAPHY
+     --------------------------------------------------------------------------
+     Tweak your default font sizes, line-height, margins etc.
+     ========================================================================== */
+  body {
+    color: var(--body-color);
+    background-color: var(--bg-color);
+    font-family: 'Inter', sans-serif;     /* matches config.toml */
+    line-height: 1.7;
+    font-size: 1rem;                      /* 16px */
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* ==========================================================================
+     3. HEADINGS
+     --------------------------------------------------------------------------
+     Adjust sizes, weights, margins. Use rems so it scales nicely.
+     ========================================================================== */
+  h1, .post-title {
+    font-family: 'Merriweather', serif;
+    font-size: 2.25rem;    /* 36px */
+    margin: 1.5rem 0 0.75rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;    /* 28px */
+    margin: 1.25rem 0 0.5rem;
+    font-style: italic;    /* example tweak */
+  }
+  
+  h3 {
+    font-size: 1.5rem;     /* 24px */
+    margin: 1rem 0 0.5rem;
+    font-weight: 600;
+  }
+  
+  /* ==========================================================================
+     4. LINKS & BUTTONS
+     --------------------------------------------------------------------------
+     Use your brand colors and adjust states.
+     ========================================================================== */
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  a:hover,
+  a:focus {
+    color: var(--brand-primary);
+    text-decoration: underline;
+  }
+  
+  button,
+  .btn {
+    background-color: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  button:hover,
+  .btn:hover {
+    background-color: var(--brand-primary);
+  }
+  
+  /* ==========================================================================
+     5. LAYOUT / STRUCTURE
+     --------------------------------------------------------------------------
+     Adjust container max-widths, gutters, sidebars etc.
+     ========================================================================== */
+  .container {
+    max-width: 48rem;    /* 768px */
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .sidebar {
+    padding: 1rem;
+    background: #f9fafb;
+    border-radius: 0.5rem;
+  }
+  
+  /* ==========================================================================
+     6. IMAGES & FIGURES
+     --------------------------------------------------------------------------
+     Make images responsive and add captions.
+     ========================================================================== */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  figure {
+    margin: 1.5rem 0;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #555;
+  }
+  
+  /* ==========================================================================
+     7. CODE BLOCKS & INLINE CODE
+     --------------------------------------------------------------------------
+     Style syntax highlighting background, font, padding.
+     ========================================================================== */
+  pre {
+    background-color: #1e1e1e;
+    color: #f8f8f2;
+    padding: 1rem;
+    overflow-x: auto;
+    border-radius: 0.5rem;
+  }
+  
+  code {
+    background: rgba(27,31,35,0.05);
+    padding: 0.25rem 0.4rem;
+    border-radius: 0.3rem;
+    font-family: 'Fira Code', monospace;
+  }
+  
+  /* ==========================================================================
+     8. TABLES
+     --------------------------------------------------------------------------
+     Simple, clean table styles.
+     ========================================================================== */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+  
+  th,
+  td {
+    padding: 0.75rem;
+    border: 1px solid #e5e7eb;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f3f4f6;
+  }
+  
+  /* ==========================================================================
+     9. UTILITIES / MISC
+     --------------------------------------------------------------------------
+     Quick helper classes you can use in Markdown via `class="..."`.
+     ========================================================================== */
+  /* Center content */
+  .u-center {
+    text-align: center;
+  }
+  
+  /* Highlighted alert box */
+  .u-alert {
+    border-left: 4px solid var(--accent);
+    background: #fefce8;
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+  
+  /* Hide on mobile */
+  @media (max-width: 640px) {
+    .u-hide-mobile {
+      display: none;
+    }
+  }
+  
+  /* ==========================================================================
+     10. OVERWRITE PAPERMOD VARIABLES (advanced)
+     --------------------------------------------------------------------------
+     If you need to tweak core PaperMod CSS variables, you can redefine them:
+     ========================================================================== */
+  :root {
+    /* Example: change the default border radius for cards/buttons */
+    --card-radius: 1rem;
+    --btn-radius: 1rem;
+  }  

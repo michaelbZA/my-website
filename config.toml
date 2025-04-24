@@ -1,7 +1,7 @@
 baseURL = "https://yoursite.com/"         # Your site's URL (with trailing slash)
-languageCode = "en-us"                    # Language code
+languageCode = "en-GB"
 title = "Michael Brunger"                 # Site title
-theme = ["PaperMod"]                        # Your selected theme
+theme = ["PaperMod"]                      # Your selected theme
 pagerSize = 10                            # Posts per page
 
 # Content settings
@@ -9,7 +9,7 @@ enableRobotsTXT = true                    # Generate robots.txt
 buildDrafts = false                       # Set to true to build draft content
 buildFuture = false                       # Set to true to build future dated content
 enableEmoji = true                        # Enable emoji support in content
-enableGitInfo = false                     # Use Git commit dates for content
+enableGitInfo = true                      # Use Git commit dates for content
 
 # URL settings
 canonifyURLs = true                       # Convert all URLs to absolute
@@ -33,26 +33,30 @@ relativeURLs = false                      # Use relative URLs
     name = "Home"
     url = "/"
     weight = 10
+
   [[menu.main]]
     identifier = "posts"
     name = "Posts"
     url = "/posts/"
     weight = 20
+
   [[menu.main]]
     identifier = "about"
     name = "About"
     url = "/about/"
     weight = 30
+
   [[menu.main]]
     identifier = "links"
     name = "Links"
     url = "/links/"
-    weight = 30
+    weight = 40
+
   [[menu.main]]
     identifier = "contact"
     name = "Contact"
     url = "/contact/"
-    weight = 30
+    weight = 50
 
 # Theme-specific parameters
 [params]
@@ -65,27 +69,34 @@ relativeURLs = false                      # Use relative URLs
   defaultTheme = "auto"  # Options: light, dark, auto
   disableThemeToggle = false
   env = "production"     # Options: production, development
+  customCSS = ["css/custom.css"]
+  accentColor = "emerald"
   # PaperMod specific options
-  ShowReadingTime = true
-  ShowShareButtons = true
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true
-  ShowFullTextinRSS = true
-  ShowToc = true
+  showReadingTime      = true
+  showShareButtons     = true
+  showPostNavLinks     = true
+  showBreadCrumbs      = true
+  showCodeCopyButtons  = true
+  showFullTextInRSS    = true
+  showToc              = true
+
+# Fonts (Google Fonts will be auto‐injected)
+[params.fonts]
+  body    = ["Inter", "sans-serif"]
+  heading = ["Merriweather", "serif"]
+  mono    = ["Fira Code", "monospace"]
   
-  # Social media links
-  [params.social]
-    twitter = "yourhandle"
+# Social media links
+[params.social]
     github = "yourusername"
     linkedin = "yourprofile"
     
-  # Analytics
-  [params.analytics.google]
+# Analytics
+[params.analytics.google]
   SiteVerificationTag = "G-XXXXXXXX"
-  [params.analytics.bing]
+[params.analytics.bing]
   SiteVerificationTag = "B-XXXXXXXX"
-  [params.analytics.yandex]
+[params.analytics.yandex]
   SiteVerificationTag = "Y-XXXXXXXX"
 
     
