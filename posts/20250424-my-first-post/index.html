@@ -24,24 +24,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- Core reset & variables -->
-  <link rel="preload" href="css/base.css" as="style">
-  <link rel="stylesheet" href="css/base.css">
+  <link rel="preload" href="../../css/base.css" as="style">
+  <link rel="stylesheet" href="../../css/base.css">
  
   <!-- Layout (grid, containers, header/nav/footer layout) -->
-  <link rel="preload" href="css/layout.css" as="style">
-  <link rel="stylesheet" href="css/layout.css">
+  <link rel="preload" href="../../css/layout.css" as="style">
+  <link rel="stylesheet" href="../../css/layout.css">
  
   <!-- Components (cards, post-items, footer links, etc.) -->
-  <link rel="preload" href="css/components.css" as="style">
-  <link rel="stylesheet" href="css/components.css">
+  <link rel="preload" href="../../css/components.css" as="style">
+  <link rel="stylesheet" href="../../css/components.css">
  
   <!-- Utility helpers (text-centering, spacing, visually-hidden, etc.) -->
-  <link rel="preload" href="css/utilities.css" as="style">
-  <link rel="stylesheet" href="css/utilities.css">
+  <link rel="preload" href="../../css/utilities.css" as="style">
+  <link rel="stylesheet" href="../../css/utilities.css">
 
   <!-- Footer style-->
-  <link rel="preload" href="css/footer.css" as="style">
-  <link rel="stylesheet" href="css/footer.css">
+  <link rel="preload" href="../../css/footer.css" as="style">
+  <link rel="stylesheet" href="../../css/footer.css">
 </head>
 <body>
   <!-- Skip-link for keyboard users -->
@@ -52,11 +52,13 @@
     <div class="container">
       <nav class="main-nav" role="navigation" aria-label="Primary navigation">
         <ul class="main-nav__list">
-          <li class="main-nav__item main-nav__item--active">
-            <a href="index.html" class="main-nav__link" aria-current="page">Home</a>
-          </li>
           <li class="main-nav__item">
-            <a href="posts.html" class="main-nav__link">Posts</a>
+            <a href="index.html" class="main-nav__link">Home</a>
+          </li>
+          <li class="main-nav__item main-nav__item--active">
+            <a href="posts.html" 
+            class="main-nav__link"
+            aria-current="page">Posts</a>
           </li>
           <li class="main-nav__item">
             <a href="links.html" class="main-nav__link">Links</a>
@@ -73,19 +75,29 @@
   </header>
 
   <main id="main-content" class="container" role="main">
-    <article class="page-content" aria-labelledby="terms-title">
-      <h1 id="terms-title">Terms of Service</h1>
+    <article class="post-content" aria-labelledby="post-title">
+      <h1 id="post-title">Example Post Title One</h1>
+      <p class="post-meta">Published on April 15, 2025</p>
 
-      <div class="page-content__body">
-        <h2>1. Introduction</h2>
-        <p>…your full terms text here…</p>
-        <h2>2. User Obligations</h2>
-        <ul>
-          <li>First obligation</li>
-          <li>Second obligation</li>
-        </ul>
+      <div class="post-content__body">
+        <p>Your first paragraph…</p>
+        <h2>A Subheading in the Post</h2>
+        <p>More content…</p>
+        <img
+          src="assets/example.jpg"
+          alt="Descriptive alt text"
+          class="post-content__image"
+        >
+        <blockquote>
+          A highlighted quote from the post…
+        </blockquote>
+        <pre><code>console.log('Hello, world!');</code></pre>
         <!-- etc… -->
       </div>
+
+      <p>
+        <a href="posts.html" class="u-mt-2">← Back to all posts</a>
+      </p>
     </article>
   </main>
 

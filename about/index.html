@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Links - Michael Brunger</title>
+  <title>Contact - Michael Brunger</title>
   <meta name="description" content="Thoughts on web design, finance and life from Michael.">
   <link rel="canonical" href="https://yourdomain.com/posts.html">
 
   <!-- Open Graph / Social Preview -->
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://yourdomain.com/index.html">
-  <meta property="og:title"       content="Links - Michael Brunger">
+  <meta property="og:title"       content="Contact - Michael Brunger">
   <meta property="og:description" content="Thoughts on web design, finance and life from Michael.">
   <meta property="og:image"       content="https://yourdomain.com/assets/preview.png">
 
@@ -24,24 +24,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- Core reset & variables -->
-  <link rel="preload" href="css/base.css" as="style">
-  <link rel="stylesheet" href="css/base.css">
+  <link rel="preload" href="../css/base.css" as="style">
+  <link rel="stylesheet" href="../css/base.css">
  
   <!-- Layout (grid, containers, header/nav/footer layout) -->
-  <link rel="preload" href="css/layout.css" as="style">
-  <link rel="stylesheet" href="css/layout.css">
+  <link rel="preload" href="../css/layout.css" as="style">
+  <link rel="stylesheet" href="../css/layout.css">
  
   <!-- Components (cards, post-items, footer links, etc.) -->
-  <link rel="preload" href="css/components.css" as="style">
-  <link rel="stylesheet" href="css/components.css">
+  <link rel="preload" href="../css/components.css" as="style">
+  <link rel="stylesheet" href="../css/components.css">
  
   <!-- Utility helpers (text-centering, spacing, visually-hidden, etc.) -->
-  <link rel="preload" href="css/utilities.css" as="style">
-  <link rel="stylesheet" href="css/utilities.css">
+  <link rel="preload" href="../css/utilities.css" as="style">
+  <link rel="stylesheet" href="../css/utilities.css">
 
   <!-- Footer style-->
-  <link rel="preload" href="css/footer.css" as="style">
-  <link rel="stylesheet" href="css/footer.css">
+  <link rel="preload" href="../css/footer.css" as="style">
+  <link rel="stylesheet" href="../css/footer.css">
 </head>
 <body>
   <!-- Skip-link for keyboard users -->
@@ -58,16 +58,16 @@
           <li class="main-nav__item">
             <a href="posts.html" class="main-nav__link">Posts</a>
           </li>
-          <li class="main-nav__item main-nav__item--active">
-            <a href="links.html" 
-            class="main-nav__link"
-            aria-current="page">Links</a>
+          <li class="main-nav__item">
+            <a href="links.html" class="main-nav__link">Links</a>
           </li>
           <li class="main-nav__item">
             <a href="contact.html" class="main-nav__link">Contact</a>
           </li>
-          <li class="main-nav__item">
-            <a href="about.html" class="main-nav__link">About</a>
+          <li class="main-nav__item main-nav__item--active">
+            <a href="about.html" 
+            class="main-nav__link"
+            aria-current="page">About</a>
           </li>
         </ul>
       </nav>
@@ -75,15 +75,13 @@
   </header>
 
   <main id="main-content" class="container" role="main">
-    <section class="links-page" aria-labelledby="links-title">
-      <h1 id="links-title">Useful Links</h1>
-      <ul class="links-list">
-        <li class="links-list__item">
-          <a href="https://example.com" class="links-list__link" target="_blank" rel="noopener">Example Site</a>
-        </li>
-        <!-- Repeat for each link -->
-      </ul>
-    </section>
+    <article class="page-content" aria-labelledby="about-title">
+      <h1 id="about-title">About Me</h1>
+      <div class="page-content__body">
+        <p>Hello! I’m Michael, a finance manager and web-design enthusiast…</p>
+        <!-- More paragraphs, images, lists, etc. -->
+      </div>
+    </article>
   </main>
 
     <!-- Footer -->
@@ -139,6 +137,6 @@
   <script>
     document.getElementById('current-year').textContent = new Date().getFullYear();
   </script>
-      
+
 </body>
 </html>

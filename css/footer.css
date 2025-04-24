@@ -1,0 +1,114 @@
+footer {
+    background-color: #222; /* Dark background */
+    border-top: 1px solid #444; /* Subtle top border */
+    color: #ccc; /* Light text */
+    padding: 30px 0 15px; /* Reduced padding */
+    font-size: 14px;
+    /* position: fixed; removed - footer is now static */
+    margin-top: auto; /* Pushes footer to bottom if content is short */
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 20px; /* Keep some bottom margin for spacing between rows when wrapped */
+    padding-right: 20px; /* Space between columns */
+}
+/* Ensure last column doesn't have unnecessary right padding */
+.footer-column:last-child {
+     padding-right: 0;
+}
+
+
+.footer-column h4 {
+    color: #fff; /* White headings */
+    margin-bottom: 12px; /* Reduced margin */
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 6px; /* Reduced margin */
+}
+
+.footer-column a {
+    color: #ccc; /* Light links */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-column a:hover {
+    color: #fff; /* Brighter hover */
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+}
+
+.social-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    fill: #ccc; /* Match link color */
+     transition: fill 0.2s ease; /* Smooth transition for icon color */
+}
+ /* Change icon color on link hover */
+.social-link:hover .social-icon {
+    fill: #fff; /* Match link hover color */
+}
+
+
+.copyright-bar {
+    text-align: center;
+    padding-top: 15px; /* Reduced padding */
+    margin-top: 15px; /* Reduced margin */
+    border-top: 1px solid #444; /* Match footer border color */
+    color: #aaa; /* Slightly dimmer copyright text */
+    font-size: 13px;
+    /* Apply max-width and padding to align text with content above */
+     max-width: 1200px;
+     margin-left: auto;
+     margin-right: auto;
+     padding-left: 20px;
+     padding-right: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+         justify-content: space-around; /* Better spacing on medium screens */
+    }
+    .footer-column {
+        flex: 1 0 45%; /* Allow two columns side-by-side */
+        min-width: 180px; /* Adjust min-width if needed */
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-column {
+        flex: 1 0 100%; /* Stack columns */
+        min-width: auto;
+        padding-right: 0; /* No right padding when stacked */
+    }
+     .footer-content {
+         padding: 0 30px; /* Adjust padding for small screens if needed */
+     }
+     .copyright-bar {
+          padding-left: 30px;
+          padding-right: 30px;
+     }
+}
