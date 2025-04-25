@@ -2,10 +2,8 @@
 title: "Contact"
 date: 2025-04-24T10:00:00+01:00
 draft: false
-layout: single
 description: "Get in touch with any questions, comments, or inquiries"
 showToc: false
-showShareButtons: false
 ---
 
 ## Get In Touch
