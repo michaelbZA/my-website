@@ -2,20 +2,35 @@
 title: "Contact"
 date: 2025-04-24T10:00:00+01:00
 draft: false
-layout: "single"
+layout: single
+description: "Get in touch with any questions, comments, or inquiries"
+showToc: false
+showShareButtons: false
 ---
 
-Feel free to drop me a line:
+## Get In Touch
 
-- **Email:** [michaelbrunger@gmail.com](mailto:michaelbrunger@gmail.comcom)    
-- **LinkedIn:** [Michael Brunger](https://linkedin.com/in/michael-brunger)
+Have a question, suggestion, or just want to say hello? I'd love to hear from you! Fill out the form below and I'll get back to you as soon as possible.
 
-Or use the form below:  
+{{< contact-form >}}
 
-<form name="contact" method="POST" data-netlify="true">
-<input type="hidden" name="form-name" value="contact" />
-  <p><label>Your Name: <input type="text" name="name" /></label></p>
-  <p><label>Your Email: <input type="email" name="email" /></label></p>
-  <p><label>Message:<br><textarea name="message"></textarea></label></p>
-  <p><button type="submit">Send</button></p>
-</form>
+## Other Ways to Connect
+
+You can also reach me through any of the following channels:
+
+* **Twitter:** @YourTwitterHandle
+* **GitHub:** YourGitHubUsername
+* **LinkedIn:** Your Name
+
+I typically respond to messages within 1-2 business days.
+
+## FAQ
+
+**What types of inquiries do you welcome?**  
+I'm open to discussing potential collaborations, answering questions about my blog posts, receiving feedback on my content, and entertaining interesting project proposals.
+
+**Do you offer consulting services?**  
+Yes, I'm available for select consulting opportunities in [your areas of expertise]. Please provide details about your project in your message.
+
+**Can I guest post on your blog?**  
+I occasionally accept high-quality guest contributions that align with my blog's topics and audience. Please include a brief outline of your proposed post in your message.

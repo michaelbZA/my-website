@@ -1,8 +1,20 @@
-+++
-title = 'Title goes here'
-date = 2025-04-23T10:00:00-07:00
-draft = false
-+++
+---
+title: '{{ replace .File.ContentBaseName "-" " " | title }}'
+date: '{{ .Date }}'
+draft: false
+description: "A brief description of your post (appears in search engines and social media previews)"
+tags: ["tag1", "tag2", "python", "tutorial"]
+categories: ["category1", "category2"]
+series: ["optional-series-name"]
+cover:
+    image: "images/cover-image.jpg" # relative path to cover image
+    alt: "Description of the cover image"
+    caption: "Image caption (optional)"
+    relative: false # when using page bundles, set this to true
+ShowToc: true
+TocOpen: false
+weight: 1 # determines the order in posts list
+---
 
 ## Introduction
 
@@ -123,6 +135,16 @@ Tables can be useful for displaying structured information:
 > Use blockquotes to highlight important information or to quote someone.
 > 
 > You can have multiple paragraphs in a blockquote by adding a blank line with the > symbol.
+
+## Tips and Warnings
+
+{{< notice note >}}
+This is a note box that can be used for important information that isn't a warning.
+{{< /notice >}}
+
+{{< notice warning >}}
+This is a warning box for critical information the reader should be aware of.
+{{< /notice >}}
 
 ## Interactive Elements
 

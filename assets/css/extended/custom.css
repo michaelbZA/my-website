@@ -1,203 +1,733 @@
-/* ==========================================================================
-   1. ROOT / CSS VARIABLES
-   --------------------------------------------------------------------------
-   PaperMod already defines many --tw- and --accent variables. You can
-   override or define your own here for site-wide usage.
-   ========================================================================== */
-   :root {
-    /* Override PaperMod’s accent (if you want a hex instead of tailwind name) */
-    --accent: #1ABC9C;
+ :root {
+  /* Light Mode Colors */
+  --theme: #fff;
+  --entry: #ffffff;
+  --primary: #333333;
+  --secondary: #585858;
+  --tertiary: #747474;
+  --content: #333333;
+  --hljs-bg: #f5f5f5;
+  --code-bg: #f0f0f0;
+  --border: #eaeaea;
+  --link-color: #fc930b;
+  --link-hover-color: #004080;
+  --accent: #6d91c5;
+  --accent-alpha: rgba(109, 145, 197, 0.15);
   
-    /* Add your own brand colors */
-    --brand-primary: #FF4081;
-    --brand-secondary: #374151;
+  /* Box Shadows */
+  --nav-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px;
+  --card-shadow: rgba(0, 0, 0, 0.05) 0px 5px 15px;
+  --card-shadow-hover: rgba(0, 0, 0, 0.1) 0px 10px 20px;
+}
+
+.dark:root {
+  /* Dark Mode Colors */
+  --theme: #252525;
+  --entry: #2e2e2e;
+  --primary: #f0f0f0;
+  --secondary: #d4d4d4;
+  --tertiary: #b0b0b0;
+  --content: #e8e8e8;
+  --hljs-bg: #2a2a2a;
+  --code-bg: #333333;
+  --border: #4a4a4a;
+  --link-color: #88b4e7;
+  --link-hover-color: #a1c6f3;
+  --accent: #6d91c5;
+  --accent-alpha: rgba(109, 145, 197, 0.15);
   
-    /* Default body text & background fallbacks */
-    --body-color: #333;
-    --bg-color: #fff;
-  }
-  
-  /* ==========================================================================
-     2. BASE TYPOGRAPHY
-     --------------------------------------------------------------------------
-     Tweak your default font sizes, line-height, margins etc.
-     ========================================================================== */
+  /* Box Shadows for Dark Mode */
+  --nav-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px;
+  --card-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
+  --card-shadow-hover: rgba(0, 0, 0, 0.35) 0px 10px 20px;
+}
+
+/* Global Styles */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.7;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Typography improvements */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 2rem;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 2.2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.3rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+.post-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+p {
+  margin-bottom: 1.5rem;
+}
+
+.navbar-brand img {
+  max-height: 60px;     /* or 80px, etc. */
+  max-width: none;     /* optionally cap the width */
+  height: auto;
+  width: 500;
+  margin-right: 2rem;
+}
+
+/* Links */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  align-items: center;
+  background: var(--theme);
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--nav-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.logo a {
+  color: var(--primary);
+}
+
+.logo a:hover {
+  text-decoration: none;
+}
+
+.menu {
+  margin-left: auto;
+}
+
+.menu a {
+  margin-left: 1rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Remove space before posts on homepage */
+.home-info {
+  display: none;
+}
+
+.home-divider {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-top: 2px solid var(--primary);
+  width: 100%;
+  max-width: 720px;
+  opacity: 0.6
+}
+
+/* Post Cards */
+.post-entry {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--entry);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-entry:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.entry-header h2 {
+  border-bottom: none;
+  padding-bottom: 0;
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+
+.entry-content {
+  color: var(--secondary);
+  font-size: 0.95rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.entry-footer {
+  color: var(--tertiary);
+  font-size: 0.85rem;
+}
+
+/* Tags */
+.post-tags a {
+  background: var(--accent-alpha);
+  color: var(--accent);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin-right: 8px;
+  transition: background 0.2s ease;
+}
+
+.post-tags a:hover {
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Code */
+pre {
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  background: var(--hljs-bg);
+  margin: 1.5rem 0;
+}
+
+code {
+  font-family: "JetBrains Mono", "Fira Code", Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 0.9em;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  background-color: var(--code-bg);
+}
+
+pre code {
+  padding: 0;
+  background-color: transparent;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+}
+
+th {
+  background-color: var(--code-bg);
+  font-weight: 600;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid var(--accent);
+  padding-left: 1rem;
+  margin-left: 0;
+  color: var(--secondary);
+  font-style: italic;
+}
+
+/* Horizontal Rules */
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--border);
+  margin: 2rem 0;
+}
+
+/* Footer */
+.footer {
+  padding: 2rem 0;
+  color: var(--tertiary);
+  font-size: 0.9rem;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  margin-top: 3rem;
+}
+
+.footer a {
+  color: var(--secondary);
+}
+
+/* Dark/Light Mode Toggle */
+.theme-toggle {
+  cursor: pointer;
+  background: var(--code-bg);
+  color: var(--primary);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--border);
+}
+
+/* Search */
+.search-wrapper {
+  margin-bottom: 2rem;
+}
+
+.search {
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 16px;
+  background: var(--entry);
+  color: var(--primary);
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-alpha);
+  outline: none;
+}
+
+/* TOC (Table of Contents) */
+.toc {
+  padding: 1rem;
+  background: var(--code-bg);
+  border-radius: 6px;
+  margin-bottom: 2rem;
+}
+
+.toc details summary {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Post Content */
+.post-content {
+  margin-top: 2rem;
+}
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin: 1.5rem 0;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.pagination a {
+  background: var(--code-bg);
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.pagination a:hover {
+  background: var(--border);
+  text-decoration: none;
+}
+
+/* Post Meta */
+.post-meta {
+  color: var(--tertiary);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Archive */
+.archive-year {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
   body {
-    color: var(--body-color);
-    background-color: var(--bg-color);
-    font-family: 'Inter', sans-serif;     /* matches config.toml */
-    line-height: 1.7;
-    font-size: 1rem;                      /* 16px */
-    margin: 0;
-    padding: 0;
+      padding: 0 15px;
   }
   
-  /* ==========================================================================
-     3. HEADINGS
-     --------------------------------------------------------------------------
-     Adjust sizes, weights, margins. Use rems so it scales nicely.
-     ========================================================================== */
-  h1, .post-title {
-    font-family: 'Merriweather', serif;
-    font-size: 2.25rem;    /* 36px */
-    margin: 1.5rem 0 0.75rem;
+  h1 {
+      font-size: 1.8rem;
   }
   
   h2 {
-    font-size: 1.75rem;    /* 28px */
-    margin: 1.25rem 0 0.5rem;
-    font-style: italic;    /* example tweak */
+      font-size: 1.5rem;
   }
   
   h3 {
-    font-size: 1.5rem;     /* 24px */
-    margin: 1rem 0 0.5rem;
-    font-weight: 600;
+      font-size: 1.3rem;
   }
   
-  /* ==========================================================================
-     4. LINKS & BUTTONS
-     --------------------------------------------------------------------------
-     Use your brand colors and adjust states.
-     ========================================================================== */
-  a {
-    color: var(--accent);
-    text-decoration: none;
-    transition: color 0.2s ease;
+  .post-title {
+      font-size: 2rem;
   }
   
-  a:hover,
-  a:focus {
-    color: var(--brand-primary);
-    text-decoration: underline;
+  .post-entry {
+      padding: 1rem;
   }
   
-  button,
-  .btn {
-    background-color: var(--accent);
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.2s ease;
+  .nav {
+      flex-direction: column;
+      align-items: flex-start;
   }
   
-  button:hover,
-  .btn:hover {
-    background-color: var(--brand-primary);
+  .menu {
+      margin-left: 0;
+      margin-top: 1rem;
   }
   
-  /* ==========================================================================
-     5. LAYOUT / STRUCTURE
-     --------------------------------------------------------------------------
-     Adjust container max-widths, gutters, sidebars etc.
-     ========================================================================== */
-  .container {
-    max-width: 48rem;    /* 768px */
-    margin: 0 auto;
-    padding: 0 1rem;
+  .menu a {
+      margin-left: 0;
+      margin-right: 1rem;
   }
-  
-  .sidebar {
-    padding: 1rem;
-    background: #f9fafb;
-    border-radius: 0.5rem;
-  }
-  
-  /* ==========================================================================
-     6. IMAGES & FIGURES
-     --------------------------------------------------------------------------
-     Make images responsive and add captions.
-     ========================================================================== */
-  img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
-  
-  figure {
-    margin: 1.5rem 0;
-    text-align: center;
-    font-size: 0.875rem;
-    color: #555;
-  }
-  
-  /* ==========================================================================
-     7. CODE BLOCKS & INLINE CODE
-     --------------------------------------------------------------------------
-     Style syntax highlighting background, font, padding.
-     ========================================================================== */
-  pre {
-    background-color: #1e1e1e;
-    color: #f8f8f2;
-    padding: 1rem;
-    overflow-x: auto;
-    border-radius: 0.5rem;
-  }
-  
-  code {
-    background: rgba(27,31,35,0.05);
-    padding: 0.25rem 0.4rem;
-    border-radius: 0.3rem;
-    font-family: 'Fira Code', monospace;
-  }
-  
-  /* ==========================================================================
-     8. TABLES
-     --------------------------------------------------------------------------
-     Simple, clean table styles.
-     ========================================================================== */
-  table {
-    width: 100%;
-    border-collapse: collapse;
+}
+
+/* Custom Elements Style */
+/* Profile/About Section on Homepage */
+.profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--entry);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1.5rem;
+}
+
+.profile-content h2 {
+  margin-top: 0;
+  border-bottom: none;
+}
+
+.profile-content p {
+  margin-bottom: 0.5rem;
+}
+
+.social-links {
+  margin-top: 1rem;
+}
+
+.social-links a {
+  margin-right: 1rem;
+  color: var(--tertiary);
+  transition: color 0.2s ease;
+}
+
+.social-links a:hover {
+  color: var(--accent);
+}
+
+/* Featured Posts Section */
+.featured-posts {
+  margin-bottom: 3rem;
+}
+
+.featured-heading {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--accent);
+}
+
+/* Category List */
+.categories-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.category-item {
+  background: var(--code-bg);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.category-item:hover {
+  background: var(--accent-alpha);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+/* Comments Section */
+.comments {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+/* Read More Button */
+.read-more {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.read-more:hover {
+  background: var(--link-hover-color);
+  text-decoration: none;
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.post-entry {
+  animation: fadeIn 0.5s ease;
+}
+
+/* Tag Cloud */
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 2rem 0;
+}
+
+.tag-cloud-tag {
+  background: var(--code-bg);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.tag-cloud-tag:hover {
+  background: var(--accent-alpha);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+/* Image Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  margin: 2rem 0;
+}
+
+.gallery-item {
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.03);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+}
+
+/* Cover Images */
+.post-cover {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+/* Last Modified Date */
+.last-modified {
+  font-style: italic;
+  color: var(--tertiary);
+  font-size: 0.85rem;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+}
+
+/* Author Box */
+.author-box {
+  display: flex;
+  align-items: center;
+  margin-top: 3rem;
+  padding: 1.5rem;
+  background: var(--code-bg);
+  border-radius: 8px;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1.5rem;
+}
+
+.author-bio h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.author-bio p {
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+/* Reading Progress Bar */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--accent);
+  z-index: 1000;
+  width: 0%;
+  transition: width 0.2s ease;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--accent);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.back-to-top.visible {
+  opacity: 0.8;
+}
+
+.back-to-top:hover {
+  opacity: 1;
+}
+
+/* Contact Form Styling */
+form {
+  max-width: 600px;
+  margin: 2rem 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--entry);
+  color: var(--primary);
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button[type="submit"] {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background: var(--link-hover-color);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Additional responsive styling */
+@media (max-width: 640px) {
+  form {
     margin: 1rem 0;
   }
   
-  th,
-  td {
-    padding: 0.75rem;
-    border: 1px solid #e5e7eb;
-    text-align: left;
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    padding: 0.5rem;
   }
-  
-  th {
-    background-color: #f3f4f6;
-  }
-  
-  /* ==========================================================================
-     9. UTILITIES / MISC
-     --------------------------------------------------------------------------
-     Quick helper classes you can use in Markdown via `class="..."`.
-     ========================================================================== */
-  /* Center content */
-  .u-center {
-    text-align: center;
-  }
-  
-  /* Highlighted alert box */
-  .u-alert {
-    border-left: 4px solid var(--accent);
-    background: #fefce8;
-    padding: 1rem;
-    margin: 1rem 0;
-  }
-  
-  /* Hide on mobile */
-  @media (max-width: 640px) {
-    .u-hide-mobile {
-      display: none;
-    }
-  }
-  
-  /* ==========================================================================
-     10. OVERWRITE PAPERMOD VARIABLES (advanced)
-     --------------------------------------------------------------------------
-     If you need to tweak core PaperMod CSS variables, you can redefine them:
-     ========================================================================== */
-  :root {
-    /* Example: change the default border radius for cards/buttons */
-    --card-radius: 1rem;
-    --btn-radius: 1rem;
-  }  
+}
+
+/* These classes ensure the form respects PaperMod's theme variables */
+.dark input[type="text"],
+.dark input[type="email"],
+.dark textarea {
+  background: var(--entry);
+  color: var(--primary);
+  border-color: var(--border);
+}

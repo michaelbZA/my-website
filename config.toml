@@ -71,6 +71,8 @@ relativeURLs = false                      # Use relative URLs
   env = "production"     # Options: production, development
   customCSS = ["css/custom.css"]
   accentColor = "emerald"
+  homeLayout   = "cards"  # "cards", "list", or "minimal"
+  cardsColumns = 3
   # PaperMod specific options
   showReadingTime      = true
   showShareButtons     = true
@@ -88,8 +90,8 @@ relativeURLs = false                      # Use relative URLs
   
 # Social media links
 [params.social]
-    github = "yourusername"
-    linkedin = "yourprofile"
+    github = "https://github.com/michaelbZA"
+    linkedin = "https://linkedin.com/in/michael-brunger"
     
 # Analytics
 [params.analytics.google]
@@ -102,8 +104,8 @@ relativeURLs = false                      # Use relative URLs
     
   # Home page settings
   [params.homeInfoParams]
-    Title = "Welcome to My Blog"
-    Content = "This is a brief description of my website"
+    Title = ""
+    Content = ""
     
   # Cover image for posts
   [params.cover]
@@ -119,8 +121,29 @@ relativeURLs = false                      # Use relative URLs
     minMatchCharLength = 0
     keys = ["title", "permalink", "summary", "content"]
 
+  # Favicon and icons
+  [params.assets]
+  favicon          = "/assets/favicon.ico"
+  favicon16x16     = "/assets/favicon-16x16.png"
+  favicon32x32     = "/assets/favicon-32x32.png"
+  apple_touch_icon = "/assets/apple-touch-icon.png"
+  safari_pinned_tab= "/assets/safari-pinned-tab.svg"
+
+  # Label
+  [params.label]
+  # path to your logo file (relative to site root)
+  icon       = "/images/logo.png"
+  # height in px (adjust as needed)
+  iconHeight = 70
+  # hide the text next to the icon
+  text       = " "
+
 # Privacy settings
 [privacy]
   [privacy.x]
     enableDNT = true
     simple    = true
+
+#Render settings
+[markup.goldmark.renderer]
+  unsafe = true
