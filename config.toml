@@ -1,4 +1,4 @@
-baseURL = "https://melodic-souffle-3a42f9.netlify.app/"         # Your site's URL (with trailing slash)
+baseURL = "https://michaelbrunger.com/"         # Your site's URL (with trailing slash)
 languageCode = "en-GB"
 title = "Michael Brunger"                 # Site title
 theme = ["github.com/adityatelange/hugo-PaperMod"]

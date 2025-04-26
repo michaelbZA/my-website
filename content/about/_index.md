@@ -3,6 +3,7 @@ title: "About"
 date: 2025-04-24T10:00:00+01:00
 draft: false
 ShowToc: false
+description: "Learn more about me and my site."
 ---
 
 Hello there. I'm a South African chartered accountant who, about six years ago, decided that grey English skies were preferable to African sunshine. My wife somehow agreed with this questionable decision, and we've since added two small humans to our expedition.
