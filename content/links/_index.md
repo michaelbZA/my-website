@@ -1,5 +1,6 @@
 ---
 title: "Links"
+description: "A curated collection of resources I've found helpful in my learning journey"
 date: 2025-04-24T10:00:00+01:00
 draft: false
 ---

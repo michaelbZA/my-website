@@ -1,7 +1,10 @@
 +++
-title = 'Introduction to Python'
-date = 2025-04-23T10:00:00-07:00
+title = 'Getting Started with Python'
+date = 2025-04-27T10:00:00-07:00
 draft = false
+tags = ["python", "python-series", "beginners"]
+categories = ["Python"]
+weight = 10
 +++
 
 # Post 1: Getting Started with Python on Windows

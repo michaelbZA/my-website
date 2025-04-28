@@ -11,152 +11,238 @@
     </image>
     <generator>Hugo -- 0.146.7</generator>
     <language>en-GB</language>
-    <lastBuildDate>Wed, 23 Apr 2025 10:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Sun, 27 Apr 2025 10:00:00 -0700</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Title goes here</title>
-      <link>http://localhost:1313/posts/my-first-post/</link>
-      <pubDate>Wed, 23 Apr 2025 10:00:00 -0700</pubDate>
-      <guid>http://localhost:1313/posts/my-first-post/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;Start with a brief introduction to your topic. Explain what the reader will learn and why it matters. Consider adding a hook to engage readers from the start.&lt;/p&gt;
-&lt;p&gt;This paragraph provides more context and background information needed to understand the rest of the post.&lt;/p&gt;
-&lt;h2 id=&#34;main-section&#34;&gt;Main Section&lt;/h2&gt;
-&lt;p&gt;Here&amp;rsquo;s where you dive into your main content. Break down your topic into logical sections with clear headings.&lt;/p&gt;
-&lt;h3 id=&#34;sub-section-1&#34;&gt;Sub-section 1&lt;/h3&gt;
-&lt;p&gt;Text explaining the first sub-topic or step in your process. Include relevant explanations and examples.&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<h2 id="introduction">Introduction</h2>
-<p>Start with a brief introduction to your topic. Explain what the reader will learn and why it matters. Consider adding a hook to engage readers from the start.</p>
-<p>This paragraph provides more context and background information needed to understand the rest of the post.</p>
-<h2 id="main-section">Main Section</h2>
-<p>Here&rsquo;s where you dive into your main content. Break down your topic into logical sections with clear headings.</p>
-<h3 id="sub-section-1">Sub-section 1</h3>
-<p>Text explaining the first sub-topic or step in your process. Include relevant explanations and examples.</p>
-<p>Here&rsquo;s a simple Python code example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hello_world</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;A simple function that prints a greeting&#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Hello, world!&#34;</span>)
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># You can include comments in your code blocks</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">3</span>):
-</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Count: </span><span style="color:#e6db74">{</span>i<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>hello_world()
-</span></span></code></pre></div><h4 id="output">Output:</h4>
-<pre tabindex="0"><code>Hello, world!
-Count: 0
-Count: 1
-Count: 2
-</code></pre><h3 id="sub-section-2">Sub-section 2</h3>
-<p>Continue with more explanations and examples as needed.</p>
-<p>You can include inline code like <code>variable_name</code> or <code>function_name()</code> within your paragraphs.</p>
-<h2 id="working-with-data">Working with Data</h2>
-<p>If your post involves data analysis or manipulation, you might include code that demonstrates this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Sample data creation</span>
-</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Category&#39;</span>: [<span style="color:#e6db74">&#39;A&#39;</span>, <span style="color:#e6db74">&#39;B&#39;</span>, <span style="color:#e6db74">&#39;C&#39;</span>, <span style="color:#e6db74">&#39;D&#39;</span>],
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Values&#39;</span>: [<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">23</span>, <span style="color:#ae81ff">15</span>, <span style="color:#ae81ff">8</span>]
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a DataFrame</span>
-</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(data)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Display the data</span>
-</span></span><span style="display:flex;"><span>print(df)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a simple visualization</span>
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">5</span>))
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>bar(df[<span style="color:#e6db74">&#39;Category&#39;</span>], df[<span style="color:#e6db74">&#39;Values&#39;</span>])
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Sample Data Visualization&#39;</span>)
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Category&#39;</span>)
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Values&#39;</span>)
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
-</span></span></code></pre></div><h3 id="other-languages">Other Languages</h3>
-<p>You can also include code in other languages:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// JavaScript example
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">toggleDarkMode</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">body</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;body&#39;</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">toggle</span>(<span style="color:#e6db74">&#39;dark-mode&#39;</span>);
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Save preference to localStorage
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">isDarkMode</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">contains</span>(<span style="color:#e6db74">&#39;dark-mode&#39;</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">setItem</span>(<span style="color:#e6db74">&#39;darkMode&#39;</span>, <span style="color:#a6e22e">isDarkMode</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#75715e">/* CSS example */</span>
-</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">container</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">flex</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">justify-content</span>: <span style="color:#66d9ef">center</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">max-width</span>: <span style="color:#ae81ff">1200</span><span style="color:#66d9ef">px</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">auto</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="adding-images">Adding Images</h2>
-<p>You can add images to illustrate your points:</p>
-<p><img alt="Alt text description" loading="lazy" src="/path/to/image.jpg" title="Optional title"></p>
-<figure>
-    <img loading="lazy" src="/path/to/image.jpg"
-         alt="Alt text description"/> <figcaption>
-            Figure 1: Description of the figure
-        </figcaption>
-</figure>
-
-<h2 id="tables">Tables</h2>
-<p>Tables can be useful for displaying structured information:</p>
-<table>
-  <thead>
-      <tr>
-          <th>Column 1</th>
-          <th>Column 2</th>
-          <th>Column 3</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Data 1</td>
-          <td>Data 2</td>
-          <td>Data 3</td>
-      </tr>
-      <tr>
-          <td>More data</td>
-          <td>More data</td>
-          <td>More data</td>
-      </tr>
-  </tbody>
-</table>
-<h2 id="blockquotes">Blockquotes</h2>
-<blockquote>
-<p>Use blockquotes to highlight important information or to quote someone.</p>
-<p>You can have multiple paragraphs in a blockquote by adding a blank line with the &gt; symbol.</p></blockquote>
-<h2 id="interactive-elements">Interactive Elements</h2>
-<p>If your theme supports shortcodes for interactive elements:</p>
-
-<details>
-  <summary>Details</summary>
-  <p>This content is hidden by default and will be revealed when the user clicks.</p>
-</details>
-
-<h2 id="math-equations">Math Equations</h2>
-<p>If your Hugo setup supports LaTeX or KaTeX:</p>
-<p>Inline equation: $E = mc^2$</p>
-<p>Block equation:</p>
-<p>$$
-f(x) = \int_{-\infty}^{\infty} \hat{f}(\xi) e^{2 \pi i \xi x} d\xi
-$$</p>
-<h2 id="conclusion">Conclusion</h2>
-<p>Summarize the key points covered in your post. Remind readers what they&rsquo;ve learned and why it matters.</p>
-<p>Consider suggesting next steps or related topics they might want to explore.</p>
-<h2 id="resources">Resources</h2>
+      <title>Python Learning Journey: The Complete Series Roadmap</title>
+      <link>http://localhost:1313/posts/python0of17/</link>
+      <pubDate>Sun, 27 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/python0of17/</guid>
+      <description>A complete guide to my 17-part Python learning series, covering everything from installation to advanced topics.</description>
+      <content:encoded><![CDATA[<h2 id="my-python-learning-journey">My Python Learning Journey</h2>
+<p>Welcome to my Python learning series! As a finance professional exploring programming, I&rsquo;m documenting my entire journey through 17 posts that take you from absolute beginner to building practical applications.</p>
+<h2 id="what-to-expect-from-this-series">What to Expect from This Series</h2>
+<p>This series is designed for fellow finance professionals and beginners who want to learn Python in a practical, step-by-step manner. Each post builds on previous concepts while introducing new skills.</p>
+<h2 id="series-overview">Series Overview</h2>
+<p>Here&rsquo;s what we&rsquo;ll cover throughout the 17 posts:</p>
+<h3 id="getting-started-posts-1-3">Getting Started (Posts 1-3)</h3>
+<ol>
+<li><strong>Setting Up Your Python Environment</strong> - Installation, IDEs, and virtual environments</li>
+<li><strong>Python Basics: Variables, Data Types, and Operations</strong> - Understanding the fundamental building blocks</li>
+<li><strong>Control Flow: Conditions and Loops</strong> - Making decisions in your code</li>
+</ol>
+<h3 id="core-concepts-posts-4-8">Core Concepts (Posts 4-8)</h3>
+<ol start="4">
+<li><strong>Functions and Modules</strong> - Writing reusable code</li>
+<li><strong>Data Structures: Lists, Dictionaries, and More</strong> - Organizing and manipulating data</li>
+<li><strong>File Operations</strong> - Reading and writing files</li>
+<li><strong>Error Handling</strong> - Dealing with exceptions</li>
+<li><strong>Working with External Libraries</strong> - Expanding Python&rsquo;s capabilities</li>
+</ol>
+<h3 id="finance-applications-posts-9-13">Finance Applications (Posts 9-13)</h3>
+<ol start="9">
+<li><strong>Python for Financial Calculations</strong> - Interest rates, present value, future value</li>
+<li><strong>Data Analysis with Pandas</strong> - Working with financial datasets</li>
+<li><strong>Data Visualization</strong> - Creating charts and graphs</li>
+<li><strong>Financial Reporting Automation</strong> - Generating reports programmatically</li>
+<li><strong>Excel Integration</strong> - Combining Python with Excel workflows</li>
+</ol>
+<h3 id="advanced-topics-posts-14-17">Advanced Topics (Posts 14-17)</h3>
+<ol start="14">
+<li><strong>Web Scraping Financial Data</strong> - Collecting data from websites</li>
+<li><strong>API Integration</strong> - Connecting to financial services</li>
+<li><strong>Building a Simple Financial Dashboard</strong> - Putting it all together</li>
+<li><strong>Next Steps in Your Python Journey</strong> - Resources for continued learning</li>
+</ol>
+<h2 id="how-to-follow-along">How to Follow Along</h2>
+<p>Each post will be published weekly. Subscribe to updates to be notified when new posts are available.</p>
+<p>[Subscribe to updates] (if you have a newsletter)</p>
+<h2 id="who-this-series-is-for">Who This Series Is For</h2>
+<p>This series is ideal for:</p>
 <ul>
-<li><a href="https://example.com">Link to relevant resource</a></li>
-<li><a href="https://example.com">Another useful resource</a></li>
-<li><a href="https://example.com">Official documentation</a></li>
+<li>Finance professionals looking to automate tasks</li>
+<li>Beginners with no prior programming experience</li>
+<li>Anyone interested in practical Python applications</li>
+<li>Those who prefer learning step-by-step with real examples</li>
 </ul>
-<h2 id="about-the-author">About the Author</h2>
-<p>A brief bio about yourself can be included at the end of posts if desired.</p>
+<p>I hope you&rsquo;ll join me on this learning journey!</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Getting Started with Python</title>
+      <link>http://localhost:1313/posts/python1of17/</link>
+      <pubDate>Sun, 27 Apr 2025 10:00:00 -0700</pubDate>
+      <guid>http://localhost:1313/posts/python1of17/</guid>
+      <description>&lt;h1 id=&#34;post-1-getting-started-with-python-on-windows&#34;&gt;Post 1: Getting Started with Python on Windows&lt;/h1&gt;
+&lt;p&gt;Welcome to the first post in my Python learning series. As I learn Python myself, I&amp;rsquo;ll be documenting my journey here. This first post covers the essentials to get you up and running with Python on Windows:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;What Python is and why it&amp;rsquo;s worth learning&lt;/li&gt;
+&lt;li&gt;Installing Python on Windows (with step-by-step instructions)&lt;/li&gt;
+&lt;li&gt;Quick install notes for macOS &amp;amp; Linux users&lt;/li&gt;
+&lt;li&gt;Writing your first &amp;ldquo;Hello, World!&amp;rdquo; program&lt;/li&gt;
+&lt;li&gt;Using the Python interactive shell&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-what-is-python-and-why-learn-it&#34;&gt;1. What Is Python (and Why Learn It)?&lt;/h2&gt;
+&lt;p&gt;Python is a high-level, interpreted programming language that&amp;rsquo;s gained enormous popularity for good reason. After looking into various languages, I chose to learn Python because:&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h1 id="post-1-getting-started-with-python-on-windows">Post 1: Getting Started with Python on Windows</h1>
+<p>Welcome to the first post in my Python learning series. As I learn Python myself, I&rsquo;ll be documenting my journey here. This first post covers the essentials to get you up and running with Python on Windows:</p>
+<ol>
+<li>What Python is and why it&rsquo;s worth learning</li>
+<li>Installing Python on Windows (with step-by-step instructions)</li>
+<li>Quick install notes for macOS &amp; Linux users</li>
+<li>Writing your first &ldquo;Hello, World!&rdquo; program</li>
+<li>Using the Python interactive shell</li>
+</ol>
 <hr>
-<p><strong>Did you find this post helpful? Have questions or suggestions? Let me know in the comments below!</strong></p>
+<h2 id="1-what-is-python-and-why-learn-it">1. What Is Python (and Why Learn It)?</h2>
+<p>Python is a high-level, interpreted programming language that&rsquo;s gained enormous popularity for good reason. After looking into various languages, I chose to learn Python because:</p>
+<ul>
+<li><strong>Readability</strong>: Its clean syntax uses indentation and fewer symbols than languages like C++ or Java, making code easier to understand</li>
+<li><strong>Versatility</strong>: It&rsquo;s used across multiple domains from web development (Django, Flask) to data analysis (NumPy, pandas) and automation</li>
+<li><strong>Package ecosystem</strong>: PyPI (Python Package Index) hosts over 400,000 third-party packages that extend Python&rsquo;s capabilities</li>
+<li><strong>Community support</strong>: Extensive documentation, forums, and tutorials make finding help straightforward</li>
+</ul>
+<p>For me as a finance professional, Python&rsquo;s data analysis capabilities are particularly valuable, but its applications stretch across many fields.</p>
+<hr>
+<h2 id="2-installing-python-on-windows">2. Installing Python on Windows</h2>
+<p>Here&rsquo;s how to get Python installed on Windows 10/11:</p>
+<h3 id="21-download-the-installer">2.1 Download the Installer</h3>
+<ol>
+<li>Visit the official Python download page: <a href="https://www.python.org/downloads/windows">https://www.python.org/downloads/windows</a></li>
+<li>Click the button for the latest stable release (currently Python 3.11.x)</li>
+</ol>
+<h3 id="22-run-the-installer">2.2 Run the Installer</h3>
+<ol>
+<li>Locate and double-click the downloaded file (typically named python-3.x.x-amd64.exe)</li>
+<li><strong>IMPORTANT</strong>: Check the box that says &ldquo;Add Python 3.x to PATH&rdquo; at the bottom of the installer
+<ul>
+<li>This allows you to run Python from any directory in Command Prompt</li>
+</ul>
+</li>
+<li>Click &ldquo;Install Now&rdquo; for the standard installation, or &ldquo;Customize installation&rdquo; if you want to change specific options</li>
+</ol>
+<h3 id="23-verify-the-installation">2.3 Verify the Installation</h3>
+<ol>
+<li>Open Command Prompt (press Win + R, type <code>cmd</code>, and hit Enter)</li>
+<li>Type the following command and press Enter:
+<pre tabindex="0"><code>python --version
+</code></pre></li>
+<li>You should see output like:
+<pre tabindex="0"><code>Python 3.11.4
+</code></pre>(Your version number might differ)</li>
+</ol>
+<hr>
+<h2 id="3-quick-notes-for-macos--linux">3. Quick Notes for macOS &amp; Linux</h2>
+<ul>
+<li>
+<p><strong>macOS</strong>:</p>
+<ul>
+<li>Many Macs come with Python 2.7 preinstalled, but you&rsquo;ll want Python 3</li>
+<li>The simplest approach is using Homebrew:
+<pre tabindex="0"><code>brew install python
+</code></pre></li>
+<li>Alternatively, download the installer from python.org</li>
+</ul>
+</li>
+<li>
+<p><strong>Linux</strong>:</p>
+<ul>
+<li>Most Linux distributions include Python</li>
+<li>For Ubuntu/Debian:
+<pre tabindex="0"><code>sudo apt update
+sudo apt install python3 python3-pip
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>For complete instructions, see the official Python documentation:</p>
+<ul>
+<li>macOS: <a href="https://docs.python.org/3/using/mac.html">https://docs.python.org/3/using/mac.html</a></li>
+<li>Linux: <a href="https://docs.python.org/3/using/unix.html">https://docs.python.org/3/using/unix.html</a></li>
+</ul>
+<hr>
+<h2 id="4-your-first-hello-world-script">4. Your First &ldquo;Hello, World!&rdquo; Script</h2>
+<p>Time to write your first Python program:</p>
+<ol>
+<li>
+<p>In Command Prompt, navigate to a folder where you want to create your script:</p>
+<pre tabindex="0"><code>cd C:\Users\YourUsername\Documents
+</code></pre></li>
+<li>
+<p>Create a new file named <code>hello.py</code> using any text editor (Notepad, VS Code, etc.)</p>
+</li>
+<li>
+<p>Type this line in the file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Hello, World!&#34;</span>)
+</span></span></code></pre></div></li>
+<li>
+<p>Save the file, then run it by typing in Command Prompt:</p>
+<pre tabindex="0"><code>python hello.py
+</code></pre></li>
+<li>
+<p>You should see:</p>
+<pre tabindex="0"><code>Hello, World!
+</code></pre></li>
+</ol>
+<p>Congratulations—you&rsquo;ve written and executed your first Python program!</p>
+<hr>
+<h2 id="5-exploring-the-python-interactive-shell">5. Exploring the Python Interactive Shell</h2>
+<p>Python comes with an interactive shell (also called a REPL—Read-Evaluate-Print Loop) that lets you test code snippets immediately:</p>
+<ol>
+<li>
+<p>In Command Prompt, simply type:</p>
+<pre tabindex="0"><code>python
+</code></pre></li>
+<li>
+<p>You&rsquo;ll see the Python prompt (<code>&gt;&gt;&gt;</code>) where you can type code directly:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Python&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;I&#39;m learning </span><span style="color:#e6db74">{</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">!&#34;</span>)
+</span></span><span style="display:flex;"><span>I<span style="color:#e6db74">&#39;m learning Python!</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Try some basic math:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">7</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">35</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">5.0</span>
+</span></span></code></pre></div></li>
+<li>
+<p>To exit, type:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> exit()
+</span></span></code></pre></div><p>Or press Ctrl+Z followed by Enter on Windows.</p>
+</li>
+</ol>
+<p>The interactive shell is excellent for quick experiments and calculations without creating a file.</p>
+<hr>
+<h2 id="practice-exercise">Practice Exercise</h2>
+<p>Before moving on, try this quick exercise:</p>
+<ol>
+<li>Create a new Python file named <code>greeting.py</code></li>
+<li>Write code that:
+<ul>
+<li>Assigns your name to a variable</li>
+<li>Prints a greeting that includes your name</li>
+</ul>
+</li>
+<li>Run the script to see the output</li>
+</ol>
+<p><strong>Example solution</strong> (don&rsquo;t peek until you&rsquo;ve tried!):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Alex&#34;</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Nice to meet you, </span><span style="color:#e6db74">{</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">!&#34;</span>)
+</span></span></code></pre></div><hr>
+<h2 id="whats-next">What&rsquo;s Next?</h2>
+<p>Now that you have Python installed and have run your first code, you&rsquo;re ready to:</p>
+<ul>
+<li>Explore text editors and IDEs that will make coding more efficient (coming in Post 2)</li>
+<li>Learn Python syntax fundamentals to build more complex programs</li>
+<li>Begin solving real problems with your new skills</li>
+</ul>
+<p>Stay tuned for Post 2: Text Editors vs. IDEs for Python Development!</p>
+<hr>
+<p><em>This post is part of my journey learning Python. I&rsquo;m a chartered accountant exploring programming to enhance my analytical toolkit. If you have questions or spot any errors, please leave a comment below.</em></p>
 ]]></content:encoded>
     </item>
   </channel>

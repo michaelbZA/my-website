@@ -1,0 +1,63 @@
+---
+title: "Python Learning Journey: The Complete Series Roadmap"
+date: 2025-04-27
+draft: false
+tags: ["python", "python-series", "beginners"]
+categories: ["Python"]
+description: "A complete guide to my 17-part Python learning series, covering everything from installation to advanced topics."
+showToc: false
+weight: 1  # Make it appear first in the series
+---
+
+## My Python Learning Journey
+
+Welcome to my Python learning series! As a finance professional exploring programming, I'm documenting my entire journey through 17 posts that take you from absolute beginner to building practical applications.
+
+## What to Expect from This Series
+
+This series is designed for fellow finance professionals and beginners who want to learn Python in a practical, step-by-step manner. Each post builds on previous concepts while introducing new skills.
+
+## Series Overview
+
+Here's what we'll cover throughout the 17 posts:
+
+### Getting Started (Posts 1-3)
+1. **Setting Up Your Python Environment** - Installation, IDEs, and virtual environments
+2. **Python Basics: Variables, Data Types, and Operations** - Understanding the fundamental building blocks
+3. **Control Flow: Conditions and Loops** - Making decisions in your code
+
+### Core Concepts (Posts 4-8)
+4. **Functions and Modules** - Writing reusable code
+5. **Data Structures: Lists, Dictionaries, and More** - Organizing and manipulating data
+6. **File Operations** - Reading and writing files
+7. **Error Handling** - Dealing with exceptions
+8. **Working with External Libraries** - Expanding Python's capabilities
+
+### Finance Applications (Posts 9-13)
+9. **Python for Financial Calculations** - Interest rates, present value, future value
+10. **Data Analysis with Pandas** - Working with financial datasets
+11. **Data Visualization** - Creating charts and graphs
+12. **Financial Reporting Automation** - Generating reports programmatically
+13. **Excel Integration** - Combining Python with Excel workflows
+
+### Advanced Topics (Posts 14-17)
+14. **Web Scraping Financial Data** - Collecting data from websites
+15. **API Integration** - Connecting to financial services
+16. **Building a Simple Financial Dashboard** - Putting it all together
+17. **Next Steps in Your Python Journey** - Resources for continued learning
+
+## How to Follow Along
+
+Each post will be published weekly. Subscribe to updates to be notified when new posts are available.
+
+[Subscribe to updates] (if you have a newsletter)
+
+## Who This Series Is For
+
+This series is ideal for:
+- Finance professionals looking to automate tasks
+- Beginners with no prior programming experience
+- Anyone interested in practical Python applications
+- Those who prefer learning step-by-step with real examples
+
+I hope you'll join me on this learning journey!

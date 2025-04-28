@@ -1,4 +1,4 @@
-baseURL = "https://michaelbrunger.com/"         # Your site's URL (with trailing slash)
+baseURL = "https://michaelbrunger.com/"   # Your site's URL (with trailing slash)
 languageCode = "en-GB"
 title = "Michael Brunger"                 # Site title
 theme = ["github.com/adityatelange/hugo-PaperMod"]
@@ -108,8 +108,8 @@ relativeURLs = false                      # Use relative URLs
     
   # Home page settings
   [params.homeInfoParams]
-    Title = ""
-    Content = ""
+    Title = "Welcome to my digital garden"
+    Content = "I'm a chartered accountant and finance manager documenting my learning journey. This site covers my explorations in Python programming, finance insights, parenting experiences, and philosophical musings."
     
   # Cover image for posts
   [params.cover]

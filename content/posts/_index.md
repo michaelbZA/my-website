@@ -1,7 +1,8 @@
 ---
 title: "Posts"
 draft: false
+description: "Browse all my posts"
 ---
-Welcome to my little corner of finance musings and Hugo experiments!  
+Here's where I document my ongoing journey of learning in public. Expect a mix of Python experiments, professional insights, and explorations into various topics that have captured my interest. 
 
-Here’s where I share tutorials, case studies, and demos—feel free to browse by date or category.
+Posts are chronological, with the most recent appearing first.
