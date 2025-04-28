@@ -1,1 +1,0 @@
-function toggleMobileMenu(){const e=document.getElementById("mobile-menu");e.classList.contains("open")?e.classList.remove("open"):e.classList.add("open")}

@@ -1,0 +1,11 @@
+{{- /* Google Analytics with CookieYes Consent */ -}}
+{{- with .Site.Params.googleAnalyticsID -}}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}" data-cookieyes="cookieyes-analytics"></script>
+<script data-cookieyes="cookieyes-analytics">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '{{ . }}');
+</script>
+{{- end -}}

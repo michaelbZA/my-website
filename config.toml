@@ -85,6 +85,7 @@ relativeURLs = false                      # Use relative URLs
   showCodeCopyButtons  = true
   showFullTextInRSS    = true
   showToc              = true
+  googleAnalyticsID = "G-XJJLP6S9JL"
 
 # Fonts (Google Fonts will be auto‐injected)
 [params.fonts]
@@ -98,12 +99,12 @@ relativeURLs = false                      # Use relative URLs
     linkedin = "https://linkedin.com/in/michael-brunger"
     
 # Analytics
-[params.analytics.google]
-  SiteVerificationTag = "G-XXXXXXXX"
-[params.analytics.bing]
-  SiteVerificationTag = "B-XXXXXXXX"
-[params.analytics.yandex]
-  SiteVerificationTag = "Y-XXXXXXXX"
+#[params.analytics.google]
+#  SiteVerificationTag = "G-XXXXXXXX"
+#[params.analytics.bing]
+#  SiteVerificationTag = "B-XXXXXXXX"
+#[params.analytics.yandex]
+#  SiteVerificationTag = "Y-XXXXXXXX"
 
     
   # Home page settings
