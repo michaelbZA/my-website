@@ -325,9 +325,9 @@ For example, create `layouts/shortcodes/notice.html`:
 Use it in your content:
 
 ```markdown
-{{< notice info >}}
+{< notice info >}
 This is an info notice.
-{{< /notice >}}
+{< /notice >}
 ```
 
 ## Deployment

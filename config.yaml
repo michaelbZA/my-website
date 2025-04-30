@@ -177,8 +177,7 @@ params:
     Title: Welcome to my blog
     Subtitle: A journey through finance, programming, and life
     # Use the '>-' YAML block scalar style for multi-line strings that preserve newlines.
-    Content: >-
-      I'm a chartered accountant and finance manager documenting my learning journey. This site covers my explorations in Python programming, finance insights, parenting experiences, and philosophical musings.
+    Content: I'm a chartered accountant and finance manager documenting my learning journey. This site covers my explorations in Python programming, finance insights, parenting experiences, and philosophical musings.
 
   # Settings for cover images.
   cover:

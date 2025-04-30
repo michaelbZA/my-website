@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on Michael Brunger</title><link>http://localhost:1313/posts/</link><description>Recent content in Posts on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Python Learning Journey: The Complete Series Roadmap</title><link>http://localhost:1313/posts/python0of17/</link><pubDate>Sun, 27 Apr 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/python0of17/</guid><description>A complete guide to my 17-part Python learning series, covering everything from installation to advanced topics.</description><content:encoded><![CDATA[<h2 id="my-python-learning-journey">My Python Learning Journey</h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on Michael Brunger</title><link>http://localhost:1313/posts/</link><description>Recent content in Posts on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Python Learning Journey: The Complete Series Roadmap</title><link>http://localhost:1313/posts/20250427-python0of17/</link><pubDate>Sun, 27 Apr 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/20250427-python0of17/</guid><description>A complete guide to my 17-part Python learning series, covering everything from installation to advanced topics.</description><content:encoded><![CDATA[<h2 id="my-python-learning-journey">My Python Learning Journey</h2>
 <p>Welcome to my Python learning series! As a finance professional exploring programming, I&rsquo;m documenting my entire journey through 17 posts that take you from absolute beginner to building practical applications.</p>
 <h2 id="what-to-expect-from-this-series">What to Expect from This Series</h2>
 <p>This series is designed for fellow finance professionals and beginners who want to learn Python in a practical, step-by-step manner. Each post builds on previous concepts while introducing new skills.</p>
@@ -33,9 +33,6 @@
 <li><strong>Building a Simple Financial Dashboard</strong> - Putting it all together</li>
 <li><strong>Next Steps in Your Python Journey</strong> - Resources for continued learning</li>
 </ol>
-<h2 id="how-to-follow-along">How to Follow Along</h2>
-<p>Each post will be published weekly. Subscribe to updates to be notified when new posts are available.</p>
-<p>[Subscribe to updates] (if you have a newsletter)</p>
 <h2 id="who-this-series-is-for">Who This Series Is For</h2>
 <p>This series is ideal for:</p>
 <ul>
@@ -45,7 +42,7 @@
 <li>Those who prefer learning step-by-step with real examples</li>
 </ul>
 <p>I hope you&rsquo;ll join me on this learning journey!</p>
-]]></content:encoded></item><item><title>Getting Started with Python</title><link>http://localhost:1313/posts/python1of17/</link><pubDate>Sun, 27 Apr 2025 10:00:00 -0700</pubDate><guid>http://localhost:1313/posts/python1of17/</guid><description>&lt;h1 id="post-1-getting-started-with-python-on-windows">Post 1: Getting Started with Python on Windows&lt;/h1>
+]]></content:encoded></item><item><title>Getting Started with Python</title><link>http://localhost:1313/posts/20250428-python1of17/</link><pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/20250428-python1of17/</guid><description>&lt;h1 id="post-1-getting-started-with-python-on-windows">Post 1: Getting Started with Python on Windows&lt;/h1>
 &lt;p>Welcome to the first post in my Python learning series. As I learn Python myself, I&amp;rsquo;ll be documenting my journey here. This first post covers the essentials to get you up and running with Python on Windows:&lt;/p>
 &lt;ol>
 &lt;li>What Python is and why it&amp;rsquo;s worth learning&lt;/li>
@@ -214,4 +211,195 @@ sudo apt install python3 python3-pip
 <p>Stay tuned for Post 2: Text Editors vs. IDEs for Python Development!</p>
 <hr>
 <p><em>This post is part of my journey learning Python. I&rsquo;m a chartered accountant exploring programming to enhance my analytical toolkit. If you have questions or spot any errors, please leave a comment below.</em></p>
+]]></content:encoded></item><item><title>Introduction to Git</title><link>http://localhost:1313/posts/20250430-git/</link><pubDate>Wed, 30 Apr 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/20250430-git/</guid><description>&lt;h1 id="git-crash-course-for-beginners-commands-workflow--terminology">Git Crash Course for Beginners: Commands, Workflow &amp;amp; Terminology&lt;/h1>
+&lt;p>If you&amp;rsquo;re new to Git, you&amp;rsquo;re about to discover one of the most powerful tools in a developer&amp;rsquo;s toolkit. Git allows you to track changes, collaborate with others, and maintain different versions of your project. This comprehensive guide will take you through everything you need to know to get started with Git on Windows.&lt;/p>
+&lt;h2 id="setting-up-git">Setting Up Git&lt;/h2>
+&lt;p>If you&amp;rsquo;ve already downloaded Git (which you mentioned you have), you&amp;rsquo;re one step ahead! Now let&amp;rsquo;s configure your identity:&lt;/p></description><content:encoded><![CDATA[<h1 id="git-crash-course-for-beginners-commands-workflow--terminology">Git Crash Course for Beginners: Commands, Workflow &amp; Terminology</h1>
+<p>If you&rsquo;re new to Git, you&rsquo;re about to discover one of the most powerful tools in a developer&rsquo;s toolkit. Git allows you to track changes, collaborate with others, and maintain different versions of your project. This comprehensive guide will take you through everything you need to know to get started with Git on Windows.</p>
+<h2 id="setting-up-git">Setting Up Git</h2>
+<p>If you&rsquo;ve already downloaded Git (which you mentioned you have), you&rsquo;re one step ahead! Now let&rsquo;s configure your identity:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git config --global user.name <span style="color:#e6db74">&#34;Your Name&#34;</span>
+</span></span><span style="display:flex;"><span>git config --global user.email <span style="color:#e6db74">&#34;your.email@example.com&#34;</span>
+</span></span></code></pre></div><p>Run these commands once when you first install Git. They&rsquo;ll associate your name and email with every commit you make.</p>
+<h2 id="starting-a-project">Starting a Project</h2>
+<p>You have two options when starting with Git:</p>
+<h3 id="create-a-new-repository">Create a New Repository</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>mkdir my-project
+</span></span><span style="display:flex;"><span>cd my-project
+</span></span><span style="display:flex;"><span>git init
+</span></span></code></pre></div><p>This creates a new folder and initializes it as a Git repository.</p>
+<h3 id="clone-an-existing-repository">Clone an Existing Repository</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git clone https<span style="color:#960050;background-color:#1e0010">:</span>//github.com/username/repository-name.git
+</span></span><span style="display:flex;"><span>cd repository-name
+</span></span></code></pre></div><p>This downloads an existing project and its entire version history.</p>
+<h2 id="the-daily-git-workflow">The Daily Git Workflow</h2>
+<p>Here&rsquo;s what a typical Git workflow looks like:</p>
+<h3 id="1-check-status-run-this-frequently">1. Check Status (Run This Frequently)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git status
+</span></span></code></pre></div><p>This shows what files have changed, what&rsquo;s staged, and what&rsquo;s not. Consider this your dashboard—check it often to understand what&rsquo;s happening in your repository.</p>
+<h3 id="2-working-with-changes">2. Working with Changes</h3>
+<p><strong>Adding Files to the Staging Area</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git add filename.txt       <span style="color:#75715e"># Add a specific file</span>
+</span></span><span style="display:flex;"><span>git add folder/            <span style="color:#75715e"># Add an entire folder</span>
+</span></span><span style="display:flex;"><span>git add .                  <span style="color:#75715e"># Add all changes</span>
+</span></span></code></pre></div><p><strong>Committing Your Changes</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Clear description of your changes&#34;</span>
+</span></span></code></pre></div><p><strong>Quick Commit for Already Tracked Files</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git commit -am <span style="color:#e6db74">&#34;Description of changes&#34;</span>
+</span></span></code></pre></div><h3 id="3-working-with-remote-repositories">3. Working with Remote Repositories</h3>
+<p><strong>Push Your Changes to GitHub/GitLab/etc.</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git push origin main
+</span></span></code></pre></div><p><strong>Get the Latest Changes</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git pull origin main
+</span></span></code></pre></div><p><strong>See Remote Repository Information</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git remote -v
+</span></span></code></pre></div><p><strong>Add a Remote Repository</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git remote add origin https<span style="color:#960050;background-color:#1e0010">:</span>//github.com/username/repository-name.git
+</span></span></code></pre></div><h2 id="branch-management">Branch Management</h2>
+<p>Branches let you work on different features or fixes simultaneously.</p>
+<p><strong>Create and Switch to a New Branch</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git checkout -b feature-name
+</span></span></code></pre></div><p><strong>List All Branches</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git branch            <span style="color:#75715e"># Local branches</span>
+</span></span><span style="display:flex;"><span>git branch -a         <span style="color:#75715e"># All branches including remote</span>
+</span></span></code></pre></div><p><strong>Merge a Branch</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git checkout main     <span style="color:#75715e"># Switch to the target branch</span>
+</span></span><span style="display:flex;"><span>git merge feature-name
+</span></span></code></pre></div><p><strong>Delete a Branch</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git branch -d feature-name    <span style="color:#75715e"># Safe delete</span>
+</span></span><span style="display:flex;"><span>git branch -D feature-name    <span style="color:#75715e"># Force delete</span>
+</span></span></code></pre></div><h2 id="file-operations">File Operations</h2>
+<p><strong>Discard Changes to a File</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git checkout -- filename.txt
+</span></span></code></pre></div><p><strong>Unstage a File</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git restore --staged filename.txt
+</span></span></code></pre></div><p><strong>Delete a File and Stage the Removal</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git rm filename.txt
+</span></span></code></pre></div><p><strong>Rename a File</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git mv oldname.txt newname.txt
+</span></span></code></pre></div><h2 id="viewing-history">Viewing History</h2>
+<p><strong>View Commit History</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git log                       <span style="color:#75715e"># Full history</span>
+</span></span><span style="display:flex;"><span>git log --oneline             <span style="color:#75715e"># Compact history</span>
+</span></span><span style="display:flex;"><span>git log --graph --oneline     <span style="color:#75715e"># Visual history</span>
+</span></span></code></pre></div><p><strong>View Changes in a Specific Commit</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git show commit-hash
+</span></span></code></pre></div><p><strong>See Changes Between Working Directory and Staging</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git diff
+</span></span></code></pre></div><p><strong>See Staged Changes</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git diff --staged
+</span></span></code></pre></div><h2 id="fixing-mistakes">Fixing Mistakes</h2>
+<p><strong>Amend the Last Commit</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git commit --amend -m <span style="color:#e6db74">&#34;New commit message&#34;</span>
+</span></span></code></pre></div><p><strong>Undo the Last Commit but Keep Changes</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git reset HEAD~<span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p><strong>Completely Undo Last Commit and Changes</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git reset --hard HEAD~<span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p><strong>Stash Changes Temporarily</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git stash                     <span style="color:#75715e"># Stash changes</span>
+</span></span><span style="display:flex;"><span>git stash pop                 <span style="color:#75715e"># Retrieve stashed changes</span>
+</span></span><span style="display:flex;"><span>git stash list                <span style="color:#75715e"># List stashes</span>
+</span></span></code></pre></div><h2 id="working-with-vs-code">Working with VS Code</h2>
+<p>VS Code has excellent Git integration through its Source Control panel (Ctrl+Shift+G). You can:</p>
+<ul>
+<li>See modified files</li>
+<li>Stage changes with a click</li>
+<li>Commit with a message</li>
+<li>Push/pull with buttons</li>
+<li>View diffs visually</li>
+<li>Resolve merge conflicts</li>
+</ul>
+<h2 id="real-world-workflows">Real-World Workflows</h2>
+<h3 id="adding-new-code">Adding New Code</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git status                    <span style="color:#75715e"># See what&#39;s changed</span>
+</span></span><span style="display:flex;"><span>git add .                     <span style="color:#75715e"># Stage all changes</span>
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Add login feature&#34;</span>  <span style="color:#75715e"># Commit changes</span>
+</span></span><span style="display:flex;"><span>git push origin main          <span style="color:#75715e"># Push to remote</span>
+</span></span></code></pre></div><h3 id="fixing-a-bug">Fixing a Bug</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git checkout -b bugfix        <span style="color:#75715e"># Create a branch for your bugfix</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Make your changes</span>
+</span></span><span style="display:flex;"><span>git add .                     <span style="color:#75715e"># Stage changes</span>
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Fix login validation bug&#34;</span>  <span style="color:#75715e"># Commit</span>
+</span></span><span style="display:flex;"><span>git checkout main             <span style="color:#75715e"># Switch back to main</span>
+</span></span><span style="display:flex;"><span>git pull origin main          <span style="color:#75715e"># Get latest changes</span>
+</span></span><span style="display:flex;"><span>git merge bugfix              <span style="color:#75715e"># Merge your bugfix</span>
+</span></span><span style="display:flex;"><span>git push origin main          <span style="color:#75715e"># Push to remote</span>
+</span></span><span style="display:flex;"><span>git branch -d bugfix          <span style="color:#75715e"># Delete the branch</span>
+</span></span></code></pre></div><h3 id="deleting-files">Deleting Files</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git rm obsolete-file.txt      <span style="color:#75715e"># Remove and stage deletion</span>
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Remove obsolete file&#34;</span>  <span style="color:#75715e"># Commit deletion</span>
+</span></span><span style="display:flex;"><span>git push origin main          <span style="color:#75715e"># Push to remote</span>
+</span></span></code></pre></div><h3 id="handling-merge-conflicts">Handling Merge Conflicts</h3>
+<p>If a merge creates conflicts:</p>
+<ol>
+<li>Open conflicted files in VS Code</li>
+<li>Look for conflict markers (<code>&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>)</li>
+<li>Edit to resolve conflicts</li>
+<li>Save files</li>
+<li>Run:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git add .                     <span style="color:#75715e"># Stage resolved files</span>
+</span></span><span style="display:flex;"><span>git commit                    <span style="color:#75715e"># Commit the merge</span>
+</span></span></code></pre></div><h2 id="git-terminology-glossary">Git Terminology Glossary</h2>
+<p>Understanding Git&rsquo;s terminology is crucial for mastering the tool. Here&rsquo;s a comprehensive glossary:</p>
+<h3 id="core-concepts">Core Concepts</h3>
+<p><strong>Repository (Repo)</strong> - A storage location for your project that contains all files, folders, and the complete history of changes.</p>
+<p><strong>Working Directory</strong> - The files that you&rsquo;re currently working with on your local machine.</p>
+<p><strong>Staging Area (Index)</strong> - A middle ground between your working directory and repository where changes are prepared before committing.</p>
+<p><strong>Commit</strong> - A snapshot of your repository at a specific point in time, including all tracked changes since the last commit.</p>
+<p><strong>Branch</strong> - An independent line of development that allows you to work on features or fixes without affecting the main codebase.</p>
+<p><strong>Main/Master</strong> - The default primary branch in your repository (traditionally called &ldquo;master&rdquo;, but &ldquo;main&rdquo; is now more common).</p>
+<p><strong>HEAD</strong> - A pointer to the latest commit in your current branch; essentially &ldquo;where you are now&rdquo; in the repository&rsquo;s history.</p>
+<p><strong>Clone</strong> - A complete copy of a repository, including all files and history.</p>
+<p><strong>Fork</strong> - A personal copy of someone else&rsquo;s repository stored on your GitHub account.</p>
+<h3 id="actions--operations">Actions &amp; Operations</h3>
+<p><strong>Stage</strong> - The act of preparing files for a commit by adding them to the staging area.</p>
+<p><strong>Commit</strong> - The action of saving staged changes to the repository history.</p>
+<p><strong>Push</strong> - Uploading commits from your local repository to a remote repository.</p>
+<p><strong>Pull</strong> - Downloading commits from a remote repository to your local repository and merging them.</p>
+<p><strong>Fetch</strong> - Downloading commits from a remote repository without automatically merging them.</p>
+<p><strong>Merge</strong> - Combining changes from one branch into another.</p>
+<p><strong>Rebase</strong> - An alternative to merging that rewrites commit history by moving a branch to a new base commit.</p>
+<p><strong>Checkout</strong> - Switching between branches or versions of files.</p>
+<p><strong>Stash</strong> - Temporarily storing uncommitted changes so you can work on something else.</p>
+<h3 id="storage-locations">Storage Locations</h3>
+<p><strong>Local Repository</strong> - The Git repository stored on your computer.</p>
+<p><strong>Remote Repository</strong> - A Git repository stored on a server or service (like GitHub, GitLab, Bitbucket).</p>
+<p><strong>Origin</strong> - The default name Git gives to the remote repository from which you cloned.</p>
+<p><strong>Upstream</strong> - The original repository that you forked from (commonly used in open-source projects).</p>
+<h3 id="connection--synchronization">Connection &amp; Synchronization</h3>
+<p><strong>Remote</strong> - A connection to another repository, usually on a server.</p>
+<p><strong>Tracking Branch</strong> - A local branch that has a direct relationship to a remote branch.</p>
+<p><strong>Upstream Branch</strong> - The remote branch that your local branch is tracking.</p>
+<h3 id="changes--differences">Changes &amp; Differences</h3>
+<p><strong>Modified</strong> - Files that have been changed but not yet staged.</p>
+<p><strong>Staged</strong> - Files that have been added to the staging area and are ready to be committed.</p>
+<p><strong>Untracked</strong> - Files in your working directory that Git isn&rsquo;t monitoring.</p>
+<p><strong>Diff</strong> - The difference between two versions of a file or sets of files.</p>
+<p><strong>Patch</strong> - A file containing changes between versions that can be applied to another codebase.</p>
+<h3 id="conflict-resolution">Conflict Resolution</h3>
+<p><strong>Merge Conflict</strong> - Occurs when Git cannot automatically resolve differences between two sets of changes.</p>
+<p><strong>Conflict Markers</strong> - Special notation (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>) inserted by Git to show conflicting sections in files.</p>
+<p><strong>Resolution</strong> - The process of manually editing files to resolve conflicts between different versions.</p>
+<h3 id="version-references">Version References</h3>
+<p><strong>Hash/SHA</strong> - A unique identifier (e.g., <code>a1b2c3d4...</code>) for each commit in Git.</p>
+<p><strong>Tag</strong> - A named pointer to a specific commit, typically used for release versions.</p>
+<p><strong>HEAD~n</strong> - A relative reference to the nth commit before HEAD.</p>
+<h3 id="advanced-concepts">Advanced Concepts</h3>
+<p><strong>Detached HEAD</strong> - A state where you&rsquo;re viewing a specific commit rather than a branch.</p>
+<p><strong>Cherry-pick</strong> - Applying a specific commit from one branch to another.</p>
+<p><strong>Submodule</strong> - A repository embedded within another repository.</p>
+<p><strong>Gitignore</strong> - A file that tells Git which files or folders to ignore in a project.</p>
+<p><strong>Hook</strong> - Scripts that run automatically at certain points in Git&rsquo;s execution.</p>
+<p><strong>Reflog</strong> - A log of where your HEAD and branches have been.</p>
+<p><strong>Fast-forward</strong> - A simplified merge that occurs when the target branch hasn&rsquo;t changed since the feature branch was created.</p>
+<h3 id="practical-terminology">Practical Terminology</h3>
+<p><strong>Pull Request (PR)</strong> - On platforms like GitHub, a request to merge changes from one branch to another, usually with code review.</p>
+<p><strong>Code Review</strong> - The process of examining code changes before they&rsquo;re merged.</p>
+<p><strong>Branch Protection</strong> - Rules that prevent certain actions on important branches without proper authorization.</p>
+<p><strong>Continuous Integration (CI)</strong> - Automated testing that runs whenever code is pushed to a repository.</p>
+<p><strong>Continuous Deployment (CD)</strong> - Automated deployment of code that passes CI tests.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Git can seem intimidating at first, but with practice, these commands and concepts will become second nature. The key is to use Git regularly, starting with simple operations and gradually incorporating more advanced features into your workflow.</p>
+<p>Remember, Git is designed to be a safety net for your code. Don&rsquo;t be afraid to experiment—you can always recover your work if something goes wrong. Happy coding!</p>
 ]]></content:encoded></item></channel></rss>

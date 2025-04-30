@@ -177,6 +177,110 @@ a:hover {
   font-size: 0.85rem;
 }
 
+/* Custom Homepage */
+.entry-topics {
+  margin-top: 30px;
+}
+
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.topic-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 10px;
+  border-radius: 8px;
+  background-color: var(--entry);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  border: 1px solid var(--border);
+}
+
+.topic-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.topic-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.topic-name {
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.first-entry {
+  position: relative;
+  padding-bottom: 40px;
+}
+
+/* Make featured posts section stand out */
+.featured-posts {
+  padding: 20px;
+  border-radius: 8px;
+  margin: 30px 0;
+  background-color: var(--entry);
+  border: 1px solid var(--border);
+}
+
+.featured-posts h2 {
+  margin-top: 0;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.post-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.post-item {
+  padding: 15px;
+  border-radius: 8px;
+  background-color: var(--code-bg);
+  transition: transform 0.2s;
+}
+
+.post-item:hover {
+  transform: translateY(-3px);
+}
+
+.post-title {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+}
+
+.post-meta {
+  font-size: 0.85rem;
+  color: var(--secondary);
+  margin-bottom: 10px;
+}
+
+.python-series-tag {
+  background-color: #3776ab;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  margin-left: 5px;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
 /* Tags */
 .post-tags a {
   background: var(--accent-alpha);
