@@ -7,7 +7,7 @@ draft: false
 
 ## About This Collection
 
-This is a carefully curated list of links that I've found useful, thought-provoking, or simply fascinating. I update this collection regularly as I discover new resources. The links span across various topics including programming, technology, science, productivity, and more.
+This is a curated list of links that I've found useful or thought-provoking. I update this collection regularly as I discover new resources. The links span across various topics including programming, technology, science, productivity, and more.
 
 Feel free to explore based on your interests. If you have suggestions for resources that should be included here, please [contact me](/contact/).
 
@@ -156,16 +156,6 @@ Feel free to explore based on your interests. If you have suggestions for resour
 - [Short of the Week](https://www.shortoftheweek.com/) - Curated collection of short films.
 - [Puzzles by MIT](https://www.ocf.berkeley.edu/~wwu/riddles/intro.shtml) - Collection of logic puzzles.
 - [Randall Munroe's What If?](https://what-if.xkcd.com/) - Answering hypothetical questions with physics.
-
----
-
-## Recently Added
-
-*Last updated: April 25, 2025*
-
-- [Link Name](https://example.com) - Brief description of why this link was recently added and what makes it special.
-- [Another New Link](https://example.com) - Short explanation of this newly discovered resource.
-- [Latest Discovery](https://example.com) - What I found valuable about this recent addition.
 
 ---
 

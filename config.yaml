@@ -1,0 +1,342 @@
+########################################################################################################################
+# BASIC SITE CONFIGURATION
+########################################################################################################################
+
+# The base URL for your website. Crucial for sitemaps, RSS feeds, and absolute links.
+# Example: "https://myawesomesite.com/"
+baseURL: "https://michaelbrunger.com/"
+
+# The language code for your site. Used by browsers and screen readers.
+# Examples: en-US, en-GB, fr-FR, de-DE
+languageCode: en-GB
+
+# The main title of your website. Appears in browser tabs, search results, etc.
+title: Michael Brunger
+
+# Number of posts to show per page in list views (e.g., /posts/, taxonomy pages).
+# Adjust based on how many posts you want visible per page.
+pagerSize: 10
+
+# Global Hugo options that apply to the site build process.
+# Moved here from the module import for clarity and standard Hugo practice.
+enableRobotsTXT: true  # Generate a robots.txt file (good for SEO).
+buildDrafts: false     # Don't build posts marked as 'draft: true' in front matter.
+buildFuture: false     # Don't build posts with a date in the future.
+enableEmoji: true      # Enable emoji support (requires UTF-8).
+enableGitInfo: true    # Include Git commit info (date, hash) in build data if available.
+canonifyURLs: true     # Ensure URLs are absolute and structured consistently (e.g., trailing slash).
+relativeURLs: false    # Use absolute URLs instead of relative ones (recommended with baseURL).
+
+########################################################################################################################
+# MODULES (Theme & Dependencies)
+########################################################################################################################
+
+# Configures Go Modules for theme management. This is the modern way to add themes and modules.
+# Ensure you have Go installed and have initialized your site for Go Modules (hugo mod init).
+module:
+  imports:
+    # Specify the theme path. PaperMod is managed as a Go Module.
+    - path: github.com/adityatelange/hugo-PaperMod
+      # Configuration options specific to the *module import* itself can go here,
+      # but general site options like enableRobotsTXT belong at the top level.
+
+########################################################################################################################
+# TAXONOMIES (Content Classification)
+########################################################################################################################
+
+# Defines how you categorize your content.
+# 'plural_term': 'singular_term'
+taxonomies:
+  category: categories # e.g., /categories/programming/
+  tag: tags           # e.g., /tags/python/
+  series: series       # e.g., /series/web-development-basics/
+
+########################################################################################################################
+# AUTHOR INFORMATION
+########################################################################################################################
+
+# Site-wide author information. Can be overridden in individual post front matter.
+author:
+  name: Michael Brunger
+  email: michaelbrunger@gmail.com # Be aware this may be publicly visible (e.g., in RSS).
+  # You can add more fields like affiliation, website, etc., if your theme supports them.
+
+########################################################################################################################
+# MENUS (Site Navigation)
+########################################################################################################################
+
+# Defines the navigation menus for your site. 'main' is the primary menu in PaperMod.
+menu:
+  main:
+    # Each item in the menu list:
+    - identifier: home   # Unique internal identifier for the menu item.
+      name: Home         # Text displayed in the menu.
+      url: /             # The URL the menu item links to. Use "/" for the homepage.
+      weight: 10         # Controls the order (lower numbers appear first).
+    - identifier: posts
+      name: Posts
+      url: /posts/
+      weight: 20
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 30
+    - identifier: links
+      name: Links
+      url: /links/
+      weight: 40
+    - identifier: contact
+      name: Contact
+      url: /contact/
+      weight: 50
+    # You can add other menus if your theme has regions for them (e.g., 'footer').
+
+########################################################################################################################
+# PARAMS (Theme-Specific & Custom Site Parameters)
+########################################################################################################################
+
+# This section contains parameters specific to the PaperMod theme,
+# as well as custom parameters you define for your templates.
+params:
+  # Meta description for the site homepage (good for SEO).
+  description: Michael Brunger's website
+
+  # Meta keywords for the site homepage (less critical for SEO than description, but can be helpful).
+  keywords:
+    - Personal website
+    - Python
+    - Finance
+    - Learning
+
+  # Author name used by the theme (can be redundant with top-level author, but common).
+  author: Michael Brunger
+
+  # Default social preview images (Open Graph / Twitter Cards).
+  # Ensure these paths are correct relative to your site's root or static directory.
+  images:
+    - /site-feature-image.jpg # Use absolute path starting with /
+
+  # Date format used throughout the site. Uses Go's layout format.
+  # See https://gohugo.io/functions/format/#gos-layout-string for options.
+  DateFormat: "January 2, 2006"
+
+  # Default theme for the site ('light', 'dark').
+  defaultTheme: dark
+
+  # Disable the theme switcher button.
+  disableThemeToggle: true
+
+  # Explicitly set the build environment. Used for conditional logic in templates.
+  # 'production' applies settings like minifcation, 'development' is for 'hugo server'.
+  env: production
+
+  # Path(s) to custom CSS file(s) to override theme styles.
+  # Files should be in your site's static directory (e.g., static/css/custom.css).
+  customCSS:
+    - css/custom.css
+
+  # PaperMod homepage layout options.
+  # 'archive', 'profile', 'landing', 'cards'
+  homeLayout: cards
+  # Number of columns for the 'cards' layout.
+  cardsColumns: 3
+
+  # Display settings for blog posts.
+  showReadingTime: true     # Show estimated reading time.
+  showShareButtons: true    # Show social share buttons.
+  showPostNavLinks: true    # Show links to previous/next posts.
+  showBreadCrumbs: false    # Show breadcrumb navigation.
+  showCodeCopyButtons: true # Add copy button to code blocks.
+  showFullTextInRSS: true   # Include full post content in the RSS feed (instead of just summary).
+  showToc: true             # Show Table of Contents on posts (requires headings in markdown).
+  # showWordCount: true # Another common option
+
+  # Google Analytics ID (for GA4, starts with G-). Requires a Google Analytics partial or theme support.
+  googleAnalyticsID: G-XJJLP6S9JL
+
+  # Define custom fonts for different text elements.
+  fonts:
+    body:
+      - Inter
+      - sans-serif # Fallback font
+    heading:
+      - Merriweather
+      - serif # Fallback font
+    mono:
+      - Fira Code
+      - monospace # Fallback font
+
+  # Social links displayed in the theme (often in the footer or profile mode).
+  social:
+    github: "https://github.com/michaelbZA"
+    linkedin: "https://linkedin.com/in/michael-brunger"
+    # Add other platforms supported by PaperMod (e.g., twitter, instagram, mastodon, email, stackoverflow, etc.)
+
+  # Content for the homepage info section (used with layouts like 'profile' or 'landing').
+  homeInfoParams:
+    Title: Welcome to my blog
+    Subtitle: A journey through finance, programming, and life
+    # Use the '>-' YAML block scalar style for multi-line strings that preserve newlines.
+    Content: >-
+      I'm a chartered accountant and finance manager documenting my learning journey. This site covers my explorations in Python programming, finance insights, parenting experiences, and philosophical musings.
+
+  # Settings for cover images.
+  cover:
+    linkFullImages: true # Make the cover image link to the full image file.
+    # autoCover: true # Automatically use the first image in a post as cover (if no cover specified).
+    # hidden: false # Hide cover images.
+
+  # Configuration for the built-in search feature (uses Fuse.js).
+  fuseOpts:
+    isCaseSensitive: false # Case-insensitive search.
+    shouldSort: true       # Sort search results by relevance.
+    location: 0            # Approximate location in the text to search from (0 = beginning).
+    distance: 1000         # Max distance from the location for a match.
+    threshold: 0.4         # Score threshold for a match (lower is stricter).
+    minMatchCharLength: 0  # Minimum number of characters to match.
+    keys:                  # Content fields to search within.
+      - title
+      - permalink
+      - summary
+      - content
+
+  # Paths for favicons and touch icons. Should be absolute paths from the site root.
+  # Ensure these files exist in your static directory (e.g., static/assets/).
+  assets:
+    favicon: /assets/favicon.ico
+    favicon16x16: /assets/favicon-16x16.png
+    favicon32x32: /assets/favicon-32x32.png
+    apple_touch_icon: /assets/apple-touch-icon.png
+    safari_pinned_tab: /assets/safari-pinned-tab.svg
+    # Additional options like custom favicon sizes can sometimes be added here or handled by the theme/partials.
+
+########################################################################################################################
+# PRIVACY SETTINGS (GDPR, etc.)
+########################################################################################################################
+
+# Configuration for built-in privacy features, especially for third-party embeds and analytics.
+privacy:
+  googleAnalytics:
+    # disable: false # Set to true to disable GA tracking even if ID is provided.
+    anonymizeIP: true          # Anonymize the user's IP address (good for privacy/GDPR).
+    respectDoNotTrack: true    # Respect the user's browser Do Not Track setting.
+    useSessionStorage: false   # Whether to use session storage for GA (defaults to local storage).
+  instagram:
+    # disable: false
+    simple: true               # Use a simpler, more privacy-friendly embed (reduces JS).
+  x: # Configuration for X (formerly Twitter) embeds.
+    # disable: false
+    enableDNT: true            # Enable Do Not Track for Twitter embeds.
+    simple: false              # Keep the full embed functionality.
+  vimeo:
+    # disable: false
+    enableDNT: true            # Enable Do Not Track for Vimeo embeds.
+    simple: false
+  youtube:
+    # disable: false
+    privacyEnhanced: true      # Use youtube-nocookie.com domain (more privacy-friendly).
+
+########################################################################################################################
+# SECURITY POLICY (Advanced)
+########################################################################################################################
+
+# Restricts potentially dangerous functions in templates for increased security.
+# Only change these if you understand the implications and need to allow specific functionality.
+security:
+  enableInlineShortcodes: false # Set to true ONLY if you need inline HTML in shortcodes. Generally recommended false.
+  exec: # Controls allowed external executables used by Hugo.
+    allow: # List of regex patterns for allowed commands. Default safe list.
+      - ^dart-sass-embedded$
+      - ^go$
+      - ^npx$
+      - ^postcss$
+      - ^git$
+    osEnv: # List of regex patterns for allowed environment variables accessible to exec.
+      - (?i)^(NODE|HUGO|CI)
+      - ^PATH$
+      - ^SYSTEMROOT$
+      - ^TMP$
+      - ^TEMP$
+      - ^USERPROFILE$
+  funcs: # List of potentially "unsafe" template functions you explicitly allow.
+    # - getenv # Example: Uncomment to allow the getenv function.
+  http: # Allowed URL patterns for network requests made by Hugo functions (e.g., getRemote).
+    # - ^https?://api\.github\.com/ # Example: Uncomment to allow requests to GitHub API.
+    # - ^https?://.*\.google\.com/ # Example: Uncomment to allow requests to Google domains.
+
+########################################################################################################################
+# MARKUP (Markdown Rendering)
+########################################################################################################################
+
+# Configuration for the Markdown renderer (Goldmark is the default).
+markup:
+  goldmark:
+    renderer:
+      unsafe: false # IMPORTANT: Set to 'false' to prevent raw HTML from being rendered in markdown. Highly recommended for security (XSS prevention).
+
+########################################################################################################################
+# MINIFICATION SETTINGS (Production Builds)
+########################################################################################################################
+
+# Controls Hugo's built-in minification process, applied when 'minifyOutput: true'.
+minify:
+  # Set to 'false' to enable minification for the specified file type.
+  # Set to 'true' to DISABLE minification for the specified file type.
+  disableCSS: false  # Do NOT disable CSS minification = Enable CSS minification.
+  disableHTML: false # Do NOT disable HTML minification = Enable HTML minification.
+  disableJS: false   # Do NOT disable JS minification = Enable JS minification.
+  disableJSON: false # Do NOT disable JSON minification = Enable JSON minification.
+  disableSVG: false  # Do NOT disable SVG minification = Enable SVG minification.
+  disableXML: false  # Do NOT disable XML minification = Enable XML minification.
+
+  minifyOutput: true # Enable overall minification of the output files.
+
+  # Specific configuration for the tdewolff minifiers (used by Hugo).
+  tdewolff:
+    html: # Settings for HTML minification.
+      keepComments: false           # Remove HTML comments.
+      keepConditionalComments: true # Keep IE conditional comments (usually needed).
+      keepDefaultAttrVals: true     # Keep default attribute values (e.g., <input type="text">).
+      keepDocumentTags: true      # Keep <html>, <head>, <body> tags.
+      keepEndTags: true             # Keep closing tags (e.g., </p>). Recommended for robustness.
+      keepQuotes: false             # Remove optional quotes around attributes. Can sometimes cause issues, test thoroughly.
+      keepWhitespace: false         # Remove unnecessary whitespace.
+
+########################################################################################################################
+# RELATED CONTENT
+########################################################################################################################
+
+# Configuration for generating a list of related content.
+# Influences performance and the accuracy of related posts.
+related:
+  threshold: 80 # Minimum score (out of 100) for a piece of content to be considered related.
+  includeNewer: true # Include newer posts in the related list.
+  toLower: false # Don't lowercase text for matching (preserves case sensitivity if needed).
+  indices: # Defines the fields and their weight in determining relatedness.
+    - name: keywords # Use the 'keywords' from front matter.
+      weight: 100    # Give keywords a high weight.
+    - name: date     # Use the post date.
+      weight: 10     # Give date a lower weight (closer dates = slightly more related).
+    # Recommended additions for better relatedness based on content classification:
+    - name: tags     # Use the 'tags' taxonomy terms.
+      weight: 80     # Give tags a high weight (adjust as desired).
+    - name: categories # Use the 'categories' taxonomy terms.
+      weight: 70     # Give categories a high weight (adjust as desired).
+    # Other potential indices include 'title', 'summary', 'content'.
+
+########################################################################################################################
+# SITEMAP CONFIGURATION
+########################################################################################################################
+
+# Configuration for the sitemap.xml file. Good for SEO.
+sitemap:
+  changefreq: weekly # How frequently the content is likely to change (daily, weekly, monthly, etc.).
+  filename: sitemap.xml # The name of the sitemap file.
+  priority: 0.5 # Default priority for pages (0.0 to 1.0). Higher is more important.
+
+# You can add other sections here for specific needs, e.g.:
+# outputs: {} # Configure output formats (HTML, RSS, etc.)
+# mediaTypes: {} # Configure media types
+# outputFormats: {} # Configure specific output formats
+# imaging: {} # Configuration for image processing
+# services: {} # Configuration for services like Google Analytics, etc. (often handled in 'privacy' or 'params')
