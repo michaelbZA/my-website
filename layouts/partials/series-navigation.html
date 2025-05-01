@@ -1,0 +1,30 @@
+{{- if .Params.series }}
+  {{- $series := index .Params.series 0 }}
+  {{- $seriesURL := urlize $series }}
+  {{- $currentOrder := .Params.series_order }}
+  
+  <div class="series-nav">
+    <div class="series-nav-title">
+      <h3>Part {{ $currentOrder }} of <a href="/series/{{ $seriesURL }}/">{{ $series }}</a> series</h3>
+    </div>
+    
+    <div class="series-nav-buttons">
+      {{- $seriesPages := where site.RegularPages ".Params.series" "intersect" (slice $series) }}
+      {{- $sortedPages := sort $seriesPages ".Params.series_order" }}
+      
+      {{- range $index, $page := $sortedPages }}
+        {{- if eq $page.File.Path $.File.Path }}
+          {{- if gt $index 0 }}
+            {{- $prevPage := index $sortedPages (sub $index 1) }}
+            <a href="{{ $prevPage.Permalink }}" class="series-prev">« {{ $prevPage.Title }}</a>
+          {{- end }}
+          
+          {{- if lt $index (sub (len $sortedPages) 1) }}
+            {{- $nextPage := index $sortedPages (add $index 1) }}
+            <a href="{{ $nextPage.Permalink }}" class="series-next">{{ $nextPage.Title }} »</a>
+          {{- end }}
+        {{- end }}
+      {{- end }}
+    </div>
+  </div>
+{{- end }}

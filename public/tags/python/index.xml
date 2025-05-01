@@ -1,59 +1,241 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Python on Michael Brunger</title><link>http://localhost:1313/tags/python/</link><description>Recent content in Python on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Wed, 30 Apr 2025 13:28:43 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Python Learning Journey: The Complete Series Roadmap</title><link>http://localhost:1313/posts/20250427-python0of17/</link><pubDate>Sun, 27 Apr 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/20250427-python0of17/</guid><description>A complete guide to my 17-part Python learning series, covering everything from installation to advanced topics.</description><content:encoded><![CDATA[<h2 id="my-python-learning-journey">My Python Learning Journey</h2>
-<p>Welcome to my Python learning series! As a finance professional exploring programming, I&rsquo;m documenting my entire journey through 17 posts that take you from absolute beginner to building practical applications.</p>
-<h2 id="what-to-expect-from-this-series">What to Expect from This Series</h2>
-<p>This series is designed for fellow finance professionals and beginners who want to learn Python in a practical, step-by-step manner. Each post builds on previous concepts while introducing new skills.</p>
-<h2 id="series-overview">Series Overview</h2>
-<p>Here&rsquo;s what we&rsquo;ll cover throughout the 17 posts:</p>
-<h3 id="getting-started-posts-1-3">Getting Started (Posts 1-3)</h3>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Python on Michael Brunger</title><link>http://localhost:1313/tags/python/</link><description>Recent content in Python on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Thu, 01 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 2: Text Editors vs. IDEs for Python Development</title><link>http://localhost:1313/posts/20250501python2of17/</link><pubDate>Thu, 01 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/20250501python2of17/</guid><description>Compare lightweight text editors to full-featured IDEs for Python development. Learn how to set up VS Code with essential Python extensions and discover effective debugging techniques.</description><content:encoded><![CDATA[<h1 id="post-2-text-editors-vs-ides-for-python-development">Post 2: Text Editors vs. IDEs for Python Development</h1>
+<p>Welcome to the second post in my Python learning series. Last time, we got Python installed and ran our first code. Now it&rsquo;s time to set up a proper coding environment. Working directly with <code>.py</code> files in Notepad gets tedious quickly, so let&rsquo;s explore better options for writing Python code.</p>
+<p>In this post, we&rsquo;ll cover:</p>
 <ol>
-<li><strong>Setting Up Your Python Environment</strong> - Installation, IDEs, and virtual environments</li>
-<li><strong>Python Basics: Variables, Data Types, and Operations</strong> - Understanding the fundamental building blocks</li>
-<li><strong>Control Flow: Conditions and Loops</strong> - Making decisions in your code</li>
+<li>The difference between text editors and IDEs</li>
+<li>Popular options for Python development</li>
+<li>Setting up VS Code for Python (my personal choice)</li>
+<li>Key productivity features that will save you time</li>
+<li>Running and debugging Python code from your editor</li>
 </ol>
-<h3 id="core-concepts-posts-4-8">Core Concepts (Posts 4-8)</h3>
-<ol start="4">
-<li><strong>Functions and Modules</strong> - Writing reusable code</li>
-<li><strong>Data Structures: Lists, Dictionaries, and More</strong> - Organizing and manipulating data</li>
-<li><strong>File Operations</strong> - Reading and writing files</li>
-<li><strong>Error Handling</strong> - Dealing with exceptions</li>
-<li><strong>Working with External Libraries</strong> - Expanding Python&rsquo;s capabilities</li>
-</ol>
-<h3 id="finance-applications-posts-9-13">Finance Applications (Posts 9-13)</h3>
-<ol start="9">
-<li><strong>Python for Financial Calculations</strong> - Interest rates, present value, future value</li>
-<li><strong>Data Analysis with Pandas</strong> - Working with financial datasets</li>
-<li><strong>Data Visualization</strong> - Creating charts and graphs</li>
-<li><strong>Financial Reporting Automation</strong> - Generating reports programmatically</li>
-<li><strong>Excel Integration</strong> - Combining Python with Excel workflows</li>
-</ol>
-<h3 id="advanced-topics-posts-14-17">Advanced Topics (Posts 14-17)</h3>
-<ol start="14">
-<li><strong>Web Scraping Financial Data</strong> - Collecting data from websites</li>
-<li><strong>API Integration</strong> - Connecting to financial services</li>
-<li><strong>Building a Simple Financial Dashboard</strong> - Putting it all together</li>
-<li><strong>Next Steps in Your Python Journey</strong> - Resources for continued learning</li>
-</ol>
-<h2 id="who-this-series-is-for">Who This Series Is For</h2>
-<p>This series is ideal for:</p>
+<hr>
+<h2 id="1-text-editors-vs-ides-whats-the-difference">1. Text Editors vs. IDEs: What&rsquo;s the Difference?</h2>
+<p>When I started learning Python, I was confused about whether to use a &ldquo;text editor&rdquo; or an &ldquo;IDE&rdquo;. Here&rsquo;s the simple breakdown:</p>
+<p><strong>Text Editors</strong>:</p>
 <ul>
-<li>Finance professionals looking to automate tasks</li>
-<li>Beginners with no prior programming experience</li>
-<li>Anyone interested in practical Python applications</li>
-<li>Those who prefer learning step-by-step with real examples</li>
+<li>Lightweight applications primarily designed for editing text</li>
+<li>Minimal features out of the box, but often extensible with plugins</li>
+<li>Faster startup times and lower system resource usage</li>
+<li>Examples: Notepad++, Sublime Text, Atom</li>
 </ul>
-<p>I hope you&rsquo;ll join me on this learning journey!</p>
-]]></content:encoded></item><item><title>Getting Started with Python</title><link>http://localhost:1313/posts/20250428-python1of17/</link><pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/20250428-python1of17/</guid><description>&lt;h1 id="post-1-getting-started-with-python-on-windows">Post 1: Getting Started with Python on Windows&lt;/h1>
-&lt;p>Welcome to the first post in my Python learning series. As I learn Python myself, I&amp;rsquo;ll be documenting my journey here. This first post covers the essentials to get you up and running with Python on Windows:&lt;/p>
-&lt;ol>
-&lt;li>What Python is and why it&amp;rsquo;s worth learning&lt;/li>
-&lt;li>Installing Python on Windows (with step-by-step instructions)&lt;/li>
-&lt;li>Quick install notes for macOS &amp;amp; Linux users&lt;/li>
-&lt;li>Writing your first &amp;ldquo;Hello, World!&amp;rdquo; program&lt;/li>
-&lt;li>Using the Python interactive shell&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2 id="1-what-is-python-and-why-learn-it">1. What Is Python (and Why Learn It)?&lt;/h2>
-&lt;p>Python is a high-level, interpreted programming language that&amp;rsquo;s gained enormous popularity for good reason. After looking into various languages, I chose to learn Python because:&lt;/p></description><content:encoded><![CDATA[<h1 id="post-1-getting-started-with-python-on-windows">Post 1: Getting Started with Python on Windows</h1>
+<p><strong>Integrated Development Environments (IDEs)</strong>:</p>
+<ul>
+<li>Comprehensive software packages with built-in tools for development</li>
+<li>Include code completion, debugging, testing, and version control features</li>
+<li>More resource-intensive but offer productivity benefits</li>
+<li>Examples: PyCharm, Visual Studio, Eclipse</li>
+</ul>
+<p>Modern text editors with plugins can blur the line between these categories. For instance, VS Code is technically a text editor but can function like an IDE with the right extensions.</p>
+<hr>
+<h2 id="2-popular-options-for-python-development">2. Popular Options for Python Development</h2>
+<p>Here are some commonly used tools for Python programming:</p>
+<h3 id="text-editors">Text Editors</h3>
+<p><strong>Notepad++</strong> (Windows only)</p>
+<ul>
+<li>Free and lightweight</li>
+<li>Basic syntax highlighting for Python</li>
+<li>Minimal Python-specific features</li>
+<li>Good for quick edits but limited for larger projects</li>
+</ul>
+<p><strong>Sublime Text</strong></p>
+<ul>
+<li>Cross-platform (Windows, macOS, Linux)</li>
+<li>Fast and responsive with large files</li>
+<li>Package manager for extensions</li>
+<li>Free to evaluate, $99 license for continued use</li>
+</ul>
+<p><strong>Atom</strong></p>
+<ul>
+<li>Open-source and free</li>
+<li>Highly customizable</li>
+<li>Good Git integration</li>
+<li>Can be slower with large projects</li>
+</ul>
+<h3 id="ides">IDEs</h3>
+<p><strong>Visual Studio Code (VS Code)</strong></p>
+<ul>
+<li>Free, open-source, cross-platform</li>
+<li>Extensive extension library</li>
+<li>Lightweight but powerful</li>
+<li>Strong Python support through extensions</li>
+<li>My personal choice and what we&rsquo;ll focus on in this post</li>
+</ul>
+<p><strong>PyCharm</strong></p>
+<ul>
+<li>Python-specific IDE by JetBrains</li>
+<li>Community (free) and Professional (paid) editions</li>
+<li>Comprehensive tools designed specifically for Python</li>
+<li>Steeper learning curve but powerful features</li>
+</ul>
+<p><strong>Jupyter Notebooks</strong></p>
+<ul>
+<li>Interactive coding environment</li>
+<li>Great for data analysis and visualization</li>
+<li>Documents that combine code, output, and markdown text</li>
+<li>We&rsquo;ll cover this in detail in a later post</li>
+</ul>
+<p>After trying several options, I settled on VS Code for its balance of performance and features. It&rsquo;s lightweight enough to run smoothly on my machine but offers robust Python support.</p>
+<hr>
+<h2 id="3-setting-up-vs-code-for-python-development">3. Setting Up VS Code for Python Development</h2>
+<p>If you&rsquo;re following along with me, let&rsquo;s set up VS Code:</p>
+<h3 id="31-download-and-install-vs-code">3.1 Download and Install VS Code</h3>
+<ol>
+<li>Go to <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></li>
+<li>Download the installer for your operating system</li>
+<li>Run the installer with default options</li>
+</ol>
+<h3 id="32-install-essential-python-extensions">3.2 Install Essential Python Extensions</h3>
+<ol>
+<li>Launch VS Code</li>
+<li>Click the Extensions icon in the left sidebar (or press Ctrl+Shift+X)</li>
+<li>Search for and install these extensions:
+<ul>
+<li><strong>Python</strong> by Microsoft (essential)</li>
+<li><strong>Pylance</strong> for improved language support</li>
+<li><strong>Python Indent</strong> for automatic indentation</li>
+</ul>
+</li>
+</ol>
+<h3 id="33-configure-python-interpreter">3.3 Configure Python Interpreter</h3>
+<ol>
+<li>Open a Python file or create a new one (File &gt; New File, then save with <code>.py</code> extension)</li>
+<li>Click on &ldquo;Select Python Interpreter&rdquo; in the bottom status bar</li>
+<li>Choose the Python installation you installed in Post 1</li>
+</ol>
+<h3 id="34-set-up-code-formatting-and-linting">3.4 Set Up Code Formatting and Linting</h3>
+<p>These tools help maintain code quality and consistent style:</p>
+<ol>
+<li>
+<p>Install the <strong>autopep8</strong> formatter:</p>
+<ul>
+<li>Open a terminal in VS Code (Terminal &gt; New Terminal)</li>
+<li>Run: <code>pip install autopep8</code></li>
+</ul>
+</li>
+<li>
+<p>Configure formatter settings:</p>
+<ul>
+<li>Press Ctrl+Shift+P to open the command palette</li>
+<li>Type &ldquo;Preferences: Open Settings (JSON)&rdquo;</li>
+<li>Add these settings:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;python.formatting.provider&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;autopep8&#34;</span><span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;editor.formatOnSave&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#66d9ef">true</span><span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;python.linting.enabled&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#66d9ef">true</span><span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;python.linting.pylintEnabled&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Install Pylint for code quality checking:</p>
+<ul>
+<li>In the terminal, run: <code>pip install pylint</code></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="4-key-productivity-features">4. Key Productivity Features</h2>
+<p>Here are some features that have saved me hours of time while learning Python:</p>
+<h3 id="41-code-highlighting-and-intellisense">4.1 Code Highlighting and IntelliSense</h3>
+<p>VS Code automatically highlights Python syntax and provides IntelliSense (code completion):</p>
+<ul>
+<li>Start typing a Python keyword or function name</li>
+<li>VS Code shows suggestions as you type</li>
+<li>Press Tab to complete the suggestion</li>
+</ul>
+<p>Try it by typing <code>pri</code> and watching it suggest <code>print()</code>.</p>
+<h3 id="42-code-snippets">4.2 Code Snippets</h3>
+<p>Snippets let you insert commonly used code patterns quickly:</p>
+<ol>
+<li>Type <code>if</code> and press Tab</li>
+<li>VS Code inserts the <code>if</code> statement structure</li>
+<li>Fill in the condition and press Tab to move to the body</li>
+</ol>
+<p>Other useful snippets: <code>for</code>, <code>def</code>, <code>class</code>, <code>try</code></p>
+<h3 id="43-file-explorer-and-multiple-files">4.3 File Explorer and Multiple Files</h3>
+<p>Having a file explorer helps manage projects with multiple files:</p>
+<ol>
+<li>Use File &gt; Open Folder to open your project directory</li>
+<li>The left sidebar shows all files in that folder</li>
+<li>Create new files or folders directly in VS Code</li>
+</ol>
+<h3 id="44-integrated-terminal">4.4 Integrated Terminal</h3>
+<p>No need to switch between VS Code and Command Prompt:</p>
+<ol>
+<li>Press Ctrl+` (backtick) or use Terminal &gt; New Terminal</li>
+<li>Run Python code, install packages, or use Git commands</li>
+</ol>
+<hr>
+<h2 id="5-running-and-debugging-python-code">5. Running and Debugging Python Code</h2>
+<h3 id="51-running-python-files">5.1 Running Python Files</h3>
+<p>Method 1: Using the Play Button</p>
+<ol>
+<li>Open a Python file</li>
+<li>Click the Play icon in the top-right corner</li>
+</ol>
+<p>Method 2: Using the Terminal</p>
+<ol>
+<li>Open the integrated terminal (Ctrl+`)</li>
+<li>Run: <code>python your_file.py</code></li>
+</ol>
+<h3 id="52-introduction-to-debugging">5.2 Introduction to Debugging</h3>
+<p>Debugging helps you find and fix errors in your code:</p>
+<ol>
+<li>Set a breakpoint by clicking in the margin to the left of a line number (a red dot appears)</li>
+<li>Press F5 or click the Debug icon in the sidebar, then &ldquo;Start Debugging&rdquo;</li>
+<li>Your code runs until it hits the breakpoint, then pauses</li>
+<li>Examine variables in the &ldquo;Variables&rdquo; panel</li>
+<li>Use the debug toolbar to step through code line by line</li>
+</ol>
+<h3 id="53-print-driven-debugging-vs-using-a-debugger">5.3 Print-Driven Debugging vs. Using a Debugger</h3>
+<p>When I first started coding, I relied heavily on <code>print()</code> statements to understand what was happening in my code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_total</span>(items):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Items received: </span><span style="color:#e6db74">{</span>items<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)  <span style="color:#75715e"># Debug print</span>
+</span></span><span style="display:flex;"><span>    total <span style="color:#f92672">=</span> sum(items)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Calculated total: </span><span style="color:#e6db74">{</span>total<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)  <span style="color:#75715e"># Debug print</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> total
+</span></span></code></pre></div><p>While this works, using the debugger is more powerful:</p>
+<ul>
+<li>You can inspect all variables without modifying code</li>
+<li>You can pause execution and examine the program state</li>
+<li>You don&rsquo;t need to remove debug code when you&rsquo;re done</li>
+</ul>
+<hr>
+<h2 id="practice-exercise">Practice Exercise</h2>
+<p>Let&rsquo;s put your new environment to use:</p>
+<ol>
+<li>Create a new file called <code>calculator.py</code> in VS Code</li>
+<li>Write a simple function that takes two numbers and an operation (add, subtract, multiply, divide) and returns the result</li>
+<li>Add proper error handling (e.g., division by zero)</li>
+<li>Use print statements to test your function with various inputs</li>
+</ol>
+<p><strong>Example solution</strong> (try it yourself first!):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate</span>(a, b, operation):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> operation <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;add&#34;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> operation <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;subtract&#34;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> a <span style="color:#f92672">-</span> b
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> operation <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;multiply&#34;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> a <span style="color:#f92672">*</span> b
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> operation <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;divide&#34;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> b <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Error: Division by zero&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> a <span style="color:#f92672">/</span> b
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Error: Unknown operation&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Test the function</span>
+</span></span><span style="display:flex;"><span>print(calculate(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#34;add&#34;</span>))       <span style="color:#75715e"># Should print 15</span>
+</span></span><span style="display:flex;"><span>print(calculate(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#34;subtract&#34;</span>))  <span style="color:#75715e"># Should print 5</span>
+</span></span><span style="display:flex;"><span>print(calculate(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#34;multiply&#34;</span>))  <span style="color:#75715e"># Should print 50</span>
+</span></span><span style="display:flex;"><span>print(calculate(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#34;divide&#34;</span>))    <span style="color:#75715e"># Should print 2.0</span>
+</span></span><span style="display:flex;"><span>print(calculate(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;divide&#34;</span>))    <span style="color:#75715e"># Should print error message</span>
+</span></span></code></pre></div><p>Try using the debugger to step through this code and watch how the variables change.</p>
+<hr>
+<h2 id="whats-next">What&rsquo;s Next?</h2>
+<p>Now that we have our Python development environment set up, we&rsquo;re ready to dive deeper into Python syntax and language features. In the next post, we&rsquo;ll explore variables, data types, control flow, and more fundamental Python concepts.</p>
+<p>Stay tuned for Post 3: Python Syntax Fundamentals &amp; Language Features!</p>
+<hr>
+<p><em>This post is part of my journey learning Python. I&rsquo;m a chartered accountant exploring programming to enhance my analytical toolkit. If you have questions or spot any errors, please leave a comment below.</em></p>
+]]></content:encoded></item><item><title>Part 1: Getting Started with Python on Windows</title><link>http://localhost:1313/posts/20250428-python1of17/</link><pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/20250428-python1of17/</guid><description>Learn what Python is, install it on Windows, and write your first Python program in this introductory guide to the Python programming language.</description><content:encoded><![CDATA[<h1 id="post-1-getting-started-with-python-on-windows">Post 1: Getting Started with Python on Windows</h1>
 <p>Welcome to the first post in my Python learning series. As I learn Python myself, I&rsquo;ll be documenting my journey here. This first post covers the essentials to get you up and running with Python on Windows:</p>
 <ol>
 <li>What Python is and why it&rsquo;s worth learning</li>
@@ -211,4 +393,145 @@ sudo apt install python3 python3-pip
 <p>Stay tuned for Post 2: Text Editors vs. IDEs for Python Development!</p>
 <hr>
 <p><em>This post is part of my journey learning Python. I&rsquo;m a chartered accountant exploring programming to enhance my analytical toolkit. If you have questions or spot any errors, please leave a comment below.</em></p>
+]]></content:encoded></item><item><title>Python Learning Path: From Fundamentals to Intermediate Applications</title><link>http://localhost:1313/posts/20250427-python0of17/</link><pubDate>Sun, 27 Apr 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/20250427-python0of17/</guid><description>A comprehensive 17-post curriculum taking you from Python installation to building real-world applications. Covers core language features, professional practices, data analysis tools, and practical project development.</description><content:encoded><![CDATA[<h2 id="my-python-learning-journey">My Python Learning Journey</h2>
+<p>Welcome to my Python learning series! As a finance professional exploring programming, I&rsquo;m documenting my entire journey through 17 posts that take you from absolute beginner to building practical applications.</p>
+<h2 id="what-to-expect-from-this-series">What to Expect from This Series</h2>
+<p>This series is designed for fellow finance professionals and beginners who want to learn Python in a practical, step-by-step manner. Each post builds on previous concepts while introducing new skills.</p>
+<h2 id="series-overview">Series Overview</h2>
+<p>Here&rsquo;s what we&rsquo;ll cover throughout the 17 posts:</p>
+<h2 id="foundations-posts-16">Foundations (Posts 1–6)</h2>
+<h3 id="1-getting-started-with-python-on-windows">1. Getting Started with Python on Windows</h3>
+<ul>
+<li>What is Python, why learn it, and where it&rsquo;s used</li>
+<li>Installing Python (step‑by‑step Windows installer with screenshots)</li>
+<li>Quick pointers for macOS/Linux installs</li>
+<li>Your first &ldquo;Hello, World!&rdquo; script</li>
+<li>Exploring the interactive REPL (shell)</li>
+</ul>
+<h3 id="2-text-editors-vs-ides-for-python-development">2. Text Editors vs. IDEs for Python Development</h3>
+<ul>
+<li>Lightweight editors (Notepad++, Sublime) vs. full IDEs (VS Code, PyCharm)</li>
+<li>Setting up VS Code for Python (extensions, linting, auto‑format)</li>
+<li>Code highlighting, IntelliSense/autocomplete, and snippets</li>
+<li>Running and debugging code from your editor</li>
+<li>Quick intro to IDE‑based breakpoints vs. print‑driven debugging</li>
+</ul>
+<h3 id="3-python-syntax-fundamentals--language-features">3. Python Syntax Fundamentals &amp; Language Features</h3>
+<ul>
+<li>Variables, data types (numbers, strings, booleans) and operators</li>
+<li>Indentation and control flow (if/elif/else, loops)</li>
+<li>Comprehensions &amp; lambdas: list/dict/set comprehensions, map/filter, anonymous functions</li>
+<li>Iterators &amp; generators: the iterator protocol, writing your own with yield</li>
+<li>Basic error handling: try/except, else/finally</li>
+</ul>
+<h3 id="4-core-data-structures">4. Core Data Structures</h3>
+<ul>
+<li>Lists: creation, indexing, slicing, methods</li>
+<li>Tuples: immutability, packing/unpacking</li>
+<li>Dictionaries: key–value access, common methods</li>
+<li>Sets: uniqueness, union/intersection/difference</li>
+<li>Choosing the right structure for the task</li>
+</ul>
+<h3 id="5-functions-modules--file-io">5. Functions, Modules &amp; File I/O</h3>
+<ul>
+<li>Defining and calling functions (def, return, positional vs. keyword args)</li>
+<li>Variable scope and namespaces</li>
+<li>Organizing code into modules and packages</li>
+<li>Exploring the Standard Library (math, random, datetime, os, sys)</li>
+<li>Reading from/writing to text files with open() and the with statement</li>
+</ul>
+<h3 id="6-virtual-environments--packaging">6. Virtual Environments &amp; Packaging</h3>
+<ul>
+<li>Why virtual environments matter (avoiding dependency conflicts)</li>
+<li>Creating/activating/deactivating venv on Windows (and notes for macOS/Linux)</li>
+<li>Managing packages with pip: install, freeze, requirements.txt</li>
+<li>Basic packaging: project structure, setup.py/pyproject.toml essentials</li>
+<li>Publishing to PyPI with twine and versioning best practices</li>
+</ul>
+<hr>
+<h2 id="professional-best-practices-posts-79">Professional Best Practices (Posts 7–9)</h2>
+<h3 id="7-code-quality--collaboration">7. Code Quality &amp; Collaboration</h3>
+<ul>
+<li>Version control fundamentals with Git &amp; GitHub (clone, commit, push, pull requests)</li>
+<li>Writing clean, PEP 8‑compliant code; linting with flake8</li>
+<li>Auto‑formatting with black and organizing imports with isort</li>
+<li>Writing docstrings (Google vs. NumPy style) and auto‑generating docs (Sphinx overview)</li>
+</ul>
+<h3 id="8-testing--debugging">8. Testing &amp; Debugging</h3>
+<ul>
+<li>Unit testing basics with unittest and pytest (assertions, test discovery)</li>
+<li>Fixtures in pytest and intro to TDD workflows</li>
+<li>Raising and defining custom exceptions (raise, subclassing Exception)</li>
+<li>Using the debugger: pdb commands and IDE‑based breakpoints</li>
+<li>Structured logging with the logging module (levels, handlers, formatting)</li>
+</ul>
+<h3 id="9-commandline-tools--automation">9. Command‑Line Tools &amp; Automation</h3>
+<ul>
+<li>Building CLI scripts with argparse: positional args, flags, help text</li>
+<li>Packaging entry points (console_scripts) for installable commands</li>
+<li>Automating file/folder tasks (os, shutil): renaming, organizing, backups</li>
+<li>Automating GUI interactions with PyAutoGUI (keyboard/mouse control)</li>
+<li>Putting it all together in a sample automation project</li>
+</ul>
+<hr>
+<h2 id="core-tools--data-posts-1013">Core Tools &amp; Data (Posts 10–13)</h2>
+<h3 id="10-the-python-ecosystem--interactive-data-workflows">10. The Python Ecosystem &amp; Interactive Data Workflows</h3>
+<ul>
+<li>Clarify package vs. environment managers: pip vs. conda vs. Anaconda</li>
+<li>When and why to choose each (lightweight vs. data‑science bundles)</li>
+<li>Installing and exploring Anaconda Navigator</li>
+<li>Jupyter Notebooks: installing via pip/Anaconda, notebook anatomy (code vs. Markdown), basic plots inline</li>
+</ul>
+<h3 id="11-numpy-fundamentals-for-numerical-data">11. NumPy Fundamentals for Numerical Data</h3>
+<ul>
+<li>Installing NumPy</li>
+<li>The ndarray: creation, indexing, slicing</li>
+<li>Vectorized operations and broadcasting rules</li>
+<li>Performance comparison vs. pure Python lists</li>
+</ul>
+<h3 id="12-data-analysis-with-pandas">12. Data Analysis with pandas</h3>
+<ul>
+<li>Installing pandas</li>
+<li>Understanding Series and DataFrame objects</li>
+<li>Reading data (CSV, Excel), inspecting and summarising</li>
+<li>Selection, filtering, grouping, transformation</li>
+<li>Handling missing data</li>
+</ul>
+<h3 id="13-data-visualization-basics">13. Data Visualization Basics</h3>
+<ul>
+<li>Matplotlib core: line, scatter, bar, histogram plots</li>
+<li>Customizing labels, titles, legends</li>
+<li>Seaborn intro: statistical plot types (boxplot, heatmap)</li>
+<li>Saving figures to files for reports</li>
+</ul>
+<hr>
+<h2 id="intermediate-applications-posts-1417">Intermediate Applications (Posts 14–17)</h2>
+<h3 id="14-introduction-to-objectoriented-programming-oop">14. Introduction to Object‑Oriented Programming (OOP)</h3>
+<ul>
+<li>Classes vs. objects, attributes vs. methods</li>
+<li>The init constructor and self</li>
+<li>Encapsulation, inheritance and polymorphism (simple examples)</li>
+<li>Why OOP matters: organizing and reusing code</li>
+</ul>
+<h3 id="15-web-development-foundations">15. Web Development Foundations</h3>
+<ul>
+<li>Option A: Flask (lightweight): setting up, routes, templates, serving static files</li>
+<li>Option B: Django (full‑featured): project/app structure, admin interface, ORM intro</li>
+<li>Option C: Web Scraping: requests + BeautifulSoup for HTML parsing</li>
+<li>Deploying your first minimal web app on a free hosting platform (e.g., Heroku)</li>
+</ul>
+<h3 id="16-building-simple-gui-applications-with-tkinter">16. Building Simple GUI Applications with Tkinter</h3>
+<ul>
+<li>Installing/importing Tkinter (built‑in)</li>
+<li>Creating windows, labels, buttons, entry widgets</li>
+<li>Layout managers (pack, grid)</li>
+<li>A hands‑on mini‑project: e.g., basic calculator or temperature converter</li>
+</ul>
+<h3 id="17-next-steps--advanced-topics">17. Next Steps &amp; Advanced Topics</h3>
+<ul>
+<li>Concurrency &amp; async: when to use threads vs. processes (threading, multiprocessing), intro to asyncio</li>
+<li>End‑to‑end mini‑project ideas (combine web, data, GUI, testing)</li>
+<li>Recommended books, courses, blogs, and community resources</li>
+<li>Tips for staying sharp: code challenges, open‑source contribution, local meetups</li>
+</ul>
 ]]></content:encoded></item></channel></rss>

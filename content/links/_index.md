@@ -1,13 +1,13 @@
 ---
 title: "Links"
-description: "A curated collection of resources I've found helpful in my learning journey"
-date: 2025-04-24T10:00:00+01:00
+description: "A collection of resources I've found helpful in my learning journey"
+date: 2025-04-24
 draft: false
 ---
 
 ## About This Collection
 
-This is a curated list of links that I've found useful or thought-provoking. I update this collection regularly as I discover new resources. The links span across various topics including programming, technology, science, productivity, and more.
+This is a list of links that I've found useful or thought-provoking. I update this collection regularly as I discover new resources. The links span across various topics including programming, technology, science, productivity, and more.
 
 Feel free to explore based on your interests. If you have suggestions for resources that should be included here, please [contact me](/contact/).
 

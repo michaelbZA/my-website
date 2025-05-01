@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Windows on Michael Brunger</title><link>http://localhost:1313/tags/windows/</link><description>Recent content in Windows on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Wed, 30 Apr 2025 13:28:43 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/windows/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 1: Getting Started with Python on Windows</title><link>http://localhost:1313/posts/20250428-python1of17/</link><pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/20250428-python1of17/</guid><description>Learn what Python is, install it on Windows, and write your first Python program in this introductory guide to the Python programming language.</description><content:encoded><![CDATA[<h1 id="post-1-getting-started-with-python-on-windows">Post 1: Getting Started with Python on Windows</h1>
+<p>Welcome to the first post in my Python learning series. As I learn Python myself, I&rsquo;ll be documenting my journey here. This first post covers the essentials to get you up and running with Python on Windows:</p>
+<ol>
+<li>What Python is and why it&rsquo;s worth learning</li>
+<li>Installing Python on Windows (with step-by-step instructions)</li>
+<li>Quick install notes for macOS &amp; Linux users</li>
+<li>Writing your first &ldquo;Hello, World!&rdquo; program</li>
+<li>Using the Python interactive shell</li>
+</ol>
+<hr>
+<h2 id="1-what-is-python-and-why-learn-it">1. What Is Python (and Why Learn It)?</h2>
+<p>Python is a high-level, interpreted programming language that&rsquo;s gained enormous popularity for good reason. After looking into various languages, I chose to learn Python because:</p>
+<ul>
+<li><strong>Readability</strong>: Its clean syntax uses indentation and fewer symbols than languages like C++ or Java, making code easier to understand</li>
+<li><strong>Versatility</strong>: It&rsquo;s used across multiple domains from web development (Django, Flask) to data analysis (NumPy, pandas) and automation</li>
+<li><strong>Package ecosystem</strong>: PyPI (Python Package Index) hosts over 400,000 third-party packages that extend Python&rsquo;s capabilities</li>
+<li><strong>Community support</strong>: Extensive documentation, forums, and tutorials make finding help straightforward</li>
+</ul>
+<p>For me as a finance professional, Python&rsquo;s data analysis capabilities are particularly valuable, but its applications stretch across many fields.</p>
+<hr>
+<h2 id="2-installing-python-on-windows">2. Installing Python on Windows</h2>
+<p>Here&rsquo;s how to get Python installed on Windows 10/11:</p>
+<h3 id="21-download-the-installer">2.1 Download the Installer</h3>
+<ol>
+<li>Visit the official Python download page: <a href="https://www.python.org/downloads/windows">https://www.python.org/downloads/windows</a></li>
+<li>Click the button for the latest stable release (currently Python 3.11.x)</li>
+</ol>
+<h3 id="22-run-the-installer">2.2 Run the Installer</h3>
+<ol>
+<li>Locate and double-click the downloaded file (typically named python-3.x.x-amd64.exe)</li>
+<li><strong>IMPORTANT</strong>: Check the box that says &ldquo;Add Python 3.x to PATH&rdquo; at the bottom of the installer
+<ul>
+<li>This allows you to run Python from any directory in Command Prompt</li>
+</ul>
+</li>
+<li>Click &ldquo;Install Now&rdquo; for the standard installation, or &ldquo;Customize installation&rdquo; if you want to change specific options</li>
+</ol>
+<h3 id="23-verify-the-installation">2.3 Verify the Installation</h3>
+<ol>
+<li>Open Command Prompt (press Win + R, type <code>cmd</code>, and hit Enter)</li>
+<li>Type the following command and press Enter:
+<pre tabindex="0"><code>python --version
+</code></pre></li>
+<li>You should see output like:
+<pre tabindex="0"><code>Python 3.11.4
+</code></pre>(Your version number might differ)</li>
+</ol>
+<hr>
+<h2 id="3-quick-notes-for-macos--linux">3. Quick Notes for macOS &amp; Linux</h2>
+<ul>
+<li>
+<p><strong>macOS</strong>:</p>
+<ul>
+<li>Many Macs come with Python 2.7 preinstalled, but you&rsquo;ll want Python 3</li>
+<li>The simplest approach is using Homebrew:
+<pre tabindex="0"><code>brew install python
+</code></pre></li>
+<li>Alternatively, download the installer from python.org</li>
+</ul>
+</li>
+<li>
+<p><strong>Linux</strong>:</p>
+<ul>
+<li>Most Linux distributions include Python</li>
+<li>For Ubuntu/Debian:
+<pre tabindex="0"><code>sudo apt update
+sudo apt install python3 python3-pip
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>For complete instructions, see the official Python documentation:</p>
+<ul>
+<li>macOS: <a href="https://docs.python.org/3/using/mac.html">https://docs.python.org/3/using/mac.html</a></li>
+<li>Linux: <a href="https://docs.python.org/3/using/unix.html">https://docs.python.org/3/using/unix.html</a></li>
+</ul>
+<hr>
+<h2 id="4-your-first-hello-world-script">4. Your First &ldquo;Hello, World!&rdquo; Script</h2>
+<p>Time to write your first Python program:</p>
+<ol>
+<li>
+<p>In Command Prompt, navigate to a folder where you want to create your script:</p>
+<pre tabindex="0"><code>cd C:\Users\YourUsername\Documents
+</code></pre></li>
+<li>
+<p>Create a new file named <code>hello.py</code> using any text editor (Notepad, VS Code, etc.)</p>
+</li>
+<li>
+<p>Type this line in the file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Hello, World!&#34;</span>)
+</span></span></code></pre></div></li>
+<li>
+<p>Save the file, then run it by typing in Command Prompt:</p>
+<pre tabindex="0"><code>python hello.py
+</code></pre></li>
+<li>
+<p>You should see:</p>
+<pre tabindex="0"><code>Hello, World!
+</code></pre></li>
+</ol>
+<p>Congratulations—you&rsquo;ve written and executed your first Python program!</p>
+<hr>
+<h2 id="5-exploring-the-python-interactive-shell">5. Exploring the Python Interactive Shell</h2>
+<p>Python comes with an interactive shell (also called a REPL—Read-Evaluate-Print Loop) that lets you test code snippets immediately:</p>
+<ol>
+<li>
+<p>In Command Prompt, simply type:</p>
+<pre tabindex="0"><code>python
+</code></pre></li>
+<li>
+<p>You&rsquo;ll see the Python prompt (<code>&gt;&gt;&gt;</code>) where you can type code directly:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Python&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;I&#39;m learning </span><span style="color:#e6db74">{</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">!&#34;</span>)
+</span></span><span style="display:flex;"><span>I<span style="color:#e6db74">&#39;m learning Python!</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Try some basic math:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">7</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">35</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">5.0</span>
+</span></span></code></pre></div></li>
+<li>
+<p>To exit, type:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> exit()
+</span></span></code></pre></div><p>Or press Ctrl+Z followed by Enter on Windows.</p>
+</li>
+</ol>
+<p>The interactive shell is excellent for quick experiments and calculations without creating a file.</p>
+<hr>
+<h2 id="practice-exercise">Practice Exercise</h2>
+<p>Before moving on, try this quick exercise:</p>
+<ol>
+<li>Create a new Python file named <code>greeting.py</code></li>
+<li>Write code that:
+<ul>
+<li>Assigns your name to a variable</li>
+<li>Prints a greeting that includes your name</li>
+</ul>
+</li>
+<li>Run the script to see the output</li>
+</ol>
+<p><strong>Example solution</strong> (don&rsquo;t peek until you&rsquo;ve tried!):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Alex&#34;</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Nice to meet you, </span><span style="color:#e6db74">{</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">!&#34;</span>)
+</span></span></code></pre></div><hr>
+<h2 id="whats-next">What&rsquo;s Next?</h2>
+<p>Now that you have Python installed and have run your first code, you&rsquo;re ready to:</p>
+<ul>
+<li>Explore text editors and IDEs that will make coding more efficient (coming in Post 2)</li>
+<li>Learn Python syntax fundamentals to build more complex programs</li>
+<li>Begin solving real problems with your new skills</li>
+</ul>
+<p>Stay tuned for Post 2: Text Editors vs. IDEs for Python Development!</p>
+<hr>
+<p><em>This post is part of my journey learning Python. I&rsquo;m a chartered accountant exploring programming to enhance my analytical toolkit. If you have questions or spot any errors, please leave a comment below.</em></p>
+]]></content:encoded></item></channel></rss>

@@ -1,7 +1,7 @@
 ---
 title: 'Powershell Essentials'
 date: 2025-05-01
-draft: true
+draft: false
 tags: ["powershell"]
 categories: ["Powershell"]
 ---

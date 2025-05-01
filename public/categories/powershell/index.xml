@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Powershell on Michael Brunger</title><link>http://localhost:1313/categories/powershell/</link><description>Recent content in Powershell on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Wed, 30 Apr 2025 13:28:43 +0100</lastBuildDate><atom:link href="http://localhost:1313/categories/powershell/index.xml" rel="self" type="application/rss+xml"/><item><title>Powershell Essentials</title><link>http://localhost:1313/posts/20250501-powershell/</link><pubDate>Thu, 01 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/20250501-powershell/</guid><description>&lt;h1 id="powershell-essentials-a-comprehensive-guide">PowerShell Essentials: A Comprehensive Guide&lt;/h1>
+&lt;h2 id="introduction-to-command-line-interfaces">Introduction to Command Line Interfaces&lt;/h2>
+&lt;p>Before diving into PowerShell specifically, it&amp;rsquo;s important to understand what command-line interfaces are and why they remain essential tools for modern computing.&lt;/p>
+&lt;h3 id="what-is-command-prompt">What is Command Prompt?&lt;/h3>
+&lt;p>Command Prompt (cmd.exe) is the traditional command-line interpreter for Windows operating systems. Dating back to MS-DOS, it allows users to interact with their computer by typing text commands rather than using a graphical user interface (GUI). While functional, Command Prompt has significant limitations:&lt;/p></description><content:encoded><![CDATA[<h1 id="powershell-essentials-a-comprehensive-guide">PowerShell Essentials: A Comprehensive Guide</h1>
+<h2 id="introduction-to-command-line-interfaces">Introduction to Command Line Interfaces</h2>
+<p>Before diving into PowerShell specifically, it&rsquo;s important to understand what command-line interfaces are and why they remain essential tools for modern computing.</p>
+<h3 id="what-is-command-prompt">What is Command Prompt?</h3>
+<p>Command Prompt (cmd.exe) is the traditional command-line interpreter for Windows operating systems. Dating back to MS-DOS, it allows users to interact with their computer by typing text commands rather than using a graphical user interface (GUI). While functional, Command Prompt has significant limitations:</p>
+<ul>
+<li>Limited scripting capabilities</li>
+<li>Inconsistent command syntax</li>
+<li>Text-only output format</li>
+<li>Limited access to Windows system components</li>
+</ul>
+<h3 id="why-use-a-terminal">Why Use a Terminal?</h3>
+<p>You might wonder why, in an age of sophisticated graphical interfaces, command-line terminals remain relevant. Here&rsquo;s why terminals continue to be indispensable tools:</p>
+<ol>
+<li><strong>Efficiency</strong>: Experienced users can execute complex operations faster than using GUI equivalents</li>
+<li><strong>Automation</strong>: Commands can be scripted to automate repetitive tasks</li>
+<li><strong>Remote administration</strong>: Servers and remote systems are often managed via command line</li>
+<li><strong>Resource efficiency</strong>: Terminal operations typically use fewer system resources</li>
+<li><strong>Precision</strong>: Commands provide explicit control over system operations</li>
+<li><strong>Reproducibility</strong>: Command sequences can be saved, shared, and executed consistently</li>
+</ol>
+<h2 id="enter-powershell-the-modern-command-line">Enter PowerShell: The Modern Command Line</h2>
+<p>PowerShell represents Microsoft&rsquo;s evolution of the command-line interface, designed to address the limitations of Command Prompt while providing a powerful environment for both casual users and system administrators.</p>
+<h3 id="why-powershell-is-superior-to-command-prompt">Why PowerShell is Superior to Command Prompt</h3>
+<p>PowerShell offers numerous advantages over traditional Command Prompt:</p>
+<ul>
+<li><strong>Object-based pipeline</strong>: Commands pass entire objects rather than just text</li>
+<li><strong>Consistent syntax</strong>: Commands follow a Verb-Noun pattern for intuitive learning</li>
+<li><strong>Extensive .NET integration</strong>: Direct access to .NET framework capabilities</li>
+<li><strong>Rich scripting language</strong>: Includes variables, functions, loops, conditions, and error handling</li>
+<li><strong>Robust module system</strong>: Functionality can be extended through modules</li>
+<li><strong>Remote management</strong>: Built-in remoting capabilities for managing distant systems</li>
+<li><strong>Backward compatibility</strong>: Can still run most traditional cmd commands</li>
+</ul>
+<p>PowerShell has become Microsoft&rsquo;s preferred command-line shell and scripting language, making it an essential skill for Windows administration and automation.</p>
+<h2 id="getting-started-with-powershell">Getting Started with PowerShell</h2>
+<h3 id="opening-powershell">Opening PowerShell</h3>
+<p>You can access PowerShell in several ways:</p>
+<ul>
+<li>Search for &ldquo;PowerShell&rdquo; in the Windows start menu</li>
+<li>Right-click the Start button and select &ldquo;Windows PowerShell&rdquo;</li>
+<li>Press Win+X and select &ldquo;Windows PowerShell&rdquo;</li>
+<li>For the latest version, install &ldquo;PowerShell 7&rdquo; from the Microsoft Store or GitHub</li>
+</ul>
+<h3 id="understanding-the-powershell-interface">Understanding the PowerShell Interface</h3>
+<p>When you open PowerShell, you&rsquo;ll see a blue console window with a prompt that looks something like:</p>
+<pre tabindex="0"><code>PS C:\Users\YourUsername&gt;
+</code></pre><p>The &ldquo;PS&rdquo; prefix indicates you&rsquo;re in PowerShell, followed by your current directory location.</p>
+<h2 id="essential-powershell-concepts">Essential PowerShell Concepts</h2>
+<h3 id="cmdlets-powershell-commands">Cmdlets: PowerShell Commands</h3>
+<p>PowerShell commands are called &ldquo;cmdlets&rdquo; (pronounced &ldquo;command-lets&rdquo;) and follow a consistent Verb-Noun naming convention:</p>
+<ul>
+<li><code>Get-Process</code>: Lists running processes</li>
+<li><code>Stop-Service</code>: Stops a Windows service</li>
+<li><code>New-Item</code>: Creates a new file or directory</li>
+</ul>
+<p>This standardized naming makes discovering and learning commands more intuitive.</p>
+<h3 id="pipeline-chaining-commands">Pipeline: Chaining Commands</h3>
+<p>One of PowerShell&rsquo;s most powerful features is the pipeline operator <code>|</code>, which passes the output of one command as input to another:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Get-Process | Sort-Object -Property CPU -Descending | Select-Object -First <span style="color:#ae81ff">5</span>
+</span></span></code></pre></div><p>This command gets all processes, sorts them by CPU usage, and displays only the top 5.</p>
+<h3 id="variables">Variables</h3>
+<p>Variables in PowerShell start with <code>$</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>$name = <span style="color:#e6db74">&#34;John&#34;</span>
+</span></span><span style="display:flex;"><span>$age = <span style="color:#ae81ff">30</span>
+</span></span><span style="display:flex;"><span>Write-Output <span style="color:#e6db74">&#34;Hello, </span>$name<span style="color:#e6db74">! You are </span>$age<span style="color:#e6db74"> years old.&#34;</span>
+</span></span></code></pre></div><h2 id="essential-powershell-commands">Essential PowerShell Commands</h2>
+<h3 id="navigation-and-file-system">Navigation and File System</h3>
+<h4 id="getting-and-changing-location">Getting and Changing Location</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># Display current directory</span>
+</span></span><span style="display:flex;"><span>Get-Location
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Alias: pwd</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Change directory</span>
+</span></span><span style="display:flex;"><span>Set-Location C:\Windows
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Aliases: cd, chdir</span>
+</span></span></code></pre></div><h4 id="listing-directory-contents">Listing Directory Contents</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># List items in current directory</span>
+</span></span><span style="display:flex;"><span>Get-ChildItem
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Aliases: ls, dir</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># List with details</span>
+</span></span><span style="display:flex;"><span>Get-ChildItem -Force
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Filter by extension</span>
+</span></span><span style="display:flex;"><span>Get-ChildItem -Filter *.txt
+</span></span></code></pre></div><h4 id="working-with-files-and-directories">Working with Files and Directories</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># Create a new directory</span>
+</span></span><span style="display:flex;"><span>New-Item -Path <span style="color:#e6db74">&#34;C:\temp\NewFolder&#34;</span> -ItemType Directory
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a new file</span>
+</span></span><span style="display:flex;"><span>New-Item -Path <span style="color:#e6db74">&#34;C:\temp\test.txt&#34;</span> -ItemType File
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Copy a file</span>
+</span></span><span style="display:flex;"><span>Copy-Item <span style="color:#e6db74">&#34;C:\temp\test.txt&#34;</span> -Destination <span style="color:#e6db74">&#34;C:\temp\test_backup.txt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Move a file</span>
+</span></span><span style="display:flex;"><span>Move-Item <span style="color:#e6db74">&#34;C:\temp\test.txt&#34;</span> -Destination <span style="color:#e6db74">&#34;C:\temp\NewFolder\test.txt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Delete a file</span>
+</span></span><span style="display:flex;"><span>Remove-Item <span style="color:#e6db74">&#34;C:\temp\test_backup.txt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Read file content</span>
+</span></span><span style="display:flex;"><span>Get-Content <span style="color:#e6db74">&#34;C:\temp\NewFolder\test.txt&#34;</span>
+</span></span></code></pre></div><h3 id="system-information-and-management">System Information and Management</h3>
+<h4 id="process-management">Process Management</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># List all running processes</span>
+</span></span><span style="display:flex;"><span>Get-Process
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Find specific processes</span>
+</span></span><span style="display:flex;"><span>Get-Process -Name <span style="color:#e6db74">&#34;chrome&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Stop a process</span>
+</span></span><span style="display:flex;"><span>Stop-Process -Name <span style="color:#e6db74">&#34;notepad&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Or by ID</span>
+</span></span><span style="display:flex;"><span>Stop-Process -Id <span style="color:#ae81ff">1234</span>
+</span></span></code></pre></div><h4 id="service-management">Service Management</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># List all services</span>
+</span></span><span style="display:flex;"><span>Get-Service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get specific service</span>
+</span></span><span style="display:flex;"><span>Get-Service -Name <span style="color:#e6db74">&#34;wuauserv&#34;</span>  <span style="color:#75715e"># Windows Update service</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Start a service</span>
+</span></span><span style="display:flex;"><span>Start-Service -Name <span style="color:#e6db74">&#34;wuauserv&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Stop a service</span>
+</span></span><span style="display:flex;"><span>Stop-Service -Name <span style="color:#e6db74">&#34;wuauserv&#34;</span>
+</span></span></code></pre></div><h4 id="system-information">System Information</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># Basic system info</span>
+</span></span><span style="display:flex;"><span>Get-ComputerInfo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Operating system details</span>
+</span></span><span style="display:flex;"><span>Get-CimInstance Win32_OperatingSystem
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Hardware information</span>
+</span></span><span style="display:flex;"><span>Get-CimInstance Win32_ComputerSystem
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Disk information</span>
+</span></span><span style="display:flex;"><span>Get-PSDrive
+</span></span></code></pre></div><h3 id="networking-commands">Networking Commands</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># Test network connection</span>
+</span></span><span style="display:flex;"><span>Test-NetConnection google.com
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Ping a host</span>
+</span></span><span style="display:flex;"><span>Test-Connection google.com
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get IP configuration</span>
+</span></span><span style="display:flex;"><span>Get-NetIPConfiguration
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get DNS client server addresses</span>
+</span></span><span style="display:flex;"><span>Get-DnsClientServerAddress
+</span></span></code></pre></div><h3 id="user-and-security">User and Security</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># Get current user</span>
+</span></span><span style="display:flex;"><span>$env:USERNAME
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get all local users</span>
+</span></span><span style="display:flex;"><span>Get-LocalUser
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a new local user</span>
+</span></span><span style="display:flex;"><span>New-LocalUser -Name <span style="color:#e6db74">&#34;NewUser&#34;</span> -Description <span style="color:#e6db74">&#34;New user account&#34;</span> -NoPassword
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get user groups</span>
+</span></span><span style="display:flex;"><span>Get-LocalGroup
+</span></span></code></pre></div><h2 id="working-with-powershell-help">Working with PowerShell Help</h2>
+<p>PowerShell includes a comprehensive help system:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># Get help on a cmdlet</span>
+</span></span><span style="display:flex;"><span>Get-Help Get-Process
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get detailed help with examples</span>
+</span></span><span style="display:flex;"><span>Get-Help Get-Process -Detailed
+</span></span><span style="display:flex;"><span>Get-Help Get-Process -Examples
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Update help files</span>
+</span></span><span style="display:flex;"><span>Update-Help
+</span></span></code></pre></div><h2 id="powershell-scripting-basics">PowerShell Scripting Basics</h2>
+<h3 id="script-execution-policy">Script Execution Policy</h3>
+<p>By default, PowerShell restricts running scripts. To check your current policy:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Get-ExecutionPolicy
+</span></span></code></pre></div><p>To change it (requires admin rights):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Set-ExecutionPolicy RemoteSigned
+</span></span></code></pre></div><p>Common policies:</p>
+<ul>
+<li><code>Restricted</code>: No scripts can run</li>
+<li><code>RemoteSigned</code>: Local scripts can run; downloaded scripts need signing</li>
+<li><code>Unrestricted</code>: All scripts can run (not recommended)</li>
+</ul>
+<h3 id="creating-a-basic-script">Creating a Basic Script</h3>
+<p>PowerShell scripts use the <code>.ps1</code> extension. Create a file named <code>hello.ps1</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># hello.ps1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">param</span>(
+</span></span><span style="display:flex;"><span>    [<span style="color:#66d9ef">string</span>]$name = <span style="color:#e6db74">&#34;World&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Write-Output <span style="color:#e6db74">&#34;Hello, </span>$name<span style="color:#e6db74">!&#34;</span>
+</span></span></code></pre></div><p>Run it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>.\hello.ps1
+</span></span><span style="display:flex;"><span>.\hello.ps1 -name <span style="color:#e6db74">&#34;John&#34;</span>
+</span></span></code></pre></div><h3 id="basic-flow-control">Basic Flow Control</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># If statement</span>
+</span></span><span style="display:flex;"><span>$age = <span style="color:#ae81ff">18</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ($age <span style="color:#f92672">-ge</span> <span style="color:#ae81ff">18</span>) {
+</span></span><span style="display:flex;"><span>    Write-Output <span style="color:#e6db74">&#34;Adult&#34;</span>
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    Write-Output <span style="color:#e6db74">&#34;Minor&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Foreach loop</span>
+</span></span><span style="display:flex;"><span>$fruits = @(<span style="color:#e6db74">&#34;Apple&#34;</span>, <span style="color:#e6db74">&#34;Banana&#34;</span>, <span style="color:#e6db74">&#34;Cherry&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">foreach</span> ($fruit <span style="color:#66d9ef">in</span> $fruits) {
+</span></span><span style="display:flex;"><span>    Write-Output <span style="color:#e6db74">&#34;I like </span>$fruit<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># While loop</span>
+</span></span><span style="display:flex;"><span>$i = <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> ($i <span style="color:#f92672">-le</span> <span style="color:#ae81ff">5</span>) {
+</span></span><span style="display:flex;"><span>    Write-Output <span style="color:#e6db74">&#34;Count: </span>$i<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    $i++
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="advanced-powershell-features">Advanced PowerShell Features</h2>
+<h3 id="working-with-objects">Working with Objects</h3>
+<p>PowerShell&rsquo;s object pipeline is powerful. For example, get specific properties:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Get-Process | Select-Object -Property Name, CPU, ID | Sort-Object -Property CPU -Descending
+</span></span></code></pre></div><h3 id="filtering-objects">Filtering Objects</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># Filter processes using CPU more than 10</span>
+</span></span><span style="display:flex;"><span>Get-Process | Where-Object { $_.CPU <span style="color:#f92672">-gt</span> <span style="color:#ae81ff">10</span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Find large files</span>
+</span></span><span style="display:flex;"><span>Get-ChildItem -Path C:\ -Recurse -ErrorAction SilentlyContinue | 
+</span></span><span style="display:flex;"><span>    Where-Object { $_.Length <span style="color:#f92672">-gt</span> <span style="color:#ae81ff">1</span>GB }
+</span></span></code></pre></div><h3 id="powershell-modules">PowerShell Modules</h3>
+<p>Modules extend PowerShell&rsquo;s functionality:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># List available modules</span>
+</span></span><span style="display:flex;"><span>Get-Module -ListAvailable
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Import a module</span>
+</span></span><span style="display:flex;"><span>Import-Module ActiveDirectory
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Find commands in a module</span>
+</span></span><span style="display:flex;"><span>Get-Command -Module ActiveDirectory
+</span></span></code></pre></div><h3 id="remote-management">Remote Management</h3>
+<p>PowerShell can manage remote computers:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># Create a remote session</span>
+</span></span><span style="display:flex;"><span>$session = New-PSSession -ComputerName Server01
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Run command on remote computer</span>
+</span></span><span style="display:flex;"><span>Invoke-Command -ComputerName Server01 -ScriptBlock { Get-Process }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Enter interactive session</span>
+</span></span><span style="display:flex;"><span>Enter-PSSession -ComputerName Server01
+</span></span></code></pre></div><h2 id="powershell-in-modern-windows-environments">PowerShell in Modern Windows Environments</h2>
+<h3 id="powershell-and-windows-management">PowerShell and Windows Management</h3>
+<p>PowerShell is essential for managing:</p>
+<ul>
+<li>Windows Server environments</li>
+<li>Active Directory</li>
+<li>Azure resources</li>
+<li>Microsoft 365 services</li>
+<li>Windows Subsystem for Linux (WSL)</li>
+</ul>
+<h3 id="powershell-7">PowerShell 7</h3>
+<p>PowerShell 7 is the latest major version, offering:</p>
+<ul>
+<li>Cross-platform support (Windows, macOS, Linux)</li>
+<li>New operators and language features</li>
+<li>Improved performance</li>
+<li>Parallel processing with ForEach-Object -Parallel</li>
+<li>Ternary operator: condition ? true-result : false-result</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>PowerShell has evolved from a simple shell into a comprehensive management framework and scripting language. Learning PowerShell fundamentals will dramatically increase your productivity when working with Windows systems and Microsoft services.</p>
+<p>By understanding these essential commands and concepts, you&rsquo;re now equipped to:</p>
+<ul>
+<li>Navigate the file system efficiently</li>
+<li>Manage system processes and services</li>
+<li>Automate repetitive tasks</li>
+<li>Gather detailed system information</li>
+<li>Perform remote administration</li>
+</ul>
+<p>As you continue your PowerShell journey, remember that the built-in help system is your best friend. Use <code>Get-Help</code> liberally, and explore the vast ecosystem of PowerShell modules that can extend your capabilities even further.</p>
+<h2 id="additional-resources">Additional Resources</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/powershell/">Microsoft PowerShell Documentation</a></li>
+<li><a href="https://github.com/PowerShell/PowerShell">PowerShell GitHub Repository</a></li>
+<li><a href="https://powershell.org/">PowerShell.org</a> - Community resources and forums</li>
+<li><a href="https://www.manning.com/books/learn-powershell-in-a-month-of-lunches">PowerShell in a Month of Lunches</a> - Excellent beginner book</li>
+</ul>
+]]></content:encoded></item></channel></rss>

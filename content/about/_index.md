@@ -5,26 +5,25 @@ draft: false
 ShowToc: false
 ---
 
-Hello there. I'm a South African chartered accountant who, about six years ago, decided that grey English skies were preferable to African sunshine. My wife somehow agreed with this decision, and we've since added two small humans to our family.
+Hello there. I'm a South African chartered accountant who, about six years ago, decided that grey English skies were preferable to African sunshine. My wife agreed with this questionable decision, and we've since added two small humans to our family.
 
-By day, I'm a finance manager, wrestling spreadsheets and making sure numbers behave themselves. By night (and weekends, and lunch breaks), I'm on a perpetual journey of learning new things—some useful, others decidedly less so.
+By day, I'm a finance manager, ensuring spreadsheets are orderly and numbers reconcile properly. Outside office hours, I dedicate time to learning new skills—some practical, others less immediately applicable.
 
 ## What's This Site About?
 
-This little corner of the internet serves as my "learning in public" experiment. I've decided that learning is more interesting when shared, even if that means documenting my inevitable mistakes for posterity.
+This site documents my "learning in public" journey. I believe knowledge is more valuable when shared, even if that means occasionally revealing my mistakes along the way.
 
-Currently, I'm teaching myself Python, despite having relied on spreadsheets for most of my professional life. You can follow my progress here as I document the journey from basic concepts to (hopefully) more advanced applications, with all the inevitable stumbling blocks along the way.
+Currently, I'm learning Python after years of relying primarily on Excel. You can follow my progress from basic concepts to more advanced applications, complete with the occasional troubleshooting detour.
 
-Beyond coding, you'll find my musings on whatever has captured my attention that week:
-
-- Philosophy
-- Finance
-- Parenting
-- Science and health
-- Other random fascinations
+Beyond coding, I share thoughts on various interests:
+* Philosophy
+* Finance
+* Parenting
+* Science and health
+* Other topics that capture my attention
 
 ## The Fine Print
 
-I'm not an expert in most of these areas. Yes, that's rather the point. This site isn't about presenting perfectly formed ideas, but rather about documenting the messy, non-linear process of learning something new.
+I don't claim expertise in most of these areas—that's rather the point. This site isn't about presenting polished conclusions, but rather documenting the sometimes messy process of acquiring new knowledge.
 
-Feel free to browse, comment, or get in touch.
+Feel free to browse, comment, or reach out.

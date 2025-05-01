@@ -1,0 +1,28 @@
+{{- $allSeries := slice }}
+{{- range $page := site.RegularPages }}
+  {{- range $series := .Param "series" }}
+    {{- $allSeries = $allSeries | append $series }}
+  {{- end }}
+{{- end }}
+{{- $uniqueSeries := $allSeries | uniq }}
+
+<div class="series-list">
+  <h2>Post Series</h2>
+  <p class="series-intro">Collections of related posts organised into learning paths.</p>
+  <ul class="series-items">
+    {{- range $uniqueSeries }}
+      {{- $series := . }}
+      {{- $seriesURL := urlize . }}
+      <li>
+        <a href="/series/{{ $seriesURL }}/">{{ $series }}</a>
+        {{- $count := 0 }}
+        {{- range site.RegularPages }}
+          {{- if in (.Param "series") $series }}
+            {{- $count = add $count 1 }}
+          {{- end }}
+        {{- end }}
+        <span class="post-count">({{ $count }} posts)</span>
+      </li>
+    {{- end }}
+  </ul>
+</div>

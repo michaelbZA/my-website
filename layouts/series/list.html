@@ -1,0 +1,47 @@
+{{- define "main" }}
+
+<header class="page-header">
+  <h1>Series: {{ .Title }}</h1>
+</header>
+
+<div class="series-description">
+  <p>A collection of {{ len .Pages }} posts in the "{{ .Title }}" series.</p>
+</div>
+
+{{- $pages := where .Pages ".Params.series_order" "!=" nil }}
+{{- $sortedPages := sort $pages ".Params.series_order" }}
+
+<div class="series-content">
+  <div class="series-toc">
+    <h2>Table of Contents</h2>
+    <ol>
+      {{- range $sortedPages }}
+      <li>
+        <div class="item-content">
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+          {{- if .Description }}
+          <p class="series-description">{{ .Description }}</p>
+          {{- else if .Summary }}
+          <p class="series-description">{{ .Summary | truncate 120 }}</p>
+          {{- end }}
+          <div class="post-meta">
+          {{- if not .Date.IsZero }}
+          <span>{{ .Date.Format (default "January 2, 2006" .Site.Params.DateFormat) }}</span>
+          {{- end }}
+          {{- if .Params.tags }}
+          <span> • Tags: 
+          {{- range $index, $tag := .Params.tags }}
+            {{- if gt $index 0 }}, {{ end }}
+            <a href="/tags/{{ $tag | urlize }}">{{ $tag }}</a>
+          {{- end }}
+          </span>
+          {{- end }}
+          </div>
+        </div>
+      </li>
+      {{- end }}
+    </ol>
+  </div>
+</div>
+
+{{- end }}{{/* end main */ -}}
