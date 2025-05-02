@@ -120,19 +120,9 @@
             </div>
         </div>
 
-        <!-- Source: https://github.com/adityatelange/hugo-PaperMod/discussions/943
-         Also note <ul class="menu hidden"> below -->
-            <button id="menu-trigger" aria-haspopup="menu" aria-label="Menu Button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-            </button>
-
+        <!-- Desktop Menu - Original PaperMod menu -->
         {{- $currentPage := . }}
-
-        <ul class="menu hidden">
+        <ul class="menu desktop-menu">
             {{- range site.Menus.main }}
             {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
             {{- $page_url:= $currentPage.Permalink | absLangURL }}
@@ -157,5 +147,30 @@
             </li>
             {{- end }}
         </ul>
+
+        <!-- Mobile Hamburger Menu Button -->
+        <button id="menu-trigger" class="hamburger-menu" aria-haspopup="menu" aria-label="Menu Button">
+            <div class="hamburger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
     </nav>
 </header>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay">
+    <ul class="mobile-menu">
+        {{- range site.Menus.main }}
+        <li>
+            <a href="{{ .URL | absLangURL }}">
+                {{- .Pre }}
+                {{- .Name -}}
+                {{ .Post -}}
+            </a>
+        </li>
+        {{- end }}
+    </ul>
+</div>

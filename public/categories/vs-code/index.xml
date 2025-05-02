@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>VS Code on Michael Brunger</title><link>https://michaelbrunger.com/categories/vs-code/</link><description>Recent content in VS Code on Michael Brunger</description><image><title>Michael Brunger</title><url>https://michaelbrunger.com/site-feature-image.jpg</url><link>https://michaelbrunger.com/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Thu, 01 May 2025 14:01:54 +0100</lastBuildDate><atom:link href="https://michaelbrunger.com/categories/vs-code/index.xml" rel="self" type="application/rss+xml"/><item><title>VS Code Mastery</title><link>https://michaelbrunger.com/posts/20250502-vscode/</link><pubDate>Fri, 02 May 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/posts/20250502-vscode/</guid><description>&lt;h1 id="vs-code-mastery-a-beginners-guide-to-being-productive">VS Code Mastery: A Beginner&amp;rsquo;s Guide to Being Productive&lt;/h1>
+&lt;p>So you&amp;rsquo;ve downloaded VS Code and opened it up. Now what? In this guide, I&amp;rsquo;ll walk you through everything I&amp;rsquo;ve learned about making VS Code work for you, especially if you&amp;rsquo;re just getting started.&lt;/p>
+&lt;h2 id="why-i-switched-to-vs-code">Why I Switched to VS Code&lt;/h2>
+&lt;p>Before diving into the details, let me share why I chose VS Code:&lt;/p>
+&lt;ul>
+&lt;li>Lightweight enough to open quickly&lt;/li>
+&lt;li>Powerful enough for serious development&lt;/li>
+&lt;li>Enormous extension ecosystem&lt;/li>
+&lt;li>Regular updates with new features&lt;/li>
+&lt;li>Works consistently across Windows, Mac, and Linux&lt;/li>
+&lt;/ul>
+&lt;h2 id="getting-started-the-vs-code-interface">Getting Started: The VS Code Interface&lt;/h2>
+&lt;p>When you first open VS Code, here&amp;rsquo;s what you&amp;rsquo;re looking at:&lt;/p></description><content:encoded><![CDATA[<h1 id="vs-code-mastery-a-beginners-guide-to-being-productive">VS Code Mastery: A Beginner&rsquo;s Guide to Being Productive</h1>
+<p>So you&rsquo;ve downloaded VS Code and opened it up. Now what?  In this guide, I&rsquo;ll walk you through everything I&rsquo;ve learned about making VS Code work for you, especially if you&rsquo;re just getting started.</p>
+<h2 id="why-i-switched-to-vs-code">Why I Switched to VS Code</h2>
+<p>Before diving into the details, let me share why I chose VS Code:</p>
+<ul>
+<li>Lightweight enough to open quickly</li>
+<li>Powerful enough for serious development</li>
+<li>Enormous extension ecosystem</li>
+<li>Regular updates with new features</li>
+<li>Works consistently across Windows, Mac, and Linux</li>
+</ul>
+<h2 id="getting-started-the-vs-code-interface">Getting Started: The VS Code Interface</h2>
+<p>When you first open VS Code, here&rsquo;s what you&rsquo;re looking at:</p>
+<ul>
+<li><strong>Activity Bar</strong>: The vertical bar on the far left with icons for different views</li>
+<li><strong>Side Bar</strong>: Shows different panels like Explorer, Search, and Extensions</li>
+<li><strong>Editor Area</strong>: Where you edit your files (can be split!)</li>
+<li><strong>Status Bar</strong>: At the bottom, showing helpful information</li>
+<li><strong>Panel</strong>: Terminal, problems, output (toggle with <code>Ctrl+J</code> or <code>Cmd+J</code> on Mac)</li>
+</ul>
+<p>![VS Code Interface Areas]</p>
+<p>Don&rsquo;t worry if it feels like a lot—we&rsquo;ll break it down piece by piece.</p>
+<h2 id="essential-keyboard-shortcuts-i-use-daily">Essential Keyboard Shortcuts I Use Daily</h2>
+<p>Learning keyboard shortcuts dramatically improved my productivity. Here are the ones I use constantly:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Shortcut (Windows/Linux)</th>
+          <th>Shortcut (Mac)</th>
+          <th>Action</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>Ctrl+P</code></td>
+          <td><code>Cmd+P</code></td>
+          <td>Quick Open file</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl+Shift+P</code></td>
+          <td><code>Cmd+Shift+P</code></td>
+          <td>Command Palette</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl+,</code></td>
+          <td><code>Cmd+,</code></td>
+          <td>User Settings</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl+B</code></td>
+          <td><code>Cmd+B</code></td>
+          <td>Toggle sidebar</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl+J</code></td>
+          <td><code>Cmd+J</code></td>
+          <td>Toggle panel (terminal)</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl+\</code></td>
+          <td><code>Cmd+\</code></td>
+          <td>Split editor</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl+Tab</code></td>
+          <td><code>Cmd+Tab</code></td>
+          <td>Switch between open files</td>
+      </tr>
+      <tr>
+          <td><code>Alt+Up/Down</code></td>
+          <td><code>Option+Up/Down</code></td>
+          <td>Move line up/down</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl+D</code></td>
+          <td><code>Cmd+D</code></td>
+          <td>Add selection to next find match</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl+Space</code></td>
+          <td><code>Cmd+Space</code></td>
+          <td>Trigger suggestion</td>
+      </tr>
+      <tr>
+          <td><code>F12</code></td>
+          <td><code>F12</code></td>
+          <td>Go to definition</td>
+      </tr>
+      <tr>
+          <td><code>Alt+F12</code></td>
+          <td><code>Option+F12</code></td>
+          <td>Peek definition</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl+Shift+F</code></td>
+          <td><code>Cmd+Shift+F</code></td>
+          <td>Search across files</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl+~</code></td>
+          <td><code>Cmd+~</code></td>
+          <td>Open integrated terminal</td>
+      </tr>
+  </tbody>
+</table>
+<p>I found that learning just 3-4 shortcuts a week was manageable and made a huge difference over time.</p>
+<h2 id="the-command-palette-your-best-friend">The Command Palette: Your Best Friend</h2>
+<p>If I could highlight just one feature, it would be the Command Palette (<code>Ctrl+Shift+P</code> or <code>Cmd+Shift+P</code> on Mac). It gives you access to virtually every command in VS Code.</p>
+<p>Try this right now:</p>
+<ol>
+<li>Press <code>Ctrl+Shift+P</code> (or <code>Cmd+Shift+P</code> on Mac)</li>
+<li>Type &ldquo;theme&rdquo;</li>
+<li>Select &ldquo;Color Theme&rdquo;</li>
+<li>Browse through available themes</li>
+</ol>
+<p>I use the Command Palette dozens of times daily to:</p>
+<ul>
+<li>Run specific commands</li>
+<li>Change settings</li>
+<li>Open user/workspace settings</li>
+<li>Toggle features on/off</li>
+<li>Format documents</li>
+<li>And so much more!</li>
+</ul>
+<p>Pro tip: Commands prefixed with <code>&gt;</code> are VS Code commands, while others are for navigating files or settings.</p>
+<h2 id="file-navigation-that-saved-me-hours">File Navigation That Saved Me Hours</h2>
+<p>Finding files quickly is essential for productivity. Here&rsquo;s how I navigate efficiently:</p>
+<h3 id="quick-open-ctrlp--cmdp">Quick Open (<code>Ctrl+P</code> / <code>Cmd+P</code>)</h3>
+<p>Just start typing the filename—it uses fuzzy matching so you don&rsquo;t need the exact name.</p>
+<h3 id="navigating-inside-files">Navigating Inside Files</h3>
+<ul>
+<li><code>Ctrl+G</code> (<code>Cmd+G</code> on Mac): Go to specific line number</li>
+<li><code>Ctrl+Shift+O</code> (<code>Cmd+Shift+O</code>): Navigate to symbols in the current file</li>
+<li><code>F12</code>: Jump to definition</li>
+<li><code>Alt+F12</code>: Peek definition (shows definition in a popup)</li>
+<li><code>Ctrl+Shift+\</code>: Jump to matching bracket</li>
+</ul>
+<h3 id="go-backforward">Go Back/Forward</h3>
+<ul>
+<li><code>Alt+Left/Right</code> (<code>Ctrl+- / Ctrl+Shift+-</code> on Mac): Navigate back and forth through your position history</li>
+</ul>
+<p>I was amazed at how much time these shortcuts saved me when working on larger projects.</p>
+<h2 id="supercharging-your-editing">Supercharging Your Editing</h2>
+<p>These editing features have transformed how I write code:</p>
+<h3 id="multi-cursor-editing">Multi-Cursor Editing</h3>
+<p>This was a game-changer for me:</p>
+<ul>
+<li><code>Alt+Click</code> (<code>Option+Click</code> on Mac): Add cursor at mouse position</li>
+<li><code>Ctrl+Alt+Up/Down</code> (<code>Cmd+Option+Up/Down</code>): Add cursor above/below</li>
+<li><code>Ctrl+D</code> (<code>Cmd+D</code>): Select next occurrence of current selection</li>
+<li><code>Ctrl+Shift+L</code> (<code>Cmd+Shift+L</code>): Select all occurrences of current selection</li>
+</ul>
+<h3 id="text-manipulation">Text Manipulation</h3>
+<ul>
+<li><code>Alt+Up/Down</code> (<code>Option+Up/Down</code>): Move current line up/down</li>
+<li><code>Shift+Alt+Up/Down</code> (<code>Shift+Option+Up/Down</code>): Copy line up/down</li>
+<li><code>Ctrl+Shift+K</code> (<code>Cmd+Shift+K</code>): Delete line</li>
+<li><code>Ctrl+/</code> (<code>Cmd+/</code>): Toggle line comment</li>
+<li><code>Shift+Alt+A</code> (<code>Shift+Option+A</code>): Toggle block comment</li>
+<li><code>Ctrl+Space</code> (<code>Cmd+Space</code>): Trigger suggestions</li>
+</ul>
+<p>I use multi-cursor editing daily for bulk edits that would otherwise take forever.</p>
+<h2 id="vs-code-extensions-that-changed-my-workflow">VS Code Extensions That Changed My Workflow</h2>
+<p>Extensions are what make VS Code truly shine. Here are the ones I can&rsquo;t live without:</p>
+<h3 id="productivity-boosters">Productivity Boosters</h3>
+<ul>
+<li><strong>Prettier</strong>: Automatic code formatting</li>
+<li><strong>ESLint</strong>: JavaScript linting</li>
+<li><strong>GitLens</strong>: Enhanced Git capabilities</li>
+<li><strong>Error Lens</strong>: Inline error display</li>
+<li><strong>Auto Rename Tag</strong>: Automatically rename paired HTML/XML tags</li>
+<li><strong>Path Intellisense</strong>: Autocompletes filenames</li>
+</ul>
+<h3 id="theme-and-appearance">Theme and Appearance</h3>
+<ul>
+<li><strong>Material Icon Theme</strong>: Better file icons</li>
+<li><strong>One Dark Pro</strong>: My preferred theme</li>
+<li><strong>Bracket Pair Colorizer 2</strong>: Color-codes matching brackets</li>
+</ul>
+<h3 id="language-specific-extensions">Language-Specific Extensions</h3>
+<ul>
+<li><strong>Python</strong>: Enhanced Python development</li>
+<li><strong>Jupyter</strong>: Jupyter notebook support</li>
+<li><strong>C/C++</strong>: For C language support</li>
+<li><strong>markdownlint</strong>: Linting for markdown files</li>
+</ul>
+<p>Installing extensions is easy:</p>
+<ol>
+<li>Click the Extensions icon in the Activity Bar (or <code>Ctrl+Shift+X</code>)</li>
+<li>Search for the extension</li>
+<li>Click Install</li>
+</ol>
+<p>I recommend reviewing your extensions periodically and removing ones you don&rsquo;t use to keep VS Code running smoothly.</p>
+<h2 id="integrated-terminal-no-more-window-switching">Integrated Terminal: No More Window Switching</h2>
+<p>The integrated terminal (<code>Ctrl+`` or </code>Cmd+`` on Mac) has saved me from constantly switching between windows:</p>
+<ul>
+<li>Create multiple terminals by clicking the <code>+</code> button</li>
+<li>Split terminal views with the split button</li>
+<li>Switch between terminals with the dropdown</li>
+<li>Rename terminals for better organization</li>
+</ul>
+<p>You can configure your default shell in settings:</p>
+<ol>
+<li>Open Command Palette (<code>Ctrl+Shift+P</code>)</li>
+<li>Type &ldquo;settings&rdquo;</li>
+<li>Select &ldquo;Preferences: Open Settings (JSON)&rdquo;</li>
+<li>Add your preferred terminal settings:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;terminal.integrated.defaultProfile.windows&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;PowerShell&#34;</span><span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;terminal.integrated.defaultProfile.linux&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;bash&#34;</span><span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;terminal.integrated.defaultProfile.osx&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;zsh&#34;</span>
+</span></span></code></pre></div><h2 id="debugging-made-simple">Debugging Made Simple</h2>
+<p>VS Code&rsquo;s debugging capabilities eliminate the need for <code>print</code> statements everywhere:</p>
+<ol>
+<li>Click the Run and Debug icon in the Activity Bar</li>
+<li>Click &ldquo;create a launch.json file&rdquo;</li>
+<li>Select your environment</li>
+</ol>
+<p>Key debugging actions:</p>
+<ul>
+<li><code>F5</code>: Start/Continue</li>
+<li><code>F9</code>: Toggle breakpoint</li>
+<li><code>F10</code>: Step over</li>
+<li><code>F11</code>: Step into</li>
+<li><code>Shift+F11</code>: Step out</li>
+<li><code>Ctrl+F5</code>: Run without debugging</li>
+</ul>
+<p>The debug console lets you evaluate expressions and inspect variables in real-time, which was a revelation for me coming from print-based debugging.</p>
+<h2 id="customising-vs-code-to-your-preferences">Customising VS Code to Your Preferences</h2>
+<p>VS Code&rsquo;s customisation options are nearly endless. Here&rsquo;s how I personalized mine:</p>
+<h3 id="settingsjson">Settings.json</h3>
+<p>My essential customisations:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;editor.fontSize&#34;</span>: <span style="color:#ae81ff">14</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;editor.fontFamily&#34;</span>: <span style="color:#e6db74">&#34;&#39;Fira Code&#39;, Consolas, &#39;Courier New&#39;, monospace&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;editor.fontLigatures&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;editor.formatOnSave&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;editor.defaultFormatter&#34;</span>: <span style="color:#e6db74">&#34;esbenp.prettier-vscode&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;editor.minimap.enabled&#34;</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;editor.rulers&#34;</span>: [<span style="color:#ae81ff">80</span>, <span style="color:#ae81ff">120</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;editor.wordWrap&#34;</span>: <span style="color:#e6db74">&#34;on&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;workbench.colorTheme&#34;</span>: <span style="color:#e6db74">&#34;One Dark Pro&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;workbench.iconTheme&#34;</span>: <span style="color:#e6db74">&#34;material-icon-theme&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;terminal.integrated.fontSize&#34;</span>: <span style="color:#ae81ff">14</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;files.autoSave&#34;</span>: <span style="color:#e6db74">&#34;onFocusChange&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;explorer.confirmDelete&#34;</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;editor.bracketPairColorization.enabled&#34;</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>You can access settings via:</p>
+<ul>
+<li><code>Ctrl+,</code> (<code>Cmd+,</code> on Mac) for the Settings UI</li>
+<li>Command Palette &gt; &ldquo;Preferences: Open Settings (JSON)&rdquo; for JSON editing</li>
+</ul>
+<h3 id="workspace-settings">Workspace Settings</h3>
+<p>For project-specific settings, create a <code>.vscode</code> folder in your project with:</p>
+<ul>
+<li><code>settings.json</code>: Project-specific settings</li>
+<li><code>launch.json</code>: Debugging configurations</li>
+<li><code>tasks.json</code>: Task configurations</li>
+<li><code>extensions.json</code>: Recommended extensions</li>
+</ul>
+<p>This allows you to have different settings for different projects.</p>
+<h2 id="working-with-git-integration">Working with Git Integration</h2>
+<p>VS Code&rsquo;s built-in Git support eliminated my need for separate Git clients:</p>
+<ul>
+<li>The Source Control panel shows changes clearly</li>
+<li>Inline change markers show what&rsquo;s changed in each file</li>
+<li>Commit, push, pull, and branch directly from VS Code</li>
+<li>Resolve merge conflicts with a visual interface</li>
+</ul>
+<p>To get started with Git:</p>
+<ol>
+<li>Open a folder that&rsquo;s a Git repository</li>
+<li>Make some changes</li>
+<li>Click the Source Control icon in the Activity Bar</li>
+<li>Stage changes by clicking the <code>+</code> icon</li>
+<li>Enter a commit message and press <code>Ctrl+Enter</code> to commit</li>
+</ol>
+<p>Adding GitLens extends these capabilities even further with blame annotations, history browsing, and more.</p>
+<h2 id="snippets-stop-typing-the-same-code-over-and-over">Snippets: Stop Typing the Same Code Over and Over</h2>
+<p>Custom snippets have saved me countless hours of typing repetitive code:</p>
+<ol>
+<li>Open Command Palette &gt; &ldquo;Snippets: Configure User Snippets&rdquo;</li>
+<li>Select a language or create a global snippet file</li>
+<li>Add your snippets:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;Print to console&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;prefix&#34;</span>: <span style="color:#e6db74">&#34;log&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;body&#34;</span>: [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;console.log(&#39;$1&#39;);&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;$2&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;description&#34;</span>: <span style="color:#e6db74">&#34;Log output to console&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Now typing &ldquo;log&rdquo; and pressing Tab will insert <code>console.log('');</code> with the cursor positioned between the quotes.</p>
+<p>I&rsquo;ve created snippets for common patterns in each language I use.</p>
+<h2 id="remote-development-life-changing-feature">Remote Development: Life-Changing Feature</h2>
+<p>Working on remote machines and containers transformed my development workflow:</p>
+<ol>
+<li>Install the &ldquo;Remote Development&rdquo; extension pack</li>
+<li>Click the remote indicator in the bottom-left corner</li>
+<li>Select your remote connection type:
+<ul>
+<li>SSH: Connect to remote servers</li>
+<li>WSL: Work in Windows Subsystem for Linux</li>
+<li>Containers: Work inside Docker containers</li>
+</ul>
+</li>
+</ol>
+<p>This lets you use VS Code&rsquo;s full power while code executes in a different environment—perfect for consistent development environments or working with remote servers.</p>
+<h2 id="workspace-organisation-for-large-projects">Workspace Organisation for Large Projects</h2>
+<p>For complex projects, I use these organisation features:</p>
+<ul>
+<li><strong>Multi-root workspaces</strong>: Add multiple folders to a single workspace</li>
+<li><strong>File explorer groups</strong>: Organise folders logically</li>
+<li><strong>Workspace settings</strong>: Override settings for specific projects</li>
+</ul>
+<p>To create a multi-root workspace:</p>
+<ol>
+<li>Open a folder</li>
+<li>Go to File &gt; &ldquo;Add Folder to Workspace&rdquo;</li>
+<li>Save the workspace file (File &gt; &ldquo;Save Workspace As&hellip;&rdquo;)</li>
+</ol>
+<p>This approach is perfect for microservice architectures or when working with frontend and backend code simultaneously.</p>
+<h2 id="lesser-known-features-i-love">Lesser-Known Features I Love</h2>
+<p>Some features I discovered after using VS Code for a while:</p>
+<ul>
+<li><strong>Zen Mode</strong>: <code>Ctrl+K Z</code> (<code>Cmd+K Z</code> on Mac) for distraction-free coding</li>
+<li><strong>Breadcrumbs</strong>: Navigate file structure at the top of editors</li>
+<li><strong>Linked Editing</strong>: Edit HTML opening and closing tags simultaneously</li>
+<li><strong>Emmet</strong>: Built-in HTML/CSS abbreviations (try typing <code>div&gt;ul&gt;li*5</code> and pressing Tab)</li>
+<li><strong>IntelliSense</strong>: Smart autocomplete that learns from your codebase</li>
+<li><strong>Code Folding</strong>: Collapse sections with the arrows in the gutter</li>
+<li><strong>Split Editor</strong>: <code>Ctrl+\</code> to edit files side by side</li>
+</ul>
+<h2 id="synchronising-settings-across-machines">Synchronising Settings Across Machines</h2>
+<p>VS Code Settings Sync keeps my environment consistent across computers:</p>
+<ol>
+<li>Click the account icon in the bottom of the Activity Bar</li>
+<li>Turn on Settings Sync</li>
+<li>Select what to sync (settings, extensions, keybindings, etc.)</li>
+</ol>
+<p>Now your customisations follow you to any machine with VS Code installed.</p>
+<h2 id="problems-ive-encountered-and-how-i-fixed-them">Problems I&rsquo;ve Encountered (and How I Fixed Them)</h2>
+<h3 id="high-memory-usage">High Memory Usage</h3>
+<ul>
+<li>Disable unused extensions</li>
+<li>Set <code>&quot;files.exclude&quot;</code> for large folders you don&rsquo;t need indexed</li>
+<li>Use <code>&quot;search.exclude&quot;</code> to skip folders during searches</li>
+</ul>
+<h3 id="slow-performance">Slow Performance</h3>
+<ul>
+<li>Update VS Code to the latest version</li>
+<li>Try disabling extensions one by one to find the culprit</li>
+<li>Check for large files that might be slowing things down</li>
+</ul>
+<h3 id="language-server-issues">Language Server Issues</h3>
+<ul>
+<li>Reinstall the language extension</li>
+<li>Check output panel for error messages</li>
+<li>Configure language server settings explicitly</li>
+</ul>
+<h2 id="my-weekly-vs-code-learning-habit">My Weekly VS Code Learning Habit</h2>
+<p>I made the most progress with VS Code by adopting a simple habit: learn one new feature per week.</p>
+<p>On a weekly basis:</p>
+<ol>
+<li>Open the Command Palette</li>
+<li>Type &ldquo;help&rdquo; and select &ldquo;Interactive Playground&rdquo;</li>
+<li>Try one new feature or shortcut</li>
+<li>Practice it throughout the week</li>
+</ol>
+<p>This incremental approach helped me build confidence without feeling overwhelmed.</p>
+<h2 id="conclusion-vs-code-changed-how-i-code">Conclusion: VS Code Changed How I Code</h2>
+<p>When I first started using VS Code, I was just using it as a basic text editor. Now, it&rsquo;s become an extension of my thinking process when coding. The features I&rsquo;ve covered in this post have genuinely made me more productive and helped me write better code.</p>
+<p>Don&rsquo;t feel like you need to learn everything at once! Start with the Command Palette and a few shortcuts, then gradually expand your knowledge. Before long, you&rsquo;ll be navigating and editing code with an efficiency that will surprise you.</p>
+<p>What VS Code features have you found most helpful? I&rsquo;d love to hear about your experiences in the comments!</p>
+<h2 id="resources-for-going-further">Resources for Going Further</h2>
+<ul>
+<li><a href="https://code.visualstudio.com/docs">Official VS Code Documentation</a></li>
+<li><a href="https://code.visualstudio.com/docs/getstarted/tips-and-tricks">VS Code Tips and Tricks</a></li>
+<li><a href="https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-reference">Keyboard Shortcut Reference</a></li>
+<li><a href="https://www.vscodecandothat.com/">VS Code Can Do That?!</a> - Amazing tips site</li>
+</ul>
+<p>Happy coding!</p>
+]]></content:encoded></item></channel></rss>
