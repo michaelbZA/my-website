@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Data Analytics on Michael Brunger</title><link>http://localhost:1313/tags/data-analytics/</link><description>Recent content in Data Analytics on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Sat, 28 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/data-analytics/index.xml" rel="self" type="application/rss+xml"/><item><title>Technology Enablement for Modern Finance</title><link>http://localhost:1313/posts/fc-series/technology-enablement-modern-finance/</link><pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/fc-series/technology-enablement-modern-finance/</guid><description>Essential technologies and implementation strategies for the modern finance function</description><content:encoded><![CDATA[<h1 id="part-8-technology-enablement-for-modern-finance">Part 8: Technology Enablement for Modern Finance</h1>
+<p><em>This is part 8 of my &ldquo;Modern Financial Controller&rdquo; series, documenting my journey from chartered accountant to strategic finance manager. I&rsquo;m learning in public and sharing insights primarily drawn from David Parmenter&rsquo;s work and other finance thought leaders.</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>Technology has transformed the finance function more dramatically in the last decade than perhaps any other aspect of our work. As David Parmenter emphasizes in his book &ldquo;The Leading-Edge Manager&rsquo;s Guide to Success,&rdquo; finance leaders who fail to embrace technological innovation risk becoming irrelevant in the modern business landscape.</p>
+<p>In this post, I&rsquo;ll explore how finance managers can evaluate, implement, and leverage technology to elevate their team&rsquo;s performance and strategic contribution to the organization.</p>
+<h2 id="evaluating-your-current-technology-stack">Evaluating Your Current Technology Stack</h2>
+<p>Before rushing to adopt new tools, Parmenter recommends conducting a thorough assessment of your existing technology infrastructure. This starts with:</p>
+<h3 id="1-systems-inventory">1. Systems Inventory</h3>
+<p>Create a comprehensive inventory of all financial systems currently in use, including:</p>
+<ul>
+<li>Core accounting/ERP platform</li>
+<li>Financial reporting tools</li>
+<li>Budgeting and forecasting applications</li>
+<li>Data warehousing solutions</li>
+<li>Specialized applications (tax, treasury, etc.)</li>
+<li>Spreadsheets and manual processes</li>
+</ul>
+<h3 id="2-pain-point-analysis">2. Pain Point Analysis</h3>
+<p>Parmenter suggests organizing facilitated sessions with your finance team to identify:</p>
+<ul>
+<li>Which processes consume the most time?</li>
+<li>Where do errors commonly occur?</li>
+<li>Which tasks require the most manual intervention?</li>
+<li>What information requests from stakeholders are difficult to fulfill?</li>
+</ul>
+<h3 id="3-technology-maturity-assessment">3. Technology Maturity Assessment</h3>
+<p>Against Gartner&rsquo;s five-stage maturity model for finance technology:</p>
+<ol>
+<li><strong>Basic</strong> - Fragmented systems, heavy manual processing</li>
+<li><strong>Developing</strong> - Core systems in place, but limited integration</li>
+<li><strong>Defined</strong> - Integrated systems with some automation</li>
+<li><strong>Advanced</strong> - Highly automated with predictive capabilities</li>
+<li><strong>Optimized</strong> - AI-driven, continuous innovation</li>
+</ol>
+<p>Where does your finance function sit today? According to Parmenter&rsquo;s research, most organizations remain stuck between stages 2 and 3, with significant opportunity for advancement.</p>
+<h2 id="key-technologies-for-the-modern-finance-function">Key Technologies for the Modern Finance Function</h2>
+<p>Based on Parmenter&rsquo;s framework and supplemented by insights from KPMG&rsquo;s Finance Technology 2025 report, here are the essential technology components for forward-thinking finance teams:</p>
+<h3 id="1-cloud-based-erp-systems">1. Cloud-Based ERP Systems</h3>
+<p>The foundation of modern finance technology is a robust, cloud-based ERP system. As Parmenter notes, &ldquo;Cloud-based solutions offer faster implementation, lower total cost of ownership, and more frequent updates that keep pace with evolving business needs.&rdquo;</p>
+<p>Key capabilities to prioritize:</p>
+<ul>
+<li>Real-time reporting and analytics</li>
+<li>Process automation capabilities</li>
+<li>Mobile accessibility</li>
+<li>Integration flexibility with other systems</li>
+<li>Scalability to support growth</li>
+</ul>
+<h3 id="2-advanced-analytics-and-business-intelligence">2. Advanced Analytics and Business Intelligence</h3>
+<p>According to McKinsey &amp; Company&rsquo;s research, finance teams that develop strong data analytics capabilities are 2.5x more likely to be viewed as valuable strategic partners by their organization.</p>
+<p>Key components include:</p>
+<ul>
+<li><strong>Self-service dashboards</strong>: Empowering stakeholders to access financial insights without requiring finance team intervention</li>
+<li><strong>Data visualization tools</strong>: Transforming complex financial data into intuitive visual formats</li>
+<li><strong>Predictive analytics</strong>: Moving beyond historical reporting to forecast future outcomes</li>
+</ul>
+<p>Parmenter recommends starting with targeted analytics projects that directly address business pain points rather than attempting comprehensive analytics transformations.</p>
+<h3 id="3-robotic-process-automation-rpa">3. Robotic Process Automation (RPA)</h3>
+<p>Deloitte&rsquo;s Global RPA Survey found that 53% of organizations have begun their RPA journey, with an average cost reduction of 22% and significantly improved accuracy in finance processes.</p>
+<p>Parmenter identifies these high-value RPA opportunities:</p>
+<ul>
+<li>Account reconciliations</li>
+<li>Journal entry processing</li>
+<li>Invoice matching and processing</li>
+<li>Intercompany transactions</li>
+<li>Compliance reporting</li>
+</ul>
+<h3 id="4-integrated-financial-planning-tools">4. Integrated Financial Planning Tools</h3>
+<p>Moving beyond spreadsheets for planning and forecasting is essential for the modern finance function. Integrated planning tools enable:</p>
+<ul>
+<li>Rolling forecasts (as detailed in Part 4 of this series)</li>
+<li>Scenario planning and sensitivity analysis</li>
+<li>Driver-based modeling</li>
+<li>Collaborative budgeting across departments</li>
+</ul>
+<h3 id="5-document-management-and-workflow-systems">5. Document Management and Workflow Systems</h3>
+<p>Parmenter emphasizes that paperless finance operations are not just environmentally responsible but dramatically more efficient. Key capabilities include:</p>
+<ul>
+<li>Digital document storage with robust search functionality</li>
+<li>Automated approval workflows</li>
+<li>Electronic signature capabilities</li>
+<li>Audit trail documentation</li>
+</ul>
+<h2 id="data-analytics-capabilities-every-controller-should-develop">Data Analytics Capabilities Every Controller Should Develop</h2>
+<p>According to Parmenter, financial controllers must develop their data analytics skills or risk becoming obsolete. The Financial Executives Research Foundation supports this view, finding that 90% of CFOs believe data analytics is essential to future finance team success.</p>
+<h3 id="essential-analytics-skills">Essential Analytics Skills</h3>
+<ol>
+<li>
+<p><strong>Data Cleaning and Preparation</strong></p>
+<ul>
+<li>Understanding how to identify and handle outliers</li>
+<li>Techniques for dealing with missing data</li>
+<li>Methods for standardizing inconsistent information</li>
+</ul>
+</li>
+<li>
+<p><strong>Statistical Analysis Fundamentals</strong></p>
+<ul>
+<li>Correlation and causation differentiation</li>
+<li>Regression analysis for forecasting</li>
+<li>Variance analysis for performance evaluation</li>
+</ul>
+</li>
+<li>
+<p><strong>Data Visualization Principles</strong></p>
+<ul>
+<li>Choosing appropriate chart types for different data stories</li>
+<li>Effective dashboard design</li>
+<li>Visual hierarchy and emphasis techniques</li>
+</ul>
+</li>
+<li>
+<p><strong>SQL Fundamentals</strong></p>
+<ul>
+<li>Basic query writing</li>
+<li>Data filtering and aggregation</li>
+<li>Joining multiple data sources</li>
+</ul>
+</li>
+<li>
+<p><strong>Business Intelligence Tool Proficiency</strong></p>
+<ul>
+<li>At least one mainstream BI platform (Power BI, Tableau, Looker)</li>
+<li>Dashboard creation and distribution</li>
+<li>Alert configuration for exceptions</li>
+</ul>
+</li>
+</ol>
+<p>As Parmenter notes, &ldquo;The controller who can translate complex data into actionable business insights will always have a seat at the strategic table.&rdquo;</p>
+<h2 id="implementation-strategies-that-wont-break-the-bank">Implementation Strategies That Won&rsquo;t Break the Bank</h2>
+<p>Parmenter emphasizes that technology implementation doesn&rsquo;t have to be an all-or-nothing proposition. His phased approach includes:</p>
+<h3 id="1-the-pilot-approach">1. The Pilot Approach</h3>
+<p>Start with small, high-impact projects that demonstrate value quickly. For example:</p>
+<ul>
+<li>Automate a single reconciliation process</li>
+<li>Create one dashboard for a key business metric</li>
+<li>Implement RPA for a repetitive task</li>
+</ul>
+<h3 id="2-the-land-and-expand-strategy">2. The &ldquo;Land and Expand&rdquo; Strategy</h3>
+<p>Begin with a limited deployment to a specific team or department, refine based on feedback, then expand across the organization.</p>
+<h3 id="3-the-quick-wins-portfolio">3. The &ldquo;Quick Wins&rdquo; Portfolio</h3>
+<p>Identify 5-10 technology initiatives that can be implemented in under 90 days with minimal investment. According to Parmenter, these quick wins build momentum and credibility for larger transformation efforts.</p>
+<h3 id="4-leveraging-existing-tools">4. Leveraging Existing Tools</h3>
+<p>Before investing in new technology, Parmenter suggests exploring untapped capabilities in your existing systems. Many organizations use less than 50% of their current systems&rsquo; functionality.</p>
+<h3 id="5-cloud-based-subscription-models">5. Cloud-Based Subscription Models</h3>
+<p>Rather than large capital expenditures, leverage SaaS solutions with monthly subscription costs that can scale with your needs.</p>
+<p>According to Parmenter: &ldquo;The most successful finance technology implementations are those that balance ambition with pragmatism, focusing on delivering tangible business value rather than technology for technology&rsquo;s sake.&rdquo;</p>
+<h2 id="future-trends-ai-machine-learning-and-automation-in-finance">Future Trends: AI, Machine Learning, and Automation in Finance</h2>
+<p>While current technology adoption is crucial, forward-thinking controllers must also keep an eye on emerging trends. Based on insights from both Parmenter and Accenture&rsquo;s Finance 2025 research:</p>
+<h3 id="1-artificial-intelligence-in-finance">1. Artificial Intelligence in Finance</h3>
+<p>AI applications are rapidly evolving from experimental to essential:</p>
+<ul>
+<li><strong>Advanced forecasting</strong>: Machine learning models that incorporate external economic indicators and market signals</li>
+<li><strong>Anomaly detection</strong>: AI systems that identify unusual transactions or patterns that warrant investigation</li>
+<li><strong>Natural language processing</strong>: Converting unstructured data (contracts, emails, news) into actionable financial insights</li>
+</ul>
+<h3 id="2-blockchain-for-financial-transactions">2. Blockchain for Financial Transactions</h3>
+<p>While still emerging, blockchain technology promises to transform:</p>
+<ul>
+<li>Intercompany transactions and reconciliations</li>
+<li>Supply chain financing</li>
+<li>Contract validation and enforcement</li>
+<li>Audit trails and verification</li>
+</ul>
+<h3 id="3-continuous-accounting">3. Continuous Accounting</h3>
+<p>As described by BlackLine founder Therese Tucker and endorsed by Parmenter, continuous accounting distributes close activities throughout the month rather than compressing them into period-end. This approach:</p>
+<ul>
+<li>Reduces period-end workload</li>
+<li>Provides more timely information to stakeholders</li>
+<li>Improves work-life balance for finance teams</li>
+</ul>
+<h3 id="4-finance-digital-twins">4. Finance Digital Twins</h3>
+<p>Emerging from industrial applications, digital twins in finance provide:</p>
+<ul>
+<li>Virtual models of financial operations</li>
+<li>&ldquo;What-if&rdquo; scenario testing</li>
+<li>Process optimization simulation</li>
+</ul>
+<h2 id="conclusion-the-technologically-empowered-controller">Conclusion: The Technologically Empowered Controller</h2>
+<p>As David Parmenter emphasizes throughout his work, technology is not an end in itself but a means to elevate the finance function from transactional processor to strategic business partner.</p>
+<p>The successful controller doesn&rsquo;t need to be a technology expert but must be a savvy technology consumer - understanding business needs, evaluating solutions pragmatically, and implementing thoughtfully.</p>
+<h2 id="self-assessment-questions">Self-Assessment Questions</h2>
+<ol>
+<li>Where does your finance function sit on Gartner&rsquo;s five-stage maturity model?</li>
+<li>Which manual processes in your department consume the most time and are most prone to error?</li>
+<li>Do you have the analytics capabilities to answer your organization&rsquo;s most pressing business questions?</li>
+<li>What untapped functionality exists in your current systems?</li>
+<li>How well does your team embrace technological change?</li>
+</ol>
+<h2 id="action-items">Action Items</h2>
+<ol>
+<li>Conduct a technology maturity assessment with your team</li>
+<li>Identify your top three &ldquo;quick win&rdquo; automation opportunities</li>
+<li>Schedule a demo of one cloud-based planning solution</li>
+<li>Enroll in an online data analytics course (I recommend [specific course])</li>
+<li>Identify one finance process to pilot an RPA solution</li>
+</ol>
+<p><em>What technology changes have made the biggest impact in your finance function? I&rsquo;d love to hear about your experiences in the comments below.</em></p>
+<hr>
+<p><em>References:</em></p>
+<ul>
+<li>Parmenter, D. (2019). The Leading-Edge Manager&rsquo;s Guide to Success. Wiley.</li>
+<li>KPMG. (2021). Finance Technology 2025 Report.</li>
+<li>McKinsey &amp; Company. (2022). The Analytics-Powered CFO.</li>
+<li>Deloitte. (2020). Global Robotic Process Automation Survey.</li>
+<li>Accenture. (2021). Finance 2025: Digital Transformation in Finance.</li>
+<li>Tucker, T. (2018). The Continuous Accounting Revolution. BlackLine Press.</li>
+</ul>
+]]></content:encoded></item></channel></rss>

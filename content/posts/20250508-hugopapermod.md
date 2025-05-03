@@ -12,20 +12,6 @@ categories: ["Web Development"]
 
 [Hugo](https://gohugo.io/) is a blazing fast static site generator written in Go. Combined with the elegant [PaperMod theme](https://github.com/adityatelange/hugo-PaperMod), it's a powerful solution for creating modern websites, blogs, and documentation. This crash course will guide you through setting up, configuring, and customizing your Hugo site with PaperMod.
 
-## Table of Contents
-
-1. [Installation](#installation)
-2. [Creating a New Site](#creating-a-new-site)
-3. [Installing the PaperMod Theme](#installing-the-papermod-theme)
-4. [Basic Configuration](#basic-configuration)
-5. [Content Management](#content-management)
-6. [Customizing PaperMod](#customizing-papermod)
-7. [Deployment](#deployment)
-8. [Hugo Command Line Flags & Environment Variables](#hugo-command-line-flags--environment-variables)
-9. [Troubleshooting](#troubleshooting)
-10. [Advanced Features](#advanced-features)
-11. [Useful Resources](#useful-resources)
-
 ## Installation
 
 ### Install Hugo

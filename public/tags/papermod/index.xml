@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Papermod on Michael Brunger</title><link>http://localhost:1313/tags/papermod/</link><description>Recent content in Papermod on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Wed, 30 Apr 2025 15:16:47 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/papermod/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo &amp; PaperMod Theme</title><link>http://localhost:1313/posts/20250508-hugopapermod/</link><pubDate>Thu, 08 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/20250508-hugopapermod/</guid><description>&lt;h1 id="hugo--papermod-theme-a-complete-crash-course">Hugo + PaperMod Theme: A Complete Crash Course&lt;/h1>
+&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;p>&lt;a href="https://gohugo.io/">Hugo&lt;/a> is a blazing fast static site generator written in Go. Combined with the elegant &lt;a href="https://github.com/adityatelange/hugo-PaperMod">PaperMod theme&lt;/a>, it&amp;rsquo;s a powerful solution for creating modern websites, blogs, and documentation. This crash course will guide you through setting up, configuring, and customizing your Hugo site with PaperMod.&lt;/p>
+&lt;h2 id="table-of-contents">Table of Contents&lt;/h2>
+&lt;ol>
+&lt;li>&lt;a href="#installation">Installation&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#creating-a-new-site">Creating a New Site&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#installing-the-papermod-theme">Installing the PaperMod Theme&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#basic-configuration">Basic Configuration&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#content-management">Content Management&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#customizing-papermod">Customizing PaperMod&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#deployment">Deployment&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#hugo-command-line-flags--environment-variables">Hugo Command Line Flags &amp;amp; Environment Variables&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#troubleshooting">Troubleshooting&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#advanced-features">Advanced Features&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#useful-resources">Useful Resources&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;h2 id="installation">Installation&lt;/h2>
+&lt;h3 id="install-hugo">Install Hugo&lt;/h3>
+&lt;p>First, you need to install Hugo on your system:&lt;/p></description><content:encoded><![CDATA[<h1 id="hugo--papermod-theme-a-complete-crash-course">Hugo + PaperMod Theme: A Complete Crash Course</h1>
+<h2 id="introduction">Introduction</h2>
+<p><a href="https://gohugo.io/">Hugo</a> is a blazing fast static site generator written in Go. Combined with the elegant <a href="https://github.com/adityatelange/hugo-PaperMod">PaperMod theme</a>, it&rsquo;s a powerful solution for creating modern websites, blogs, and documentation. This crash course will guide you through setting up, configuring, and customizing your Hugo site with PaperMod.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#creating-a-new-site">Creating a New Site</a></li>
+<li><a href="#installing-the-papermod-theme">Installing the PaperMod Theme</a></li>
+<li><a href="#basic-configuration">Basic Configuration</a></li>
+<li><a href="#content-management">Content Management</a></li>
+<li><a href="#customizing-papermod">Customizing PaperMod</a></li>
+<li><a href="#deployment">Deployment</a></li>
+<li><a href="#hugo-command-line-flags--environment-variables">Hugo Command Line Flags &amp; Environment Variables</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#advanced-features">Advanced Features</a></li>
+<li><a href="#useful-resources">Useful Resources</a></li>
+</ol>
+<h2 id="installation">Installation</h2>
+<h3 id="install-hugo">Install Hugo</h3>
+<p>First, you need to install Hugo on your system:</p>
+<h4 id="on-macos-using-homebrew">On macOS (using Homebrew):</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install hugo
+</span></span></code></pre></div><h4 id="on-windows-using-chocolatey">On Windows (using Chocolatey):</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>choco install hugo -confirm
+</span></span></code></pre></div><h4 id="on-linux-debianubuntu">On Linux (Debian/Ubuntu):</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get install hugo
+</span></span></code></pre></div><p>Verify your installation:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo version
+</span></span></code></pre></div><h2 id="creating-a-new-site">Creating a New Site</h2>
+<p>Create a new Hugo site:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new site mysitename
+</span></span><span style="display:flex;"><span>cd mysitename
+</span></span></code></pre></div><p>This creates a new Hugo site in a folder named <code>mysitename</code>.</p>
+<h2 id="installing-the-papermod-theme">Installing the PaperMod Theme</h2>
+<p>You can install the PaperMod theme in two ways:</p>
+<h3 id="method-1-using-git-submodules-recommended">Method 1: Using Git Submodules (Recommended)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
+</span></span></code></pre></div><h3 id="method-2-manual-download">Method 2: Manual Download</h3>
+<ol>
+<li>Download the theme from <a href="https://github.com/adityatelange/hugo-PaperMod">GitHub</a></li>
+<li>Extract it to the <code>themes/PaperMod</code> directory</li>
+</ol>
+<h2 id="basic-configuration">Basic Configuration</h2>
+<p>Create or modify the <code>config.yml</code> file in your site&rsquo;s root directory:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">baseURL</span>: <span style="color:#e6db74">&#34;https://yourwebsite.com/&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">title</span>: <span style="color:#e6db74">&#34;Your Site Title&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">paginate</span>: <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">theme</span>: <span style="color:#ae81ff">PaperMod</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">enableRobotsTXT</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">buildDrafts</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">buildFuture</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">buildExpired</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">minifyOutput</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">params</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">env</span>: <span style="color:#ae81ff">production</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">title</span>: <span style="color:#ae81ff">Your Site Title</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">description</span>: <span style="color:#e6db74">&#34;Your site description&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">keywords</span>: [<span style="color:#ae81ff">Blog, Portfolio, PaperMod]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">author</span>: <span style="color:#ae81ff">Your Name</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">DateFormat</span>: <span style="color:#e6db74">&#34;January 2, 2006&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">defaultTheme</span>: <span style="color:#ae81ff">auto</span> <span style="color:#75715e"># dark, light, auto</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">disableThemeToggle</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ShowReadingTime</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ShowShareButtons</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ShowPostNavLinks</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ShowBreadCrumbs</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ShowCodeCopyButtons</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ShowWordCount</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ShowRssButtonInSectionTermList</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">UseHugoToc</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">disableSpecial1stPost</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">disableScrollToTop</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">comments</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">hidemeta</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">hideSummary</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">showtoc</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">tocopen</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">assets</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># disableFingerprinting: true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">favicon</span>: <span style="color:#e6db74">&#34;/favicon.ico&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">favicon16x16</span>: <span style="color:#e6db74">&#34;/favicon-16x16.png&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">favicon32x32</span>: <span style="color:#e6db74">&#34;/favicon-32x32.png&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">apple_touch_icon</span>: <span style="color:#e6db74">&#34;/apple-touch-icon.png&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">profileMode</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">title</span>: <span style="color:#ae81ff">Your Name</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">subtitle</span>: <span style="color:#e6db74">&#34;Your short bio here&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">imageUrl</span>: <span style="color:#e6db74">&#34;/images/profile.jpg&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">imageWidth</span>: <span style="color:#ae81ff">120</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">imageHeight</span>: <span style="color:#ae81ff">120</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">buttons</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Archives</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">url</span>: <span style="color:#ae81ff">archives</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Tags</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">url</span>: <span style="color:#ae81ff">tags</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">socialIcons</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">twitter</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">url</span>: <span style="color:#e6db74">&#34;https://twitter.com/&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">github</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">url</span>: <span style="color:#e6db74">&#34;https://github.com/&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">linkedin</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">url</span>: <span style="color:#e6db74">&#34;https://linkedin.com/in/&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">cover</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">hidden</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">hiddenInList</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">hiddenInSingle</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">menu</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">main</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">identifier</span>: <span style="color:#ae81ff">categories</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Categories</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">url</span>: <span style="color:#ae81ff">/categories/</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">weight</span>: <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">identifier</span>: <span style="color:#ae81ff">tags</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Tags</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">url</span>: <span style="color:#ae81ff">/tags/</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">weight</span>: <span style="color:#ae81ff">20</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">identifier</span>: <span style="color:#ae81ff">archives</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Archives</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">url</span>: <span style="color:#ae81ff">/archives/</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">weight</span>: <span style="color:#ae81ff">30</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">identifier</span>: <span style="color:#ae81ff">search</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Search</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">url</span>: <span style="color:#ae81ff">/search/</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">weight</span>: <span style="color:#ae81ff">40</span>
+</span></span></code></pre></div><h2 id="content-management">Content Management</h2>
+<h3 id="creating-posts">Creating Posts</h3>
+<p>Create a new post:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new posts/my-first-post.md
+</span></span></code></pre></div><p>This creates a new file at <code>content/posts/my-first-post.md</code> with default front matter:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>title: &#34;My First Post&#34;
+</span></span><span style="display:flex;"><span>date: 2023-04-29T10:30:00+00:00
+</span></span><span style="display:flex;"><span>draft: true
+</span></span><span style="display:flex;"><span>tags: [&#34;first&#34;]
+</span></span><span style="display:flex;"><span>categories: [&#34;example&#34;]
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Your content here...
+</span></span></code></pre></div><p>Remember to set <code>draft: false</code> when you&rsquo;re ready to publish.</p>
+<h3 id="front-matter-options">Front Matter Options</h3>
+<p>PaperMod supports many front matter options:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">title</span>: <span style="color:#e6db74">&#34;My Post Title&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">date</span>: <span style="color:#e6db74">2023-04-29</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">draft</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">description</span>: <span style="color:#e6db74">&#34;Description of the post&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">tags</span>: [<span style="color:#e6db74">&#34;hugo&#34;</span>, <span style="color:#e6db74">&#34;papermod&#34;</span>, <span style="color:#e6db74">&#34;tutorial&#34;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#f92672">categories</span>: [<span style="color:#e6db74">&#34;web development&#34;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#f92672">weight</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">cover</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#e6db74">&#34;/path/to/image.jpg&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">alt</span>: <span style="color:#e6db74">&#34;Alternative text&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">caption</span>: <span style="color:#e6db74">&#34;Image caption&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">relative</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">showToc</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">TocOpen</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">hidemeta</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">comments</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>---
+</span></span></code></pre></div><h3 id="content-structure">Content Structure</h3>
+<pre tabindex="0"><code>content/
+├── posts/
+│   ├── post-1.md
+│   └── post-2.md
+├── about.md
+└── projects/
+    ├── project-1.md
+    └── project-2.md
+</code></pre><h2 id="customizing-papermod">Customizing PaperMod</h2>
+<h3 id="creating-homepage-layouts">Creating Homepage Layouts</h3>
+<p>PaperMod offers three homepage layouts:</p>
+<ol>
+<li><strong>Default (List)</strong>: Shows a list of posts</li>
+<li><strong>Profile Mode</strong>: Focused on personal info</li>
+<li><strong>Cover Mode</strong>: Shows a full-page cover image</li>
+</ol>
+<p>To enable Profile Mode, update your <code>config.yml</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">params</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">profileMode</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">title</span>: <span style="color:#e6db74">&#34;Your Name&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">subtitle</span>: <span style="color:#e6db74">&#34;Your bio or tagline&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">imageUrl</span>: <span style="color:#e6db74">&#34;/images/profile.jpg&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">buttons</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Blog</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">url</span>: <span style="color:#ae81ff">posts</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Projects</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">url</span>: <span style="color:#ae81ff">projects</span>
+</span></span></code></pre></div><h3 id="adding-search-functionality">Adding Search Functionality</h3>
+<ol>
+<li>Create a search page:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new search.md
+</span></span></code></pre></div><ol start="2">
+<li>Add this content to <code>search.md</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>title: &#34;Search&#34;
+</span></span><span style="display:flex;"><span>layout: &#34;search&#34;
+</span></span><span style="display:flex;"><span>summary: &#34;search&#34;
+</span></span><span style="display:flex;"><span>placeholder: &#34;Search posts...&#34;
+</span></span><span style="display:flex;"><span>---
+</span></span></code></pre></div><ol start="3">
+<li>Add search to your menu in <code>config.yml</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">menu</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">main</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">identifier</span>: <span style="color:#ae81ff">search</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Search</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">url</span>: <span style="color:#ae81ff">/search/</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">weight</span>: <span style="color:#ae81ff">10</span>
+</span></span></code></pre></div><h3 id="custom-css">Custom CSS</h3>
+<p>Create a file at <code>assets/css/extended/custom.css</code> for your custom styles:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#75715e">/* Your custom styles here */</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">body</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* Custom body styles */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">post-title</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* Custom post title styles */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="custom-shortcodes">Custom Shortcodes</h3>
+<p>Create custom shortcodes in <code>layouts/shortcodes/</code>:</p>
+<p>For example, create <code>layouts/shortcodes/notice.html</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;notice {{ .Get 0 }}&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  {{ .Inner | markdownify }}
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><p>Use it in your content:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>{&lt; <span style="color:#f92672">notice</span> <span style="color:#a6e22e">info</span> &gt;}
+</span></span><span style="display:flex;"><span>This is an info notice.
+</span></span><span style="display:flex;"><span>{&lt; /<span style="color:#f92672">notice</span> &gt;}
+</span></span></code></pre></div><h2 id="deployment">Deployment</h2>
+<h3 id="local-preview">Local Preview</h3>
+<p>Run a local server:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo server -D
+</span></span></code></pre></div><p>This starts a server at <code>http://localhost:1313/</code>. The <code>-D</code> flag includes draft posts.</p>
+<h3 id="building-for-production">Building for Production</h3>
+<p>Build your site:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo --minify
+</span></span></code></pre></div><p>This generates your site in the <code>public/</code> directory, ready for deployment.</p>
+<h3 id="deployment-options">Deployment Options</h3>
+<h4 id="github-pages">GitHub Pages</h4>
+<ol>
+<li>Create a <code>.github/workflows/hugo.yml</code> file:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy Hugo site</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v3</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">submodules</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">fetch-depth</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Setup Hugo</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-hugo@v2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">hugo-version</span>: <span style="color:#e6db74">&#39;latest&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: <span style="color:#ae81ff">hugo --minify</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-gh-pages@v3</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">github_token</span>: <span style="color:#ae81ff">${{ secrets.GITHUB_TOKEN }}</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">publish_dir</span>: <span style="color:#ae81ff">./public</span>
+</span></span></code></pre></div><ol start="2">
+<li>Set your repository settings to deploy from the <code>gh-pages</code> branch.</li>
+</ol>
+<h4 id="netlify">Netlify</h4>
+<ol>
+<li>Push your Hugo site to a GitHub repository</li>
+<li>Sign up for <a href="https://www.netlify.com/">Netlify</a></li>
+<li>Import your repository</li>
+<li>Set build command to <code>hugo --minify</code> and publish directory to <code>public</code></li>
+</ol>
+<h2 id="hugo-command-line-flags--environment-variables">Hugo Command Line Flags &amp; Environment Variables</h2>
+<p>Hugo offers numerous command line flags and environment variables that can significantly impact your development workflow and site performance.</p>
+<h3 id="important-command-line-flags">Important Command Line Flags</h3>
+<p>When using <code>hugo server</code> for local development:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Basic development server</span>
+</span></span><span style="display:flex;"><span>hugo server
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Include draft content</span>
+</span></span><span style="display:flex;"><span>hugo server -D
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Fast render mode (disable for accurate rendering)</span>
+</span></span><span style="display:flex;"><span>hugo server --disableFastRender
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Force rebuilds on file changes</span>
+</span></span><span style="display:flex;"><span>hugo server --disableLiveReload
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Bind to all network interfaces (access from other devices)</span>
+</span></span><span style="display:flex;"><span>hugo server --bind<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0.0.0.0&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Specify port</span>
+</span></span><span style="display:flex;"><span>hugo server --port<span style="color:#f92672">=</span><span style="color:#ae81ff">8080</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Watch for changes in theme folder too</span>
+</span></span><span style="display:flex;"><span>hugo server --ignoreCache --themesDir<span style="color:#f92672">=</span>../..
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Full rebuild on changes (slower but more accurate)</span>
+</span></span><span style="display:flex;"><span>hugo server --disableFastRender --renderToDisk
+</span></span></code></pre></div><p>When building your site for production:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Standard build</span>
+</span></span><span style="display:flex;"><span>hugo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Minify output</span>
+</span></span><span style="display:flex;"><span>hugo --minify
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Include expired content</span>
+</span></span><span style="display:flex;"><span>hugo --buildExpired
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Include future-dated content</span>
+</span></span><span style="display:flex;"><span>hugo --buildFuture
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Include draft content (generally not for production)</span>
+</span></span><span style="display:flex;"><span>hugo --buildDrafts
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Specify base URL</span>
+</span></span><span style="display:flex;"><span>hugo --baseURL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://example.com/&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Verbose output for debugging</span>
+</span></span><span style="display:flex;"><span>hugo -v
+</span></span></code></pre></div><h3 id="environment-variables">Environment Variables</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Set environment</span>
+</span></span><span style="display:flex;"><span>HUGO_ENV<span style="color:#f92672">=</span>production hugo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Change number of parallel workers</span>
+</span></span><span style="display:flex;"><span>HUGO_NUMWORKERMULTIPLIER<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> hugo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Cache settings</span>
+</span></span><span style="display:flex;"><span>HUGO_CACHEDIR<span style="color:#f92672">=</span>/path/to/cache hugo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Resource cache</span>
+</span></span><span style="display:flex;"><span>HUGO_RESOURCEDIR<span style="color:#f92672">=</span>/path/to/resources hugo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Disable symlinks in file detection</span>
+</span></span><span style="display:flex;"><span>HUGO_DISABLEPATHTOFILEBYDISABLEDSYMPATHY<span style="color:#f92672">=</span>true hugo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Disable .git directory ignore</span>
+</span></span><span style="display:flex;"><span>HUGO_IGNOREGIT<span style="color:#f92672">=</span>true hugo
+</span></span></code></pre></div><h3 id="performance-optimization-flags">Performance Optimization Flags</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Enable HTTP/2 server push</span>
+</span></span><span style="display:flex;"><span>hugo server --http2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Disable lazy loading of images</span>
+</span></span><span style="display:flex;"><span>hugo --disableLazyLoading
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Control image processing concurrency</span>
+</span></span><span style="display:flex;"><span>HUGO_IMAGES_PROCESSOR_COUNT<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span> hugo
+</span></span></code></pre></div><h3 id="configuration-based-settings">Configuration-Based Settings</h3>
+<p>You can also set many of these options in your <code>config.yml</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># Build options</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">buildDrafts</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">buildFuture</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">buildExpired</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">disableFastRender</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">enableGitInfo</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Performance settings</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">minify</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">disableHugoGeneratorInject</span>: <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-issues-and-solutions">Common Issues and Solutions</h3>
+<ol>
+<li>
+<p><strong>Theme Not Showing</strong>: Check if the theme is properly installed and referenced in your <code>config.yml</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Check theme directory</span>
+</span></span><span style="display:flex;"><span>ls -la themes/
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Taxonomy Pages Missing</strong>: Ensure you&rsquo;ve defined taxonomies in your config</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">taxonomies</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">category</span>: <span style="color:#ae81ff">categories</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">tag</span>: <span style="color:#ae81ff">tags</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Images Not Loading</strong>: Verify image paths and try using page bundles</p>
+<p>Create a directory structure:</p>
+<pre tabindex="0"><code>content/
+└── posts/
+    └── my-post/
+        ├── index.md
+        └── images/
+            └── featured.jpg
+</code></pre><p>Then reference with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>![<span style="color:#f92672">Alt text</span>](<span style="color:#a6e22e">images/featured.jpg</span>)
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Hugo Server Error</strong>: Clear cache and restart</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo mod clean
+</span></span><span style="display:flex;"><span>hugo server
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="advanced-features">Advanced Features</h2>
+<h3 id="adding-a-comment-system">Adding a Comment System</h3>
+<p>To add Disqus comments:</p>
+<ol>
+<li>Update your <code>config.yml</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">disqusShortname</span>: <span style="color:#ae81ff">your-disqus-shortname</span>
+</span></span></code></pre></div><ol start="2">
+<li>Enable comments in front matter:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">title</span>: <span style="color:#e6db74">&#34;My Post with Comments&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">comments</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>---
+</span></span></code></pre></div><h3 id="multilingual-support">Multilingual Support</h3>
+<p>Update your <code>config.yml</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">languageCode</span>: <span style="color:#e6db74">&#34;en-us&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">defaultContentLanguage</span>: <span style="color:#e6db74">&#34;en&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">languages</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">en</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">languageName</span>: <span style="color:#e6db74">&#34;English&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">weight</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">taxonomies</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">category</span>: <span style="color:#ae81ff">categories</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">tag</span>: <span style="color:#ae81ff">tags</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">fr</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">languageName</span>: <span style="color:#e6db74">&#34;Français&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">weight</span>: <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">taxonomies</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">category</span>: <span style="color:#ae81ff">categories</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">tag</span>: <span style="color:#ae81ff">tags</span>
+</span></span></code></pre></div><p>Create language-specific content:</p>
+<pre tabindex="0"><code>content/
+├── posts/
+│   └── hello-world.md  # English
+└── fr/
+    └── posts/
+        └── bonjour-monde.md  # French
+</code></pre><h3 id="content-organization-with-page-bundles">Content Organization with Page Bundles</h3>
+<p>Page bundles keep content and its resources together:</p>
+<pre tabindex="0"><code>content/
+└── posts/
+    └── my-bundled-post/
+        ├── index.md
+        ├── image1.jpg
+        └── data.json
+</code></pre><p>Reference bundled resources in your content:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>![<span style="color:#f92672">Featured Image</span>](<span style="color:#a6e22e">image1.jpg</span>)
+</span></span></code></pre></div><h2 id="useful-resources">Useful Resources</h2>
+<ul>
+<li><a href="https://gohugo.io/documentation/">Hugo Documentation</a></li>
+<li><a href="https://github.com/adityatelange/hugo-PaperMod/wiki">PaperMod Wiki</a></li>
+<li><a href="https://discourse.gohugo.io/">Hugo Forum</a></li>
+<li><a href="https://github.com/adityatelange/hugo-PaperMod">PaperMod GitHub Repository</a></li>
+<li><a href="https://www.markdownguide.org/">Markdown Guide</a></li>
+<li><a href="https://youtu.be/hjD9jTi_DQ4">Learn Hugo in Under 2 Hours</a></li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>This crash course has provided you with the essential knowledge to get started with Hugo and the PaperMod theme. As you become more comfortable, explore Hugo&rsquo;s documentation and the PaperMod wiki for advanced features and customization options.</p>
+<p>Remember that Hugo&rsquo;s strength lies in its flexibility and speed, while PaperMod offers a clean, modern design with excellent performance. Together, they provide an excellent foundation for your website.</p>
+<p>Happy building!</p>
+]]></content:encoded></item></channel></rss>

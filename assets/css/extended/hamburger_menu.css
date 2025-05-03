@@ -235,3 +235,23 @@ body.no-scroll {
         display: block;
     }
 }
+
+/* === Custom CSS for Active Desktop Menu Item Underline === */
+
+/* Apply only to screens wider than the mobile breakpoint (768px) */
+@media (min-width: 769px) {
+
+    /* Target the link (<a>) inside the list item (<li class="active">) within the menu */
+    ul#menu li.active > a {
+      /* Add a border on the bottom to act as an underline */
+      /* Using var(--primary) for theme consistency, or use 'black', 'var(--content)', etc. */
+      border-bottom: 2px solid var(--primary); 
+  
+      /* Add padding below the text to create space before the underline */
+      padding-bottom: 3px; /* Adjust this value (e.g., 2px, 4px) for desired spacing */
+  
+      /* Optional: May help ensure consistent alignment/spacing */
+      /* display: inline-block; */ 
+    }
+    
+  }

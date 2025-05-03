@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Financial Planning on Michael Brunger</title><link>http://localhost:1313/tags/financial-planning/</link><description>Recent content in Financial Planning on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Sat, 31 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/financial-planning/index.xml" rel="self" type="application/rss+xml"/><item><title>Beyond Traditional Budgeting</title><link>http://localhost:1313/posts/fc-series/beyond-traditional-budgeting-rolling-forecasts/</link><pubDate>Sat, 31 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/fc-series/beyond-traditional-budgeting-rolling-forecasts/</guid><description>Implementing quarterly rolling forecasts and moving beyond annual budget constraints</description><content:encoded><![CDATA[<h1 id="part-4-beyond-traditional-budgeting">Part 4: Beyond Traditional Budgeting</h1>
+<p><em>This post is part of my &ldquo;learning in public&rdquo; journey as I transition into my role as a finance manager. All concepts and frameworks are attributed to their original creators, primarily David Parmenter and other thought leaders in the field.</em></p>
+<h2 id="the-problem-with-traditional-annual-budgets">The Problem with Traditional Annual Budgets</h2>
+<p>Most organizations still cling to the annual budgeting process despite mounting evidence of its ineffectiveness. As David Parmenter points out in his book &ldquo;The Financial Controller and CFO&rsquo;s Toolkit,&rdquo; traditional budgets often become outdated shortly after completion due to rapidly changing business conditions.</p>
+<p>According to Parmenter (2017), the traditional budgeting process suffers from several fundamental flaws:</p>
+<ol>
+<li><strong>Time-consuming and expensive</strong> - Finance teams typically spend months preparing budgets that become obsolete within weeks</li>
+<li><strong>Based on unsupported assumptions</strong> - Many budgets are built on guesswork rather than reliable forecasting techniques</li>
+<li><strong>Encourages dysfunctional behaviors</strong> - Department managers often engage in &ldquo;gaming the system,&rdquo; padding budgets or spending unnecessarily to protect future allocations</li>
+<li><strong>Disconnected from strategy</strong> - Annual budgets rarely align with the organization&rsquo;s strategic objectives</li>
+<li><strong>Too rigid for today&rsquo;s dynamic business environment</strong> - Annual budgets lack the flexibility to adapt to rapidly changing market conditions</li>
+</ol>
+<p>As Parmenter notes, &ldquo;Annual planning is a relic of the past and was designed for a stable, predictable business environment that no longer exists.&rdquo;</p>
+<h2 id="the-beyond-budgeting-movement">The Beyond Budgeting Movement</h2>
+<p>Jeremy Hope and Robin Fraser pioneered the &ldquo;Beyond Budgeting&rdquo; movement that provides a radical alternative to traditional budgeting processes. Their research, documented in &ldquo;Beyond Budgeting: How Managers Can Break Free from the Annual Performance Trap&rdquo; (2003), identified twelve principles for organizations seeking to move beyond conventional budgeting approaches.</p>
+<h3 id="core-beyond-budgeting-principles">Core Beyond Budgeting Principles</h3>
+<h4 id="performance-management-principles">Performance Management Principles:</h4>
+<ol>
+<li><strong>Set relative goals</strong> rather than fixed targets</li>
+<li><strong>Reward shared success</strong> based on relative performance, not meeting fixed targets</li>
+<li><strong>Make planning a continuous and inclusive process</strong></li>
+<li><strong>Make resources available as needed</strong>, not through annual budget allocations</li>
+<li><strong>Coordinate cross-company interactions</strong> dynamically, not through annual plans</li>
+<li><strong>Base controls on KPIs, trends, and relative indicators</strong>, not budget variances</li>
+</ol>
+<h4 id="leadership-principles">Leadership Principles:</h4>
+<ol start="7">
+<li><strong>Provide a governance framework based on clear values and boundaries</strong></li>
+<li><strong>Create a high-performance climate</strong> based on relative success</li>
+<li><strong>Delegate decision-making authority</strong> to operational managers</li>
+<li><strong>Make teams accountable for customer outcomes</strong></li>
+<li><strong>Create a transparent information system</strong> providing fast, open information</li>
+<li><strong>Use performance metrics to promote improvement</strong>, not control</li>
+</ol>
+<h2 id="parmenters-rolling-forecast-solution">Parmenter&rsquo;s Rolling Forecast Solution</h2>
+<p>While completely abandoning budgets may be too dramatic a step for many organizations, Parmenter advocates for quarterly rolling forecasts as a practical middle ground. This approach maintains some structure while addressing many of the shortcomings of traditional budgeting.</p>
+<h3 id="key-elements-of-quarterly-rolling-forecasts">Key Elements of Quarterly Rolling Forecasts</h3>
+<p>According to Parmenter (2017), an effective rolling forecast system includes:</p>
+<ol>
+<li><strong>Looking out 5-6 quarters</strong> - Always maintaining a 12-18 month forward view</li>
+<li><strong>Focusing on key drivers</strong> - Forecasting 10-12 key business variables rather than detailed line items</li>
+<li><strong>Using current business knowledge</strong> - Incorporating the latest market intelligence and operational data</li>
+<li><strong>Separating targets from forecasts</strong> - Ensuring forecasts represent the most likely outcome, not a target</li>
+<li><strong>Completing within 5-6 working days</strong> - Making the process quick and efficient</li>
+<li><strong>Involving the whole management team</strong> - Not just a finance exercise</li>
+</ol>
+<p>As Parmenter states, &ldquo;Rolling forecasts should be light-touch forecasts focusing on key drivers that can be prepared quickly.&rdquo;</p>
+<h2 id="implementation-roadmap-from-traditional-to-rolling-forecasts">Implementation Roadmap: From Traditional to Rolling Forecasts</h2>
+<p>Transitioning from traditional annual budgeting to rolling forecasts requires careful change management. Here&rsquo;s a practical roadmap based on Parmenter&rsquo;s recommendations:</p>
+<h3 id="phase-1-preparation-3-6-months">Phase 1: Preparation (3-6 months)</h3>
+<ul>
+<li>Form a cross-functional implementation team</li>
+<li>Educate senior leadership on the limitations of traditional budgeting</li>
+<li>Identify key business drivers for forecasting</li>
+<li>Design a simplified forecasting template</li>
+<li>Establish a proof of concept with one business unit</li>
+<li>Document the proposed new process</li>
+</ul>
+<h3 id="phase-2-implementation-6-12-months">Phase 2: Implementation (6-12 months)</h3>
+<ul>
+<li>Run traditional budgeting process alongside rolling forecasts</li>
+<li>Progressively reduce the detail in the annual budget</li>
+<li>Train finance team and business managers on new processes</li>
+<li>Implement supporting technology</li>
+<li>Begin reporting based on forecast variances rather than budget variances</li>
+<li>Review and refine the process</li>
+</ul>
+<h3 id="phase-3-optimization-12-months">Phase 3: Optimization (12+ months)</h3>
+<ul>
+<li>Phase out the traditional annual budget completely</li>
+<li>Integrate rolling forecasts with strategic planning</li>
+<li>Adjust performance evaluation and incentive systems</li>
+<li>Implement continuous improvement of the forecasting process</li>
+</ul>
+<h2 id="overcoming-resistance-to-change">Overcoming Resistance to Change</h2>
+<p>Implementing rolling forecasts typically encounters resistance, particularly from those comfortable with the status quo. Parmenter suggests several strategies to address this resistance:</p>
+<ol>
+<li><strong>Focus on benefits</strong> - Quantify the time savings and improved decision-making</li>
+<li><strong>Start with a pilot</strong> - Demonstrate success in one department before rolling out company-wide</li>
+<li><strong>Secure senior leadership support</strong> - Ensure the CFO and CEO champion the change</li>
+<li><strong>Train extensively</strong> - Invest in developing new skills and capabilities</li>
+<li><strong>Communicate constantly</strong> - Explain the &ldquo;why&rdquo; behind the changes</li>
+<li><strong>Make it easier</strong> - Ensure new processes are simpler than the old ones</li>
+</ol>
+<h2 id="case-study-a-mid-size-manufacturing-company">Case Study: A Mid-Size Manufacturing Company</h2>
+<p>A manufacturing company with $120 million in annual revenue implemented quarterly rolling forecasts based on Parmenter&rsquo;s methodology. They identified 12 key business drivers, including:</p>
+<ul>
+<li>Raw material costs for key inputs</li>
+<li>Production volume by major product line</li>
+<li>Average selling price by product line</li>
+<li>Headcount in key departments</li>
+<li>Energy consumption</li>
+<li>Exchange rates for major currencies</li>
+</ul>
+<p>Their previous annual budgeting process took 12 weeks and produced a 50-page document. After implementing rolling forecasts, they could produce a comprehensive forecast in just 5 days that proved more accurate than their previous annual budget.</p>
+<p>The finance team reported spending 70% less time on forecasting activities while providing more valuable information to decision-makers. In the first year alone, they identified $3.2 million in cost-saving opportunities that would have been missed under the traditional budgeting approach.</p>
+<h2 id="integrating-with-performance-management">Integrating with Performance Management</h2>
+<p>Hope and Fraser emphasize that beyond budgeting isn&rsquo;t just a financial process change—it represents a fundamental shift in how organizations manage performance.</p>
+<p>To fully realize the benefits, organizations should consider:</p>
+<ol>
+<li><strong>Separating target-setting from forecasting</strong> - Targets should stretch performance, while forecasts should be realistic</li>
+<li><strong>Using relative performance measures</strong> - Comparing to competitors and past performance rather than fixed targets</li>
+<li><strong>Implementing a balanced scorecard approach</strong> - As developed by Kaplan and Norton, to ensure financial and non-financial measures are considered</li>
+<li><strong>Revising incentive systems</strong> - Moving from individual budget-based bonuses to team-based relative performance rewards</li>
+</ol>
+<h2 id="tools-and-technology-enablers">Tools and Technology Enablers</h2>
+<p>The right tools can significantly streamline the rolling forecast process. Options include:</p>
+<ol>
+<li><strong>Purpose-built planning software</strong> - Solutions like Adaptive Insights, Anaplan, or Prophix</li>
+<li><strong>Business intelligence tools</strong> - Power BI, Tableau, or QlikView for visualization</li>
+<li><strong>Enhanced spreadsheet models</strong> - More sophisticated Excel models with proper controls</li>
+<li><strong>Cloud-based collaboration platforms</strong> - Enabling distributed teams to collaborate effectively</li>
+</ol>
+<h2 id="self-assessment-is-your-organization-ready">Self-Assessment: Is Your Organization Ready?</h2>
+<p>Rate your organization on these dimensions from 1 (strongly disagree) to 5 (strongly agree):</p>
+<ol>
+<li>Our current budgeting process adds significant value to decision-making</li>
+<li>Our budgets remain relevant throughout the year</li>
+<li>Our budgeting process takes less than 4 weeks from start to finish</li>
+<li>Business managers view budgeting as a valuable exercise rather than a burden</li>
+<li>Our budgets support rather than hinder agile decision-making</li>
+<li>Our organization could respond quickly to a major market disruption</li>
+<li>We regularly forecast beyond the current financial year</li>
+<li>Our forecasts focus on key business drivers rather than detailed line items</li>
+<li>Senior leaders would support significant changes to our budgeting process</li>
+</ol>
+<p><strong>Scoring:</strong></p>
+<ul>
+<li>36-45: You&rsquo;re already embracing modern budgeting practices</li>
+<li>27-35: Good foundation, but room for improvement</li>
+<li>18-26: Significant modernization needed</li>
+<li>9-17: Traditional budgeting is likely causing organizational pain</li>
+</ul>
+<h2 id="action-items-for-finance-leaders">Action Items for Finance Leaders</h2>
+<ol>
+<li><strong>Document your current budgeting process</strong> - Map out steps, timelines, and resource requirements</li>
+<li><strong>Identify your key business drivers</strong> - What truly moves the needle for your organization?</li>
+<li><strong>Build a simple rolling forecast model</strong> - Start with just the key drivers</li>
+<li><strong>Experiment with a quarterly forecast</strong> - Run it alongside your current process</li>
+<li><strong>Measure the time investment</strong> - Quantify how much effort goes into budgeting and forecasting</li>
+<li><strong>Engage stakeholders</strong> - Discuss pain points and potential improvements with business partners</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>Moving beyond traditional budgeting represents one of the most significant opportunities for modern finance teams to add value to their organizations. By embracing more flexible, forward-looking approaches like rolling forecasts, finance leaders can provide more timely insights while freeing up valuable resources for more strategic activities.</p>
+<p>As David Parmenter emphasizes, &ldquo;The annual planning process has been a major barrier to effective performance management.&rdquo; By adopting the principles outlined in this post, you can begin transforming your finance function from a backwards-looking reporting entity to a forward-looking strategic partner.</p>
+<hr>
+<p><em>What&rsquo;s your experience with budgeting processes? Have you implemented rolling forecasts or other alternatives to traditional budgeting? Share your thoughts in the comments below, and stay tuned for Part 5 of this series, where we&rsquo;ll explore transforming the month-end close process.</em></p>
+<h2 id="references">References</h2>
+<ul>
+<li>Parmenter, D. (2017). The Financial Controller and CFO&rsquo;s Toolkit: Lean Practices to Transform Your Finance Team. Wiley.</li>
+<li>Hope, J., &amp; Fraser, R. (2003). Beyond Budgeting: How Managers Can Break Free from the Annual Performance Trap. Harvard Business School Press.</li>
+<li>Kaplan, R. S., &amp; Norton, D. P. (1996). The Balanced Scorecard: Translating Strategy into Action. Harvard Business School Press.</li>
+<li>Player, S. (2009). Managing Through Change: The Power of Rolling Forecasts. IBM Cognos Innovation Center.</li>
+</ul>
+]]></content:encoded></item></channel></rss>

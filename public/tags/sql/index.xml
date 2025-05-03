@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>SQL on Michael Brunger</title><link>http://localhost:1313/tags/sql/</link><description>Recent content in SQL on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Thu, 01 May 2025 14:01:54 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/sql/index.xml" rel="self" type="application/rss+xml"/><item><title>SQL for Finance Professionals</title><link>http://localhost:1313/posts/20250506-sql/</link><pubDate>Tue, 06 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/20250506-sql/</guid><description>&lt;h1 id="sql-for-finance-professionals-a-practical-guide">SQL for Finance Professionals: A Practical Guide&lt;/h1>
+&lt;p>As a finance manager, I&amp;rsquo;ve discovered that learning SQL has been one of the most valuable skills I&amp;rsquo;ve added to my professional toolkit. When I first heard about SQL, I wondered how a &amp;ldquo;database language&amp;rdquo; could possibly help me with financial reporting and analysis. Now I can&amp;rsquo;t imagine doing my job without it. In this guide, I&amp;rsquo;ll share what I&amp;rsquo;ve learned about SQL from a finance perspective, focusing on practical applications that will make your finance job easier.&lt;/p></description><content:encoded><![CDATA[<h1 id="sql-for-finance-professionals-a-practical-guide">SQL for Finance Professionals: A Practical Guide</h1>
+<p>As a finance manager, I&rsquo;ve discovered that learning SQL has been one of the most valuable skills I&rsquo;ve added to my professional toolkit. When I first heard about SQL, I wondered how a &ldquo;database language&rdquo; could possibly help me with financial reporting and analysis. Now I can&rsquo;t imagine doing my job without it. In this guide, I&rsquo;ll share what I&rsquo;ve learned about SQL from a finance perspective, focusing on practical applications that will make your finance job easier.</p>
+<h2 id="what-exactly-is-sql-and-why-should-finance-professionals-care">What Exactly Is SQL and Why Should Finance Professionals Care?</h2>
+<p>SQL (usually pronounced &ldquo;sequel&rdquo;) stands for Structured Query Language. It&rsquo;s the standard language used to communicate with databases. But what does that really mean for someone in finance?</p>
+<p>At its core, SQL allows you to:</p>
+<ul>
+<li>Extract specific financial data from large datasets</li>
+<li>Transform and summarize that data quickly</li>
+<li>Perform complex financial calculations across thousands or millions of records</li>
+<li>Create consistent, reproducible financial reports</li>
+<li>Combine data from multiple sources (like your ERP, CRM, and other systems)</li>
+</ul>
+<p>Think of SQL as a supercharged version of Excel formulas and pivot tables, but capable of handling far larger datasets and more complex operations.</p>
+<h3 id="my-aha-moment-with-sql-as-a-finance-manager">My &ldquo;Aha&rdquo; Moment with SQL as a Finance Manager</h3>
+<p>My personal light bulb moment came when I needed to analyze three years of transaction data to identify trends in customer payment behavior. What would have taken days of VLOOKUP formulas and pivot tables in Excel took about 20 minutes with a few SQL queries. That&rsquo;s when I realized: this is a game-changer for financial analysis.</p>
+<h2 id="how-databases-work-the-basics-you-need-to-know">How Databases Work: The Basics You Need to Know</h2>
+<p>Before diving into SQL itself, let&rsquo;s understand the environment where SQL operates. In simple terms, a database is an organized collection of data stored in tables.</p>
+<h3 id="database-tables-just-like-excel-but-more-powerful">Database Tables: Just Like Excel, But More Powerful</h3>
+<p>If you&rsquo;re familiar with Excel (and what finance person isn&rsquo;t?), you already understand the basic concept of tables:</p>
+<ul>
+<li>Tables have rows and columns</li>
+<li>Each column contains a specific type of data</li>
+<li>Each row represents a single record or transaction</li>
+</ul>
+<p>The key difference? Database tables can easily handle millions of rows without slowing down, and they can be linked together in sophisticated ways that Excel can&rsquo;t match.</p>
+<h3 id="common-financial-database-tables">Common Financial Database Tables</h3>
+<p>In a typical financial database, you might find tables like:</p>
+<ul>
+<li><strong>Transactions</strong>: Individual financial transactions</li>
+<li><strong>Accounts</strong>: Chart of accounts</li>
+<li><strong>Customers</strong>: Customer information</li>
+<li><strong>Vendors</strong>: Vendor details</li>
+<li><strong>Employees</strong>: Employee information</li>
+<li><strong>GL_Entries</strong>: General ledger entries</li>
+<li><strong>AP_Invoices</strong>: Accounts payable invoices</li>
+<li><strong>AR_Invoices</strong>: Accounts receivable invoices</li>
+</ul>
+<p>These tables are connected through relationships. For example, a transaction might be linked to a specific customer through a customer ID.</p>
+<h2 id="sql-basics-the-commands-youll-use-most-often">SQL Basics: The Commands You&rsquo;ll Use Most Often</h2>
+<p>Let&rsquo;s start with the essential SQL commands that will cover 80% of your needs as a finance professional:</p>
+<h3 id="select-getting-the-data-you-want">SELECT: Getting the Data You Want</h3>
+<p>The SELECT statement is the workhorse of SQL. It retrieves data from one or more tables:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> 
+</span></span><span style="display:flex;"><span>    invoice_number, 
+</span></span><span style="display:flex;"><span>    customer_name, 
+</span></span><span style="display:flex;"><span>    invoice_amount, 
+</span></span><span style="display:flex;"><span>    due_date
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> 
+</span></span><span style="display:flex;"><span>    invoices;
+</span></span></code></pre></div><p>This is equivalent to viewing specific columns in an Excel spreadsheet.</p>
+<h3 id="where-filtering-your-data">WHERE: Filtering Your Data</h3>
+<p>WHERE clauses let you filter results, similar to using Excel&rsquo;s filter feature:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> 
+</span></span><span style="display:flex;"><span>    invoice_number, 
+</span></span><span style="display:flex;"><span>    customer_name, 
+</span></span><span style="display:flex;"><span>    invoice_amount, 
+</span></span><span style="display:flex;"><span>    due_date
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> 
+</span></span><span style="display:flex;"><span>    invoices
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> 
+</span></span><span style="display:flex;"><span>    invoice_amount <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">10000</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">AND</span> due_date <span style="color:#f92672">&lt;</span> <span style="color:#e6db74">&#39;2023-12-31&#39;</span>;
+</span></span></code></pre></div><p>This query finds all large invoices due before the end of 2023 - perfect for cash flow forecasting.</p>
+<h3 id="order-by-sorting-your-results">ORDER BY: Sorting Your Results</h3>
+<p>ORDER BY sorts your results, just like sorting in Excel:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> 
+</span></span><span style="display:flex;"><span>    invoice_number, 
+</span></span><span style="display:flex;"><span>    customer_name, 
+</span></span><span style="display:flex;"><span>    invoice_amount
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> 
+</span></span><span style="display:flex;"><span>    invoices
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> 
+</span></span><span style="display:flex;"><span>    invoice_amount <span style="color:#66d9ef">DESC</span>;
+</span></span></code></pre></div><p>This would show your largest invoices first - great for identifying your biggest accounts receivable items.</p>
+<h3 id="group-by--aggregate-functions-the-power-of-summarization">GROUP BY &amp; Aggregate Functions: The Power of Summarization</h3>
+<p>This is where SQL starts to shine for financial analysis. GROUP BY lets you summarize data:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> 
+</span></span><span style="display:flex;"><span>    customer_name, 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SUM</span>(invoice_amount) <span style="color:#66d9ef">as</span> total_sales,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">COUNT</span>(invoice_number) <span style="color:#66d9ef">as</span> invoice_count,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">AVG</span>(invoice_amount) <span style="color:#66d9ef">as</span> average_invoice
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> 
+</span></span><span style="display:flex;"><span>    invoices
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> 
+</span></span><span style="display:flex;"><span>    customer_name
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> 
+</span></span><span style="display:flex;"><span>    total_sales <span style="color:#66d9ef">DESC</span>;
+</span></span></code></pre></div><p>This query provides customer sales analysis showing total sales, number of invoices, and average invoice amount per customer - the kind of analysis that would require pivot tables in Excel.</p>
+<h3 id="join-combining-data-from-multiple-tables">JOIN: Combining Data from Multiple Tables</h3>
+<p>JOIN clauses connect related tables. This is like VLOOKUP on steroids:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> 
+</span></span><span style="display:flex;"><span>    i.invoice_number,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">c</span>.customer_name,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">c</span>.industry,
+</span></span><span style="display:flex;"><span>    i.invoice_amount,
+</span></span><span style="display:flex;"><span>    i.payment_date,
+</span></span><span style="display:flex;"><span>    i.due_date
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> 
+</span></span><span style="display:flex;"><span>    invoices i
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">JOIN</span> 
+</span></span><span style="display:flex;"><span>    customers <span style="color:#66d9ef">c</span> <span style="color:#66d9ef">ON</span> i.customer_id <span style="color:#f92672">=</span> <span style="color:#66d9ef">c</span>.customer_id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> 
+</span></span><span style="display:flex;"><span>    i.payment_date <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">NULL</span>;
+</span></span></code></pre></div><p>This query finds all unpaid invoices with customer details included - perfect for collections follow-up.</p>
+<h2 id="real-world-sql-examples-for-finance-professionals">Real-World SQL Examples for Finance Professionals</h2>
+<p>Let&rsquo;s dive into some practical examples that demonstrate how SQL can help with common finance tasks.</p>
+<h3 id="1-aging-accounts-receivable-report">1. Aging Accounts Receivable Report</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">c</span>.customer_name,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SUM</span>(<span style="color:#66d9ef">CASE</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">WHEN</span> DATEDIFF(<span style="color:#66d9ef">day</span>, i.due_date, GETDATE()) <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">30</span> <span style="color:#66d9ef">THEN</span> i.remaining_amount 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">ELSE</span> <span style="color:#ae81ff">0</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">END</span>) <span style="color:#66d9ef">as</span> <span style="color:#e6db74">&#39;0-30_days&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SUM</span>(<span style="color:#66d9ef">CASE</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">WHEN</span> DATEDIFF(<span style="color:#66d9ef">day</span>, i.due_date, GETDATE()) <span style="color:#66d9ef">BETWEEN</span> <span style="color:#ae81ff">31</span> <span style="color:#66d9ef">AND</span> <span style="color:#ae81ff">60</span> <span style="color:#66d9ef">THEN</span> i.remaining_amount 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">ELSE</span> <span style="color:#ae81ff">0</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">END</span>) <span style="color:#66d9ef">as</span> <span style="color:#e6db74">&#39;31-60_days&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SUM</span>(<span style="color:#66d9ef">CASE</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">WHEN</span> DATEDIFF(<span style="color:#66d9ef">day</span>, i.due_date, GETDATE()) <span style="color:#66d9ef">BETWEEN</span> <span style="color:#ae81ff">61</span> <span style="color:#66d9ef">AND</span> <span style="color:#ae81ff">90</span> <span style="color:#66d9ef">THEN</span> i.remaining_amount 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">ELSE</span> <span style="color:#ae81ff">0</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">END</span>) <span style="color:#66d9ef">as</span> <span style="color:#e6db74">&#39;61-90_days&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SUM</span>(<span style="color:#66d9ef">CASE</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">WHEN</span> DATEDIFF(<span style="color:#66d9ef">day</span>, i.due_date, GETDATE()) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">90</span> <span style="color:#66d9ef">THEN</span> i.remaining_amount 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">ELSE</span> <span style="color:#ae81ff">0</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">END</span>) <span style="color:#66d9ef">as</span> <span style="color:#e6db74">&#39;Over_90_days&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SUM</span>(i.remaining_amount) <span style="color:#66d9ef">as</span> total_outstanding
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> 
+</span></span><span style="display:flex;"><span>    invoices i
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">JOIN</span> 
+</span></span><span style="display:flex;"><span>    customers <span style="color:#66d9ef">c</span> <span style="color:#66d9ef">ON</span> i.customer_id <span style="color:#f92672">=</span> <span style="color:#66d9ef">c</span>.customer_id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> 
+</span></span><span style="display:flex;"><span>    i.remaining_amount <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">c</span>.customer_name
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> 
+</span></span><span style="display:flex;"><span>    total_outstanding <span style="color:#66d9ef">DESC</span>;
+</span></span></code></pre></div><p>This query produces an aging AR report broken down by customer and aging buckets. When I first created this in SQL after years of doing it in Excel, it cut my monthly reporting time by several hours.</p>
+<h3 id="2-cash-flow-forecasting">2. Cash Flow Forecasting</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> 
+</span></span><span style="display:flex;"><span>    DATEADD(week, DATEDIFF(week, <span style="color:#ae81ff">0</span>, due_date), <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">as</span> week_starting,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SUM</span>(<span style="color:#66d9ef">CASE</span> <span style="color:#66d9ef">WHEN</span> transaction_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;AP&#39;</span> <span style="color:#66d9ef">THEN</span> <span style="color:#f92672">-</span>amount <span style="color:#66d9ef">ELSE</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">END</span>) <span style="color:#66d9ef">as</span> outflows,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SUM</span>(<span style="color:#66d9ef">CASE</span> <span style="color:#66d9ef">WHEN</span> transaction_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;AR&#39;</span> <span style="color:#66d9ef">THEN</span> amount <span style="color:#66d9ef">ELSE</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">END</span>) <span style="color:#66d9ef">as</span> inflows,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SUM</span>(<span style="color:#66d9ef">CASE</span> <span style="color:#66d9ef">WHEN</span> transaction_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;AR&#39;</span> <span style="color:#66d9ef">THEN</span> amount <span style="color:#66d9ef">ELSE</span> <span style="color:#f92672">-</span>amount <span style="color:#66d9ef">END</span>) <span style="color:#66d9ef">as</span> net_cash_flow
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> 
+</span></span><span style="display:flex;"><span>    projected_cash_transactions
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> 
+</span></span><span style="display:flex;"><span>    due_date <span style="color:#66d9ef">BETWEEN</span> GETDATE() <span style="color:#66d9ef">AND</span> DATEADD(<span style="color:#66d9ef">month</span>, <span style="color:#ae81ff">3</span>, GETDATE())
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> 
+</span></span><span style="display:flex;"><span>    DATEADD(week, DATEDIFF(week, <span style="color:#ae81ff">0</span>, due_date), <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> 
+</span></span><span style="display:flex;"><span>    week_starting;
+</span></span></code></pre></div><p>This query forecasts weekly cash flows for the next three months based on projected AR and AP transactions.</p>
+<h3 id="3-budget-vs-actual-analysis">3. Budget vs. Actual Analysis</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> 
+</span></span><span style="display:flex;"><span>    a.account_name,
+</span></span><span style="display:flex;"><span>    a.account_category,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SUM</span>(b.budget_amount) <span style="color:#66d9ef">as</span> annual_budget,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SUM</span>(b.budget_amount) <span style="color:#f92672">*</span> (<span style="color:#66d9ef">MONTH</span>(GETDATE()) <span style="color:#f92672">/</span> <span style="color:#ae81ff">12</span>.<span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">as</span> YTD_budget,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SUM</span>(t.amount) <span style="color:#66d9ef">as</span> YTD_actual,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SUM</span>(t.amount) <span style="color:#f92672">-</span> (<span style="color:#66d9ef">SUM</span>(b.budget_amount) <span style="color:#f92672">*</span> (<span style="color:#66d9ef">MONTH</span>(GETDATE()) <span style="color:#f92672">/</span> <span style="color:#ae81ff">12</span>.<span style="color:#ae81ff">0</span>)) <span style="color:#66d9ef">as</span> variance,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">CASE</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">SUM</span>(b.budget_amount) <span style="color:#f92672">*</span> (<span style="color:#66d9ef">MONTH</span>(GETDATE()) <span style="color:#f92672">/</span> <span style="color:#ae81ff">12</span>.<span style="color:#ae81ff">0</span>) <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">THEN</span> <span style="color:#66d9ef">NULL</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">ELSE</span> (<span style="color:#66d9ef">SUM</span>(t.amount) <span style="color:#f92672">/</span> (<span style="color:#66d9ef">SUM</span>(b.budget_amount) <span style="color:#f92672">*</span> (<span style="color:#66d9ef">MONTH</span>(GETDATE()) <span style="color:#f92672">/</span> <span style="color:#ae81ff">12</span>.<span style="color:#ae81ff">0</span>))) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">END</span> <span style="color:#66d9ef">as</span> variance_percent
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> 
+</span></span><span style="display:flex;"><span>    gl_accounts a
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">LEFT</span> <span style="color:#66d9ef">JOIN</span> 
+</span></span><span style="display:flex;"><span>    budget b <span style="color:#66d9ef">ON</span> a.account_id <span style="color:#f92672">=</span> b.account_id <span style="color:#66d9ef">AND</span> b.budget_year <span style="color:#f92672">=</span> <span style="color:#66d9ef">YEAR</span>(GETDATE())
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">LEFT</span> <span style="color:#66d9ef">JOIN</span> 
+</span></span><span style="display:flex;"><span>    transactions t <span style="color:#66d9ef">ON</span> a.account_id <span style="color:#f92672">=</span> t.account_id 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">AND</span> <span style="color:#66d9ef">YEAR</span>(t.transaction_date) <span style="color:#f92672">=</span> <span style="color:#66d9ef">YEAR</span>(GETDATE())
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> 
+</span></span><span style="display:flex;"><span>    a.account_name, a.account_category
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> 
+</span></span><span style="display:flex;"><span>    a.account_category, variance_percent <span style="color:#66d9ef">DESC</span>;
+</span></span></code></pre></div><p>This query produces a budget vs. actual report with variance analysis - a staple of financial reporting that becomes much more flexible when created with SQL.</p>
+<h3 id="4-identifying-unusual-gl-transactions">4. Identifying Unusual GL Transactions</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> 
+</span></span><span style="display:flex;"><span>    t.transaction_date,
+</span></span><span style="display:flex;"><span>    t.transaction_id,
+</span></span><span style="display:flex;"><span>    t.amount,
+</span></span><span style="display:flex;"><span>    a.account_name,
+</span></span><span style="display:flex;"><span>    u.username <span style="color:#66d9ef">as</span> entered_by,
+</span></span><span style="display:flex;"><span>    t.description
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> 
+</span></span><span style="display:flex;"><span>    transactions t
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">JOIN</span> 
+</span></span><span style="display:flex;"><span>    gl_accounts a <span style="color:#66d9ef">ON</span> t.account_id <span style="color:#f92672">=</span> a.account_id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">JOIN</span> 
+</span></span><span style="display:flex;"><span>    users u <span style="color:#66d9ef">ON</span> t.user_id <span style="color:#f92672">=</span> u.user_id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> 
+</span></span><span style="display:flex;"><span>    t.amount <span style="color:#f92672">&gt;</span> (
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">AVG</span>(amount) <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> STDEV(amount)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">FROM</span> transactions
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">WHERE</span> account_id <span style="color:#f92672">=</span> t.account_id
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> 
+</span></span><span style="display:flex;"><span>    t.amount <span style="color:#66d9ef">DESC</span>;
+</span></span></code></pre></div><p>This query identifies potential outliers in GL transactions by finding amounts that exceed the average plus three standard deviations for each account - useful for month-end review and fraud detection.</p>
+<h2 id="getting-started-with-sql-as-a-finance-professional">Getting Started with SQL as a Finance Professional</h2>
+<p>Now that you&rsquo;ve seen what SQL can do, how do you actually get started?</p>
+<h3 id="1-set-up-a-practice-environment">1. Set Up a Practice Environment</h3>
+<p>You don&rsquo;t need access to your company&rsquo;s production database to start learning. Options include:</p>
+<ul>
+<li><strong>SQL Server Express</strong> (free version of Microsoft SQL Server)</li>
+<li><strong>MySQL Community Edition</strong> (free and widely used)</li>
+<li><strong>SQLite</strong> (super lightweight, good for beginners)</li>
+<li><strong>Online SQL practice platforms</strong> like SQLFiddle, DB-Fiddle, or SQLZoo</li>
+</ul>
+<p>I started by downloading SQL Server Express and creating a simple financial database with a few tables for practice.</p>
+<h3 id="2-create-a-simple-financial-database">2. Create a Simple Financial Database</h3>
+<p>To practice, you&rsquo;ll want to create a few basic tables that mimic financial data:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Create a customers table
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> customers (
+</span></span><span style="display:flex;"><span>    customer_id INT <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,
+</span></span><span style="display:flex;"><span>    customer_name VARCHAR(<span style="color:#ae81ff">100</span>),
+</span></span><span style="display:flex;"><span>    industry VARCHAR(<span style="color:#ae81ff">50</span>),
+</span></span><span style="display:flex;"><span>    credit_limit DECIMAL(<span style="color:#ae81ff">15</span>,<span style="color:#ae81ff">2</span>),
+</span></span><span style="display:flex;"><span>    payment_terms INT
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- Create an invoices table
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> invoices (
+</span></span><span style="display:flex;"><span>    invoice_id INT <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,
+</span></span><span style="display:flex;"><span>    customer_id INT,
+</span></span><span style="display:flex;"><span>    invoice_number VARCHAR(<span style="color:#ae81ff">20</span>),
+</span></span><span style="display:flex;"><span>    invoice_date DATE,
+</span></span><span style="display:flex;"><span>    due_date DATE,
+</span></span><span style="display:flex;"><span>    invoice_amount DECIMAL(<span style="color:#ae81ff">15</span>,<span style="color:#ae81ff">2</span>),
+</span></span><span style="display:flex;"><span>    payment_date DATE <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    remaining_amount DECIMAL(<span style="color:#ae81ff">15</span>,<span style="color:#ae81ff">2</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (customer_id) <span style="color:#66d9ef">REFERENCES</span> customers(customer_id)
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- Create a simplified GL accounts table
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> gl_accounts (
+</span></span><span style="display:flex;"><span>    account_id INT <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,
+</span></span><span style="display:flex;"><span>    account_number VARCHAR(<span style="color:#ae81ff">20</span>),
+</span></span><span style="display:flex;"><span>    account_name VARCHAR(<span style="color:#ae81ff">100</span>),
+</span></span><span style="display:flex;"><span>    account_category VARCHAR(<span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- Create a transactions table
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> transactions (
+</span></span><span style="display:flex;"><span>    transaction_id INT <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,
+</span></span><span style="display:flex;"><span>    transaction_date DATE,
+</span></span><span style="display:flex;"><span>    account_id INT,
+</span></span><span style="display:flex;"><span>    amount DECIMAL(<span style="color:#ae81ff">15</span>,<span style="color:#ae81ff">2</span>),
+</span></span><span style="display:flex;"><span>    description VARCHAR(<span style="color:#ae81ff">200</span>),
+</span></span><span style="display:flex;"><span>    user_id INT,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (account_id) <span style="color:#66d9ef">REFERENCES</span> gl_accounts(account_id)
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><p>Then, insert some sample data to practice your queries.</p>
+<h3 id="3-learn-the-sql-commands-for-your-specific-database">3. Learn the SQL Commands for Your Specific Database</h3>
+<p>Different database systems (SQL Server, MySQL, Oracle, etc.) have slightly different SQL dialects. Learn the specifics for the system you&rsquo;ll be using at work.</p>
+<p>For Microsoft SQL Server (common in corporate finance departments), excellent resources include:</p>
+<ul>
+<li>Microsoft&rsquo;s official documentation</li>
+<li>W3Schools SQL Server tutorials</li>
+<li>YouTube tutorials specific to SQL Server</li>
+</ul>
+<h3 id="4-connect-sql-to-excel-for-the-best-of-both-worlds">4. Connect SQL to Excel for the Best of Both Worlds</h3>
+<p>One of the most powerful setups for finance professionals is connecting SQL directly to Excel using:</p>
+<ul>
+<li>Power Query in Excel</li>
+<li>Direct database connections</li>
+<li>Custom VBA that runs SQL queries</li>
+</ul>
+<p>This lets you use SQL for the heavy data processing while still using Excel for final formatting and visualization.</p>
+<h2 id="how-i-use-sql-in-my-daily-finance-work">How I Use SQL in My Daily Finance Work</h2>
+<p>Here are practical ways I&rsquo;ve incorporated SQL into my finance workflow:</p>
+<h3 id="month-end-close-process">Month-End Close Process</h3>
+<p>I&rsquo;ve created SQL scripts for:</p>
+<ul>
+<li>Reconciliation reports</li>
+<li>Accrual calculations</li>
+<li>Revenue recognition</li>
+<li>Intercompany eliminations</li>
+<li>Balance sheet fluctuation analysis</li>
+</ul>
+<p>Each month, I run these scripts, review the results, and make necessary adjustments - much faster than the manual Excel process we used before.</p>
+<h3 id="financial-analysis">Financial Analysis</h3>
+<p>SQL has transformed how I analyze financial data:</p>
+<ul>
+<li>Profitability by customer, product, region</li>
+<li>Cost allocation</li>
+<li>Trend analysis</li>
+<li>Working capital optimization</li>
+</ul>
+<p>Complex analyses that used to take days now take hours.</p>
+<h3 id="audit-support">Audit Support</h3>
+<p>When auditors request information, I can quickly:</p>
+<ul>
+<li>Pull transaction details</li>
+<li>Identify samples</li>
+<li>Create custom reports</li>
+</ul>
+<p>SQL&rsquo;s ability to filter, sort, and summarize makes audit support much less painful.</p>
+<h3 id="board-and-management-reporting">Board and Management Reporting</h3>
+<p>I maintain a set of SQL queries that generate the data for:</p>
+<ul>
+<li>Monthly management reports</li>
+<li>KPI dashboards</li>
+<li>Board presentations</li>
+</ul>
+<p>This ensures consistent metrics and saves tremendous time during reporting periods.</p>
+<h2 id="common-challenges-for-finance-professionals-learning-sql">Common Challenges for Finance Professionals Learning SQL</h2>
+<p>When I started learning SQL, I faced several challenges that are common for finance folks:</p>
+<h3 id="1-getting-access-to-your-companys-database">1. Getting Access to Your Company&rsquo;s Database</h3>
+<p>IT departments are often (rightfully) protective of database access. Solutions that worked for me:</p>
+<ul>
+<li>Request read-only access</li>
+<li>Work with IT to set up a special finance user role</li>
+<li>Use database views created specifically for finance</li>
+</ul>
+<h3 id="2-understanding-your-companys-database-structure">2. Understanding Your Company&rsquo;s Database Structure</h3>
+<p>Most ERP systems have hundreds of tables with cryptic names. Tips:</p>
+<ul>
+<li>Ask for database schema documentation</li>
+<li>Find out if there are existing views for financial reporting</li>
+<li>Make friends with a database administrator who can help you navigate</li>
+</ul>
+<h3 id="3-performance-issues-with-large-data-sets">3. Performance Issues with Large Data Sets</h3>
+<p>Some queries might run slowly on very large datasets. Solutions:</p>
+<ul>
+<li>Learn about SQL query optimization</li>
+<li>Use appropriate indexes</li>
+<li>Consider creating summary tables for frequently used reports</li>
+</ul>
+<h3 id="4-maintaining-data-security-and-compliance">4. Maintaining Data Security and Compliance</h3>
+<p>As finance professionals, we handle sensitive data. Always:</p>
+<ul>
+<li>Follow company data security policies</li>
+<li>Be careful about where you save query results</li>
+<li>Understand data privacy regulations relevant to your industry</li>
+</ul>
+<h2 id="conclusion-sql-is-a-finance-career-game-changer">Conclusion: SQL is a Finance Career Game-Changer</h2>
+<p>Learning SQL has transformed how I work as a finance professional. Tasks that used to take days now take minutes, and I can analyze data in ways that simply weren&rsquo;t possible when I was limited to Excel.</p>
+<p>If you&rsquo;re a finance manager or controller who wants to:</p>
+<ul>
+<li>Spend less time on routine reporting</li>
+<li>Provide deeper, more insightful financial analysis</li>
+<li>Make your month-end close process more efficient</li>
+<li>Respond quickly to ad-hoc requests from management</li>
+<li>Become more valuable in an increasingly data-driven world</li>
+</ul>
+<p>Then learning SQL is one of the best investments you can make in your professional skills.</p>
+<p>Start small, be persistent, and before long you&rsquo;ll wonder how you ever managed your financial processes without it!</p>
+<h2 id="resources-for-learning-more">Resources for Learning More</h2>
+<p>Here are resources that helped me learn SQL specifically for finance applications:</p>
+<ul>
+<li>
+<p><strong>Books</strong>:</p>
+<ul>
+<li>&ldquo;SQL for Financial Analysis&rdquo; by Matt Goldwasser</li>
+<li>&ldquo;Practical SQL&rdquo; by Anthony DeBarros (good general introduction)</li>
+</ul>
+</li>
+<li>
+<p><strong>Online Courses</strong>:</p>
+<ul>
+<li>LinkedIn Learning: &ldquo;SQL for Financial Analysis&rdquo;</li>
+<li>Udemy: &ldquo;Financial Analysis with SQL&rdquo;</li>
+</ul>
+</li>
+<li>
+<p><strong>Websites</strong>:</p>
+<ul>
+<li>SQLCourse.com - Basic SQL tutorial</li>
+<li>W3Schools SQL Tutorial - Great reference</li>
+<li>Stack Overflow - For when you get stuck</li>
+</ul>
+</li>
+<li>
+<p><strong>Community</strong>:</p>
+<ul>
+<li>Financial Analysts using SQL group on LinkedIn</li>
+<li>Local SQL or Finance technology meetups</li>
+</ul>
+</li>
+</ul>
+<p>Remember, the key is consistent practice with realistic financial data. Soon enough, you&rsquo;ll be writing queries that transform how you handle financial information!</p>
+]]></content:encoded></item></channel></rss>
