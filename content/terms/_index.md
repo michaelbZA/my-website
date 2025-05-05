@@ -5,6 +5,7 @@ layout: "single"
 draft: false
 description: "Terms of Use for Michael's Website"
 ShowToc: false
+hideMeta: true
 ---
 
 # Terms of Use

@@ -15,7 +15,7 @@ title: Michael Brunger
 
 # Number of posts to show per page in list views (e.g., /posts/, taxonomy pages).
 # Adjust based on how many posts you want visible per page.
-pagerSize: 10
+pagerSize: 5
 
 # Global Hugo options that apply to the site build process.
 # Moved here from the module import for clarity and standard Hugo practice.
@@ -47,9 +47,9 @@ module:
 # Defines how you categorize your content.
 # 'plural_term': 'singular_term'
 taxonomies:
-  category: categories # e.g., /categories/programming/
-  tag: tags           # e.g., /tags/python/
-  series: series       # e.g., /series/web-development-basics/
+  category: categories  # e.g., /categories/programming/
+  tag: tags             # e.g., /tags/python/
+  series: series        # e.g., /series/web-development-basics/
 
 ########################################################################################################################
 # AUTHOR INFORMATION
@@ -135,6 +135,7 @@ params:
   customCSS:
     - css/extended/custom.css
     - css/extended/hamburger_menu.css
+    - css/extended/series.css
 
   # PaperMod homepage layout options.
   # 'archive', 'profile', 'landing', 'cards'
@@ -150,6 +151,7 @@ params:
   showCodeCopyButtons: true # Add copy button to code blocks.
   showFullTextInRSS: true   # Include full post content in the RSS feed (instead of just summary).
   showToc: true             # Show Table of Contents on posts (requires headings in markdown).
+  showSeries: true          # Show series at the top of the homepage
   # showWordCount: true # Another common option
 
   # Google Analytics ID (for GA4, starts with G-). Requires a Google Analytics partial or theme support.
@@ -182,7 +184,7 @@ params:
 
   # Settings for cover images.
   cover:
-    linkFullImages: true # Make the cover image link to the full image file.
+    linkFullImages: false # Make the cover image link to the full image file.
     # autoCover: true # Automatically use the first image in a post as cover (if no cover specified).
     # hidden: false # Hide cover images.
 
@@ -210,6 +212,37 @@ params:
     safari_pinned_tab: /assets/safari-pinned-tab.svg
     # Additional options like custom favicon sizes can sometimes be added here or handled by the theme/partials.
 
+  # Schema.org settings
+  schema:
+    type: Person
+    name: Michael Brunger
+    url: https://michaelbrunger.com
+    sameAs:
+      - https://github.com/michaelbZA
+      - https://linkedin.com/in/michael-brunger
+    jobTitle: Chartered Accountant
+    worksFor:
+      type: Organization
+      name: Self-employed
+
+  # Social media settings
+  social:
+    # ... existing social settings ...
+    openGraph:
+      type: website
+      locale: en_GB
+      siteName: Michael Brunger
+      title: Michael Brunger - Chartered Accountant & Finance Manager
+      description: Personal website covering Python programming, finance insights, and more
+      images:
+        - url: /site-feature-image.jpg
+          width: 1200
+          height: 630
+          alt: Michael Brunger's website
+
+  # Disable Twitter cards temporarily
+  twitterCard: false
+
 ########################################################################################################################
 # PRIVACY SETTINGS (GDPR, etc.)
 ########################################################################################################################
@@ -217,23 +250,18 @@ params:
 # Configuration for built-in privacy features, especially for third-party embeds and analytics.
 privacy:
   googleAnalytics:
-    # disable: false # Set to true to disable GA tracking even if ID is provided.
     anonymizeIP: true          # Anonymize the user's IP address (good for privacy/GDPR).
     respectDoNotTrack: true    # Respect the user's browser Do Not Track setting.
     useSessionStorage: false   # Whether to use session storage for GA (defaults to local storage).
   instagram:
-    # disable: false
     simple: true               # Use a simpler, more privacy-friendly embed (reduces JS).
   x: # Configuration for X (formerly Twitter) embeds.
-    # disable: false
     enableDNT: true            # Enable Do Not Track for Twitter embeds.
     simple: false              # Keep the full embed functionality.
   vimeo:
-    # disable: false
     enableDNT: true            # Enable Do Not Track for Vimeo embeds.
     simple: false
   youtube:
-    # disable: false
     privacyEnhanced: true      # Use youtube-nocookie.com domain (more privacy-friendly).
 
 ########################################################################################################################
@@ -330,9 +358,15 @@ related:
 
 # Configuration for the sitemap.xml file. Good for SEO.
 sitemap:
-  changefreq: weekly # How frequently the content is likely to change (daily, weekly, monthly, etc.).
-  filename: sitemap.xml # The name of the sitemap file.
-  priority: 0.5 # Default priority for pages (0.0 to 1.0). Higher is more important.
+  changefreq: monthly
+  filename: sitemap.xml
+  priority: 0.5
+  excludePaths:
+    - /404.html
+    - /search/
+    - /tags/
+    - /categories/
+    - /series/
 
 # You can add other sections here for specific needs, e.g.:
 # outputs: {} # Configure output formats (HTML, RSS, etc.)
@@ -340,3 +374,78 @@ sitemap:
 # outputFormats: {} # Configure specific output formats
 # imaging: {} # Configuration for image processing
 # services: {} # Configuration for services like Google Analytics, etc. (often handled in 'privacy' or 'params')
+
+########################################################################################################################
+# PERFORMANCE & BUILD OPTIMIZATIONS
+########################################################################################################################
+
+# Performance settings
+permalinks:
+  posts: /posts/:year/:month/:title/
+  pages: /:title/
+  categories: /categories/:title/
+  tags: /tags/:title/
+  series: /series/:title/
+
+# Build settings
+build:
+  writeStats: true
+  useResourceCacheWhen: fallback
+  cacheDir: .hugo_cache
+  timeout: 30m
+
+# Image processing
+imaging:
+  resampleFilter: lanczos
+  quality: 75
+  anchor: smart
+  exif:
+    disableDate: true
+    disableLatLong: true
+    includeFields: ".*"
+    excludeFields: ""
+
+# Minification settings
+minify:
+  disableHTML: false
+  disableCSS: false
+  disableJS: false
+  disableJSON: false
+  disableSVG: false
+  disableXML: false
+  minifyOutput: true
+
+# Cache settings
+caches:
+  assets:
+    dir: :resourceDir/_gen
+    maxAge: -1
+  images:
+    dir: :resourceDir/_gen/images
+    maxAge: -1
+  modules:
+    dir: :cacheDir/modules
+    maxAge: -1
+
+########################################################################################################################
+# SEO & SECURITY OPTIMIZATIONS
+########################################################################################################################
+
+# CORS settings
+cors:
+  allowedOrigins:
+    - https://michaelbrunger.com
+    - https://www.michaelbrunger.com
+  allowedMethods:
+    - GET
+    - HEAD
+  allowedHeaders:
+    - Origin
+    - Accept
+    - Content-Type
+    - X-Requested-With
+  exposedHeaders:
+    - Content-Length
+    - Content-Range
+  allowCredentials: true
+  maxAge: 86400

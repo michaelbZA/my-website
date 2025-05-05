@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>VS Code on Michael Brunger</title><link>https://michaelbrunger.com/categories/vs-code/</link><description>Recent content in VS Code on Michael Brunger</description><image><title>Michael Brunger</title><url>https://michaelbrunger.com/site-feature-image.jpg</url><link>https://michaelbrunger.com/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Fri, 02 May 2025 14:39:35 +0100</lastBuildDate><atom:link href="https://michaelbrunger.com/categories/vs-code/index.xml" rel="self" type="application/rss+xml"/><item><title>VS Code Mastery</title><link>https://michaelbrunger.com/posts/20250502-vscode/</link><pubDate>Fri, 02 May 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/posts/20250502-vscode/</guid><description>&lt;h1 id="vs-code-mastery-a-beginners-guide-to-being-productive">VS Code Mastery: A Beginner&amp;rsquo;s Guide to Being Productive&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>VS Code on Michael Brunger</title><link>https://michaelbrunger.com/categories/vs-code/</link><description>Recent content in VS Code on Michael Brunger</description><image><title>Michael Brunger</title><url>https://michaelbrunger.com/site-feature-image.jpg</url><link>https://michaelbrunger.com/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Fri, 02 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://michaelbrunger.com/categories/vs-code/index.xml" rel="self" type="application/rss+xml"/><item><title>VS Code Mastery</title><link>https://michaelbrunger.com/posts/2025/05/vs-code-mastery/</link><pubDate>Fri, 02 May 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/posts/2025/05/vs-code-mastery/</guid><description>&lt;h1 id="vs-code-mastery-a-beginners-guide-to-being-productive">VS Code Mastery: A Beginner&amp;rsquo;s Guide to Being Productive&lt;/h1>
 &lt;p>So you&amp;rsquo;ve downloaded VS Code and opened it up. Now what? In this guide, I&amp;rsquo;ll walk you through everything I&amp;rsquo;ve learned about making VS Code work for you, especially if you&amp;rsquo;re just getting started.&lt;/p>
 &lt;h2 id="why-i-switched-to-vs-code">Why I Switched to VS Code&lt;/h2>
 &lt;p>Before diving into the details, let me share why I chose VS Code:&lt;/p>
@@ -125,7 +125,7 @@
 <li>Select &ldquo;Color Theme&rdquo;</li>
 <li>Browse through available themes</li>
 </ol>
-<p>I use the Command Palette dozens of times daily to:</p>
+<p>I use the Command Palette to:</p>
 <ul>
 <li>Run specific commands</li>
 <li>Change settings</li>
@@ -151,7 +151,6 @@
 <ul>
 <li><code>Alt+Left/Right</code> (<code>Ctrl+- / Ctrl+Shift+-</code> on Mac): Navigate back and forth through your position history</li>
 </ul>
-<p>I was amazed at how much time these shortcuts saved me when working on larger projects.</p>
 <h2 id="supercharging-your-editing">Supercharging Your Editing</h2>
 <p>These editing features have transformed how I write code:</p>
 <h3 id="multi-cursor-editing">Multi-Cursor Editing</h3>
@@ -171,7 +170,7 @@
 <li><code>Shift+Alt+A</code> (<code>Shift+Option+A</code>): Toggle block comment</li>
 <li><code>Ctrl+Space</code> (<code>Cmd+Space</code>): Trigger suggestions</li>
 </ul>
-<p>I use multi-cursor editing daily for bulk edits that would otherwise take forever.</p>
+<p>I use multi-cursor editing for bulk edits that would otherwise take forever.</p>
 <h2 id="vs-code-extensions-that-changed-my-workflow">VS Code Extensions That Changed My Workflow</h2>
 <p>Extensions are what make VS Code truly shine. Here are the ones I can&rsquo;t live without:</p>
 <h3 id="productivity-boosters">Productivity Boosters</h3>
@@ -385,7 +384,6 @@
 <h2 id="conclusion-vs-code-changed-how-i-code">Conclusion: VS Code Changed How I Code</h2>
 <p>When I first started using VS Code, I was just using it as a basic text editor. Now, it&rsquo;s become an extension of my thinking process when coding. The features I&rsquo;ve covered in this post have genuinely made me more productive and helped me write better code.</p>
 <p>Don&rsquo;t feel like you need to learn everything at once! Start with the Command Palette and a few shortcuts, then gradually expand your knowledge. Before long, you&rsquo;ll be navigating and editing code with an efficiency that will surprise you.</p>
-<p>What VS Code features have you found most helpful? I&rsquo;d love to hear about your experiences in the comments!</p>
 <h2 id="resources-for-going-further">Resources for Going Further</h2>
 <ul>
 <li><a href="https://code.visualstudio.com/docs">Official VS Code Documentation</a></li>

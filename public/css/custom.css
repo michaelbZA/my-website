@@ -1,0 +1,80 @@
+/* Custom styles for Michael Brunger's website */
+
+/* Basic layout adjustments */
+.post-entry {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: var(--entry);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post-entry:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Navigation */
+.nav {
+    background: var(--theme);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Active menu item underline */
+.desktop-menu a span.active {
+    position: relative;
+}
+
+.desktop-menu a span.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary);
+    display: block;
+}
+
+/* Footer */
+.footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--secondary);
+    font-size: 0.9rem;
+}
+
+/* Social links */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Tag cloud and categories */
+.tag-cloud,
+.categories-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .post-entry {
+        padding: 0.75rem;
+    }
+    
+    .nav {
+        padding: 0.75rem 0;
+    }
+} 

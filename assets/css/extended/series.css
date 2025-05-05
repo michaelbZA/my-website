@@ -1,270 +1,270 @@
 /* Series Page Header */
 .page-header {
-  text-align: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  position: relative;
-}
-
-.page-header::after {
-  content: "";
-  position: absolute;
-  width: 30%;
-  height: 3px;
-  bottom: 0;
-  left: 35%;
-  background-color: var(--primary);
-  border-radius: 3px;
-}
-
-.page-header h1 {
-  margin-bottom: 0.5rem;
-}
-
-.series-description {
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto 2rem;
-  color: var(--secondary);
-  font-size: 1.1rem;
-}/* Series List on Homepage */
-.series-list {
-  margin: 2rem 0 3rem;
-  padding: 1.5rem;
-  background: var(--entry);
-  border-radius: 8px;
-  box-shadow: var(--shadow);
-  position: relative;
-  border-top: 3px solid var(--primary);
-  /* Subtle highlight for the series section */
-  background: linear-gradient(to bottom, var(--primary-dim), var(--entry) 10%);
-}
-
-/* Posts heading */
-.posts-heading {
-  margin: 3rem 0 2rem;
-}
-
-.posts-heading h2 {
-  font-size: 1.8rem;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 0.5rem;
-}
-
-.posts-heading h2::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 3px;
-  bottom: 0;
-  left: 0;
-  background-color: var(--primary);
-  border-radius: 3px;
-}
-
-/* Divider after series section */
-.series-list::after {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: -1.5rem;
-  left: 10%;
-  right: 10%;
-  height: 2px;
-  background: linear-gradient(to right, transparent, var(--border), transparent);
-}
-
-.series-list h2 {
-  margin-top: 0;
-  padding-bottom: 0.75rem;
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
-  text-align: center;
-  position: relative;
-}
-
-.series-list h2::after {
-  content: "";
-  position: absolute;
-  width: 50%;
-  height: 3px;
-  bottom: 0;
-  left: 25%;
-  background-color: var(--primary);
-  border-radius: 3px;
-}
-
-.series-list ul {
-  list-style: none;
-  padding: 0;
-}
-
-.series-intro {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: var(--secondary);
-}
-
-.series-items {
-  padding: 0.5rem !important;
-}
-
-.series-list li {
-  margin-bottom: 0.75rem;
-  font-size: 1.1rem;
-  padding: 0.5rem;
-  border-radius: 4px;
-  transition: background-color 0.2s;
-}
-
-.series-list li:hover {
-  background-color: var(--code-bg);
-}
-
-.series-list .post-count {
-  color: var(--secondary);
-  font-size: 0.9rem;
-}
-
-/* Series Navigation in Posts */
-.series-nav {
-  margin: 1.5rem 0;
-  padding: 1rem;
-  background: var(--entry);
-  border-radius: 8px;
-  border-left: 4px solid var(--primary);
-}
-
-.series-nav-title {
-  margin-bottom: 1rem;
-}
-
-.series-nav-title h3 {
-  margin: 0;
-  font-size: 1.1rem;
-}
-
-.series-nav-buttons {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.series-prev, .series-next {
-  padding: 0.5rem 1rem;
-  background: var(--primary);
-  color: var(--theme);
-  border-radius: 4px;
-  text-decoration: none;
-}
-
-.series-prev:hover, .series-next:hover {
-  opacity: 0.9;
-}
-
-/* Series Table of Contents */
-.series-content {
-  margin: 2rem 0;
-}
-
-.series-toc {
-  padding: 1.5rem;
-  background: var(--entry);
-  border-radius: 8px;
-  box-shadow: var(--shadow);
-}
-
-.series-toc h2 {
-  margin-top: 0;
-  padding-bottom: 0.75rem;
-  margin-bottom: 1.5rem;
-  position: relative;
-  text-align: center;
-}
-
-.series-toc h2::after {
-  content: "";
-  position: absolute;
-  width: 50%;
-  height: 3px;
-  bottom: 0;
-  left: 25%;
-  background-color: var(--primary);
-  border-radius: 3px;
-}
-
-.series-toc ol {
-  margin-left: 0;
-  padding-left: 0;
-  list-style-type: none;
-  counter-reset: item;
-}
-
-.series-toc li {
-  margin-bottom: 1.5rem;
-  padding: 1rem 1rem 1rem 0.5rem;
-  border-radius: 8px;
-  background: var(--code-bg);
-  transition: transform 0.2s, box-shadow 0.2s;
-  counter-increment: item;
-  display: flex;
-  align-items: flex-start;
-}
-
-.series-toc li::before {
-  content: counter(item);
-  flex: 0 0 2rem;
-  width: 2rem;
-  height: 2rem;
-  line-height: 2rem;
-  text-align: center;
-  background-color: var(--primary);
-  color: var(--theme);
-  border-radius: 50%;
-  margin-right: 0.75rem;
-  font-weight: bold;
-  margin-top: 0.2rem;
-}
-
-.series-toc .item-content {
-  flex: 1;
-}
-
-.series-toc li:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
-}
-
-.series-toc a {
-  font-weight: bold;
-  font-size: 1.2rem;
-  color: var(--primary);
-  text-decoration: none;
-  display: inline-block;
-  margin-bottom: 0.5rem;
-}
-
-.series-toc a:hover {
-  text-decoration: underline;
-}
-
-.series-description {
-  color: var(--secondary);
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.post-meta {
-  font-size: 0.85rem;
-  color: var(--secondary);
-  margin-top: 0.5rem;
-}
-
-.post-meta a {
-  font-size: 0.85rem;
-  font-weight: normal;
-}
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    position: relative;
+  }
+  
+  .page-header::after {
+    content: "";
+    position: absolute;
+    width: 30%;
+    height: 3px;
+    bottom: 0;
+    left: 35%;
+    background-color: var(--primary);
+    border-radius: 3px;
+  }
+  
+  .page-header h1 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .series-description {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    color: var(--secondary);
+    font-size: 1.1rem;
+  }/* Series List on Homepage */
+  .series-list {
+    margin: 2rem 0 3rem;
+    padding: 1.5rem;
+    background: var(--entry);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    position: relative;
+    border-top: 3px solid var(--primary);
+    /* Subtle highlight for the series section */
+    background: linear-gradient(to bottom, var(--primary-dim), var(--entry) 10%);
+  }
+  
+  /* Posts heading */
+  .posts-heading {
+    margin: 3rem 0 2rem;
+  }
+  
+  .posts-heading h2 {
+    font-size: 1.8rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+  }
+  
+  .posts-heading h2::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary);
+    border-radius: 3px;
+  }
+  
+  /* Divider after series section */
+  .series-list::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -1.5rem;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+  }
+  
+  .series-list h2 {
+    margin-top: 0;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    text-align: center;
+    position: relative;
+  }
+  
+  .series-list h2::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    bottom: 0;
+    left: 25%;
+    background-color: var(--primary);
+    border-radius: 3px;
+  }
+  
+  .series-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .series-intro {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--secondary);
+  }
+  
+  .series-items {
+    padding: 0.5rem !important;
+  }
+  
+  .series-list li {
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+  
+  .series-list li:hover {
+    background-color: var(--code-bg);
+  }
+  
+  .series-list .post-count {
+    color: var(--secondary);
+    font-size: 0.9rem;
+  }
+  
+  /* Series Navigation in Posts */
+  .series-nav {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: var(--entry);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
+  }
+  
+  .series-nav-title {
+    margin-bottom: 1rem;
+  }
+  
+  .series-nav-title h3 {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+  
+  .series-nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .series-prev, .series-next {
+    padding: 0.5rem 1rem;
+    background: var(--primary);
+    color: var(--theme);
+    border-radius: 4px;
+    text-decoration: none;
+  }
+  
+  .series-prev:hover, .series-next:hover {
+    opacity: 0.9;
+  }
+  
+  /* Series Table of Contents */
+  .series-content {
+    margin: 2rem 0;
+  }
+  
+  .series-toc {
+    padding: 1.5rem;
+    background: var(--entry);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+  }
+  
+  .series-toc h2 {
+    margin-top: 0;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    text-align: center;
+  }
+  
+  .series-toc h2::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    bottom: 0;
+    left: 25%;
+    background-color: var(--primary);
+    border-radius: 3px;
+  }
+  
+  .series-toc ol {
+    margin-left: 0;
+    padding-left: 0;
+    list-style-type: none;
+    counter-reset: item;
+  }
+  
+  .series-toc li {
+    margin-bottom: 1.5rem;
+    padding: 1rem 1rem 1rem 0.5rem;
+    border-radius: 8px;
+    background: var(--code-bg);
+    transition: transform 0.2s, box-shadow 0.2s;
+    counter-increment: item;
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .series-toc li::before {
+    content: counter(item);
+    flex: 0 0 2rem;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    background-color: var(--primary);
+    color: var(--theme);
+    border-radius: 50%;
+    margin-right: 0.75rem;
+    font-weight: bold;
+    margin-top: 0.2rem;
+  }
+  
+  .series-toc .item-content {
+    flex: 1;
+  }
+  
+  .series-toc li:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+  
+  .series-toc a {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--primary);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .series-toc a:hover {
+    text-decoration: underline;
+  }
+  
+  .series-description {
+    color: var(--secondary);
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  .post-meta {
+    font-size: 0.85rem;
+    color: var(--secondary);
+    margin-top: 0.5rem;
+  }
+  
+  .post-meta a {
+    font-size: 0.85rem;
+    font-weight: normal;
+  }

@@ -5,6 +5,7 @@ layout: "single"
 draft: false
 description: "Privacy Policy for Michael's Website"
 ShowToc: false
+hideMeta: true
 ---
 
 # Privacy Policy
