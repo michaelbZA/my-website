@@ -250,17 +250,9 @@
     text-decoration: underline;
   }
   
-  .series-description {
-    color: var(--secondary);
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    font-size: 0.95rem;
-    line-height: 1.5;
-  }
-  
   .post-meta {
-    font-size: 0.85rem;
     color: var(--secondary);
+    font-size: 0.85rem;
     margin-top: 0.5rem;
   }
   

@@ -55,7 +55,7 @@ Here's how to get Python installed on Windows 10/11:
 1. Locate and double-click the downloaded file (typically named python-3.x.x-amd64.exe)
 2. **IMPORTANT**: Check the box that says "Add Python 3.x to PATH" at the bottom of the installer
    - This allows you to run Python from any directory in Command Prompt
-3. Click "Install Now" for the standard installation, or "Customize installation" if you want to change specific options
+3. Click "Install Now" for the standard installation, or "Customise installation" if you want to change specific options
 
 ### 2.3 Verify the Installation
 1. Open Command Prompt (press Win + R, type `cmd`, and hit Enter)

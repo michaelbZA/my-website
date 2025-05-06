@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Python-Series on Michael Brunger</title><link>https://michaelbrunger.com/tags/python-series/</link><description>Recent content in Python-Series on Michael Brunger</description><image><title>Michael Brunger</title><url>https://michaelbrunger.com/site-feature-image.jpg</url><link>https://michaelbrunger.com/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Sun, 27 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://michaelbrunger.com/tags/python-series/index.xml" rel="self" type="application/rss+xml"/><item><title>Python Learning Path: From Fundamentals to Intermediate Applications</title><link>https://michaelbrunger.com/posts/2025/04/python-learning-path-from-fundamentals-to-intermediate-applications/</link><pubDate>Sun, 27 Apr 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/posts/2025/04/python-learning-path-from-fundamentals-to-intermediate-applications/</guid><description>A comprehensive 17-post curriculum taking you from Python installation to building real-world applications. Covers core language features, professional practices, data analysis tools, and practical project development.</description><content:encoded><![CDATA[<h2 id="my-python-learning-journey">My Python Learning Journey</h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Python-Series on Michael Brunger</title><link>https://michaelbrunger.com/tags/python-series/</link><description>Recent content in Python-Series on Michael Brunger</description><image><title>Michael Brunger</title><url>https://michaelbrunger.com/site-feature-image.jpg</url><link>https://michaelbrunger.com/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Mon, 05 May 2025 22:42:52 +0100</lastBuildDate><atom:link href="https://michaelbrunger.com/tags/python-series/index.xml" rel="self" type="application/rss+xml"/><item><title>Python Learning Path: From Fundamentals to Intermediate Applications</title><link>https://michaelbrunger.com/python-learning-path/</link><pubDate>Sun, 27 Apr 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/python-learning-path/</guid><description>A comprehensive 17-post curriculum taking you from Python installation to building real-world applications. Covers core language features, professional practices, data analysis tools, and practical project development.</description><content:encoded><![CDATA[<h2 id="my-python-learning-journey">My Python Learning Journey</h2>
 <p>Welcome to my Python learning series! As a finance professional exploring programming, I&rsquo;m documenting my entire journey through 17 posts that take you from absolute beginner to building practical applications.</p>
 <h2 id="what-to-expect-from-this-series">What to Expect from This Series</h2>
 <p>This series is designed for fellow finance professionals and beginners who want to learn Python in a practical, step-by-step manner. Each post builds on previous concepts while introducing new skills.</p>
@@ -41,7 +41,7 @@
 <ul>
 <li>Defining and calling functions (def, return, positional vs. keyword args)</li>
 <li>Variable scope and namespaces</li>
-<li>Organizing code into modules and packages</li>
+<li>Organising code into modules and packages</li>
 <li>Exploring the Standard Library (math, random, datetime, os, sys)</li>
 <li>Reading from/writing to text files with open() and the with statement</li>
 </ul>
@@ -59,7 +59,7 @@
 <ul>
 <li>Version control fundamentals with Git &amp; GitHub (clone, commit, push, pull requests)</li>
 <li>Writing clean, PEP 8‑compliant code; linting with flake8</li>
-<li>Auto‑formatting with black and organizing imports with isort</li>
+<li>Auto‑formatting with black and organising imports with isort</li>
 <li>Writing docstrings (Google vs. NumPy style) and auto‑generating docs (Sphinx overview)</li>
 </ul>
 <h3 id="8-testing--debugging">8. Testing &amp; Debugging</h3>
@@ -74,7 +74,7 @@
 <ul>
 <li>Building CLI scripts with argparse: positional args, flags, help text</li>
 <li>Packaging entry points (console_scripts) for installable commands</li>
-<li>Automating file/folder tasks (os, shutil): renaming, organizing, backups</li>
+<li>Automating file/folder tasks (os, shutil): renaming, organising, backups</li>
 <li>Automating GUI interactions with PyAutoGUI (keyboard/mouse control)</li>
 <li>Putting it all together in a sample automation project</li>
 </ul>
@@ -102,10 +102,10 @@
 <li>Selection, filtering, grouping, transformation</li>
 <li>Handling missing data</li>
 </ul>
-<h3 id="13-data-visualization-basics">13. Data Visualization Basics</h3>
+<h3 id="13-data-visualisation-basics">13. Data Visualisation Basics</h3>
 <ul>
 <li>Matplotlib core: line, scatter, bar, histogram plots</li>
-<li>Customizing labels, titles, legends</li>
+<li>Customising labels, titles, legends</li>
 <li>Seaborn intro: statistical plot types (boxplot, heatmap)</li>
 <li>Saving figures to files for reports</li>
 </ul>
@@ -116,7 +116,7 @@
 <li>Classes vs. objects, attributes vs. methods</li>
 <li>The init constructor and self</li>
 <li>Encapsulation, inheritance and polymorphism (simple examples)</li>
-<li>Why OOP matters: organizing and reusing code</li>
+<li>Why OOP matters: organising and reusing code</li>
 </ul>
 <h3 id="15-web-development-foundations">15. Web Development Foundations</h3>
 <ul>

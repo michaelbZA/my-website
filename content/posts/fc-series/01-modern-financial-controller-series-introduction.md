@@ -36,10 +36,10 @@ Through these posts, I aim to:
 
 ## Who is David Parmenter?
 
-For those unfamiliar with his work, David Parmenter is a globally recognized expert in financial leadership, performance measures, and management reporting. His methodologies have transformed finance departments around the world, particularly through concepts like:
+For those unfamiliar with his work, David Parmenter is a globally recognised expert in financial leadership, performance measures, and management reporting. His methodologies have transformed finance departments around the world, particularly through concepts like:
 
 - Distinguishing between Key Result Indicators (KRIs) and genuine Key Performance Indicators (KPIs)
-- Implementing "winning KPIs" that actually drive organizational performance
+- Implementing "winning KPIs" that actually drive organisational performance
 - Creating lean, focused reporting that executives actually use for decision-making
 - Transitioning from traditional budgeting to rolling forecasts
 - Developing "fast close" procedures that dramatically reduce month-end processing time
@@ -61,7 +61,7 @@ The evolving expectations of financial controllers reflect broader changes in bu
 **Modern Controller Focus:**
 - Strategic decision support
 - Business partnership
-- Performance optimization
+- Performance optimisation
 - Predictive analytics
 - Technology enablement
 - Creating sustainable value

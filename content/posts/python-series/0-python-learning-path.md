@@ -62,7 +62,7 @@ Here's what we'll cover throughout the 17 posts:
 ### 5. Functions, Modules & File I/O
 - Defining and calling functions (def, return, positional vs. keyword args)
 - Variable scope and namespaces
-- Organizing code into modules and packages
+- Organising code into modules and packages
 - Exploring the Standard Library (math, random, datetime, os, sys)
 - Reading from/writing to text files with open() and the with statement
 
@@ -80,7 +80,7 @@ Here's what we'll cover throughout the 17 posts:
 ### 7. Code Quality & Collaboration
 - Version control fundamentals with Git & GitHub (clone, commit, push, pull requests)
 - Writing clean, PEP 8‑compliant code; linting with flake8
-- Auto‑formatting with black and organizing imports with isort
+- Auto‑formatting with black and organising imports with isort
 - Writing docstrings (Google vs. NumPy style) and auto‑generating docs (Sphinx overview)
 
 ### 8. Testing & Debugging
@@ -93,7 +93,7 @@ Here's what we'll cover throughout the 17 posts:
 ### 9. Command‑Line Tools & Automation
 - Building CLI scripts with argparse: positional args, flags, help text
 - Packaging entry points (console_scripts) for installable commands
-- Automating file/folder tasks (os, shutil): renaming, organizing, backups
+- Automating file/folder tasks (os, shutil): renaming, organising, backups
 - Automating GUI interactions with PyAutoGUI (keyboard/mouse control)
 - Putting it all together in a sample automation project
 
@@ -120,9 +120,9 @@ Here's what we'll cover throughout the 17 posts:
 - Selection, filtering, grouping, transformation
 - Handling missing data
 
-### 13. Data Visualization Basics
+### 13. Data Visualisation Basics
 - Matplotlib core: line, scatter, bar, histogram plots
-- Customizing labels, titles, legends
+- Customising labels, titles, legends
 - Seaborn intro: statistical plot types (boxplot, heatmap)
 - Saving figures to files for reports
 
@@ -134,7 +134,7 @@ Here's what we'll cover throughout the 17 posts:
 - Classes vs. objects, attributes vs. methods
 - The init constructor and self
 - Encapsulation, inheritance and polymorphism (simple examples)
-- Why OOP matters: organizing and reusing code
+- Why OOP matters: organising and reusing code
 
 ### 15. Web Development Foundations
 - Option A: Flask (lightweight): setting up, routes, templates, serving static files

@@ -1,0 +1,114 @@
+/* Typography Styles */
+body {
+    font-family: "Lato", sans-serif;
+    line-height: 1.7;
+    padding: 0 20px;
+}
+
+/* Typography improvements */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 2rem;
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: 2.2rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.3rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+.post-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+.site-title {
+    font-family: "Orbitron", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+/* Links */
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+/* Code and Pre */
+pre {
+    background-color: var(--code-bg);
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+
+code {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9em;
+    background-color: var(--code-bg);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+}
+
+pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+/* Blockquotes */
+blockquote {
+    border-left: 4px solid var(--accent);
+    margin: 1.5rem 0;
+    padding: 0.5rem 1rem;
+    background-color: var(--accent-alpha);
+    font-style: italic;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+}
+
+th, td {
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+}
+
+th {
+    background-color: var(--code-bg);
+    font-weight: 600;
+    text-align: left;
+}
+
+/* Horizontal Rule */
+hr {
+    border: 0;
+    height: 1px;
+    background-color: var(--border);
+    margin: 2rem 0;
+    opacity: 0.5;
+} 

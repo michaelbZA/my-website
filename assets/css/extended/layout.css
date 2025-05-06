@@ -1,0 +1,162 @@
+/* Layout Styles */
+
+/* Navigation */
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--theme);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--nav-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.logo a {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--primary);
+}
+
+.logo a:hover {
+    text-decoration: none;
+}
+
+/* Homepage Layout */
+.home-info {
+    display: none;
+}
+
+.home-divider {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-top: 2px solid var(--primary);
+    width: 100%;
+    max-width: 720px;
+    opacity: 0.6;
+}
+
+/* Footer */
+.footer {
+    margin-top: 4rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--secondary);
+}
+
+.footer a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+/* Post Content Layout */
+.post-content {
+    margin: 2rem 0;
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.pagination a {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    background-color: var(--accent-alpha);
+    color: var(--accent);
+}
+
+/* Archive Layout */
+.archive-year {
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+    color: var(--primary);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+}
+
+/* Profile Section */
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: var(--entry);
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent);
+}
+
+.profile-content h2 {
+    margin-top: 0;
+    color: var(--primary);
+}
+
+.profile-content p {
+    color: var(--secondary);
+    margin-bottom: 1rem;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: var(--secondary);
+    font-size: 1.5rem;
+    transition: color 0.2s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent);
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    body {
+        padding: 0 15px;
+    }
+
+    .profile {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+} 

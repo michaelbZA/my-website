@@ -1,0 +1,44 @@
+/* Theme Variables */
+:root {
+    /* Light Mode Colors */
+    --theme: #fff;
+    --entry: #ffffff;
+    --primary: #333333;
+    --secondary: #585858;
+    --tertiary: #747474;
+    --content: #333333;
+    --hljs-bg: #f5f5f5;
+    --code-bg: #f0f0f0;
+    --border: #eaeaea;
+    --link-color: #fc930b;
+    --link-hover-color: #004080;
+    --accent: #6d91c5;
+    --accent-alpha: rgba(109, 145, 197, 0.15);
+    
+    /* Box Shadows */
+    --nav-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px;
+    --card-shadow: rgba(0, 0, 0, 0.05) 0px 5px 15px;
+    --card-shadow-hover: rgba(0, 0, 0, 0.1) 0px 10px 20px;
+}
+
+.dark:root {
+    /* Dark Mode Colors */
+    --theme: #252525;
+    --entry: #2e2e2e;
+    --primary: #f0f0f0;
+    --secondary: #d4d4d4;
+    --tertiary: #b0b0b0;
+    --content: #e8e8e8;
+    --hljs-bg: #2a2a2a;
+    --code-bg: #333333;
+    --border: #4a4a4a;
+    --link-color: #fc930b;
+    --link-hover-color: #a1c6f3;
+    --accent: #6d91c5;
+    --accent-alpha: rgba(109, 145, 197, 0.15);
+    
+    /* Box Shadows for Dark Mode */
+    --nav-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px;
+    --card-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
+    --card-shadow-hover: rgba(0, 0, 0, 0.35) 0px 10px 20px;
+} 

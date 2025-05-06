@@ -1,6 +1,6 @@
 ---
 title: 'Hugo & PaperMod Theme'
-date: 2025-05-08
+date: 2025-05-06
 slug: hugo-papermod-theme
 draft: false
 tags: ["papermod", "hugo", "web development"]
@@ -11,7 +11,7 @@ categories: ["Web Development"]
 
 ## Introduction
 
-[Hugo](https://gohugo.io/) is a blazing fast static site generator written in Go. Combined with the elegant [PaperMod theme](https://github.com/adityatelange/hugo-PaperMod), it's a powerful solution for creating modern websites, blogs, and documentation. This crash course will guide you through setting up, configuring, and customizing your Hugo site with PaperMod.
+[Hugo](https://gohugo.io/) is a blazing fast static site generator written in Go. Combined with the elegant [PaperMod theme](https://github.com/adityatelange/hugo-PaperMod), it's a powerful solution for creating modern websites, blogs, and documentation. This crash course will guide you through setting up, configuring, and customising your Hugo site with PaperMod. This is how I created my site.
 
 ## Installation
 
@@ -38,6 +38,8 @@ Verify your installation:
 ```bash
 hugo version
 ```
+
+Tip: you'll need to install Chocolatey as well if not done already.
 
 ## Creating a New Site
 
@@ -73,7 +75,7 @@ Create or modify the `config.yml` file in your site's root directory:
 ```yaml
 baseURL: "https://yourwebsite.com/"
 title: "Your Site Title"
-paginate: 5
+pagerSize: 5
 theme: PaperMod
 
 enableRobotsTXT: true
@@ -226,7 +228,7 @@ content/
     └── project-2.md
 ```
 
-## Customizing PaperMod
+## Customising PaperMod
 
 ### Creating Homepage Layouts
 
@@ -467,7 +469,7 @@ HUGO_DISABLEPATHTOFILEBYDISABLEDSYMPATHY=true hugo
 HUGO_IGNOREGIT=true hugo
 ```
 
-### Performance Optimization Flags
+### Performance Optimisation Flags
 
 ```bash
 # Enable HTTP/2 server push
@@ -594,7 +596,7 @@ content/
         └── bonjour-monde.md  # French
 ```
 
-### Content Organization with Page Bundles
+### Content Organisation with Page Bundles
 
 Page bundles keep content and its resources together:
 
@@ -624,8 +626,8 @@ Reference bundled resources in your content:
 
 ## Conclusion
 
-This crash course has provided you with the essential knowledge to get started with Hugo and the PaperMod theme. As you become more comfortable, explore Hugo's documentation and the PaperMod wiki for advanced features and customization options.
+This crash course has provided you with the essential knowledge to get started with Hugo and the PaperMod theme. As you become more comfortable, explore Hugo's documentation and the PaperMod wiki for advanced features and customisation options.
 
-Remember that Hugo's strength lies in its flexibility and speed, while PaperMod offers a clean, modern design with excellent performance. Together, they provide an excellent foundation for your website.
+Hugo's strength lies in its flexibility and speed, while PaperMod offers a clean, modern design with excellent performance. Together, they provide an excellent foundation for your website.
 
 Happy building!

@@ -72,7 +72,7 @@ Here are some commonly used tools for Python programming:
 
 **Atom**
 - Open-source and free
-- Highly customizable
+- Highly customisable
 - Good Git integration
 - Can be slower with large projects
 
@@ -93,7 +93,7 @@ Here are some commonly used tools for Python programming:
 
 **Jupyter Notebooks**
 - Interactive coding environment
-- Great for data analysis and visualization
+- Great for data analysis and visualisation
 - Documents that combine code, output, and markdown text
 - We'll cover this in detail in a later post
 

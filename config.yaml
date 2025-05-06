@@ -133,8 +133,8 @@ params:
   # Path(s) to custom CSS file(s) to override theme styles.
   # Files should be in your site's static directory (e.g., static/css/custom.css).
   customCSS:
-    - css/extended/custom.css
-    - css/extended/hamburger_menu.css
+    - css/extended/main.css
+    - css/extended/menu.css
     - css/extended/series.css
 
   # PaperMod homepage layout options.
@@ -381,7 +381,7 @@ sitemap:
 
 # Performance settings
 permalinks:
-  posts: /posts/:year/:month/:title/
+  posts: /:slug/
   pages: /:title/
   categories: /categories/:title/
   tags: /tags/:title/
