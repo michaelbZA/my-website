@@ -9,4 +9,15 @@
 
 {{- /* Insert any custom code (web-analytics, resources, etc.) - it will appear in the <head></head> section of every page. */ -}}
 {{- /* Can be overwritten by partial with the same name in the global layouts. */ -}}
+
+<!-- Custom JavaScript -->
+{{ $backToTop := resources.Get "js/extended/back-to-top.js" | minify }}
+<script src="{{ $backToTop.RelPermalink }}" defer></script>
+
+{{ $stickyHeader := resources.Get "js/extended/sticky-header.js" | minify }}
+<script src="{{ $stickyHeader.RelPermalink }}" defer></script>
+
+{{ $menuTrigger := resources.Get "js/extended/menu-trigger.js" | minify }}
+<script src="{{ $menuTrigger.RelPermalink }}" defer></script>
+
 {{- /* Head custom content area end */ -}}

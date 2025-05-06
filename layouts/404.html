@@ -1,0 +1,14 @@
+{{ define "main" }}
+<div class="error404">
+    <div class="error404-content">
+        <h1 class="error404-title">404</h1>
+        <div class="error404-subtitle">Page Not Found</div>
+        <div class="error404-description">
+            <p>The page you were looking for doesn't exist or has been moved.</p>
+        </div>
+        <div class="error404-actions">
+            <a href="{{ "/" | relURL }}" class="error404-button">← Back to Home</a>
+        </div>
+    </div>
+</div>
+{{ end }}

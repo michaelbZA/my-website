@@ -357,6 +357,5 @@ Don't feel like you need to learn everything at once! Start with the Command Pal
 - [Official VS Code Documentation](https://code.visualstudio.com/docs)
 - [VS Code Tips and Tricks](https://code.visualstudio.com/docs/getstarted/tips-and-tricks)
 - [Keyboard Shortcut Reference](https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-reference)
-- [VS Code Can Do That?!](https://www.vscodecandothat.com/) - Amazing tips site
 
 Happy coding!

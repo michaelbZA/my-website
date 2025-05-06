@@ -137,6 +137,11 @@ params:
     - css/extended/menu.css
     - css/extended/series.css
 
+  # Custom JavaScript files
+  customJS:
+    - js/extended/sticky-header.js
+    - js/extended/back-to-top.js
+
   # PaperMod homepage layout options.
   # 'archive', 'profile', 'landing', 'cards'
   homeLayout: cards
@@ -146,13 +151,32 @@ params:
   # Display settings for blog posts.
   showReadingTime: true     # Show estimated reading time.
   showShareButtons: true    # Show social share buttons.
-  showPostNavLinks: true    # Show links to previous/next posts.
+  showPostNavLinks: false   # Show links to previous/next posts.
   showBreadCrumbs: false    # Show breadcrumb navigation.
   showCodeCopyButtons: true # Add copy button to code blocks.
   showFullTextInRSS: true   # Include full post content in the RSS feed (instead of just summary).
   showToc: true             # Show Table of Contents on posts (requires headings in markdown).
   showSeries: true          # Show series at the top of the homepage
   # showWordCount: true # Another common option
+
+  # Code block settings
+  code:
+    copy: true
+    maxLines: 30
+    lineNos: true
+    lineNumbersInTable: true
+    style: monokai
+    highlight: true
+    highlightLanguages: ["powershell", "bash", "python", "javascript", "html", "css", "yaml", "json"]
+    highlightStyle: "monokai"
+
+  # Share buttons configuration
+  ShareButtons:
+    - twitter
+    - linkedin
+    - facebook
+    - whatsapp
+    - email
 
   # Google Analytics ID (for GA4, starts with G-). Requires a Google Analytics partial or theme support.
   googleAnalyticsID: G-XJJLP6S9JL
