@@ -29,12 +29,6 @@
           <span>{{ .Date.Format (default "January 2, 2006" .Site.Params.DateFormat) }}</span>
           {{- end }}
           {{- if .Params.tags }}
-          <span> • Tags: 
-          {{- range $index, $tag := .Params.tags }}
-            {{- if gt $index 0 }}, {{ end }}
-            <a href="/tags/{{ $tag | urlize }}">{{ $tag }}</a>
-          {{- end }}
-          </span>
           {{- end }}
           </div>
         </div>

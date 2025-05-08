@@ -1,1 +1,482 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Modules on Michael Brunger</title><link>http://localhost:1313/tags/modules/</link><description>Recent content in Modules on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Thu, 29 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/modules/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 5: Functions, Modules &amp; File I/O in Python</title><link>http://localhost:1313/posts/python-series/python5of17/</link><pubDate>Thu, 29 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/python-series/python5of17/</guid><description>Learn how to define and use functions, organize code into modules, leverage Python&amp;#39;s Standard Library, and perform file operations for reading and writing data.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Modules on Michael Brunger</title><link>http://localhost:1313/tags/modules/</link><description>Recent content in Modules on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Tue, 06 May 2025 12:41:15 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/modules/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 5: Functions, Modules &amp; File I/O in Python</title><link>http://localhost:1313/python-foundations-functions-modules/</link><pubDate>Thu, 29 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/python-foundations-functions-modules/</guid><description>Learn how to define and use functions, organize code into modules, leverage Python&amp;#39;s Standard Library, and perform file operations for reading and writing data.</description><content:encoded><![CDATA[<p>Functions, Modules &amp; File I/O in Python
+As a finance manager diving into Python, I&rsquo;ve found these next concepts incredibly useful for organizing code and working with external data. Let&rsquo;s explore how Python handles functions, modules, and file operations - all essential skills for financial analysis and reporting.
+Defining and Calling Functions
+Functions are reusable blocks of code that perform specific tasks. They help keep your code DRY (Don&rsquo;t Repeat Yourself) and make it more maintainable.
+Basic Function Syntax
+pythondef function_name(parameters):
+&ldquo;&ldquo;&ldquo;Docstring explaining what the function does.&rdquo;&rdquo;&rdquo;
+# Function body
+return result  # Optional
+Here&rsquo;s a simple function that calculates compound interest:
+pythondef calculate_compound_interest(principal, rate, time, compounds_per_year=1):
+&quot;&quot;&quot;
+Calculate compound interest.</p>
+<pre><code>Args:
+    principal: Initial investment amount
+    rate: Annual interest rate (as decimal, e.g., 0.05 for 5%)
+    time: Time period in years
+    compounds_per_year: Number of times interest compounds per year (default=1)
+
+Returns:
+    The final amount after compound interest
+&quot;&quot;&quot;
+return principal * (1 + rate/compounds_per_year)**(compounds_per_year*time)
+</code></pre>
+<p>Let&rsquo;s call this function:
+python# Calculate investment growth at 5% interest, compounded quarterly for 10 years
+initial_investment = 10000
+final_amount = calculate_compound_interest(
+principal=initial_investment,
+rate=0.05,
+time=10,
+compounds_per_year=4
+)
+print(f&quot;${initial_investment} will grow to ${final_amount:.2f} after 10 years&quot;)
+Output:
+$10000 will grow to $16470.09 after 10 years
+Function Arguments
+Python offers flexible ways to handle function arguments:
+Positional vs. Keyword Arguments
+python# Positional arguments (order matters)
+result1 = calculate_compound_interest(10000, 0.05, 10, 4)</p>
+<h1 id="keyword-arguments-order-doesnt-matter">Keyword arguments (order doesn&rsquo;t matter)</h1>
+<p>result2 = calculate_compound_interest(
+rate=0.05,
+principal=10000,
+compounds_per_year=4,
+time=10
+)
+Default Parameter Values
+In our function, compounds_per_year=1 provides a default value if not specified:
+python# Using the default compounds_per_year (annual compounding)
+annual_result = calculate_compound_interest(10000, 0.05, 10)
+print(f&quot;With annual compounding: ${annual_result:.2f}&quot;)
+Variable Number of Arguments
+For functions that need to accept varying numbers of arguments:
+python# *args collects extra positional arguments as a tuple
+def sum_all_values(*args):
+&ldquo;&ldquo;&ldquo;Sum any number of values.&rdquo;&rdquo;&rdquo;
+return sum(args)</p>
+<h1 id="kwargs-collects-extra-keyword-arguments-as-a-dictionary">**kwargs collects extra keyword arguments as a dictionary</h1>
+<p>def create_financial_report(report_date, **kwargs):
+&ldquo;&ldquo;&ldquo;Create a financial report with flexible data points.&rdquo;&rdquo;&rdquo;
+report = {&ldquo;date&rdquo;: report_date}
+report.update(kwargs)
+return report</p>
+<h1 id="example-usage">Example usage</h1>
+<p>total = sum_all_values(100, 250, 300, 75)
+print(f&quot;Total: ${total}&quot;)</p>
+<p>report = create_financial_report(
+&ldquo;2025-04-28&rdquo;,
+revenue=150000,
+expenses=95000,
+net_profit=55000,
+profit_margin=0.37
+)
+print(report)
+Variable Scope and Namespaces
+Understanding scope is crucial for debugging and writing clean code.
+Local vs. Global Scope
+pythontotal_assets = 1000000  # Global variable</p>
+<p>def calculate_roi(profit):
+investment = 100000  # Local variable
+return profit / investment * 100</p>
+<h1 id="investment-is-not-accessible-here">investment is not accessible here</h1>
+<p>print(f&quot;Total assets: ${total_assets}&quot;)</p>
+<p>roi = calculate_roi(25000)
+print(f&quot;ROI: {roi}%&quot;)
+Local variables exist only within their function. Global variables can be accessed inside functions, but to modify them, you need the global keyword:
+pythonbalance = 5000  # Global variable</p>
+<p>def deposit(amount):
+global balance  # Tell Python we want to modify the global variable
+balance += amount
+return balance</p>
+<p>def withdraw(amount):
+global balance
+if balance &gt;= amount:
+balance -= amount
+return balance
+else:
+return &ldquo;Insufficient funds&rdquo;</p>
+<p>print(f&quot;Initial balance: ${balance}&quot;)
+deposit(1000)
+print(f&quot;After deposit: ${balance}&quot;)
+withdraw(2000)
+print(f&quot;After withdrawal: ${balance}&quot;)
+Namespaces
+Python uses namespaces to organize names and avoid conflicts. Each module, function, and class has its own namespace.
+Organizing Code into Modules and Packages
+As your financial scripts grow, organizing code becomes essential.
+Modules
+A module is simply a .py file containing code. Let&rsquo;s create a financial utilities module:
+python# financial_utils.py
+def calculate_roi(profit, investment):
+&ldquo;&ldquo;&ldquo;Calculate Return on Investment as a percentage.&rdquo;&rdquo;&rdquo;
+return (profit / investment) * 100</p>
+<p>def calculate_npv(cash_flows, discount_rate):
+&quot;&quot;&quot;
+Calculate Net Present Value of a series of cash flows.</p>
+<pre><code>Args:
+    cash_flows: List of cash flows, where index 0 is the initial investment (negative)
+    discount_rate: Discount rate as decimal (e.g., 0.1 for 10%)
+&quot;&quot;&quot;
+npv = 0
+for t, cash_flow in enumerate(cash_flows):
+    npv += cash_flow / (1 + discount_rate) ** t
+return npv
+</code></pre>
+<p>To use this module:
+python# main.py
+import financial_utils</p>
+<h1 id="calculate-roi">Calculate ROI</h1>
+<p>investment = 50000
+profit = 12500
+roi = financial_utils.calculate_roi(profit, investment)
+print(f&quot;ROI: {roi}%&quot;)</p>
+<h1 id="calculate-npv-of-a-project">Calculate NPV of a project</h1>
+<p>cash_flows = [-100000, 30000, 35000, 45000, 50000]  # Initial investment + 4 years of returns
+npv = financial_utils.calculate_npv(cash_flows, 0.08)
+print(f&quot;NPV: ${npv:.2f}&quot;)
+You can also import specific functions:
+pythonfrom financial_utils import calculate_roi, calculate_npv</p>
+<h1 id="now-use-without-the-module-prefix">Now use without the module prefix</h1>
+<p>roi = calculate_roi(12500, 50000)
+Packages
+Packages are directories containing multiple modules. They require an <strong>init</strong>.py file (which can be empty) to be recognized as packages.
+finance_package/
+├── <strong>init</strong>.py
+├── analysis.py
+├── reporting.py
+└── utils.py
+Using packages:
+python# Import specific modules from a package
+from finance_package import analysis, reporting</p>
+<h1 id="import-specific-functions-from-a-module-in-a-package">Import specific functions from a module in a package</h1>
+<p>from finance_package.utils import calculate_roi
+Exploring the Standard Library
+Python comes with a rich standard library. Here are some modules particularly useful for financial applications:
+Math Module
+pythonimport math</p>
+<h1 id="calculate-loan-payment-using-the-pmt-formula">Calculate loan payment using the PMT formula</h1>
+<p>principal = 250000
+annual_rate = 0.04  # 4%
+years = 30
+monthly_rate = annual_rate / 12
+num_payments = years * 12</p>
+<h1 id="monthly-payment-formula">Monthly payment formula</h1>
+<p>payment = principal * (monthly_rate * math.pow(1 + monthly_rate, num_payments)) / (math.pow(1 + monthly_rate, num_payments) - 1)
+print(f&quot;Monthly mortgage payment: ${payment:.2f}&quot;)
+Random Module
+pythonimport random</p>
+<h1 id="simulate-stock-price-movements-very-simplified">Simulate stock price movements (very simplified)</h1>
+<p>starting_price = 100
+daily_volatility = 0.015  # 1.5%</p>
+<p>prices = [starting_price]
+for day in range(30):
+change = random.normalvariate(0, daily_volatility)
+new_price = prices[-1] * (1 + change)
+prices.append(new_price)</p>
+<p>print(f&quot;Starting price: ${starting_price:.2f}&quot;)
+print(f&quot;Ending price: ${prices[-1]:.2f}&quot;)
+print(f&quot;30-day return: {(prices[-1]/prices[0] - 1) * 100:.2f}%&quot;)
+Datetime Module
+pythonfrom datetime import datetime, timedelta</p>
+<h1 id="calculate-business-days-between-dates">Calculate business days between dates</h1>
+<p>def business_days_between(start_date, end_date):
+&ldquo;&ldquo;&ldquo;Count business days between two dates (excluding weekends).&rdquo;&rdquo;&rdquo;
+days = 0
+current_date = start_date
+while current_date &lt;= end_date:
+# Monday = 0, Sunday = 6
+if current_date.weekday() &lt; 5:  # Only count weekdays (0-4)
+days += 1
+current_date += timedelta(days=1)
+return days</p>
+<h1 id="calculate-days-until-fiscal-year-end">Calculate days until fiscal year end</h1>
+<p>today = datetime.now()
+fiscal_year_end = datetime(today.year, 12, 31)
+if today &gt; fiscal_year_end:
+fiscal_year_end = datetime(today.year + 1, 12, 31)</p>
+<p>business_days = business_days_between(today, fiscal_year_end)
+print(f&quot;Business days until fiscal year end: {business_days}&quot;)
+OS and Sys Modules
+pythonimport os
+import sys</p>
+<h1 id="get-the-current-working-directory-useful-for-file-paths">Get the current working directory (useful for file paths)</h1>
+<p>current_dir = os.getcwd()
+print(f&quot;Current directory: {current_dir}&quot;)</p>
+<h1 id="list-all-excel-files-in-the-current-directory">List all Excel files in the current directory</h1>
+<p>excel_files = [file for file in os.listdir() if file.endswith((&rsquo;.xlsx&rsquo;, &lsquo;.xls&rsquo;))]
+print(&ldquo;Excel files found:&rdquo;)
+for file in excel_files:
+print(f&quot;- {file}&quot;)</p>
+<h1 id="get-python-version-and-platform-information">Get Python version and platform information</h1>
+<p>print(f&quot;Python version: {sys.version}&quot;)
+print(f&quot;Platform: {sys.platform}&quot;)
+Reading from/Writing to Text Files
+File operations are essential for financial data analysis, reporting, and automation.
+Opening and Closing Files
+The basic pattern is:
+python# Open a file in read mode
+file = open(&lsquo;data.txt&rsquo;, &lsquo;r&rsquo;)</p>
+<h1 id="do-something-with-the-file">Do something with the file</h1>
+<p>content = file.read()</p>
+<h1 id="close-the-file">Close the file</h1>
+<p>file.close()
+However, this approach has problems if an error occurs before close(). The preferred way is using the with statement:
+The with Statement
+python# Automatically handles proper closing of the file
+with open(&lsquo;data.txt&rsquo;, &lsquo;r&rsquo;) as file:
+content = file.read()
+# File processing here</p>
+<h1 id="file-is-automatically-closed-when-the-block-ends">File is automatically closed when the block ends</h1>
+<p>Reading Text Files
+Let&rsquo;s work with a sample CSV file containing financial transactions:
+python# Sample contents of transactions.csv:</p>
+<h1 id="datedescriptionamount">date,description,amount</h1>
+<h1 id="2025-01-15office-supplies-12999">2025-01-15,Office supplies,-129.99</h1>
+<h1 id="2025-01-18client-payment150000">2025-01-18,Client payment,1500.00</h1>
+<h1 id="2025-01-22software-subscription-4999">2025-01-22,Software subscription,-49.99</h1>
+<h1 id="2025-01-30consulting-fees275000">2025-01-30,Consulting fees,2750.00</h1>
+<p>with open(&rsquo;transactions.csv&rsquo;, &lsquo;r&rsquo;) as file:
+# Read the entire file as a single string
+content = file.read()
+print(&ldquo;File contents:&rdquo;)
+print(content)
+Reading line by line:
+pythonwith open(&rsquo;transactions.csv&rsquo;, &lsquo;r&rsquo;) as file:
+# Skip header
+header = file.readline()</p>
+<pre><code># Initialize counters
+total_income = 0
+total_expenses = 0
+
+# Process each transaction
+for line in file:
+    # Remove whitespace and split by comma
+    date, description, amount = line.strip().split(',')
+    
+    # Convert amount to float
+    amount = float(amount)
+    
+    if amount &gt;= 0:
+        total_income += amount
+    else:
+        total_expenses += amount
+
+print(f&quot;Total income: ${total_income:.2f}&quot;)
+print(f&quot;Total expenses: ${total_expenses:.2f}&quot;)
+print(f&quot;Net cash flow: ${total_income + total_expenses:.2f}&quot;)
+</code></pre>
+<p>Writing to Text Files
+Let&rsquo;s create a simple financial report:
+python# Sample transaction data
+transactions = [
+{&ldquo;date&rdquo;: &ldquo;2025-01-15&rdquo;, &ldquo;description&rdquo;: &ldquo;Office supplies&rdquo;, &ldquo;amount&rdquo;: -129.99},
+{&ldquo;date&rdquo;: &ldquo;2025-01-18&rdquo;, &ldquo;description&rdquo;: &ldquo;Client payment&rdquo;, &ldquo;amount&rdquo;: 1500.00},
+{&ldquo;date&rdquo;: &ldquo;2025-01-22&rdquo;, &ldquo;description&rdquo;: &ldquo;Software subscription&rdquo;, &ldquo;amount&rdquo;: -49.99},
+{&ldquo;date&rdquo;: &ldquo;2025-01-30&rdquo;, &ldquo;description&rdquo;: &ldquo;Consulting fees&rdquo;, &ldquo;amount&rdquo;: 2750.00}
+]</p>
+<h1 id="calculate-summary-statistics">Calculate summary statistics</h1>
+<p>total_income = sum(t[&ldquo;amount&rdquo;] for t in transactions if t[&ldquo;amount&rdquo;] &gt; 0)
+total_expenses = sum(t[&ldquo;amount&rdquo;] for t in transactions if t[&ldquo;amount&rdquo;] &lt; 0)
+net_cash_flow = total_income + total_expenses</p>
+<h1 id="write-the-report-to-a-file">Write the report to a file</h1>
+<p>with open(&lsquo;financial_report.txt&rsquo;, &lsquo;w&rsquo;) as report_file:
+report_file.write(&ldquo;MONTHLY FINANCIAL REPORT\n&rdquo;)
+report_file.write(&quot;======================\n\n&quot;)</p>
+<pre><code>report_file.write(&quot;TRANSACTION DETAILS:\n&quot;)
+report_file.write(&quot;-----------------\n&quot;)
+
+for t in transactions:
+    amount_str = f&quot;${abs(t['amount']):.2f}&quot;
+    if t[&quot;amount&quot;] &lt; 0:
+        amount_str = f&quot;-{amount_str}&quot;
+    
+    report_file.write(f&quot;{t['date']} | {t['description'].ljust(20)} | {amount_str}\n&quot;)
+
+report_file.write(&quot;\nSUMMARY:\n&quot;)
+report_file.write(&quot;--------\n&quot;)
+report_file.write(f&quot;Total Income:    ${total_income:.2f}\n&quot;)
+report_file.write(f&quot;Total Expenses:  ${total_expenses:.2f}\n&quot;)
+report_file.write(f&quot;Net Cash Flow:   ${net_cash_flow:.2f}\n&quot;)
+</code></pre>
+<p>print(&ldquo;Financial report generated: financial_report.txt&rdquo;)
+Handling Different File Modes</p>
+<p>&lsquo;r&rsquo;: Read (default)
+&lsquo;w&rsquo;: Write (creates new file or truncates existing)
+&lsquo;a&rsquo;: Append (adds to end of file)
+&lsquo;r+&rsquo;: Read and write
+&lsquo;b&rsquo;: Binary mode (used with other modes, e.g., &lsquo;rb&rsquo;)</p>
+<p>Working with CSV Files
+While you can process CSV files manually as shown above, Python&rsquo;s csv module makes it easier:
+pythonimport csv</p>
+<h1 id="reading-csv">Reading CSV</h1>
+<p>with open(&rsquo;transactions.csv&rsquo;, &lsquo;r&rsquo;) as file:
+csv_reader = csv.DictReader(file)</p>
+<pre><code># Process each row as a dictionary
+transactions = []
+for row in csv_reader:
+    # Convert amount from string to float
+    row['amount'] = float(row['amount'])
+    transactions.append(row)
+
+print(f&quot;Loaded {len(transactions)} transactions&quot;)
+</code></pre>
+<h1 id="writing-csv">Writing CSV</h1>
+<p>with open(&lsquo;budget_forecast.csv&rsquo;, &lsquo;w&rsquo;, newline=&rsquo;&rsquo;) as file:
+# Define column headers
+fieldnames = [&lsquo;month&rsquo;, &lsquo;revenue&rsquo;, &rsquo;expenses&rsquo;, &lsquo;profit&rsquo;]</p>
+<pre><code># Create CSV writer
+csv_writer = csv.DictWriter(file, fieldnames=fieldnames)
+
+# Write header row
+csv_writer.writeheader()
+
+# Write data rows
+for month in range(1, 13):
+    # Simple forecast model (for demonstration)
+    revenue = 15000 + (month * 500)  # Increasing monthly
+    expenses = 10000 + (month * 200)  # Increasing but slower
+    profit = revenue - expenses
+    
+    csv_writer.writerow({
+        'month': f&quot;2025-{month:02d}&quot;,
+        'revenue': revenue,
+        'expenses': expenses,
+        'profit': profit
+    })
+</code></pre>
+<p>print(&ldquo;Budget forecast generated: budget_forecast.csv&rdquo;)
+Practical Example: Expense Analyzer
+Let&rsquo;s combine everything we&rsquo;ve learned into a practical financial tool that:</p>
+<p>Reads expense data from a CSV file
+Categorizes and analyzes expenses
+Generates a report with summary statistics</p>
+<p>pythonimport csv
+from datetime import datetime
+import os</p>
+<p>def load_expenses(filename):
+&ldquo;&ldquo;&ldquo;Load expense data from a CSV file.&rdquo;&rdquo;&rdquo;
+expenses = []</p>
+<pre><code>with open(filename, 'r') as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        # Convert amount to float and date to datetime
+        row['amount'] = float(row['amount'])
+        row['date'] = datetime.strptime(row['date'], '%Y-%m-%d')
+        expenses.append(row)
+
+return expenses
+</code></pre>
+<p>def categorize_expenses(expenses):
+&ldquo;&ldquo;&ldquo;Group expenses by category.&rdquo;&rdquo;&rdquo;
+categories = {}</p>
+<pre><code>for expense in expenses:
+    category = expense['category']
+    
+    if category not in categories:
+        categories[category] = []
+    
+    categories[category].append(expense)
+
+return categories
+</code></pre>
+<p>def calculate_category_totals(categories):
+&ldquo;&ldquo;&ldquo;Calculate total amount for each expense category.&rdquo;&rdquo;&rdquo;
+totals = {}</p>
+<pre><code>for category, expenses in categories.items():
+    totals[category] = sum(expense['amount'] for expense in expenses)
+
+return totals
+</code></pre>
+<p>def generate_expense_report(expenses, categories, totals, output_file):
+&ldquo;&ldquo;&ldquo;Generate a detailed expense report.&rdquo;&rdquo;&rdquo;
+total_expenses = sum(totals.values())</p>
+<pre><code>with open(output_file, 'w') as file:
+    # Write header
+    file.write(&quot;EXPENSE ANALYSIS REPORT\n&quot;)
+    file.write(&quot;======================\n\n&quot;)
+    
+    # Write summary
+    file.write(f&quot;Total Expenses: ${total_expenses:.2f}\n&quot;)
+    file.write(f&quot;Number of Transactions: {len(expenses)}\n&quot;)
+    file.write(f&quot;Date Range: {min(e['date'] for e in expenses).strftime('%Y-%m-%d')} to {max(e['date'] for e in expenses).strftime('%Y-%m-%d')}\n\n&quot;)
+    
+    # Write category breakdown
+    file.write(&quot;EXPENSE BREAKDOWN BY CATEGORY\n&quot;)
+    file.write(&quot;----------------------------\n&quot;)
+    
+    # Sort categories by total amount (descending)
+    sorted_categories = sorted(totals.items(), key=lambda x: x[1], reverse=True)
+    
+    for category, amount in sorted_categories:
+        percentage = (amount / total_expenses) * 100
+        file.write(f&quot;{category.ljust(20)} ${amount:.2f} ({percentage:.1f}%)\n&quot;)
+    
+    # Write transaction details for each category
+    file.write(&quot;\nDETAILED TRANSACTIONS BY CATEGORY\n&quot;)
+    file.write(&quot;--------------------------------\n\n&quot;)
+    
+    for category, amount in sorted_categories:
+        file.write(f&quot;{category.upper()}\n&quot;)
+        file.write(f&quot;{'-' * len(category)}\n&quot;)
+        
+        # Sort expenses by date
+        sorted_expenses = sorted(categories[category], key=lambda x: x['date'])
+        
+        for expense in sorted_expenses:
+            date_str = expense['date'].strftime('%Y-%m-%d')
+            file.write(f&quot;{date_str} | {expense['description'].ljust(30)} | ${expense['amount']:.2f}\n&quot;)
+        
+        # Add category subtotal
+        file.write(f&quot;{'SUBTOTAL:'.ljust(41)} ${amount:.2f}\n\n&quot;)
+</code></pre>
+<h1 id="usage-example-assuming-we-have-an-expensescsv-file">Usage example (assuming we have an expenses.csv file)</h1>
+<p>def main():
+# Check if the input file exists
+input_file = &rsquo;expenses.csv&rsquo;
+if not os.path.exists(input_file):
+print(f&quot;Error: File &lsquo;{input_file}&rsquo; not found.&quot;)
+print(&ldquo;Creating a sample expense file for demonstration&hellip;&rdquo;)</p>
+<pre><code>    # Create a sample file for demonstration
+    with open(input_file, 'w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(['date', 'category', 'description', 'amount'])
+        writer.writerow(['2025-01-05', 'Office', 'Printer paper', 24.99])
+        writer.writerow(['2025-01-10', 'Software', 'Accounting software', 89.99])
+        writer.writerow(['2025-01-15', 'Office', 'Desk organizer', 32.50])
+        writer.writerow(['2025-01-18', 'Travel', 'Client meeting transportation', 45.75])
+        writer.writerow(['2025-01-22', 'Software', 'Cloud storage subscription', 9.99])
+        writer.writerow(['2025-01-25', 'Meals', 'Team lunch', 87.50])
+        writer.writerow(['2025-01-29', 'Office', 'Printer ink', 65.85])
+        writer.writerow(['2025-02-03', 'Travel', 'Conference registration', 299.00])
+        writer.writerow(['2025-02-07', 'Meals', 'Client dinner', 125.40])
+        writer.writerow(['2025-02-15', 'Software', 'Data analysis tool', 149.99])
+    
+    print(f&quot;Sample file '{input_file}' created.&quot;)
+
+# Process the expense data
+expenses = load_expenses(input_file)
+categories = categorize_expenses(expenses)
+totals = calculate_category_totals(categories)
+
+# Generate the report
+output_file = 'expense_report.txt'
+generate_expense_report(expenses, categories, totals, output_file)
+
+print(f&quot;Expense report generated: {output_file}&quot;)
+</code></pre>
+<p>if <strong>name</strong> == &ldquo;<strong>main</strong>&rdquo;:
+main()
+This script demonstrates:</p>
+<p>Function definitions with docstrings
+File I/O with the with statement
+CSV processing
+Module imports and usage
+Error handling</p>
+<p>Conclusion
+Functions, modules, and file I/O form the backbone of most Python applications, especially for financial tasks. By mastering these concepts, you&rsquo;ll be well-equipped to build tools for financial analysis, reporting, and automation.
+In the next post, we&rsquo;ll explore virtual environments and package management, which will help you manage dependencies for larger projects.
+Practice Exercise: Try extending the expense analyzer to calculate monthly trends or generate a simple visualization of spending by category. This will help reinforce the concepts we&rsquo;ve covered while building something useful for your financial toolkit.</p>
+]]></content:encoded></item></channel></rss>

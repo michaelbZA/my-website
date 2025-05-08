@@ -1,0 +1,30 @@
+<!-- Reading Progress Bar -->
+<div class="reading-progress-container">
+    <div class="reading-progress-bar"></div>
+</div>
+
+<script>
+console.log('Reading progress script loaded'); // Debug log
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded'); // Debug log
+    
+    const progressBar = document.querySelector('.reading-progress-bar');
+    console.log('Progress bar element:', progressBar); // Debug log
+    
+    if (!progressBar) {
+        console.log('No progress bar found'); // Debug log
+        return;
+    }
+    
+    window.addEventListener('scroll', function() {
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight - windowHeight;
+        const scrolled = window.scrollY;
+        
+        const progress = (scrolled / documentHeight) * 100;
+        progressBar.style.width = progress + '%';
+        console.log('Progress:', progress + '%'); // Debug log
+    });
+});
+</script> 

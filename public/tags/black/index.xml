@@ -1,1 +1,514 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Black on Michael Brunger</title><link>http://localhost:1313/tags/black/</link><description>Recent content in Black on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Thu, 12 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/black/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 7: Code Quality &amp; Collaboration in Python</title><link>http://localhost:1313/posts/python-series/python7of17/</link><pubDate>Thu, 12 Jun 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/python-series/python7of17/</guid><description>Learn version control with Git and GitHub, write clean PEP 8-compliant code, use linters and auto-formatters, and create effective documentation for your Python projects.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Black on Michael Brunger</title><link>http://localhost:1313/tags/black/</link><description>Recent content in Black on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Tue, 06 May 2025 12:41:15 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/black/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 7: Code Quality &amp; Collaboration in Python</title><link>http://localhost:1313/python-foundations-code-quality/</link><pubDate>Thu, 12 Jun 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/python-foundations-code-quality/</guid><description>Learn version control with Git and GitHub, write clean PEP 8-compliant code, use linters and auto-formatters, and create effective documentation for your Python projects.</description><content:encoded><![CDATA[<h1 id="code-quality--collaboration">Code Quality &amp; Collaboration</h1>
+<p>As we progress beyond the fundamentals of Python, it&rsquo;s time to address an often-overlooked aspect of programming: writing quality code that&rsquo;s easy to maintain and collaborate on. For finance professionals using Python, this is especially important as your scripts may be used for critical financial analysis, reporting, or even compliance tasks.</p>
+<p>In this post, I&rsquo;ll cover version control with Git, writing clean code, formatting, and documentation practices that will transform your Python projects from &ldquo;scripts that work&rdquo; into &ldquo;professional-grade software.&rdquo;</p>
+<h2 id="version-control-fundamentals-with-git--github">Version Control Fundamentals with Git &amp; GitHub</h2>
+<p>Version control is like a time machine for your code. It tracks changes, allows experimentation without fear, and enables collaboration. Git is the industry standard, and GitHub is the most popular platform for hosting Git repositories.</p>
+<h3 id="why-version-control-matters-for-financial-code">Why Version Control Matters for Financial Code</h3>
+<ul>
+<li><strong>Audit Trail:</strong> Track exactly who changed what and when—critical for financial applications</li>
+<li><strong>Experimentation:</strong> Safely try new analysis techniques without risking your working code</li>
+<li><strong>Collaboration:</strong> Multiple team members can work on the same codebase without conflicts</li>
+<li><strong>Backup:</strong> Your code is stored in multiple locations, protecting against data loss</li>
+</ul>
+<h3 id="getting-started-with-git">Getting Started with Git</h3>
+<p>First, <a href="https://git-scm.com/downloads">download and install Git</a> for your operating system. Then, set up your identity:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git config --global user.name <span style="color:#e6db74">&#34;Your Name&#34;</span>
+</span></span><span style="display:flex;"><span>git config --global user.email <span style="color:#e6db74">&#34;your.email@example.com&#34;</span>
+</span></span></code></pre></div><h3 id="creating-a-git-repository">Creating a Git Repository</h3>
+<p>To start tracking a project:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Navigate to your project directory</span>
+</span></span><span style="display:flex;"><span>cd C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\Y</span>ourName<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\f</span>inancial-analysis-project
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Initialize a Git repository</span>
+</span></span><span style="display:flex;"><span>git init
+</span></span></code></pre></div><h3 id="the-basic-git-workflow">The Basic Git Workflow</h3>
+<p>The Git workflow revolves around three main areas:</p>
+<ol>
+<li>Working directory (your actual files)</li>
+<li>Staging area (preparing changes for commit)</li>
+<li>Repository (committed history)</li>
+</ol>
+<h4 id="checking-status">Checking Status</h4>
+<p>To see which files have changed:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git status
+</span></span></code></pre></div><p>Example output:</p>
+<pre tabindex="0"><code>On branch main
+Untracked files:
+  (use &#34;git add &lt;file&gt;...&#34; to include in what will be committed)
+        financial_analysis.py
+        data_loader.py
+
+nothing added to commit but untracked files present (use &#34;git add&#34; to track)
+</code></pre><h4 id="staging-changes">Staging Changes</h4>
+<p>Add files to the staging area:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Add specific files</span>
+</span></span><span style="display:flex;"><span>git add financial_analysis.py
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Add all Python files</span>
+</span></span><span style="display:flex;"><span>git add *.py
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Add all files</span>
+</span></span><span style="display:flex;"><span>git add .
+</span></span></code></pre></div><h4 id="committing-changes">Committing Changes</h4>
+<p>Save the staged changes with a descriptive message:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Add financial ratio analysis functions&#34;</span>
+</span></span></code></pre></div><p>Always write meaningful commit messages that explain <em>why</em> the change was made, not just <em>what</em> changed.</p>
+<h3 id="working-with-github">Working with GitHub</h3>
+<p>GitHub allows you to store your repositories remotely and collaborate with others.</p>
+<h4 id="creating-a-github-repository">Creating a GitHub Repository</h4>
+<ol>
+<li>Sign up or log in at <a href="https://github.com/">GitHub</a></li>
+<li>Click &ldquo;New repository&rdquo;</li>
+<li>Name it (e.g., &ldquo;financial-analysis-tools&rdquo;)</li>
+<li>Choose public or private</li>
+<li>Click &ldquo;Create repository&rdquo;</li>
+</ol>
+<h4 id="connecting-your-local-repository-to-github">Connecting Your Local Repository to GitHub</h4>
+<p>GitHub will show commands like these after creating a repository:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Connect your local repository to GitHub</span>
+</span></span><span style="display:flex;"><span>git remote add origin https://github.com/yourusername/financial-analysis-tools.git
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Push your changes to GitHub</span>
+</span></span><span style="display:flex;"><span>git push -u origin main
+</span></span></code></pre></div><h4 id="basic-github-collaboration-flow">Basic GitHub Collaboration Flow</h4>
+<ol>
+<li>
+<p><strong>Clone</strong> a repository to get a local copy:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/yourusername/financial-analysis-tools.git
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Pull</strong> the latest changes before starting work:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git pull origin main
+</span></span></code></pre></div></li>
+<li>
+<p>Make your changes and <strong>commit</strong> them</p>
+</li>
+<li>
+<p><strong>Push</strong> your changes to GitHub:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push origin main
+</span></span></code></pre></div></li>
+</ol>
+<h4 id="pull-requests">Pull Requests</h4>
+<p>When collaborating with others, direct pushing to the main branch is often restricted. Instead, you&rsquo;ll use pull requests:</p>
+<ol>
+<li>
+<p>Create a new branch for your feature:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git checkout -b add-depreciation-calculator
+</span></span></code></pre></div></li>
+<li>
+<p>Make changes, commit, and push to your branch:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push origin add-depreciation-calculator
+</span></span></code></pre></div></li>
+<li>
+<p>On GitHub, navigate to your repository and click &ldquo;Compare &amp; pull request&rdquo;</p>
+</li>
+<li>
+<p>Add a title and description explaining your changes</p>
+</li>
+<li>
+<p>Team members can now review your code, suggest changes, and eventually merge it</p>
+</li>
+</ol>
+<h2 id="writing-clean-pep-8-compliant-code">Writing Clean, PEP 8-Compliant Code</h2>
+<p>Python has an official style guide called <a href="https://peps.python.org/pep-0008/">PEP 8</a> that helps make code consistent and readable. Following these standards isn&rsquo;t just about aesthetics—it makes your code more maintainable and easier for others to understand.</p>
+<h3 id="key-pep-8-guidelines">Key PEP 8 Guidelines</h3>
+<h4 id="indentation-and-line-length">Indentation and Line Length</h4>
+<ul>
+<li>Use 4 spaces per indentation level (not tabs)</li>
+<li>Keep lines at a maximum of 79 characters for code, 72 for comments</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Good</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_monthly_payment</span>(principal, annual_rate, years):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Calculate the monthly payment for a loan.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    monthly_rate <span style="color:#f92672">=</span> annual_rate <span style="color:#f92672">/</span> <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>    num_payments <span style="color:#f92672">=</span> years <span style="color:#f92672">*</span> <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> principal <span style="color:#f92672">*</span> (monthly_rate <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> monthly_rate) <span style="color:#f92672">**</span> num_payments) <span style="color:#f92672">/</span> \
+</span></span><span style="display:flex;"><span>           ((<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> monthly_rate) <span style="color:#f92672">**</span> num_payments <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Bad - lines too long</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_monthly_payment</span>(principal, annual_rate, years):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Calculate the monthly payment for a loan.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> principal <span style="color:#f92672">*</span> (annual_rate <span style="color:#f92672">/</span> <span style="color:#ae81ff">12</span> <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> annual_rate <span style="color:#f92672">/</span> <span style="color:#ae81ff">12</span>) <span style="color:#f92672">**</span> (years <span style="color:#f92672">*</span> <span style="color:#ae81ff">12</span>)) <span style="color:#f92672">/</span> ((<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> annual_rate <span style="color:#f92672">/</span> <span style="color:#ae81ff">12</span>) <span style="color:#f92672">**</span> (years <span style="color:#f92672">*</span> <span style="color:#ae81ff">12</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+</span></span></code></pre></div><h4 id="imports">Imports</h4>
+<ul>
+<li>Import on separate lines</li>
+<li>Group imports: standard library, third-party, local</li>
+<li>Avoid wildcard imports (<code>from x import *</code>)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Good</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> financial_tools.utils <span style="color:#f92672">import</span> calculate_roi
+</span></span></code></pre></div><h4 id="naming-conventions">Naming Conventions</h4>
+<ul>
+<li><code>variable_names</code> and <code>function_names</code> use snake_case</li>
+<li><code>ClassNames</code> use CamelCase</li>
+<li><code>CONSTANTS</code> use ALL_CAPS</li>
+<li>Avoid single letter names except for counters or short-lived variables</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Good</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_net_present_value</span>(cash_flows, discount_rate):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Calculate NPV of cash flows.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    npv <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i, cash_flow <span style="color:#f92672">in</span> enumerate(cash_flows):
+</span></span><span style="display:flex;"><span>        npv <span style="color:#f92672">+=</span> cash_flow <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> discount_rate) <span style="color:#f92672">**</span> i
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> npv
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Bad - poor naming</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calc_npv</span>(cf, r):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Calculate NPV.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    n <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i, c <span style="color:#f92672">in</span> enumerate(cf):
+</span></span><span style="display:flex;"><span>        n <span style="color:#f92672">+=</span> c <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> r) <span style="color:#f92672">**</span> i
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> n
+</span></span></code></pre></div><h4 id="whitespace">Whitespace</h4>
+<ul>
+<li>Use blank lines to separate logical sections</li>
+<li>Use spaces around operators: <code>x = 1 + 2</code>, not <code>x=1+2</code></li>
+<li>No space after function name in calls: <code>function_name(arg)</code>, not <code>function_name (arg)</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Good</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">analyze_portfolio</span>(stocks, weights, risk_free_rate<span style="color:#f92672">=</span><span style="color:#ae81ff">0.02</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Analyze a stock portfolio&#39;s risk and return metrics.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Calculate portfolio return</span>
+</span></span><span style="display:flex;"><span>    returns <span style="color:#f92672">=</span> calculate_weighted_returns(stocks, weights)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Calculate risk metrics</span>
+</span></span><span style="display:flex;"><span>    volatility <span style="color:#f92672">=</span> calculate_portfolio_volatility(stocks, weights)
+</span></span><span style="display:flex;"><span>    sharpe_ratio <span style="color:#f92672">=</span> (returns <span style="color:#f92672">-</span> risk_free_rate) <span style="color:#f92672">/</span> volatility
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;return&#39;</span>: returns,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;volatility&#39;</span>: volatility,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;sharpe_ratio&#39;</span>: sharpe_ratio
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><h3 id="linting-with-flake8">Linting with flake8</h3>
+<p>Linting tools automatically check your code against style guidelines. <code>flake8</code> is a popular linter for Python:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Install flake8</span>
+</span></span><span style="display:flex;"><span>pip install flake8
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Run on a specific file</span>
+</span></span><span style="display:flex;"><span>flake8 financial_analysis.py
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Run on entire project</span>
+</span></span><span style="display:flex;"><span>flake8 .
+</span></span></code></pre></div><p>Sample output:</p>
+<pre tabindex="0"><code>financial_analysis.py:25:80: E501 line too long (88 &gt; 79 characters)
+financial_analysis.py:42:1: E303 too many blank lines (3)
+financial_analysis.py:50:17: E225 missing whitespace around operator
+</code></pre><h3 id="auto-formatting-with-black-and-isort">Auto-formatting with black and isort</h3>
+<p>Manually fixing style issues can be tedious. Tools like <code>black</code> and <code>isort</code> can automatically format your code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Install formatters</span>
+</span></span><span style="display:flex;"><span>pip install black isort
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Format a file with black</span>
+</span></span><span style="display:flex;"><span>black financial_analysis.py
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Format imports with isort</span>
+</span></span><span style="display:flex;"><span>isort financial_analysis.py
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Format an entire project</span>
+</span></span><span style="display:flex;"><span>black .
+</span></span><span style="display:flex;"><span>isort .
+</span></span></code></pre></div><p>Black is an &ldquo;opinionated&rdquo; formatter that enforces a consistent style. It might make some formatting changes you disagree with initially, but the consistency it brings is invaluable for team projects.</p>
+<h3 id="setting-up-a-pre-commit-hook">Setting Up a Pre-commit Hook</h3>
+<p>You can automate code formatting and linting using Git pre-commit hooks:</p>
+<ol>
+<li>
+<p>Install pre-commit:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install pre-commit
+</span></span></code></pre></div></li>
+<li>
+<p>Create a <code>.pre-commit-config.yaml</code> file in your project:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">repos</span>:
+</span></span><span style="display:flex;"><span>-   <span style="color:#f92672">repo</span>: <span style="color:#ae81ff">https://github.com/pycqa/isort</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">rev</span>: <span style="color:#ae81ff">5.10.1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">hooks</span>:
+</span></span><span style="display:flex;"><span>    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">isort</span>
+</span></span><span style="display:flex;"><span>-   <span style="color:#f92672">repo</span>: <span style="color:#ae81ff">https://github.com/psf/black</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">rev</span>: <span style="color:#ae81ff">22.3.0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">hooks</span>:
+</span></span><span style="display:flex;"><span>    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">black</span>
+</span></span><span style="display:flex;"><span>-   <span style="color:#f92672">repo</span>: <span style="color:#ae81ff">https://github.com/pycqa/flake8</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">rev</span>: <span style="color:#ae81ff">4.0.1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">hooks</span>:
+</span></span><span style="display:flex;"><span>    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">flake8</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Install the hooks:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pre-commit install
+</span></span></code></pre></div></li>
+</ol>
+<p>Now, when you attempt to commit code, these tools will run automatically and prevent the commit if there are style issues.</p>
+<h2 id="writing-documentation">Writing Documentation</h2>
+<p>Good documentation is crucial for financial code where understanding the calculation methods and assumptions is critical.</p>
+<h3 id="docstrings">Docstrings</h3>
+<p>Python uses docstrings for function and class documentation. There are several styles, with Google and NumPy being popular:</p>
+<h4 id="google-style">Google Style</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_loan_amortization</span>(principal, rate, periods, additional_payment<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Calculate loan amortization schedule with optional additional payments.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        principal (float): The loan amount
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        rate (float): Annual interest rate (decimal, not percentage)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        periods (int): Number of payment periods (typically months)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        additional_payment (float, optional): Extra payment each period
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        list: List of dictionaries containing payment details for each period
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Example:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &gt;&gt;&gt; schedule = calculate_loan_amortization(100000, 0.04, 360)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &gt;&gt;&gt; schedule[0][&#39;principal_payment&#39;]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        166.07
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span></code></pre></div><h4 id="numpy-style">NumPy Style</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_loan_amortization</span>(principal, rate, periods, additional_payment<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Calculate loan amortization schedule with optional additional payments.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Parameters
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    ----------
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    principal : float
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        The loan amount
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    rate : float
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        Annual interest rate (decimal, not percentage)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    periods : int
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        Number of payment periods (typically months)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    additional_payment : float, optional
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        Extra payment each period (default: 0)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    -------
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    list
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        List of dictionaries containing payment details for each period
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Examples
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    --------
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &gt;&gt;&gt; schedule = calculate_loan_amortization(100000, 0.04, 360)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &gt;&gt;&gt; schedule[0][&#39;principal_payment&#39;]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    166.07
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span></code></pre></div><h3 id="auto-generating-documentation-with-sphinx">Auto-generating Documentation with Sphinx</h3>
+<p>Sphinx is a tool that can generate professional documentation from your docstrings:</p>
+<ol>
+<li>
+<p>Install Sphinx:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install sphinx sphinx-rtd-theme
+</span></span></code></pre></div></li>
+<li>
+<p>Set up a docs directory:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir docs
+</span></span><span style="display:flex;"><span>cd docs
+</span></span><span style="display:flex;"><span>sphinx-quickstart
+</span></span></code></pre></div></li>
+<li>
+<p>Configure <code>conf.py</code> to use your preferred theme:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>html_theme <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;sphinx_rtd_theme&#39;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Add extensions to auto-generate API docs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>extensions <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;sphinx.ext.autodoc&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;sphinx.ext.napoleon&#39;</span>,  <span style="color:#75715e"># For Google/NumPy docstrings</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;sphinx.ext.viewcode&#39;</span>,
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></li>
+<li>
+<p>Build the documentation:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sphinx-build -b html . _build
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="practical-example-refactoring-a-financial-script">Practical Example: Refactoring a Financial Script</h2>
+<p>Let&rsquo;s take a poorly written financial script and improve it using our best practices:</p>
+<h3 id="before-refactoring">Before Refactoring</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># finance_calcs.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">CalcRoi</span>(i,r):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># i is investment and r is return</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (r<span style="color:#f92672">-</span>i)<span style="color:#f92672">/</span>i
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">npv</span>(cashFlows,rate):
+</span></span><span style="display:flex;"><span>  n<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(cashFlows)):
+</span></span><span style="display:flex;"><span>    n<span style="color:#f92672">=</span>n<span style="color:#f92672">+</span>cashFlows[i]<span style="color:#f92672">/</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">+</span>rate)<span style="color:#f92672">**</span>i
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> n
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">IRR</span>(cfs,guess<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># internal rate of return</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">from</span> numpy <span style="color:#f92672">import</span> npv
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>    rate <span style="color:#f92672">=</span> guess
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Define a function that computes NPV at a given rate</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">compute_npv</span>(rate):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> npv(rate, cfs)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Use numeric methods to find the rate where NPV is approximately 0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">from</span> scipy.optimize <span style="color:#f92672">import</span> newton
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> newton(compute_npv, guess)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">loan_payment</span>(P,r,n):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># monthly payment</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> P <span style="color:#f92672">*</span> (r<span style="color:#f92672">/</span><span style="color:#ae81ff">12</span> <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> r<span style="color:#f92672">/</span><span style="color:#ae81ff">12</span>)<span style="color:#f92672">**</span>n) <span style="color:#f92672">/</span> ((<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> r<span style="color:#f92672">/</span><span style="color:#ae81ff">12</span>)<span style="color:#f92672">**</span>n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Quick test</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    print(CalcRoi(<span style="color:#ae81ff">1000</span>,<span style="color:#ae81ff">1200</span>))
+</span></span><span style="display:flex;"><span>    print(npv([<span style="color:#f92672">-</span><span style="color:#ae81ff">1000</span>,<span style="color:#ae81ff">300</span>,<span style="color:#ae81ff">400</span>,<span style="color:#ae81ff">500</span>],<span style="color:#ae81ff">0.1</span>))
+</span></span><span style="display:flex;"><span>    print(IRR([<span style="color:#f92672">-</span><span style="color:#ae81ff">1000</span>,<span style="color:#ae81ff">300</span>,<span style="color:#ae81ff">400</span>,<span style="color:#ae81ff">500</span>]))
+</span></span><span style="display:flex;"><span>    print(loan_payment(<span style="color:#ae81ff">100000</span>,<span style="color:#ae81ff">0.05</span>,<span style="color:#ae81ff">360</span>))
+</span></span></code></pre></div><h3 id="after-refactoring">After Refactoring</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Financial calculation utilities for investment and loan analysis.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">This module provides functions for common financial calculations
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">used in investment analysis and loan amortization.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy.optimize <span style="color:#f92672">import</span> newton
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_roi</span>(investment, returned):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Calculate Return on Investment (ROI).
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        investment (float): Initial investment amount
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        returned (float): Amount returned from investment
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        float: ROI as a decimal (e.g., 0.2 for 20</span><span style="color:#e6db74">% r</span><span style="color:#e6db74">eturn)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Example:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &gt;&gt;&gt; calculate_roi(1000, 1200)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        0.2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (returned <span style="color:#f92672">-</span> investment) <span style="color:#f92672">/</span> investment
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_npv</span>(cash_flows, discount_rate):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Calculate Net Present Value of a series of cash flows.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        cash_flows (list): List of cash flows, where the first value is typically
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                          the initial investment (negative)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        discount_rate (float): Annual discount rate as decimal (e.g., 0.1 for 10%)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        float: Net Present Value
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Example:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &gt;&gt;&gt; calculate_npv([-1000, 300, 400, 500], 0.1)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        80.01
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    npv_value <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i, cash_flow <span style="color:#f92672">in</span> enumerate(cash_flows):
+</span></span><span style="display:flex;"><span>        npv_value <span style="color:#f92672">+=</span> cash_flow <span style="color:#f92672">/</span> ((<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> discount_rate) <span style="color:#f92672">**</span> i)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> npv_value
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_irr</span>(cash_flows, guess<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Calculate Internal Rate of Return for a series of cash flows.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Uses numerical methods to find the discount rate that results in NPV = 0.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        cash_flows (list): List of cash flows, where the first value is typically
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                          the initial investment (negative)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        guess (float, optional): Initial guess for the IRR. Defaults to 0.1.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        float: Internal Rate of Return as decimal
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Example:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &gt;&gt;&gt; calculate_irr([-1000, 300, 400, 500])
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        0.18
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">npv_function</span>(rate):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>npv(rate, cash_flows)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> newton(npv_function, guess)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_loan_payment</span>(principal, annual_rate, periods):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Calculate monthly payment for a fixed-rate loan.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        principal (float): Loan principal amount
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        annual_rate (float): Annual interest rate as decimal (e.g., 0.05 for 5%)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        periods (int): Total number of payment periods (e.g., 360 for 30-year mortgage)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        float: Monthly payment amount
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Example:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &gt;&gt;&gt; calculate_loan_payment(100000, 0.05, 360)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        536.82
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    monthly_rate <span style="color:#f92672">=</span> annual_rate <span style="color:#f92672">/</span> <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> principal <span style="color:#f92672">*</span> (monthly_rate <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> monthly_rate) <span style="color:#f92672">**</span> periods) <span style="color:#f92672">/</span> \
+</span></span><span style="display:flex;"><span>        ((<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> monthly_rate) <span style="color:#f92672">**</span> periods <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Test each function with example values</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;ROI: </span><span style="color:#e6db74">{</span>calculate_roi(<span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">1200</span>)<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;NPV: $</span><span style="color:#e6db74">{</span>calculate_npv([<span style="color:#f92672">-</span><span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">500</span>], <span style="color:#ae81ff">0.1</span>)<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;IRR: </span><span style="color:#e6db74">{</span>calculate_irr([<span style="color:#f92672">-</span><span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">500</span>])<span style="color:#e6db74">:</span><span style="color:#e6db74">.2%</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Monthly payment: $</span><span style="color:#e6db74">{</span>calculate_loan_payment(<span style="color:#ae81ff">100000</span>, <span style="color:#ae81ff">0.05</span>, <span style="color:#ae81ff">360</span>)<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p>Key improvements:</p>
+<ul>
+<li>Consistent naming with descriptive function names</li>
+<li>Comprehensive docstrings with examples</li>
+<li>Proper spacing and formatting</li>
+<li>Module-level docstring explaining purpose</li>
+<li>Better print formatting in the test section</li>
+</ul>
+<h2 id="financial-application-example-investment-analysis-tool">Financial Application Example: Investment Analysis Tool</h2>
+<p>Let&rsquo;s put everything together in a more comprehensive example of a financial analysis tool using best practices:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Investment Portfolio Analysis Tool
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">This module provides functions to analyze investment portfolios,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">including return calculations, risk metrics, and diversification assessment.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy <span style="color:#f92672">import</span> stats
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_portfolio_return</span>(prices_df, weights<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Calculate historical returns of a portfolio.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        prices_df (pd.DataFrame): DataFrame with asset prices (columns) over time (index)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        weights (list, optional): Portfolio weights. If None, equal weighting is assumed.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        pd.Series: Portfolio returns over time
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Example:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &gt;&gt;&gt; prices = pd.DataFrame({
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        ...     &#39;AAPL&#39;: [150, 152, 153, 149, 155],
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        ...     &#39;MSFT&#39;: [250, 248, 253, 255, 260]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        ... })
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &gt;&gt;&gt; calculate_portfolio_return(prices)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Calculate returns for each asset</span>
+</span></span><span style="display:flex;"><span>    returns_df <span style="color:#f92672">=</span> prices_df<span style="color:#f92672">.</span>pct_change()<span style="color:#f92672">.</span>dropna()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    
+</span></span></code></pre></div>]]></content:encoded></item></channel></rss>

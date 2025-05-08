@@ -1,0 +1,36 @@
+{{- $dateFormat := site.Params.DateFormat | default "January 2, 2006" -}}
+{{- $lastmodFormat := site.Params.LastModFormat | default "January 2, 2006" -}}
+
+<div class="post-meta">
+    {{- if not .Date.IsZero }}
+    <span class="post-date">
+        <i class="far fa-calendar-alt"></i>
+        {{ .Date.Format $dateFormat }}
+    </span>
+    {{- end }}
+
+    {{- if .Site.Params.showLastMod }}
+    {{- if not .Lastmod.IsZero }}
+    {{- if ne .Lastmod .Date }}
+    <span class="post-lastmod">
+        <i class="fas fa-edit"></i>
+        Last modified: {{ .Lastmod.Format $lastmodFormat }}
+    </span>
+    {{- end }}
+    {{- end }}
+    {{- end }}
+
+    {{- if .Site.Params.showReadingTime }}
+    <span class="post-reading-time">
+        <i class="far fa-clock"></i>
+        {{ .ReadingTime }} min read
+    </span>
+    {{- end }}
+
+    {{- if .Params.author }}
+    <span class="post-author">
+        <i class="far fa-user"></i>
+        {{ .Params.author }}
+    </span>
+    {{- end }}
+</div> 

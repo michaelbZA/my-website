@@ -1,0 +1,39 @@
+{{- $related := .Site.RegularPages.Related . | first 3 -}}
+{{- with $related -}}
+<div class="related-posts">
+    <h2>Related Posts</h2>
+    <div class="related-posts-grid">
+        {{- range . -}}
+        <article class="related-post">
+            <a href="{{ .RelPermalink }}" class="related-post-link">
+                {{- if .Params.cover -}}
+                <div class="related-post-cover">
+                    {{- $cover := .Params.cover.image -}}
+                    {{- if not (strings.HasPrefix $cover "http") -}}
+                        {{- $cover = printf "/%s" $cover -}}
+                    {{- end -}}
+                    <img src="{{ $cover }}" alt="{{ .Params.cover.alt | default .Title }}" loading="lazy">
+                </div>
+                {{- end -}}
+                <div class="related-post-content">
+                    <h3 class="related-post-title">{{ .Title }}</h3>
+                    {{- if .Description -}}
+                    <p class="related-post-description">{{ .Description }}</p>
+                    {{- end -}}
+                    <div class="related-post-meta">
+                        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+                        {{- if .Params.tags -}}
+                        <span class="related-post-tags">
+                            {{- range first 1 .Params.tags -}}
+                            <span class="tag">{{ . }}</span>
+                            {{- end -}}
+                        </span>
+                        {{- end -}}
+                    </div>
+                </div>
+            </a>
+        </article>
+        {{- end -}}
+    </div>
+</div>
+{{- end -}} 

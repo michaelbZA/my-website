@@ -1,0 +1,85 @@
+{{ define "main" }}
+<div class="search-container">
+    <form id="search-form" class="search-form">
+        <input type="search" id="search-input" class="search-input" placeholder="{{ .Params.placeholder | default "Search posts..." }}" aria-label="Search">
+    </form>
+    
+    <div id="search-results" class="search-results" style="display: none;">
+        <div id="search-results-loading" class="search-results-loading">
+            Loading...
+        </div>
+        <div id="search-results-empty" class="search-results-empty" style="display: none;">
+            No results found.
+        </div>
+        <div id="search-results-count" class="search-results-count" style="display: none;"></div>
+        <ul id="search-results-list" class="search-results-list"></ul>
+    </div>
+</div>
+
+<style>
+.search-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.search-form {
+    margin-bottom: 2rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    background: var(--entry);
+    color: var(--primary);
+}
+
+.search-results {
+    margin-top: 2rem;
+}
+
+.search-results-loading,
+.search-results-empty {
+    text-align: center;
+    padding: 2rem;
+    color: var(--secondary);
+}
+
+.search-results-count {
+    margin-bottom: 1rem;
+    color: var(--secondary);
+}
+
+.search-results-list {
+    list-style: none;
+    padding: 0;
+}
+
+.search-results-list li {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--entry);
+}
+
+.search-results-list a {
+    text-decoration: none;
+    color: var(--primary);
+}
+
+.search-results-list h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--primary);
+}
+
+.search-results-list p {
+    margin: 0;
+    color: var(--secondary);
+    font-size: 0.9rem;
+}
+</style>
+{{ end }} 

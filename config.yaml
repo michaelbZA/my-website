@@ -17,6 +17,13 @@ title: Michael Brunger
 # Adjust based on how many posts you want visible per page.
 pagerSize: 5
 
+# Output configuration for search index
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
 # Global Hugo options that apply to the site build process.
 # Moved here from the module import for clarity and standard Hugo practice.
 enableRobotsTXT: true  # Generate a robots.txt file (good for SEO).
@@ -77,6 +84,10 @@ menu:
       name: Posts
       url: /posts/
       weight: 20
+    - identifier: search
+      name: Search
+      url: /search/
+      weight: 25
     - identifier: about
       name: About
       url: /about/
@@ -134,13 +145,12 @@ params:
   # Files should be in your site's static directory (e.g., static/css/custom.css).
   customCSS:
     - css/extended/main.css
-    - css/extended/menu.css
-    - css/extended/series.css
 
   # Custom JavaScript files
   customJS:
     - js/extended/sticky-header.js
     - js/extended/back-to-top.js
+    - js/extended/search.js
 
   # PaperMod homepage layout options.
   # 'archive', 'profile', 'landing', 'cards'
@@ -152,6 +162,7 @@ params:
   showReadingTime: true     # Show estimated reading time.
   showShareButtons: true    # Show social share buttons.
   showPostNavLinks: false   # Show links to previous/next posts.
+  showLastMod: true         # Show last modified date.
   showBreadCrumbs: false    # Show breadcrumb navigation.
   showCodeCopyButtons: true # Add copy button to code blocks.
   showFullTextInRSS: true   # Include full post content in the RSS feed (instead of just summary).
@@ -225,6 +236,9 @@ params:
       - permalink
       - summary
       - content
+
+search:
+  enable: true
 
   # Paths for favicons and touch icons. Should be absolute paths from the site root.
   # Ensure these files exist in your static directory (e.g., static/assets/).
@@ -367,14 +381,14 @@ related:
   indices: # Defines the fields and their weight in determining relatedness.
     - name: keywords # Use the 'keywords' from front matter.
       weight: 100    # Give keywords a high weight.
-    - name: date     # Use the post date.
-      weight: 10     # Give date a lower weight (closer dates = slightly more related).
-    # Recommended additions for better relatedness based on content classification:
     - name: tags     # Use the 'tags' taxonomy terms.
-      weight: 80     # Give tags a high weight (adjust as desired).
+      weight: 80     # Give tags a high weight.
     - name: categories # Use the 'categories' taxonomy terms.
-      weight: 70     # Give categories a high weight (adjust as desired).
-    # Other potential indices include 'title', 'summary', 'content'.
+      weight: 70     # Give categories a high weight.
+    - name: title    # Use the post title.
+      weight: 60     # Give title a medium weight.
+    - name: summary  # Use the post summary.
+      weight: 50     # Give summary a medium weight.
 
 ########################################################################################################################
 # SITEMAP CONFIGURATION

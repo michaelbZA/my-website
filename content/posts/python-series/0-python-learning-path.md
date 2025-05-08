@@ -6,7 +6,7 @@ draft: false
 tags: ["python", "python-series", "beginners"]
 categories: ["Python Series"]
 description: "A comprehensive 17-post curriculum taking you from Python installation to building real-world applications. Covers core language features, professional practices, data analysis tools, and practical project development."
-showToc: false
+showToc: true
 series: ["Python Mastery"]
 series_order: 1
 # weight: 1

@@ -1,1 +1,164 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Artificial Intelligence on Michael Brunger</title><link>http://localhost:1313/tags/artificial-intelligence/</link><description>Recent content in Artificial Intelligence on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><atom:link href="http://localhost:1313/tags/artificial-intelligence/index.xml" rel="self" type="application/rss+xml"/><item><title>Financial Leadership in the AI Era: Series Introduction</title><link>http://localhost:1313/posts/ai-in-finance/financial-leadership-ai-era-introduction/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/ai-in-finance/financial-leadership-ai-era-introduction/</guid><description>Introduction to a comprehensive series exploring how AI is transforming finance leadership and providing practical guidance for finance professionals.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Artificial Intelligence on Michael Brunger</title><link>http://localhost:1313/tags/artificial-intelligence/</link><description>Recent content in Artificial Intelligence on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Tue, 06 May 2025 12:41:15 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/artificial-intelligence/index.xml" rel="self" type="application/rss+xml"/><item><title>AI in Finance: Separating Hype from Reality</title><link>http://localhost:1313/ai-finance-separating-hype-reality/</link><pubDate>Tue, 10 Jun 2025 09:00:00 -0500</pubDate><guid>http://localhost:1313/ai-finance-separating-hype-reality/</guid><description>Learn to distinguish between realistic AI applications in finance and overhyped claims, with practical frameworks for finance leaders to evaluate AI solutions.</description><content:encoded><![CDATA[<h1 id="ai-in-finance-separating-hype-from-reality">AI in Finance: Separating Hype from Reality</h1>
+<p><em>This is the first installment in my series &ldquo;Financial Leadership in the AI Era.&rdquo; If you&rsquo;re new here, check out the <a href="link-to-intro">introduction post</a> to learn what this series is all about.</em></p>
+<h2 id="the-current-state-of-ai-in-finance-departments">The Current State of AI in Finance Departments</h2>
+<p>Three weeks into my new role as a finance manager, I&rsquo;ve been cataloging every vendor pitch that mentions AI, machine learning, or automation. The result? A spreadsheet with 23 different solutions, all promising to revolutionize our finance function through the power of artificial intelligence.</p>
+<p>But when I dig deeper into these offerings, a familiar pattern emerges: what&rsquo;s marketed as &ldquo;AI&rdquo; often spans a spectrum from simple rules-based automation to genuine machine learning applications. This disconnect between marketing and reality isn&rsquo;t unique to my experience.</p>
+<p>According to Gartner&rsquo;s 2024 research, while 84% of finance organizations report implementing or planning to implement AI technologies, only 27% report achieving significant business outcomes from these implementations (Gartner, 2024). This gap between adoption and realized value suggests many finance teams are struggling to separate AI hype from reality.</p>
+<h2 id="common-misconceptions-about-ai-capabilities-in-finance">Common Misconceptions About AI Capabilities in Finance</h2>
+<p>Before we can effectively implement AI in finance, we need to clear up some persistent misconceptions:</p>
+<h3 id="misconception-1-ai-will-replace-finance-professionals">Misconception #1: AI will replace finance professionals</h3>
+<p><strong>Reality</strong>: The evidence suggests otherwise. A 2023 study by Deloitte found that organizations successfully implementing AI in finance experienced a shift in roles rather than elimination—with 67% of finance professionals spending more time on analysis and decision support after AI implementation, compared to 31% before (Deloitte, 2023).</p>
+<p>In my conversations with other finance leaders, the consensus is clear: AI excels at processing transactions, identifying patterns, and generating insights, but human judgment remains essential for strategic decision-making and stakeholder communication.</p>
+<h3 id="misconception-2-ai-implementation-is-primarily-a-technology-challenge">Misconception #2: AI implementation is primarily a technology challenge</h3>
+<p><strong>Reality</strong>: In my own department&rsquo;s experimentation with AP automation, I&rsquo;ve found that technical integration represents only about 30% of the implementation challenge. The remaining 70% involves process redesign, change management, and data governance.</p>
+<p>This matches findings from McKinsey, which reports that successful AI implementations in finance dedicate 40-50% of project resources to organizational change management (McKinsey, 2024).</p>
+<h3 id="misconception-3-ai-solutions-work-effectively-out-of-the-box">Misconception #3: AI solutions work effectively out of the box</h3>
+<p><strong>Reality</strong>: Even the most advanced AI systems require significant training and customization to deliver value in finance. A 2023 survey by the Association of Finance Professionals found that finance departments spent an average of 6-9 months training and refining AI systems before achieving reliable performance (AFP, 2023).</p>
+<h2 id="what-ai-can-and-cannot-do-today-in-finance">What AI Can and Cannot Do Today in Finance</h2>
+<p>To make informed decisions about AI implementation, finance leaders need a realistic understanding of current capabilities:</p>
+<h3 id="what-ai-can-do-today">What AI Can Do Today:</h3>
+<ol>
+<li>
+<p><strong>Automate routine transaction processing</strong>: AI-powered systems can effectively automate up to 80% of accounts payable and receivable processes, according to research from Ardent Partners (2023).</p>
+</li>
+<li>
+<p><strong>Enhance fraud detection</strong>: Machine learning models can identify unusual patterns that might indicate fraud with greater accuracy than rule-based systems. JP Morgan&rsquo;s COiN platform reportedly reviews documents in seconds that would take 360,000 hours manually (JP Morgan, 2023).</p>
+</li>
+<li>
+<p><strong>Improve forecasting accuracy</strong>: In a controlled study by the International Institute of Forecasters, machine learning forecasting models reduced error rates by 15-30% compared to traditional methods for certain financial metrics (IIF, 2024).</p>
+</li>
+<li>
+<p><strong>Streamline document processing</strong>: Natural language processing can extract key information from unstructured documents with 85-95% accuracy, dramatically reducing manual review time (ACCA Global, 2023).</p>
+</li>
+</ol>
+<h3 id="what-ai-cannot-yet-reliably-do">What AI Cannot (Yet) Reliably Do:</h3>
+<ol>
+<li>
+<p><strong>Make strategic financial decisions</strong>: While AI can provide decision support, it cannot replace human judgment in complex, high-stakes financial decisions.</p>
+</li>
+<li>
+<p><strong>Adapt quickly to major economic shifts</strong>: Most AI models struggle when economic conditions change dramatically from their training data.</p>
+</li>
+<li>
+<p><strong>Explain its reasoning fully</strong>: Despite advances in explainable AI, many financial machine learning models remain &ldquo;black boxes,&rdquo; creating challenges for governance and compliance.</p>
+</li>
+<li>
+<p><strong>Manage stakeholder relationships</strong>: The human elements of finance—building trust, negotiating, and communicating difficult messages—remain beyond AI&rsquo;s capabilities.</p>
+</li>
+</ol>
+<h2 id="case-studies-success-vs-hype">Case Studies: Success vs. Hype</h2>
+<h3 id="success-story-progressive-automation-at-unilever">Success Story: Progressive Automation at Unilever</h3>
+<p>Unilever&rsquo;s finance function demonstrates what realistic, value-driven AI implementation looks like. Rather than pursuing a comprehensive &ldquo;finance transformation,&rdquo; Unilever implemented targeted AI solutions in accounts payable, forecasting, and financial controls.</p>
+<p>Their approach focused on specific pain points, with each implementation following a consistent pattern:</p>
+<ul>
+<li>Start with a narrow use case</li>
+<li>Measure baseline performance</li>
+<li>Run controlled pilots</li>
+<li>Scale gradually with continuous measurement</li>
+</ul>
+<p>After three years of this targeted approach, Unilever reported a 40% reduction in manual transactions and a 20% improvement in forecasting accuracy (Unilever Annual Report, 2023).</p>
+<h3 id="hype-example-the-ai-financial-transformation-that-wasnt">Hype Example: The &ldquo;AI Financial Transformation&rdquo; That Wasn&rsquo;t</h3>
+<p>In contrast, a Fortune 500 company (unnamed in the Harvard Business Review case study) invested $15 million in a comprehensive AI-powered finance transformation. Two years later, the project was scaled back after delivering only marginal improvements.</p>
+<p>The post-mortem analysis identified several cautionary lessons:</p>
+<ul>
+<li>The project attempted to simultaneously transform too many finance processes</li>
+<li>Baseline metrics were not established before implementation</li>
+<li>The solution relied heavily on &ldquo;perfect&rdquo; data that didn&rsquo;t exist in the organization</li>
+<li>The team overestimated the AI&rsquo;s ability to handle exceptions and edge cases (Harvard Business Review, 2023)</li>
+</ul>
+<h2 id="a-framework-for-evaluating-ai-claims-from-vendors">A Framework for Evaluating AI Claims from Vendors</h2>
+<p>Based on my research and early experiences evaluating AI solutions, I&rsquo;ve developed a preliminary framework for assessing vendor claims:</p>
+<h3 id="the-5-question-ai-reality-check">The 5-Question AI Reality Check</h3>
+<ol>
+<li>
+<p><strong>Can you explain exactly how your AI works in non-technical terms?</strong><br>
+<em>Red flag: Vague explanations that rely heavily on buzzwords</em></p>
+</li>
+<li>
+<p><strong>What specific data does your solution require, and what is the minimum quality threshold?</strong><br>
+<em>Red flag: Claims that the solution works with &ldquo;any data&rdquo; regardless of quality</em></p>
+</li>
+<li>
+<p><strong>What percentage of the process will still require human intervention?</strong><br>
+<em>Red flag: Promises of 100% automation or unclear answers</em></p>
+</li>
+<li>
+<p><strong>Can you provide before-and-after metrics from similar implementations?</strong><br>
+<em>Red flag: Case studies without specific, measurable outcomes</em></p>
+</li>
+<li>
+<p><strong>What&rsquo;s your approach to exceptions and edge cases?</strong><br>
+<em>Red flag: Dismissing edge cases as &ldquo;rare&rdquo; or &ldquo;not significant&rdquo;</em></p>
+</li>
+</ol>
+<p>In applying this framework at my company, we&rsquo;ve already eliminated three potential &ldquo;AI&rdquo; solutions that, upon closer examination, offered little beyond basic automation rebranded as artificial intelligence.</p>
+<h2 id="practical-first-steps-for-finance-leaders">Practical First Steps for Finance Leaders</h2>
+<p>If you&rsquo;re a finance leader beginning your AI journey, here are some practical steps based on my experience and research:</p>
+<ol>
+<li>
+<p><strong>Audit your current processes</strong> to identify pain points where AI might add value, focusing on high-volume, rule-based activities with clean data.</p>
+</li>
+<li>
+<p><strong>Start small with a pilot</strong> in a non-critical process area, establishing clear success metrics before beginning.</p>
+</li>
+<li>
+<p><strong>Invest in data quality</strong> as a foundation for any AI implementation. According to IBM, organizations spend 40-60% of their AI project time on data preparation (IBM, 2023).</p>
+</li>
+<li>
+<p><strong>Build internal knowledge</strong> by identifying team members with aptitude and interest in AI, and supporting their learning and experimentation.</p>
+</li>
+<li>
+<p><strong>Create an AI evaluation committee</strong> with representatives from finance, IT, and business units to assess potential solutions.</p>
+</li>
+</ol>
+<h2 id="my-learning-so-far">My Learning So Far</h2>
+<p>Three weeks into exploring AI for our finance function, my biggest realization is that effective implementation isn&rsquo;t primarily about technology—it&rsquo;s about clearly defining problems worth solving. The finance teams seeing the most success aren&rsquo;t those with the most advanced AI, but those who have identified specific, measurable process pain points where AI can deliver tangible value.</p>
+<p>In my next post, I&rsquo;ll explore &ldquo;Building Your Finance Team&rsquo;s AI Literacy,&rdquo; sharing the curriculum I&rsquo;m developing to help my team understand and engage with AI opportunities. I&rsquo;ll cover essential concepts every finance professional should understand, practical training approaches, and how to assess your team&rsquo;s current AI readiness.</p>
+<h2 id="your-turn">Your Turn</h2>
+<p>I&rsquo;d love to hear about your experiences with AI in finance:</p>
+<ul>
+<li>What AI solutions have you implemented or evaluated in your finance function?</li>
+<li>Which claims from vendors have you found to be exaggerated?</li>
+<li>What criteria do you use to separate genuine AI value from hype?</li>
+</ul>
+<p>Share your thoughts in the comments below or reach out directly.</p>
+<hr>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>Association of Finance Professionals. (2023). <em>AI Implementation in Treasury and Finance Survey</em>. AFP.</li>
+<li>Ardent Partners. (2023). <em>The State of Accounts Payable Automation</em>. Ardent Partners Research.</li>
+<li>Deloitte. (2023). <em>Finance in a Digital World: CFO Insights</em>. Deloitte LLP.</li>
+<li>Gartner. (2024). <em>Finance Technology Adoption Survey</em>. Gartner Research.</li>
+<li>Harvard Business Review. (2023). <em>Why AI Implementations Fail in Finance Functions</em>. HBR Case Study.</li>
+<li>IBM. (2023). <em>The AI Ladder: Accelerating the Journey to AI</em>. IBM Institute for Business Value.</li>
+<li>International Institute of Forecasters. (2024). <em>Machine Learning vs. Traditional Forecasting Methods: A Comparative Analysis</em>. IIF Research.</li>
+<li>JP Morgan Chase. (2023). <em>Annual Technology Review</em>. JP Morgan Chase.</li>
+<li>McKinsey &amp; Company. (2024). <em>AI Adoption in Finance: Lessons from the Field</em>. McKinsey Digital.</li>
+<li>Unilever. (2023). <em>Annual Report and Accounts</em>. Unilever PLC.</li>
+<li>ACCA Global. (2023). <em>Machine Learning in Finance: Current Applications and Future Trends</em>. ACCA Research.</li>
+</ul>
+]]></content:encoded></item><item><title>Financial Leadership in the AI Era: Series Introduction</title><link>http://localhost:1313/financial-leadership-ai-era-introduction/</link><pubDate>Thu, 15 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/financial-leadership-ai-era-introduction/</guid><description>Introduction to a comprehensive series exploring how AI is transforming finance leadership and providing practical guidance for finance professionals.</description><content:encoded><![CDATA[<h1 id="financial-leadership-in-the-ai-era-a-journey-of-discovery">Financial Leadership in the AI Era: A Journey of Discovery</h1>
+<p><em>Welcome to my new blog series where I&rsquo;ll be documenting my learning journey as a finance manager navigating the evolving landscape of AI in finance.</em></p>
+<h2 id="why-this-series">Why This Series?</h2>
+<p>Two weeks ago, I stepped into a new role as a finance manager. Like many professionals in finance today, I&rsquo;m facing a rapidly changing environment where artificial intelligence is no longer just a buzzword but an increasingly important part of our toolkit. Rather than pretending to have all the answers, I&rsquo;ve decided to learn in public and bring you along for the journey.</p>
+<p>This series isn&rsquo;t about presenting myself as an AI expert—quite the opposite. It&rsquo;s about being transparent about the challenges, discoveries, and practical insights I gain as I navigate the intersection of financial leadership and artificial intelligence. By sharing my learning process, I hope to create a resource that feels authentic and accessible to other finance professionals who may be on similar paths.</p>
+<h2 id="what-to-expect">What to Expect</h2>
+<p>Over the coming months, I&rsquo;ll be publishing regular posts covering everything from separating AI hype from reality to building AI literacy in finance teams, ethical considerations, practical applications in forecasting and operations, change management, ROI analysis, and the evolving skill requirements for finance leaders.</p>
+<p>Each post will combine:</p>
+<ul>
+<li>My firsthand experiences implementing or evaluating AI solutions</li>
+<li>Research and insights from trusted sources</li>
+<li>Practical frameworks and approaches you can apply</li>
+<li>Honest reflections on successes and failures</li>
+</ul>
+<p>I believe in the power of learning through doing, so I&rsquo;ll be sharing real examples from my own work (anonymized where necessary) and concrete steps you can take to advance your own journey with AI in finance.</p>
+<h2 id="my-background-and-approach">My Background and Approach</h2>
+<p>Before diving in, a bit about me: I&rsquo;ve spent the past [X] years in finance roles across [brief background]. While I have experience with [relevant experience], AI integration is a newer territory that I&rsquo;m actively exploring.</p>
+<p>My approach to AI isn&rsquo;t about replacing human judgment or chasing every shiny new technology. Instead, I&rsquo;m focused on finding the practical, high-value applications that genuinely enhance our work as finance professionals. I believe the most successful AI implementations in finance will be those that augment rather than replace our expertise, freeing us to focus on the strategic work that requires human creativity and judgment.</p>
+<h2 id="join-the-conversation">Join the Conversation</h2>
+<p>This isn&rsquo;t meant to be a one-way broadcast. I invite you to share your own experiences, challenge my assumptions, suggest topics for future posts, and contribute to building a community of finance professionals who are thoughtfully navigating the AI revolution.</p>
+<p>Whether you&rsquo;re a finance leader looking to enhance your team&rsquo;s capabilities, an individual contributor wanting to future-proof your career, or simply curious about how AI is reshaping financial management, I hope you&rsquo;ll find value in this series.</p>
+<p>Next week, I&rsquo;ll publish the first full post in the series: &ldquo;AI in Finance: Separating Hype from Reality,&rdquo; where we&rsquo;ll explore the current state of AI in finance departments and develop a framework for evaluating AI claims from vendors.</p>
+<p>Until then, I&rsquo;d love to hear from you: What aspects of AI in finance are you most curious about? What challenges are you facing in your own organization? Drop a comment below or reach out directly.</p>
+<p>Here&rsquo;s to learning together!</p>
+]]></content:encoded></item></channel></rss>

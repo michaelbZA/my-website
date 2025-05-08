@@ -1,1 +1,346 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Requirements.txt on Michael Brunger</title><link>http://localhost:1313/tags/requirements.txt/</link><description>Recent content in Requirements.txt on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Thu, 05 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/requirements.txt/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 6: Virtual Environments &amp; Packaging in Python</title><link>http://localhost:1313/posts/python-series/python6of17/</link><pubDate>Thu, 05 Jun 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/python-series/python6of17/</guid><description>Discover how to create and manage virtual environments, install packages with pip, structure your own Python projects, and publish packages to PyPI with best practices.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Requirements.txt on Michael Brunger</title><link>http://localhost:1313/tags/requirements.txt/</link><description>Recent content in Requirements.txt on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Tue, 06 May 2025 12:41:15 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/requirements.txt/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 6: Virtual Environments &amp; Packaging in Python</title><link>http://localhost:1313/python-foundations-virtual-environments/</link><pubDate>Thu, 05 Jun 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/python-foundations-virtual-environments/</guid><description>Discover how to create and manage virtual environments, install packages with pip, structure your own Python projects, and publish packages to PyPI with best practices.</description><content:encoded><![CDATA[<h1 id="virtual-environments--packaging-in-python">Virtual Environments &amp; Packaging in Python</h1>
+<p>As your Python journey progresses and you start building more sophisticated financial tools, you&rsquo;ll inevitably need to use external libraries. This is where virtual environments and package management become crucial skills. In this post, I&rsquo;ll cover how to create isolated environments for your projects and manage dependencies effectively.</p>
+<h2 id="why-virtual-environments-matter">Why Virtual Environments Matter</h2>
+<p>Imagine this scenario: You&rsquo;re working on two different financial applications. One requires pandas version 1.3 for compatibility with other tools, while the other needs the latest pandas 2.0 for new features. Without virtual environments, you&rsquo;d be forced to choose one version for your entire system, potentially breaking one of your applications.</p>
+<p>Virtual environments solve this problem by creating isolated Python installations for each project. Benefits include:</p>
+<ul>
+<li><strong>Dependency isolation:</strong> Each project can have its own versions of packages</li>
+<li><strong>Reproducibility:</strong> Easily share environment specifications with colleagues</li>
+<li><strong>Clean testing:</strong> Test in environments that match production settings</li>
+<li><strong>Avoiding permission issues:</strong> Install packages without admin privileges</li>
+</ul>
+<h2 id="creating-and-managing-virtual-environments">Creating and Managing Virtual Environments</h2>
+<p>Python comes with the <code>venv</code> module built-in, which is the recommended way to create virtual environments.</p>
+<h3 id="creating-a-virtual-environment-on-windows">Creating a Virtual Environment on Windows</h3>
+<p>Open Command Prompt and navigate to your project directory:</p>
+<pre tabindex="0"><code>cd C:\Users\YourName\Documents\financial-analysis-project
+</code></pre><p>Create a new virtual environment:</p>
+<pre tabindex="0"><code>python -m venv env
+</code></pre><p>This creates a directory named <code>env</code> containing a copy of the Python interpreter and the standard library.</p>
+<h3 id="activating-the-virtual-environment">Activating the Virtual Environment</h3>
+<p>On Windows:</p>
+<pre tabindex="0"><code>env\Scripts\activate
+</code></pre><p>You&rsquo;ll notice your command prompt changes to show the active environment:</p>
+<pre tabindex="0"><code>(env) C:\Users\YourName\Documents\financial-analysis-project&gt;
+</code></pre><p>Now any Python commands will use this isolated environment.</p>
+<h3 id="notes-for-macoslinux">Notes for macOS/Linux</h3>
+<p>The process is similar on macOS and Linux, with slight differences:</p>
+<ul>
+<li>Create: <code>python3 -m venv env</code></li>
+<li>Activate: <code>source env/bin/activate</code></li>
+</ul>
+<h3 id="deactivating-the-virtual-environment">Deactivating the Virtual Environment</h3>
+<p>When you&rsquo;re done working on your project:</p>
+<pre tabindex="0"><code>deactivate
+</code></pre><p>Your prompt will return to normal, and Python commands will use the system interpreter again.</p>
+<h2 id="managing-packages-with-pip">Managing Packages with pip</h2>
+<p><code>pip</code> is Python&rsquo;s package installer, and it&rsquo;s the primary tool for adding external libraries to your environments.</p>
+<h3 id="installing-packages">Installing Packages</h3>
+<p>Once your virtual environment is activated, install packages with:</p>
+<pre tabindex="0"><code>pip install package-name
+</code></pre><p>For example, to install key financial packages:</p>
+<pre tabindex="0"><code>pip install pandas numpy matplotlib openpyxl xlrd
+</code></pre><p>You can also specify exact versions:</p>
+<pre tabindex="0"><code>pip install pandas==1.5.3
+</code></pre><p>Or version ranges:</p>
+<pre tabindex="0"><code>pip install pandas&gt;=1.4.0,&lt;2.0.0
+</code></pre><h3 id="listing-installed-packages">Listing Installed Packages</h3>
+<p>To see what&rsquo;s installed in your environment:</p>
+<pre tabindex="0"><code>pip list
+</code></pre><p>Output example:</p>
+<pre tabindex="0"><code>Package         Version
+--------------- -------
+matplotlib      3.7.1
+numpy           1.24.3
+openpyxl        3.1.2
+pandas          1.5.3
+pip             23.1.2
+python-dateutil 2.8.2
+pytz            2023.3
+setuptools      65.6.3
+six             1.16.0
+tzdata          2023.3
+xlrd            2.0.1
+</code></pre><h3 id="freezing-requirements">Freezing Requirements</h3>
+<p>When you want to share your project, it&rsquo;s important to specify exactly which packages and versions it needs. The <code>freeze</code> command creates a requirements file:</p>
+<pre tabindex="0"><code>pip freeze &gt; requirements.txt
+</code></pre><p>This generates a text file with all installed packages and their versions:</p>
+<pre tabindex="0"><code># requirements.txt contents
+matplotlib==3.7.1
+numpy==1.24.3
+openpyxl==3.1.2
+pandas==1.5.3
+python-dateutil==2.8.2
+pytz==2023.3
+six==1.16.0
+tzdata==2023.3
+xlrd==2.0.1
+</code></pre><h3 id="installing-from-requirements">Installing from Requirements</h3>
+<p>When someone else (or you on a different machine) wants to recreate your environment:</p>
+<pre tabindex="0"><code>pip install -r requirements.txt
+</code></pre><p>This is essential for collaborative financial projects where everyone needs the same libraries and versions.</p>
+<h2 id="practical-example-setting-up-a-financial-analysis-environment">Practical Example: Setting Up a Financial Analysis Environment</h2>
+<p>Let&rsquo;s walk through creating a virtual environment for a financial analysis project:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Create project directory</span>
+</span></span><span style="display:flex;"><span>mkdir financial_analysis
+</span></span><span style="display:flex;"><span>cd financial_analysis
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create and activate virtual environment</span>
+</span></span><span style="display:flex;"><span>python -m venv env
+</span></span><span style="display:flex;"><span>env<span style="color:#ae81ff">\S</span>cripts<span style="color:#ae81ff">\a</span>ctivate
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Install required packages</span>
+</span></span><span style="display:flex;"><span>pip install pandas numpy matplotlib openpyxl xlsxwriter jupyter
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Verify installations</span>
+</span></span><span style="display:flex;"><span>pip list
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create requirements.txt</span>
+</span></span><span style="display:flex;"><span>pip freeze &gt; requirements.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a marker file for your project</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#75715e"># Financial Analysis Project &gt; README.md</span>
+</span></span></code></pre></div><h2 id="basic-package-structure">Basic Package Structure</h2>
+<p>As your financial tools grow more complex, you might want to create your own Python packages that you can reuse across projects or share with colleagues.</p>
+<h3 id="project-structure">Project Structure</h3>
+<p>A typical Python package structure looks like this:</p>
+<pre tabindex="0"><code>financial_tools/
+│
+├── pyproject.toml      # Modern project configuration
+├── README.md           # Documentation
+├── LICENSE             # License information
+│
+└── src/                # Source code directory
+    └── financial_tools/  # Actual package
+        ├── __init__.py   # Makes it a package
+        ├── analysis.py   # Analysis module
+        ├── reporting.py  # Reporting module
+        └── utils.py      # Utility functions
+</code></pre><h3 id="the-__init__py-file">The <code>__init__.py</code> File</h3>
+<p>This file marks a directory as a Python package and can be used to define what gets imported when someone uses your package:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># src/financial_tools/__init__.py</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Version information</span>
+</span></span><span style="display:flex;"><span>__version__ <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0.1.0&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Import commonly used functions for easier access</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> .analysis <span style="color:#f92672">import</span> calculate_roi, calculate_npv
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> .reporting <span style="color:#f92672">import</span> generate_monthly_report
+</span></span></code></pre></div><h3 id="setting-up-a-package-with-pyprojecttoml">Setting Up a Package with <code>pyproject.toml</code></h3>
+<p>Modern Python packaging uses <code>pyproject.toml</code> for configuration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">build-system</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">requires</span> = [<span style="color:#e6db74">&#34;setuptools&gt;=42&#34;</span>, <span style="color:#e6db74">&#34;wheel&#34;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">build-backend</span> = <span style="color:#e6db74">&#34;setuptools.build_meta&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">project</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;financial_tools&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">version</span> = <span style="color:#e6db74">&#34;0.1.0&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">description</span> = <span style="color:#e6db74">&#34;Tools for financial analysis and reporting&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">readme</span> = <span style="color:#e6db74">&#34;README.md&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">authors</span> = [
+</span></span><span style="display:flex;"><span>    {<span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;Your Name&#34;</span>, <span style="color:#a6e22e">email</span> = <span style="color:#e6db74">&#34;your.email@example.com&#34;</span>}
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">license</span> = {<span style="color:#a6e22e">text</span> = <span style="color:#e6db74">&#34;MIT&#34;</span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">classifiers</span> = [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Programming Language :: Python :: 3&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;License :: OSI Approved :: MIT License&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Operating System :: OS Independent&#34;</span>,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dependencies</span> = [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;pandas&gt;=1.3.0&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;numpy&gt;=1.20.0&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;matplotlib&gt;=3.4.0&#34;</span>,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">requires-python</span> = <span style="color:#e6db74">&#34;&gt;=3.8&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">project</span>.<span style="color:#a6e22e">urls</span>]
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;Homepage&#34;</span> = <span style="color:#e6db74">&#34;https://github.com/yourusername/financial_tools&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;Bug Tracker&#34;</span> = <span style="color:#e6db74">&#34;https://github.com/yourusername/financial_tools/issues&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">project</span>.<span style="color:#a6e22e">optional-dependencies</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dev</span> = [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;pytest&gt;=6.0&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;black&gt;=21.5b2&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;flake8&gt;=3.9&#34;</span>,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">excel</span> = [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;openpyxl&gt;=3.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;xlsxwriter&gt;=1.4.0&#34;</span>,
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><h3 id="building-and-installing-your-package">Building and Installing Your Package</h3>
+<p>With your package structure set up, you can install it in development mode:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install -e .
+</span></span></code></pre></div><p>This makes the package available but still editable in its original location.</p>
+<h2 id="publishing-to-pypi">Publishing to PyPI</h2>
+<p>When your financial package is ready to share with the world, you can publish it to the Python Package Index (PyPI).</p>
+<h3 id="build-distribution-packages">Build Distribution Packages</h3>
+<p>First, make sure you have the build tools:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install build twine
+</span></span></code></pre></div><p>Then create distribution packages:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python -m build
+</span></span></code></pre></div><p>This will create a directory called <code>dist</code> with distribution files.</p>
+<h3 id="upload-to-pypi">Upload to PyPI</h3>
+<p>Use <code>twine</code> to upload your package:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>twine upload dist/*
+</span></span></code></pre></div><p>You&rsquo;ll need to create an account on PyPI before uploading.</p>
+<h3 id="versioning-best-practices">Versioning Best Practices</h3>
+<p>For financial software where accuracy is critical, proper versioning is essential:</p>
+<ol>
+<li>
+<p><strong>Use Semantic Versioning:</strong> MAJOR.MINOR.PATCH</p>
+<ul>
+<li>MAJOR: Incompatible API changes</li>
+<li>MINOR: New features, backward-compatible</li>
+<li>PATCH: Bug fixes, backward-compatible</li>
+</ul>
+</li>
+<li>
+<p><strong>Document Changes:</strong> Keep a CHANGELOG.md file</p>
+</li>
+<li>
+<p><strong>Version Bumping:</strong> Update version in one place only (<code>pyproject.toml</code>)</p>
+</li>
+<li>
+<p><strong>Git Tags:</strong> Tag releases in your version control system</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git tag -a v0.1.0 -m <span style="color:#e6db74">&#34;Initial release&#34;</span>
+</span></span><span style="display:flex;"><span>git push origin v0.1.0
+</span></span></code></pre></div><h2 id="real-world-example-financial-toolkit-package">Real-World Example: Financial Toolkit Package</h2>
+<p>Let&rsquo;s create a minimal example of what a financial analysis package might look like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># src/financial_tools/analysis.py</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_roi</span>(gain, cost):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Calculate Return on Investment (ROI)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        gain: The profit or gain from the investment
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        cost: The cost of the investment
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        ROI as a decimal (e.g., 0.15 for 15%)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (gain <span style="color:#f92672">-</span> cost) <span style="color:#f92672">/</span> cost
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_npv</span>(cash_flows, discount_rate):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Calculate Net Present Value
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        cash_flows: List of cash flows where the first element is the initial investment (negative)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        discount_rate: The discount rate as a decimal (e.g., 0.1 for 10%)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        The Net Present Value of the cash flows
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    npv <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i, cf <span style="color:#f92672">in</span> enumerate(cash_flows):
+</span></span><span style="display:flex;"><span>        npv <span style="color:#f92672">+=</span> cf <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> discount_rate) <span style="color:#f92672">**</span> i
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> npv
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_irr</span>(cash_flows, iterations<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>, guess<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Calculate Internal Rate of Return using iterative approach
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        cash_flows: List of cash flows where the first element is the initial investment (negative)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        iterations: Maximum number of iterations to perform
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        guess: Initial guess for the IRR
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        Estimated IRR as a decimal
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    rate <span style="color:#f92672">=</span> guess
+</span></span><span style="display:flex;"><span>    step <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.05</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(iterations):
+</span></span><span style="display:flex;"><span>        npv <span style="color:#f92672">=</span> calculate_npv(cash_flows, rate)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> abs(npv) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.0001</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># NPV is very close to zero, we found the IRR</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> rate
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> npv <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># NPV is positive, increase the rate</span>
+</span></span><span style="display:flex;"><span>            rate <span style="color:#f92672">+=</span> step
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># NPV is negative, decrease the rate</span>
+</span></span><span style="display:flex;"><span>            rate <span style="color:#f92672">-=</span> step
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Reduce step size to improve accuracy</span>
+</span></span><span style="display:flex;"><span>        step <span style="color:#f92672">/=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Return best approximation after iterations</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> rate
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># src/financial_tools/reporting.py</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> datetime
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">generate_summary_report</span>(data, title<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Financial Summary&#34;</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Generate a simple text-based financial report
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        data: Dictionary of financial metrics
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        title: Report title
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        Formatted report as a string
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    now <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>now()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Create header</span>
+</span></span><span style="display:flex;"><span>    report <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>title<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    report <span style="color:#f92672">+=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#39;=&#39;</span> <span style="color:#f92672">*</span> len(title)<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    report <span style="color:#f92672">+=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Generated: </span><span style="color:#e6db74">{</span>now<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#39;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74"> %H:%M&#39;</span>)<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Add metrics</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> key, value <span style="color:#f92672">in</span> data<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Format numbers nicely</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> isinstance(value, (int, float)):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> abs(value) <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1000</span>:
+</span></span><span style="display:flex;"><span>                formatted_value <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;$</span><span style="color:#e6db74">{</span>value<span style="color:#e6db74">:</span><span style="color:#e6db74">,.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>                formatted_value <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;$</span><span style="color:#e6db74">{</span>value<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            formatted_value <span style="color:#f92672">=</span> str(value)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        report <span style="color:#f92672">+=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>key<span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>formatted_value<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> report
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">format_as_percentage</span>(value, decimal_places<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Format a decimal as a percentage string&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>value <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span><span style="color:#e6db74">:</span><span style="color:#e6db74">.</span><span style="color:#e6db74">{</span>decimal_places<span style="color:#e6db74">}</span><span style="color:#e6db74">f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">%&#34;</span>
+</span></span></code></pre></div><h3 id="using-the-package">Using the Package</h3>
+<p>Once installed, users could easily import and use your financial toolkit:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> financial_tools.analysis <span style="color:#f92672">import</span> calculate_roi, calculate_npv
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> financial_tools.reporting <span style="color:#f92672">import</span> generate_summary_report, format_as_percentage
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate investment metrics</span>
+</span></span><span style="display:flex;"><span>investment_cost <span style="color:#f92672">=</span> <span style="color:#ae81ff">50000</span>
+</span></span><span style="display:flex;"><span>annual_returns <span style="color:#f92672">=</span> [<span style="color:#f92672">-</span><span style="color:#ae81ff">50000</span>, <span style="color:#ae81ff">12000</span>, <span style="color:#ae81ff">15000</span>, <span style="color:#ae81ff">18000</span>, <span style="color:#ae81ff">20000</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>roi <span style="color:#f92672">=</span> calculate_roi(sum(annual_returns) <span style="color:#f92672">+</span> investment_cost, investment_cost)
+</span></span><span style="display:flex;"><span>npv <span style="color:#f92672">=</span> calculate_npv(annual_returns, <span style="color:#ae81ff">0.08</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generate report</span>
+</span></span><span style="display:flex;"><span>report_data <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Investment Amount&#34;</span>: investment_cost,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Total Returns&#34;</span>: sum(annual_returns[<span style="color:#ae81ff">1</span>:]),
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;ROI&#34;</span>: format_as_percentage(roi),
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;NPV (8%)&#34;</span>: npv,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Break-even&#34;</span>: <span style="color:#e6db74">&#34;Year 3&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>report <span style="color:#f92672">=</span> generate_summary_report(report_data, <span style="color:#e6db74">&#34;Investment Analysis&#34;</span>)
+</span></span><span style="display:flex;"><span>print(report)
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>Virtual environments and proper packaging are essential skills for any Python developer, especially when working on financial applications where consistency and reproducibility are critical. By mastering these concepts, you&rsquo;ll ensure your projects are well-organized, shareable, and isolated from potential dependency conflicts.</p>
+<p>In the next post, we&rsquo;ll dive into code quality and collaboration tools that will help you write cleaner, more maintainable financial applications and work effectively with others.</p>
+<p><strong>Practice Exercise:</strong> Create a virtual environment for a financial dashboard project. Install pandas, matplotlib, and Flask. Create a requirements.txt file and share it with a colleague (or another computer) to test the reproducibility of your environment.</p>
+]]></content:encoded></item></channel></rss>

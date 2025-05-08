@@ -1,9 +1,7 @@
 {{- define "main" }}
-
 {{- if (and site.Params.profileMode.enabled .IsHome) }}
 {{- partial "index_profile.html" . }}
 {{- else }} {{/* if not profileMode */}}
-
 {{- if .Content }}
 <div class="post-content">
   {{- if not (.Param "disableAnchoredHeadings") }}
@@ -11,63 +9,55 @@
   {{- else }}{{ .Content }}{{ end }}
 </div>
 {{- end }}
-
 {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
 {{- if .IsHome }}
 {{- $pages = where site.RegularPages "Params.hiddenInHomeList" "!=" "true" }}
 {{- end }}
-
 {{- $paginator := .Paginate $pages }}
-
 {{- if .IsHome }}
 {{- partial "home-series.html" . }}
 {{- end }}
-
 {{- if and .IsHome site.Params.homeInfoParams (eq $paginator.PageNumber 1) }}
 {{- partial "home_info.html" . }}
 {{- end }}
-
 {{- if .IsHome }}
 <div class="posts-heading">
   <h2>Latest Posts</h2>
 </div>
 {{- end }}
-
 {{- $term := .Data.Term }}
 {{- range $index, $page := $paginator.Pages }}
-
-{{- $class := "post-entry" }}
-
-{{- $user_preferred := or site.Params.disableSpecial1stPost site.Params.homeInfoParams }}
-{{- if (and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) (not $user_preferred)) }}
-{{- $class = "first-entry" }}
-{{- else if $term }}
-{{- $class = "post-entry tag-entry" }}
+  {{- if ne $page.Layout "search" }}  {{/* Skip search page */}}
+    {{- $class := "post-entry" }}
+    {{- $user_preferred := or site.Params.disableSpecial1stPost site.Params.homeInfoParams }}
+    {{- if (and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) (not $user_preferred)) }}
+      {{- $class = "first-entry" }}
+    {{- else if $term }}
+      {{- $class = "post-entry tag-entry" }}
+    {{- end }}
+    <article class="{{ $class }}">
+      {{- $isHidden := (site.Params.cover.hidden | default site.Params.cover.hiddenInList) }}
+      {{- partial "cover.html" (dict "cxt" . "IsHome" true "isHidden" $isHidden) }}
+      <header class="entry-header">
+        <h2>
+          {{- .Title }}
+          {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>{{- end }}
+        </h2>
+      </header>
+      {{- if (ne (.Param "hideSummary") true) }}
+      <div class="entry-content">
+        <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+      </div>
+      {{- end }}
+      {{- if not (.Param "hideMeta") }}
+      <footer class="entry-footer">
+        {{- partial "post_meta.html" . -}}
+      </footer>
+      {{- end }}
+      <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+    </article>
+  {{- end }}  {{/* End if not search */}}
 {{- end }}
-
-<article class="{{ $class }}">
-  {{- $isHidden := (site.Params.cover.hidden | default site.Params.cover.hiddenInList) }}
-  {{- partial "cover.html" (dict "cxt" . "IsHome" true "isHidden" $isHidden) }}
-  <header class="entry-header">
-    <h2>
-      {{- .Title }}
-      {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>{{- end }}
-    </h2>
-  </header>
-  {{- if (ne (.Param "hideSummary") true) }}
-  <div class="entry-content">
-    <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
-  </div>
-  {{- end }}
-  {{- if not (.Param "hideMeta") }}
-  <footer class="entry-footer">
-    {{- partial "post_meta.html" . -}}
-  </footer>
-  {{- end }}
-  <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
-</article>
-{{- end }}
-
 {{- if gt $paginator.TotalPages 1 }}
 <footer class="page-footer">
   <nav class="pagination">
@@ -80,7 +70,5 @@
   </nav>
 </footer>
 {{- end }}
-
 {{- end }}{{/* end profileMode */}}
-
 {{- end }}{{- /* end main */ -}}
