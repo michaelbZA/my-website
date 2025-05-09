@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Comprehensions on Michael Brunger</title><link>http://localhost:1313/tags/comprehensions/</link><description>Recent content in Comprehensions on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Tue, 06 May 2025 12:41:15 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/comprehensions/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 3: Python Syntax Fundamentals &amp; Language Features</title><link>http://localhost:1313/python-foundations-syntax/</link><pubDate>Thu, 15 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/python-foundations-syntax/</guid><description>Master Python&amp;#39;s core syntax including variables, data types, control flow, comprehensions, lambdas, iterators, generators, and basic error handling mechanisms.</description><content:encoded><![CDATA[<h1 id="post-3-python-syntax-fundamentals--language-features">Post 3: Python Syntax Fundamentals &amp; Language Features</h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Comprehensions on Michael Brunger</title><link>https://michaelbrunger.com/tags/comprehensions/</link><description>Recent content in Comprehensions on Michael Brunger</description><image><title>Michael Brunger</title><url>https://michaelbrunger.com/site-feature-image.jpg</url><link>https://michaelbrunger.com/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Tue, 06 May 2025 12:41:15 +0100</lastBuildDate><atom:link href="https://michaelbrunger.com/tags/comprehensions/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 3: Python Syntax Fundamentals &amp; Language Features</title><link>https://michaelbrunger.com/python-syntax-fundamentals/</link><pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/python-syntax-fundamentals/</guid><description>Master Python&amp;#39;s core syntax including variables, data types, control flow, comprehensions, lambdas, iterators, generators, and basic error handling mechanisms.</description><content:encoded><![CDATA[<h1 id="post-3-python-syntax-fundamentals--language-features">Post 3: Python Syntax Fundamentals &amp; Language Features</h1>
 <p>Welcome to the third post in my Python learning journey. In the first two posts, we installed Python and set up a proper development environment. Now it&rsquo;s time to dive into the language itself. This post covers the fundamental building blocks of Python code that I&rsquo;ve been learning.</p>
 <p>We&rsquo;ll explore:</p>
 <ol>
@@ -125,4 +125,228 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
 </span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Senior&#34;</span>)
 </span></span></code></pre></div><p>Multiple conditions:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>income <span style="color:#f92672">=</span> <span style="color:#ae81ff">75000</span>
+</span></span><span style="display:flex;"><span>years_employed <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> income <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">50000</span> <span style="color:#f92672">and</span> years_employed <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">2</span>:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Loan approved&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">elif</span> income <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">30000</span> <span style="color:#f92672">or</span> years_employed <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">5</span>:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Further review needed&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Loan denied&#34;</span>)
+</span></span></code></pre></div><h3 id="32-loops">3.2 Loops</h3>
+<h4 id="for-loops">For Loops</h4>
+<p>For loops iterate over sequences (lists, strings, etc.):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Loop through a list</span>
+</span></span><span style="display:flex;"><span>expenses <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1200</span>, <span style="color:#ae81ff">450</span>, <span style="color:#ae81ff">700</span>, <span style="color:#ae81ff">95</span>]
+</span></span><span style="display:flex;"><span>total <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> expense <span style="color:#f92672">in</span> expenses:
+</span></span><span style="display:flex;"><span>    total <span style="color:#f92672">+=</span> expense
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Total expenses: $</span><span style="color:#e6db74">{</span>total<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)  <span style="color:#75715e"># Total expenses: $2445</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Loop with a range</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">5</span>):  <span style="color:#75715e"># 0, 1, 2, 3, 4</span>
+</span></span><span style="display:flex;"><span>    print(i)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Loop with index and value using enumerate</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> index, value <span style="color:#f92672">in</span> enumerate(expenses):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Expense </span><span style="color:#e6db74">{</span>index<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">: $</span><span style="color:#e6db74">{</span>value<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><h4 id="while-loops">While Loops</h4>
+<p>While loops execute as long as a condition is true:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> count <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span>:
+</span></span><span style="display:flex;"><span>    print(count)
+</span></span><span style="display:flex;"><span>    count <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>  <span style="color:#75715e"># Don&#39;t forget this or you&#39;ll create an infinite loop!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Break and continue</span>
+</span></span><span style="display:flex;"><span>number <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:  <span style="color:#75715e"># Infinite loop</span>
+</span></span><span style="display:flex;"><span>    number <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> number <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">continue</span>  <span style="color:#75715e"># Skip the rest of this iteration</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> number <span style="color:#f92672">==</span> <span style="color:#ae81ff">6</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>  <span style="color:#75715e"># Exit the loop entirely</span>
+</span></span><span style="display:flex;"><span>    print(number)  <span style="color:#75715e"># Prints 1, 2, 4, 5</span>
+</span></span></code></pre></div><hr>
+<h2 id="4-list-comprehensions-and-lambdas">4. List Comprehensions and Lambdas</h2>
+<p>These are more advanced features that make Python code concise and expressive.</p>
+<h3 id="41-list-comprehensions">4.1 List Comprehensions</h3>
+<p>List comprehensions provide a compact way to create lists:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Traditional way</span>
+</span></span><span style="display:flex;"><span>numbers <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>squares <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> n <span style="color:#f92672">in</span> numbers:
+</span></span><span style="display:flex;"><span>    squares<span style="color:#f92672">.</span>append(n <span style="color:#f92672">*</span> n)
+</span></span><span style="display:flex;"><span>print(squares)  <span style="color:#75715e"># [1, 4, 9, 16, 25]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># With list comprehension</span>
+</span></span><span style="display:flex;"><span>squares <span style="color:#f92672">=</span> [n <span style="color:#f92672">*</span> n <span style="color:#66d9ef">for</span> n <span style="color:#f92672">in</span> numbers]
+</span></span><span style="display:flex;"><span>print(squares)  <span style="color:#75715e"># [1, 4, 9, 16, 25]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># With conditional filtering</span>
+</span></span><span style="display:flex;"><span>even_squares <span style="color:#f92672">=</span> [n <span style="color:#f92672">*</span> n <span style="color:#66d9ef">for</span> n <span style="color:#f92672">in</span> numbers <span style="color:#66d9ef">if</span> n <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>print(even_squares)  <span style="color:#75715e"># [4, 16]</span>
+</span></span></code></pre></div><h3 id="42-dictionary-and-set-comprehensions">4.2 Dictionary and Set Comprehensions</h3>
+<p>Similar syntax works for dictionaries and sets:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Dictionary comprehension</span>
+</span></span><span style="display:flex;"><span>number_to_square <span style="color:#f92672">=</span> {n: n <span style="color:#f92672">*</span> n <span style="color:#66d9ef">for</span> n <span style="color:#f92672">in</span> numbers}
+</span></span><span style="display:flex;"><span>print(number_to_square)  <span style="color:#75715e"># {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Set comprehension (eliminates duplicates)</span>
+</span></span><span style="display:flex;"><span>values <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>unique_values <span style="color:#f92672">=</span> {v <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> values}
+</span></span><span style="display:flex;"><span>print(unique_values)  <span style="color:#75715e"># {1, 2, 3, 4, 5}</span>
+</span></span></code></pre></div><h3 id="43-lambda-functions">4.3 Lambda Functions</h3>
+<p>Lambdas are small anonymous functions defined with the <code>lambda</code> keyword:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Traditional function</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add</span>(a, b):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Equivalent lambda function</span>
+</span></span><span style="display:flex;"><span>add_lambda <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> a, b: a <span style="color:#f92672">+</span> b
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(add(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>))        <span style="color:#75715e"># 5</span>
+</span></span><span style="display:flex;"><span>print(add_lambda(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)) <span style="color:#75715e"># 5</span>
+</span></span></code></pre></div><p>Lambdas are often used with functions like <code>map()</code>, <code>filter()</code>, and <code>sorted()</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Map applies a function to each item in an iterable</span>
+</span></span><span style="display:flex;"><span>numbers <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>squared <span style="color:#f92672">=</span> list(map(<span style="color:#66d9ef">lambda</span> x: x <span style="color:#f92672">*</span> x, numbers))
+</span></span><span style="display:flex;"><span>print(squared)  <span style="color:#75715e"># [1, 4, 9, 16, 25]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Filter creates a list of elements for which a function returns True</span>
+</span></span><span style="display:flex;"><span>even_numbers <span style="color:#f92672">=</span> list(filter(<span style="color:#66d9ef">lambda</span> x: x <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>, numbers))
+</span></span><span style="display:flex;"><span>print(even_numbers)  <span style="color:#75715e"># [2, 4]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Sorted with a custom key function</span>
+</span></span><span style="display:flex;"><span>employees <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Alice&#34;</span>, <span style="color:#e6db74">&#34;salary&#34;</span>: <span style="color:#ae81ff">60000</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Bob&#34;</span>, <span style="color:#e6db74">&#34;salary&#34;</span>: <span style="color:#ae81ff">50000</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Charlie&#34;</span>, <span style="color:#e6db74">&#34;salary&#34;</span>: <span style="color:#ae81ff">75000</span>}
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>sorted_by_salary <span style="color:#f92672">=</span> sorted(employees, key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> emp: emp[<span style="color:#e6db74">&#34;salary&#34;</span>])
+</span></span><span style="display:flex;"><span>print(sorted_by_salary)  <span style="color:#75715e"># Sorts employees by salary</span>
+</span></span></code></pre></div><hr>
+<h2 id="5-iterators-and-generators">5. Iterators and Generators</h2>
+<p>These features help process data efficiently, especially when working with large datasets.</p>
+<h3 id="51-iterators">5.1 Iterators</h3>
+<p>An iterator is an object that can be iterated (looped) over. Python&rsquo;s <code>for</code> loops work with iterators:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Lists, tuples, dictionaries, and sets are all iterable</span>
+</span></span><span style="display:flex;"><span>numbers <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> num <span style="color:#f92672">in</span> numbers:  <span style="color:#75715e"># numbers.__iter__() is called implicitly</span>
+</span></span><span style="display:flex;"><span>    print(num)
+</span></span></code></pre></div><p>You can create your own iterator:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Manual iteration with iter() and next()</span>
+</span></span><span style="display:flex;"><span>numbers <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>iterator <span style="color:#f92672">=</span> iter(numbers)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(next(iterator))  <span style="color:#75715e"># 1</span>
+</span></span><span style="display:flex;"><span>print(next(iterator))  <span style="color:#75715e"># 2</span>
+</span></span><span style="display:flex;"><span>print(next(iterator))  <span style="color:#75715e"># 3</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># print(next(iterator))  # Would raise StopIteration exception</span>
+</span></span></code></pre></div><h3 id="52-generators">5.2 Generators</h3>
+<p>Generators are functions that return an iterator using the <code>yield</code> keyword:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">count_up_to</span>(max):
+</span></span><span style="display:flex;"><span>    count <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> count <span style="color:#f92672">&lt;=</span> max:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> count
+</span></span><span style="display:flex;"><span>        count <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Using the generator</span>
+</span></span><span style="display:flex;"><span>counter <span style="color:#f92672">=</span> count_up_to(<span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>print(next(counter))  <span style="color:#75715e"># 1</span>
+</span></span><span style="display:flex;"><span>print(next(counter))  <span style="color:#75715e"># 2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Or in a loop</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> number <span style="color:#f92672">in</span> count_up_to(<span style="color:#ae81ff">3</span>):
+</span></span><span style="display:flex;"><span>    print(number)  <span style="color:#75715e"># Prints 1, 2, 3</span>
+</span></span></code></pre></div><p>Generators are memory-efficient because they generate values on-demand rather than storing the entire sequence in memory. This is especially useful for large datasets.</p>
+<hr>
+<h2 id="6-error-handling-with-tryexcept">6. Error Handling with try/except</h2>
+<p>Python uses exceptions to handle errors gracefully:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Basic try/except</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">0</span>  <span style="color:#75715e"># Division by zero raises an exception</span>
+</span></span><span style="display:flex;"><span>    print(result)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">except</span> <span style="color:#a6e22e">ZeroDivisionError</span>:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Cannot divide by zero!&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Handling multiple exception types</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>    number <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#34;Enter a number: &#34;</span>))
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">/</span> number
+</span></span><span style="display:flex;"><span>    print(result)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">except</span> <span style="color:#a6e22e">ValueError</span>:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;That&#39;s not a valid number!&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">except</span> <span style="color:#a6e22e">ZeroDivisionError</span>:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Cannot divide by zero!&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Try/except/else/finally</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>    file <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;data.txt&#34;</span>, <span style="color:#e6db74">&#34;r&#34;</span>)
+</span></span><span style="display:flex;"><span>    content <span style="color:#f92672">=</span> file<span style="color:#f92672">.</span>read()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">except</span> <span style="color:#a6e22e">FileNotFoundError</span>:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;File not found!&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Runs if no exception occurred</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;File content: </span><span style="color:#e6db74">{</span>content<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">finally</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Always runs, regardless of exception</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;file&#39;</span> <span style="color:#f92672">in</span> locals() <span style="color:#f92672">and</span> <span style="color:#f92672">not</span> file<span style="color:#f92672">.</span>closed:
+</span></span><span style="display:flex;"><span>        file<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;File closed!&#34;</span>)
+</span></span></code></pre></div><hr>
+<h2 id="practice-exercise-financial-calculator">Practice Exercise: Financial Calculator</h2>
+<p>Let&rsquo;s apply what we&rsquo;ve learned to build a simple financial calculator:</p>
+<p>Create a program that:</p>
+<ol>
+<li>Asks the user for their monthly income and expenses</li>
+<li>Calculates their monthly savings</li>
+<li>Projects savings over time with compound interest</li>
+<li>Handles invalid inputs gracefully with try/except</li>
+</ol>
+<p>Here&rsquo;s a starter template:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_savings_projection</span>(monthly_savings, annual_interest_rate, years):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Convert annual interest rate to monthly and decimal</span>
+</span></span><span style="display:flex;"><span>    monthly_rate <span style="color:#f92672">=</span> annual_interest_rate <span style="color:#f92672">/</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>    months <span style="color:#f92672">=</span> years <span style="color:#f92672">*</span> <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Project savings</span>
+</span></span><span style="display:flex;"><span>    total <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> month <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, months <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>        total <span style="color:#f92672">=</span> total <span style="color:#f92672">+</span> monthly_savings  <span style="color:#75715e"># Add monthly contribution</span>
+</span></span><span style="display:flex;"><span>        interest <span style="color:#f92672">=</span> total <span style="color:#f92672">*</span> monthly_rate  <span style="color:#75715e"># Calculate interest</span>
+</span></span><span style="display:flex;"><span>        total <span style="color:#f92672">=</span> total <span style="color:#f92672">+</span> interest         <span style="color:#75715e"># Add interest to total</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Print yearly totals</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> month <span style="color:#f92672">%</span> <span style="color:#ae81ff">12</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Year </span><span style="color:#e6db74">{</span>month <span style="color:#f92672">//</span> <span style="color:#ae81ff">12</span><span style="color:#e6db74">}</span><span style="color:#e6db74">: $</span><span style="color:#e6db74">{</span>total<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> total
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>    income <span style="color:#f92672">=</span> float(input(<span style="color:#e6db74">&#34;Enter your monthly income: $&#34;</span>))
+</span></span><span style="display:flex;"><span>    expenses <span style="color:#f92672">=</span> float(input(<span style="color:#e6db74">&#34;Enter your monthly expenses: $&#34;</span>))
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    monthly_savings <span style="color:#f92672">=</span> income <span style="color:#f92672">-</span> expenses
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> monthly_savings <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;Your expenses exceed your income. No savings to project.&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        interest_rate <span style="color:#f92672">=</span> float(input(<span style="color:#e6db74">&#34;Enter annual interest rate (%): &#34;</span>))
+</span></span><span style="display:flex;"><span>        years <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#34;Enter number of years to project: &#34;</span>))
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Monthly savings: $</span><span style="color:#e6db74">{</span>monthly_savings<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Projecting growth over </span><span style="color:#e6db74">{</span>years<span style="color:#e6db74">}</span><span style="color:#e6db74"> years at </span><span style="color:#e6db74">{</span>interest_rate<span style="color:#e6db74">}</span><span style="color:#e6db74">% annual interest:&#34;</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        final_amount <span style="color:#f92672">=</span> calculate_savings_projection(monthly_savings, interest_rate, years)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Final savings after </span><span style="color:#e6db74">{</span>years<span style="color:#e6db74">}</span><span style="color:#e6db74"> years: $</span><span style="color:#e6db74">{</span>final_amount<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">except</span> <span style="color:#a6e22e">ValueError</span>:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Please enter valid numbers only.&#34;</span>)
+</span></span></code></pre></div><hr>
+<h2 id="whats-next">What&rsquo;s Next?</h2>
+<p>Now that we&rsquo;ve covered the syntax fundamentals, the next post will dive into Python&rsquo;s core data structures in more detail. We&rsquo;ll explore lists, tuples, dictionaries, and sets—and when to use each one.</p>
+<p>Stay tuned for Post 4: Core Data Structures!</p>
+<hr>
+<p>*This post is part of my journey learning Python. I&rsquo;m a chartered accountant exploring programming to enhance my analytical toolkit. If you have questions or spot any errors, please reach out</p>
 ]]></content:encoded></item></channel></rss>

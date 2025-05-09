@@ -1,7 +1,7 @@
 ---
 title: "Part 6: Virtual Environments & Packaging in Python"
 date: 2025-06-05
-slug: python-foundations-virtual-environments
+slug: python-virtual-environments-packaging
 description: "Discover how to create and manage virtual environments, install packages with pip, structure your own Python projects, and publish packages to PyPI with best practices."
 tags: ["python", "virtual environments", "venv", "pip", "packaging", "PyPI", "requirements.txt", "dependencies"]
 categories: ["Python Series"]
@@ -492,7 +492,7 @@ print(report)
 
 ## Conclusion
 
-Virtual environments and proper packaging are essential skills for any Python developer, especially when working on financial applications where consistency and reproducibility are critical. By mastering these concepts, you'll ensure your projects are well-organized, shareable, and isolated from potential dependency conflicts.
+Virtual environments and proper packaging are essential skills for any Python developer, especially when working on financial applications where consistency and reproducibility are critical. By mastering these concepts, you'll ensure your projects are well-organisd, shareable, and isolated from potential dependency conflicts.
 
 In the next post, we'll dive into code quality and collaboration tools that will help you write cleaner, more maintainable financial applications and work effectively with others.
 

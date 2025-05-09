@@ -1,9 +1,9 @@
 ---
-title: "Part 13: Data Visualization Basics in Python"
+title: "Part 13: Data Visualisation Basics in Python"
 date: 2025-07-24
-slug: python-foundations-data-visualization
-description: "Create effective data visualizations using Matplotlib and Seaborn. Learn to make various plot types, customize their appearance, and save your figures for reports and presentations."
-tags: ["python", "data visualization", "matplotlib", "seaborn", "plotting", "charts", "graphs"]
+slug: python-data-visualisation-basics
+description: "Create effective data visualisations using Matplotlib and Seaborn. Learn to make various plot types, customise their appearance, and save your figures for reports and presentations."
+tags: ["python", "data visualisation", "matplotlib", "seaborn", "plotting", "charts", "graphs"]
 categories: ["Python Series"]
 series: ["Python Mastery"]
 series_order: 14

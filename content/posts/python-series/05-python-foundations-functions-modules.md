@@ -1,7 +1,7 @@
 ---
 title: "Part 5: Functions, Modules & File I/O in Python"
 date: 2025-05-29
-slug: python-foundations-functions-modules
+slug: python-functions-modules-file-io
 description: "Learn how to define and use functions, organize code into modules, leverage Python's Standard Library, and perform file operations for reading and writing data."
 tags: ["python", "functions", "modules", "packages", "standard library", "file io", "file handling"]
 categories: ["Python Series"]

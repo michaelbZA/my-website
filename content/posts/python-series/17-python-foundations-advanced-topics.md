@@ -1,7 +1,7 @@
 ---
 title: "Part 17: Next Steps & Advanced Python Topics"
 date: 2025-08-21
-slug: python-foundations-advanced-topics
+slug: python-next-steps-advanced-topics
 description: "Explore advanced Python topics including concurrency, asyncio, and complete an end-to-end project. Discover resources for further learning and tips for continuing your Python journey."
 tags: ["python", "advanced", "concurrency", "asyncio", "threading", "multiprocessing", "resources", "projects"]
 categories: ["Python Series"]

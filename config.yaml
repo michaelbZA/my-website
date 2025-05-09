@@ -87,7 +87,7 @@ menu:
     - identifier: search
       name: Search
       url: /search/
-      weight: 25
+      weight: 45
     - identifier: about
       name: About
       url: /about/

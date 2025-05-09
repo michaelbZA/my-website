@@ -1,7 +1,7 @@
 ---
 title: "Part 9: Command-Line Tools & Automation with Python"
 date: 2025-06-26
-slug: python-foundations-automation
+slug: python-command-line-automation
 description: "Build command-line interfaces with argparse, create installable CLI tools, automate file operations, control GUI applications, and develop practical automation projects."
 tags: ["python", "cli", "argparse", "automation", "pyautogui", "os", "shutil", "scripting"]
 categories: ["Python Series"]

@@ -11,9 +11,9 @@ categories: ["VS Code"]
 
 So you've downloaded VS Code and opened it up. Now what?  In this guide, I'll walk you through everything I've learned about making VS Code work for you, especially if you're just getting started.
 
-## Why I Switched to VS Code
+## Why I Chose VS Code
 
-Before diving into the details, let me share why I chose VS Code:
+Before getting into the details, let me share why I chose VS Code:
 
 - Lightweight enough to open quickly
 - Powerful enough for serious development
@@ -153,7 +153,7 @@ The integrated terminal (`Ctrl+`` or `Cmd+`` on Mac) has saved me from constantl
 - Create multiple terminals by clicking the `+` button
 - Split terminal views with the split button
 - Switch between terminals with the dropdown
-- Rename terminals for better organization
+- Rename terminals for better organisation
 
 You can configure your default shell in settings:
 1. Open Command Palette (`Ctrl+Shift+P`)
@@ -187,7 +187,7 @@ The debug console lets you evaluate expressions and inspect variables in real-ti
 
 ## Customising VS Code to Your Preferences
 
-VS Code's customisation options are nearly endless. Here's how I personalized mine:
+VS Code's customisation options are nearly endless. Here's how I personalised mine:
 
 ### Settings.json
 
@@ -228,7 +228,7 @@ This allows you to have different settings for different projects.
 
 ## Working with Git Integration
 
-VS Code's built-in Git support eliminated my need for separate Git clients:
+VS Code's built-in Git support eliminates the need for separate Git clients:
 
 - The Source Control panel shows changes clearly
 - Inline change markers show what's changed in each file
@@ -295,7 +295,7 @@ To create a multi-root workspace:
 
 This approach is perfect for microservice architectures or when working with frontend and backend code simultaneously.
 
-## Lesser-Known Features I Love
+## Lesser-Known Features
 
 Some features I discovered after using VS Code for a while:
 
@@ -350,7 +350,7 @@ This incremental approach helped me build confidence without feeling overwhelmed
 
 When I first started using VS Code, I was just using it as a basic text editor. Now, it's become an extension of my thinking process when coding. The features I've covered in this post have genuinely made me more productive and helped me write better code.
 
-Don't feel like you need to learn everything at once! Start with the Command Palette and a few shortcuts, then gradually expand your knowledge. Before long, you'll be navigating and editing code with an efficiency that will surprise you.
+Don't feel like you need to learn everything at once! Start with the Command Palette and a few shortcuts, then gradually expand your knowledge. Before long, you'll be navigating and editing code with an efficiency.
 
 ## Resources for Going Further
 

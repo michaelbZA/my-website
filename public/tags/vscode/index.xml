@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Vscode on Michael Brunger</title><link>https://michaelbrunger.com/tags/vscode/</link><description>Recent content in Vscode on Michael Brunger</description><image><title>Michael Brunger</title><url>https://michaelbrunger.com/site-feature-image.jpg</url><link>https://michaelbrunger.com/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Tue, 06 May 2025 16:04:28 +0100</lastBuildDate><atom:link href="https://michaelbrunger.com/tags/vscode/index.xml" rel="self" type="application/rss+xml"/><item><title>VS Code Mastery</title><link>https://michaelbrunger.com/vscode-mastery/</link><pubDate>Fri, 02 May 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/vscode-mastery/</guid><description>&lt;h1 id="vs-code-mastery-a-beginners-guide-to-being-productive">VS Code Mastery: A Beginner&amp;rsquo;s Guide to Being Productive&lt;/h1>
 &lt;p>So you&amp;rsquo;ve downloaded VS Code and opened it up. Now what? In this guide, I&amp;rsquo;ll walk you through everything I&amp;rsquo;ve learned about making VS Code work for you, especially if you&amp;rsquo;re just getting started.&lt;/p>
-&lt;h2 id="why-i-switched-to-vs-code">Why I Switched to VS Code&lt;/h2>
-&lt;p>Before diving into the details, let me share why I chose VS Code:&lt;/p>
+&lt;h2 id="why-i-chose-vs-code">Why I Chose VS Code&lt;/h2>
+&lt;p>Before getting into the details, let me share why I chose VS Code:&lt;/p>
 &lt;ul>
 &lt;li>Lightweight enough to open quickly&lt;/li>
 &lt;li>Powerful enough for serious development&lt;/li>
@@ -12,8 +12,8 @@
 &lt;h2 id="getting-started-the-vs-code-interface">Getting Started: The VS Code Interface&lt;/h2>
 &lt;p>When you first open VS Code, here&amp;rsquo;s what you&amp;rsquo;re looking at:&lt;/p></description><content:encoded><![CDATA[<h1 id="vs-code-mastery-a-beginners-guide-to-being-productive">VS Code Mastery: A Beginner&rsquo;s Guide to Being Productive</h1>
 <p>So you&rsquo;ve downloaded VS Code and opened it up. Now what?  In this guide, I&rsquo;ll walk you through everything I&rsquo;ve learned about making VS Code work for you, especially if you&rsquo;re just getting started.</p>
-<h2 id="why-i-switched-to-vs-code">Why I Switched to VS Code</h2>
-<p>Before diving into the details, let me share why I chose VS Code:</p>
+<h2 id="why-i-chose-vs-code">Why I Chose VS Code</h2>
+<p>Before getting into the details, let me share why I chose VS Code:</p>
 <ul>
 <li>Lightweight enough to open quickly</li>
 <li>Powerful enough for serious development</li>
@@ -208,7 +208,7 @@
 <li>Create multiple terminals by clicking the <code>+</code> button</li>
 <li>Split terminal views with the split button</li>
 <li>Switch between terminals with the dropdown</li>
-<li>Rename terminals for better organization</li>
+<li>Rename terminals for better organisation</li>
 </ul>
 <p>You can configure your default shell in settings:</p>
 <ol>
@@ -238,7 +238,7 @@
 </ul>
 <p>The debug console lets you evaluate expressions and inspect variables in real-time, which was a revelation for me coming from print-based debugging.</p>
 <h2 id="customising-vs-code-to-your-preferences">Customising VS Code to Your Preferences</h2>
-<p>VS Code&rsquo;s customisation options are nearly endless. Here&rsquo;s how I personalized mine:</p>
+<p>VS Code&rsquo;s customisation options are nearly endless. Here&rsquo;s how I personalised mine:</p>
 <h3 id="settingsjson">Settings.json</h3>
 <p>My essential customisations:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
@@ -272,7 +272,7 @@
 </ul>
 <p>This allows you to have different settings for different projects.</p>
 <h2 id="working-with-git-integration">Working with Git Integration</h2>
-<p>VS Code&rsquo;s built-in Git support eliminated my need for separate Git clients:</p>
+<p>VS Code&rsquo;s built-in Git support eliminates the need for separate Git clients:</p>
 <ul>
 <li>The Source Control panel shows changes clearly</li>
 <li>Inline change markers show what&rsquo;s changed in each file</li>
@@ -333,7 +333,7 @@
 <li>Save the workspace file (File &gt; &ldquo;Save Workspace As&hellip;&rdquo;)</li>
 </ol>
 <p>This approach is perfect for microservice architectures or when working with frontend and backend code simultaneously.</p>
-<h2 id="lesser-known-features-i-love">Lesser-Known Features I Love</h2>
+<h2 id="lesser-known-features">Lesser-Known Features</h2>
 <p>Some features I discovered after using VS Code for a while:</p>
 <ul>
 <li><strong>Zen Mode</strong>: <code>Ctrl+K Z</code> (<code>Cmd+K Z</code> on Mac) for distraction-free coding</li>
@@ -383,7 +383,7 @@
 <p>This incremental approach helped me build confidence without feeling overwhelmed.</p>
 <h2 id="conclusion-vs-code-changed-how-i-code">Conclusion: VS Code Changed How I Code</h2>
 <p>When I first started using VS Code, I was just using it as a basic text editor. Now, it&rsquo;s become an extension of my thinking process when coding. The features I&rsquo;ve covered in this post have genuinely made me more productive and helped me write better code.</p>
-<p>Don&rsquo;t feel like you need to learn everything at once! Start with the Command Palette and a few shortcuts, then gradually expand your knowledge. Before long, you&rsquo;ll be navigating and editing code with an efficiency that will surprise you.</p>
+<p>Don&rsquo;t feel like you need to learn everything at once! Start with the Command Palette and a few shortcuts, then gradually expand your knowledge. Before long, you&rsquo;ll be navigating and editing code with an efficiency.</p>
 <h2 id="resources-for-going-further">Resources for Going Further</h2>
 <ul>
 <li><a href="https://code.visualstudio.com/docs">Official VS Code Documentation</a></li>

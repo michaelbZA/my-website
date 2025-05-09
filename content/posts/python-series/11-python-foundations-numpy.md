@@ -1,7 +1,7 @@
 ---
 title: "Part 11: NumPy Fundamentals for Numerical Data"
 date: 2025-07-10
-slug: python-foundations-numpy
+slug: numpy-fundamentals-numerical-data
 description: "Get started with NumPy for numerical computing in Python. Learn about ndarrays, vectorized operations, broadcasting, and see how NumPy outperforms pure Python for numerical tasks."
 tags: ["python", "numpy", "data science", "numerical computing", "arrays", "vectorization", "broadcasting"]
 categories: ["Python Series"]

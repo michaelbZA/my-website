@@ -1,7 +1,7 @@
 ---
 title: "Part 7: Code Quality & Collaboration in Python"
 date: 2025-06-12
-slug: python-foundations-code-quality
+slug: python-virtual-environments-packaging
 description: "Learn version control with Git and GitHub, write clean PEP 8-compliant code, use linters and auto-formatters, and create effective documentation for your Python projects."
 tags: ["python", "git", "github", "pep8", "linting", "flake8", "black", "documentation", "docstrings", "sphinx"]
 categories: ["Python Series"]
@@ -18,619 +18,476 @@ draft: false
     #relative: false
 --- 
 
-# Code Quality & Collaboration
+# Code Quality & Collaboration: Building Finance Tools That Last
 
-As we progress beyond the fundamentals of Python, it's time to address an often-overlooked aspect of programming: writing quality code that's easy to maintain and collaborate on. For finance professionals using Python, this is especially important as your scripts may be used for critical financial analysis, reporting, or even compliance tasks.
+As a finance professional learning Python, you'll soon want to move beyond writing scripts just for yourself. Whether you're building financial models, automating reporting, or creating data analysis tools, there comes a point when your code needs to be shared with colleagues or even the wider finance community. This post will guide you through best practices for creating high-quality, shareable code.
 
-In this post, I'll cover version control with Git, writing clean code, formatting, and documentation practices that will transform your Python projects from "scripts that work" into "professional-grade software."
+## Version Control: Git & GitHub for Financial Projects
 
-## Version Control Fundamentals with Git & GitHub
+### Why Version Control Matters in Finance
 
-Version control is like a time machine for your code. It tracks changes, allows experimentation without fear, and enables collaboration. Git is the industry standard, and GitHub is the most popular platform for hosting Git repositories.
+Imagine you've built a Python script that calculates key financial ratios from quarterly reports. After sharing it with your team, you make changes that accidentally break the debt-to-equity calculation. Without version control, finding and fixing this error could be a nightmare. With Git, you can simply revert to the previous working version.
 
-### Why Version Control Matters for Financial Code
-
-- **Audit Trail:** Track exactly who changed what and when—critical for financial applications
-- **Experimentation:** Safely try new analysis techniques without risking your working code
-- **Collaboration:** Multiple team members can work on the same codebase without conflicts
-- **Backup:** Your code is stored in multiple locations, protecting against data loss
+In finance, where accuracy is paramount and regulatory compliance often requires audit trails, version control isn't just convenient—it's essential.
 
 ### Getting Started with Git
 
-First, [download and install Git](https://git-scm.com/downloads) for your operating system. Then, set up your identity:
+First, [download and install Git](https://git-scm.com/downloads) for your operating system.
+
+Once installed, open a command prompt or terminal and set up your identity:
 
 ```bash
 git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
 ```
 
-### Creating a Git Repository
+### Creating Your First Finance Repository
 
-To start tracking a project:
+Let's walk through creating a repository for a simple financial calculator:
+
+1. Create a new directory for your project:
 
 ```bash
-# Navigate to your project directory
-cd C:\Users\YourName\Documents\financial-analysis-project
+mkdir financial-ratio-calculator
+cd financial-ratio-calculator
+```
 
-# Initialize a Git repository
+2. Initialis a Git repository:
+
+```bash
 git init
 ```
 
-### The Basic Git Workflow
+You'll see a message that an empty Git repository has been initialised.
 
-The Git workflow revolves around three main areas:
-1. Working directory (your actual files)
-2. Staging area (preparing changes for commit)
-3. Repository (committed history)
+3. Create a simple Python file called `ratio_calculator.py`:
 
-#### Checking Status
+```python
+def calculate_current_ratio(current_assets, current_liabilities):
+    """
+    Calculate the current ratio.
+    
+    Args:
+        current_assets (float): Total current assets
+        current_liabilities (float): Total current liabilities
+        
+    Returns:
+        float: Current ratio (current assets / current liabilities)
+    """
+    if current_liabilities == 0:
+        raise ValueError("Current liabilities cannot be zero (division by zero)")
+    return current_assets / current_liabilities
 
-To see which files have changed:
+def calculate_debt_to_equity(total_debt, shareholders_equity):
+    """
+    Calculate the debt-to-equity ratio.
+    
+    Args:
+        total_debt (float): Total debt
+        shareholders_equity (float): Total shareholders' equity
+        
+    Returns:
+        float: Debt-to-equity ratio (total debt / shareholders' equity)
+    """
+    if shareholders_equity == 0:
+        raise ValueError("Shareholders' equity cannot be zero (division by zero)")
+    return total_debt / shareholders_equity
+
+# Add more financial ratios as needed
+```
+
+4. Track the file with Git:
 
 ```bash
-git status
+git add ratio_calculator.py
 ```
 
-Example output:
-```
-On branch main
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-        financial_analysis.py
-        data_loader.py
-
-nothing added to commit but untracked files present (use "git add" to track)
-```
-
-#### Staging Changes
-
-Add files to the staging area:
+5. Commit the changes:
 
 ```bash
-# Add specific files
-git add financial_analysis.py
-
-# Add all Python files
-git add *.py
-
-# Add all files
-git add .
+git commit -m "Add basic financial ratio calculator functions"
 ```
 
-#### Committing Changes
+Congrats! You've made your first commit.
 
-Save the staged changes with a descriptive message:
+### Core Git Commands for Daily Use
+
+- `git status`: Check which files have been modified
+- `git diff`: See exactly what changed in your files
+- `git add <filename>`: Stage a file for commit
+- `git commit -m "Your message"`: Commit staged changes
+- `git log`: View commit history
+
+### Branching for New Features
+
+Branching lets you work on new features without affecting your main code. This is perfect for when you're adding new financial calculations to your toolkit.
 
 ```bash
-git commit -m "Add financial ratio analysis functions"
+# Create a branch for a new profitability ratio feature
+git branch profitability-ratios
+
+# Switch to that branch
+git checkout profitability-ratios
 ```
 
-Always write meaningful commit messages that explain *why* the change was made, not just *what* changed.
-
-### Working with GitHub
-
-GitHub allows you to store your repositories remotely and collaborate with others.
-
-#### Creating a GitHub Repository
-
-1. Sign up or log in at [GitHub](https://github.com/)
-2. Click "New repository"
-3. Name it (e.g., "financial-analysis-tools")
-4. Choose public or private
-5. Click "Create repository"
-
-#### Connecting Your Local Repository to GitHub
-
-GitHub will show commands like these after creating a repository:
+Or do both at once:
 
 ```bash
-# Connect your local repository to GitHub
-git remote add origin https://github.com/yourusername/financial-analysis-tools.git
+git checkout -b profitability-ratios
+```
 
-# Push your changes to GitHub
+Now add some code to your ratio_calculator.py file:
+
+```python
+def calculate_roe(net_income, average_shareholders_equity):
+    """
+    Calculate Return on Equity (ROE).
+    
+    Args:
+        net_income (float): Net income for the period
+        average_shareholders_equity (float): Average shareholders' equity
+        
+    Returns:
+        float: ROE ratio (net income / average shareholders' equity)
+    """
+    if average_shareholders_equity == 0:
+        raise ValueError("Average shareholders' equity cannot be zero")
+    return net_income / average_shareholders_equity
+```
+
+Commit this new function:
+
+```bash
+git add ratio_calculator.py
+git commit -m "Add ROE calculation function"
+```
+
+When you're ready to merge this back into your main code:
+
+```bash
+git checkout main
+git merge profitability-ratios
+```
+
+### Collaborating with GitHub
+
+GitHub extends Git's functionality by hosting your repositories online, making collaboration easier.
+
+1. [Create a GitHub account](https://github.com/join) if you don't have one
+2. Create a new repository on GitHub
+3. Connect your local repository to GitHub:
+
+```bash
+git remote add origin https://github.com/yourusername/financial-ratio-calculator.git
 git push -u origin main
 ```
 
-#### Basic GitHub Collaboration Flow
+Now your code is on GitHub! You can share the link with colleagues, collaborate on improvements, and track issues.
 
-1. **Clone** a repository to get a local copy:
-   ```bash
-   git clone https://github.com/yourusername/financial-analysis-tools.git
-   ```
+### Pull Requests: The Professional Way to Collaborate
 
-2. **Pull** the latest changes before starting work:
-   ```bash
-   git pull origin main
-   ```
+When working with a team of financial analysts, direct changes to the main codebase can be risky. Pull requests (PRs) provide a mechanism for review and discussion before code is merged:
 
-3. Make your changes and **commit** them
+1. Make your changes in a separate branch
+2. Push that branch to GitHub
+3. Open a PR to merge your branch into main
+4. Have teammates review your code
+5. Merge the PR once approved
 
-4. **Push** your changes to GitHub:
-   ```bash
-   git push origin main
-   ```
+This workflow is perfect for finance teams where code accuracy is critical—imagine catching calculation errors before they make it into production reports!
 
-#### Pull Requests
+## Writing Clean, PEP 8 Compliant Code
 
-When collaborating with others, direct pushing to the main branch is often restricted. Instead, you'll use pull requests:
+### What is PEP 8?
 
-1. Create a new branch for your feature:
-   ```bash
-   git checkout -b add-depreciation-calculator
-   ```
+PEP 8 is Python's style guide—a set of conventions for writing readable code. In finance, where you might be sharing models with auditors or other stakeholders, clean code is particularly important.
 
-2. Make changes, commit, and push to your branch:
-   ```bash
-   git push origin add-depreciation-calculator
-   ```
+### Key PEP 8 Rules for Finance Code
 
-3. On GitHub, navigate to your repository and click "Compare & pull request"
-
-4. Add a title and description explaining your changes
-
-5. Team members can now review your code, suggest changes, and eventually merge it
-
-## Writing Clean, PEP 8-Compliant Code
-
-Python has an official style guide called [PEP 8](https://peps.python.org/pep-0008/) that helps make code consistent and readable. Following these standards isn't just about aesthetics—it makes your code more maintainable and easier for others to understand.
-
-### Key PEP 8 Guidelines
-
-#### Indentation and Line Length
-
-- Use 4 spaces per indentation level (not tabs)
-- Keep lines at a maximum of 79 characters for code, 72 for comments
+- **Use 4 spaces for indentation** (not tabs)
+- **Keep lines under 79 characters** for better readability in documentation
+- **Use descriptive variable names** that reflect financial concepts:
 
 ```python
-# Good
-def calculate_monthly_payment(principal, annual_rate, years):
-    """
-    Calculate the monthly payment for a loan.
-    """
-    monthly_rate = annual_rate / 12
-    num_payments = years * 12
-    return principal * (monthly_rate * (1 + monthly_rate) ** num_payments) / \
-           ((1 + monthly_rate) ** num_payments - 1)
+# Bad
+def calc(a, b):
+    return a / b
 
-# Bad - lines too long
-def calculate_monthly_payment(principal, annual_rate, years):
-    """Calculate the monthly payment for a loan."""
-    return principal * (annual_rate / 12 * (1 + annual_rate / 12) ** (years * 12)) / ((1 + annual_rate / 12) ** (years * 12) - 1)
+# Good
+def calculate_price_to_earnings_ratio(stock_price, earnings_per_share):
+    return stock_price / earnings_per_share
 ```
 
-#### Imports
-
-- Import on separate lines
-- Group imports: standard library, third-party, local
-- Avoid wildcard imports (`from x import *`)
+- **Use whitespace appropriately**:
 
 ```python
-# Good
-import os
-import sys
-from datetime import datetime
+# Bad
+profit=revenue-expenses
+tax_amount=profit*tax_rate
 
+# Good
+profit = revenue - expenses
+tax_amount = profit * tax_rate
+```
+
+### Using Linters: flake8
+
+Linters automatically check your code for style issues. Let's set up flake8:
+
+1. Install flake8:
+
+```bash
+pip install flake8
+```
+
+2. Run flake8 on your code:
+
+```bash
+flake8 ratio_calculator.py
+```
+
+It will show any style violations that need fixing.
+
+3. For a real finance project, create a configuration file (`.flake8`) in your project root:
+
+```
+[flake8]
+max-line-length = 88
+exclude = .git,__pycache__,build,dist
+per-file-ignores =
+    __init__.py: F401
+```
+
+### Auto-formatting with black
+
+Why spend time manually formatting code when tools can do it for you?
+
+1. Install black:
+
+```bash
+pip install black
+```
+
+2. Format your code:
+
+```bash
+black ratio_calculator.py
+```
+
+Black will automatically reformat your code to follow a consistent style.
+
+3. For finance projects, you might want to create a `pyproject.toml` file to configure black:
+
+```toml
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+```
+
+### Organising Imports with isort
+
+isort automatically organises your import statements by type and alphabetically.
+
+1. Install isort:
+
+```bash
+pip install isort
+```
+
+2. Run isort on your file:
+
+```bash
+isort ratio_calculator.py
+```
+
+For finance projects where you might be importing various data analysis libraries, isort keeps your imports clean and consistent:
+
+```python
+# Standard library imports
+import datetime
+import os
+from decimal import Decimal
+
+# Third-party imports
 import numpy as np
 import pandas as pd
+from matplotlib import pyplot as plt
 
-from financial_tools.utils import calculate_roi
+# Local application imports
+from .financial_models import discounted_cash_flow
+from .ratio_analysis import calculate_current_ratio
 ```
 
-#### Naming Conventions
+## Writing Effective Documentation
 
-- `variable_names` and `function_names` use snake_case
-- `ClassNames` use CamelCase
-- `CONSTANTS` use ALL_CAPS
-- Avoid single letter names except for counters or short-lived variables
+### Docstrings: Your Future Self Will Thank You
+
+Documentation isn't just for others—it's for you six months from now when you can't remember why you wrote that complex financial calculation a certain way.
+
+#### Google Style Docstrings
 
 ```python
-# Good
-def calculate_net_present_value(cash_flows, discount_rate):
-    """Calculate NPV of cash flows."""
-    npv = 0
-    for i, cash_flow in enumerate(cash_flows):
-        npv += cash_flow / (1 + discount_rate) ** i
-    return npv
-
-# Bad - poor naming
-def calc_npv(cf, r):
-    """Calculate NPV."""
-    n = 0
-    for i, c in enumerate(cf):
-        n += c / (1 + r) ** i
-    return n
-```
-
-#### Whitespace
-
-- Use blank lines to separate logical sections
-- Use spaces around operators: `x = 1 + 2`, not `x=1+2`
-- No space after function name in calls: `function_name(arg)`, not `function_name (arg)`
-
-```python
-# Good
-def analyze_portfolio(stocks, weights, risk_free_rate=0.02):
-    """Analyze a stock portfolio's risk and return metrics."""
-    # Calculate portfolio return
-    returns = calculate_weighted_returns(stocks, weights)
-    
-    # Calculate risk metrics
-    volatility = calculate_portfolio_volatility(stocks, weights)
-    sharpe_ratio = (returns - risk_free_rate) / volatility
-    
-    return {
-        'return': returns,
-        'volatility': volatility,
-        'sharpe_ratio': sharpe_ratio
-    }
-```
-
-### Linting with flake8
-
-Linting tools automatically check your code against style guidelines. `flake8` is a popular linter for Python:
-
-```bash
-# Install flake8
-pip install flake8
-
-# Run on a specific file
-flake8 financial_analysis.py
-
-# Run on entire project
-flake8 .
-```
-
-Sample output:
-```
-financial_analysis.py:25:80: E501 line too long (88 > 79 characters)
-financial_analysis.py:42:1: E303 too many blank lines (3)
-financial_analysis.py:50:17: E225 missing whitespace around operator
-```
-
-### Auto-formatting with black and isort
-
-Manually fixing style issues can be tedious. Tools like `black` and `isort` can automatically format your code:
-
-```bash
-# Install formatters
-pip install black isort
-
-# Format a file with black
-black financial_analysis.py
-
-# Format imports with isort
-isort financial_analysis.py
-
-# Format an entire project
-black .
-isort .
-```
-
-Black is an "opinionated" formatter that enforces a consistent style. It might make some formatting changes you disagree with initially, but the consistency it brings is invaluable for team projects.
-
-### Setting Up a Pre-commit Hook
-
-You can automate code formatting and linting using Git pre-commit hooks:
-
-1. Install pre-commit:
-   ```bash
-   pip install pre-commit
-   ```
-
-2. Create a `.pre-commit-config.yaml` file in your project:
-   ```yaml
-   repos:
-   -   repo: https://github.com/pycqa/isort
-       rev: 5.10.1
-       hooks:
-       -   id: isort
-   -   repo: https://github.com/psf/black
-       rev: 22.3.0
-       hooks:
-       -   id: black
-   -   repo: https://github.com/pycqa/flake8
-       rev: 4.0.1
-       hooks:
-       -   id: flake8
-   ```
-
-3. Install the hooks:
-   ```bash
-   pre-commit install
-   ```
-
-Now, when you attempt to commit code, these tools will run automatically and prevent the commit if there are style issues.
-
-## Writing Documentation
-
-Good documentation is crucial for financial code where understanding the calculation methods and assumptions is critical.
-
-### Docstrings
-
-Python uses docstrings for function and class documentation. There are several styles, with Google and NumPy being popular:
-
-#### Google Style
-
-```python
-def calculate_loan_amortization(principal, rate, periods, additional_payment=0):
-    """Calculate loan amortization schedule with optional additional payments.
-    
-    Args:
-        principal (float): The loan amount
-        rate (float): Annual interest rate (decimal, not percentage)
-        periods (int): Number of payment periods (typically months)
-        additional_payment (float, optional): Extra payment each period
-        
-    Returns:
-        list: List of dictionaries containing payment details for each period
-        
-    Example:
-        >>> schedule = calculate_loan_amortization(100000, 0.04, 360)
-        >>> schedule[0]['principal_payment']
-        166.07
-    """
-```
-
-#### NumPy Style
-
-```python
-def calculate_loan_amortization(principal, rate, periods, additional_payment=0):
-    """
-    Calculate loan amortization schedule with optional additional payments.
-    
-    Parameters
-    ----------
-    principal : float
-        The loan amount
-    rate : float
-        Annual interest rate (decimal, not percentage)
-    periods : int
-        Number of payment periods (typically months)
-    additional_payment : float, optional
-        Extra payment each period (default: 0)
-        
-    Returns
-    -------
-    list
-        List of dictionaries containing payment details for each period
-        
-    Examples
-    --------
-    >>> schedule = calculate_loan_amortization(100000, 0.04, 360)
-    >>> schedule[0]['principal_payment']
-    166.07
-    """
-```
-
-### Auto-generating Documentation with Sphinx
-
-Sphinx is a tool that can generate professional documentation from your docstrings:
-
-1. Install Sphinx:
-   ```bash
-   pip install sphinx sphinx-rtd-theme
-   ```
-
-2. Set up a docs directory:
-   ```bash
-   mkdir docs
-   cd docs
-   sphinx-quickstart
-   ```
-
-3. Configure `conf.py` to use your preferred theme:
-   ```python
-   html_theme = 'sphinx_rtd_theme'
-   ```
-
-4. Add extensions to auto-generate API docs:
-   ```python
-   extensions = [
-       'sphinx.ext.autodoc',
-       'sphinx.ext.napoleon',  # For Google/NumPy docstrings
-       'sphinx.ext.viewcode',
-   ]
-   ```
-
-5. Build the documentation:
-   ```bash
-   sphinx-build -b html . _build
-   ```
-
-## Practical Example: Refactoring a Financial Script
-
-Let's take a poorly written financial script and improve it using our best practices:
-
-### Before Refactoring
-
-```python
-# finance_calcs.py
-def CalcRoi(i,r):
-    # i is investment and r is return
-    return (r-i)/i
-
-def npv(cashFlows,rate):
-  n=0
-  for i in range(len(cashFlows)):
-    n=n+cashFlows[i]/(1+rate)**i
-  return n
-
-def IRR(cfs,guess=0.1):
-    # internal rate of return
-    from numpy import npv
-    import numpy as np
-    rate = guess
-    
-    # Define a function that computes NPV at a given rate
-    def compute_npv(rate):
-        return npv(rate, cfs)
-    
-    # Use numeric methods to find the rate where NPV is approximately 0
-    from scipy.optimize import newton
-    return newton(compute_npv, guess)
-
-def loan_payment(P,r,n):
-    # monthly payment
-    return P * (r/12 * (1 + r/12)**n) / ((1 + r/12)**n - 1)
-
-# Quick test
-if __name__=="__main__":
-    print(CalcRoi(1000,1200))
-    print(npv([-1000,300,400,500],0.1))
-    print(IRR([-1000,300,400,500]))
-    print(loan_payment(100000,0.05,360))
-```
-
-### After Refactoring
-
-```python
-"""
-Financial calculation utilities for investment and loan analysis.
-
-This module provides functions for common financial calculations
-used in investment analysis and loan amortization.
-"""
-
-import numpy as np
-from scipy.optimize import newton
-
-
-def calculate_roi(investment, returned):
-    """
-    Calculate Return on Investment (ROI).
-    
-    Args:
-        investment (float): Initial investment amount
-        returned (float): Amount returned from investment
-        
-    Returns:
-        float: ROI as a decimal (e.g., 0.2 for 20% return)
-        
-    Example:
-        >>> calculate_roi(1000, 1200)
-        0.2
-    """
-    return (returned - investment) / investment
-
-
 def calculate_npv(cash_flows, discount_rate):
     """
     Calculate Net Present Value of a series of cash flows.
     
     Args:
-        cash_flows (list): List of cash flows, where the first value is typically
-                          the initial investment (negative)
-        discount_rate (float): Annual discount rate as decimal (e.g., 0.1 for 10%)
+        cash_flows (list): List of cash flows, where the first element is the initial investment (negative)
+        discount_rate (float): Annual discount rate as a decimal (e.g., 0.1 for 10%)
         
     Returns:
         float: Net Present Value
         
-    Example:
-        >>> calculate_npv([-1000, 300, 400, 500], 0.1)
-        80.01
+    Examples:
+        >>> calculate_npv([-1000, 200, 300, 400, 500], 0.1)
+        152.07
     """
-    npv_value = 0
-    for i, cash_flow in enumerate(cash_flows):
-        npv_value += cash_flow / ((1 + discount_rate) ** i)
-    return npv_value
+    npv = cash_flows[0]  # Initial investment
+    for i, cf in enumerate(cash_flows[1:], 1):
+        npv += cf / (1 + discount_rate) ** i
+    return round(npv, 2)
+```
 
+#### NumPy Style Docstrings
 
-def calculate_irr(cash_flows, guess=0.1):
+```python
+def calculate_irr(cash_flows):
     """
     Calculate Internal Rate of Return for a series of cash flows.
     
-    Uses numerical methods to find the discount rate that results in NPV = 0.
+    Parameters
+    ----------
+    cash_flows : list or array-like
+        List of cash flows, where the first element is the initial investment (negative)
     
-    Args:
-        cash_flows (list): List of cash flows, where the first value is typically
-                          the initial investment (negative)
-        guess (float, optional): Initial guess for the IRR. Defaults to 0.1.
-        
-    Returns:
-        float: Internal Rate of Return as decimal
-        
-    Example:
-        >>> calculate_irr([-1000, 300, 400, 500])
-        0.18
-    """
-    def npv_function(rate):
-        return np.npv(rate, cash_flows)
+    Returns
+    -------
+    float
+        The Internal Rate of Return as a decimal
     
-    return newton(npv_function, guess)
-
-
-def calculate_loan_payment(principal, annual_rate, periods):
-    """
-    Calculate monthly payment for a fixed-rate loan.
+    Notes
+    -----
+    Uses Newton's method to find the rate that makes NPV = 0
     
-    Args:
-        principal (float): Loan principal amount
-        annual_rate (float): Annual interest rate as decimal (e.g., 0.05 for 5%)
-        periods (int): Total number of payment periods (e.g., 360 for 30-year mortgage)
-        
-    Returns:
-        float: Monthly payment amount
-        
-    Example:
-        >>> calculate_loan_payment(100000, 0.05, 360)
-        536.82
+    Examples
+    --------
+    >>> calculate_irr([-1000, 300, 400, 500])
+    0.1548
     """
-    monthly_rate = annual_rate / 12
-    return principal * (monthly_rate * (1 + monthly_rate) ** periods) / \
-        ((1 + monthly_rate) ** periods - 1)
-
-
-if __name__ == "__main__":
-    # Test each function with example values
-    print(f"ROI: {calculate_roi(1000, 1200):.2f}")
-    print(f"NPV: ${calculate_npv([-1000, 300, 400, 500], 0.1):.2f}")
-    print(f"IRR: {calculate_irr([-1000, 300, 400, 500]):.2%}")
-    print(f"Monthly payment: ${calculate_loan_payment(100000, 0.05, 360):.2f}")
+    # IRR implementation...
 ```
 
-Key improvements:
-- Consistent naming with descriptive function names
-- Comprehensive docstrings with examples
-- Proper spacing and formatting
-- Module-level docstring explaining purpose
-- Better print formatting in the test section
+Choose one style and be consistent across your project.
 
-## Financial Application Example: Investment Analysis Tool
+### Generating Documentation with Sphinx
 
-Let's put everything together in a more comprehensive example of a financial analysis tool using best practices:
+For larger finance projects, automatic documentation generation with Sphinx is invaluable:
+
+1. Install Sphinx:
+
+```bash
+pip install sphinx sphinx-rtd-theme
+```
+
+2. Set up a docs directory:
+
+```bash
+mkdir docs
+cd docs
+sphinx-quickstart
+```
+
+3. Configure `conf.py` to use a nice theme:
 
 ```python
-"""
-Investment Portfolio Analysis Tool
+html_theme = 'sphinx_rtd_theme'
+```
 
-This module provides functions to analyze investment portfolios,
-including return calculations, risk metrics, and diversification assessment.
-"""
+4. Build your documentation:
 
-import numpy as np
-import pandas as pd
-from scipy import stats
+```bash
+sphinx-build -b html . _build
+```
 
+This creates HTML documentation you can share with your finance team.
 
-def calculate_portfolio_return(prices_df, weights=None):
-    """
-    Calculate historical returns of a portfolio.
-    
-    Args:
-        prices_df (pd.DataFrame): DataFrame with asset prices (columns) over time (index)
-        weights (list, optional): Portfolio weights. If None, equal weighting is assumed.
-            
-    Returns:
-        pd.Series: Portfolio returns over time
-        
-    Example:
-        >>> prices = pd.DataFrame({
-        ...     'AAPL': [150, 152, 153, 149, 155],
-        ...     'MSFT': [250, 248, 253, 255, 260]
-        ... })
-        >>> calculate_portfolio_return(prices)
-    """
-    # Calculate returns for each asset
-    returns_df = prices_df.pct_change().dropna()
-    
-    
+## Putting It All Together: A Finance Project Workflow
+
+Let's walk through a complete workflow for a hypothetical financial analysis tool:
+
+1. **Set up your environment**:
+   - Create a virtual environment
+   - Install dependencies
+   - Set up Git
+
+2. **Create your project structure**:
+
+```
+financial-analysis-toolkit/
+├── .git/
+├── .gitignore
+├── .flake8
+├── pyproject.toml
+├── README.md
+├── requirements.txt
+├── setup.py
+├── docs/
+└── financial_toolkit/
+    ├── __init__.py
+    ├── ratio_analysis.py
+    ├── valuation_models.py
+    ├── risk_metrics.py
+    └── utilities.py
+```
+
+3. **Write your code with documentation**:
+   - Start with core functions
+   - Add comprehensive docstrings
+   - Make small, focused commits
+
+4. **Validate with linters and formatters**:
+   - Run black to format code
+   - Run isort to organise imports
+   - Run flake8 to check for issues
+
+5. **Create tests** (more on this in the next post)
+
+6. **Push to GitHub and collaborate**:
+   - Share with colleagues
+   - Use pull requests for reviews
+   - Track issues and feature requests
+
+## Conclusion
+
+As a finance professional using Python, the practices outlined in this post will help you create reliable, maintainable code that you can confidently share with colleagues or the wider finance community. Taking the time to learn these professional techniques now will save you countless hours in the future and elevate the quality of your financial analysis tools.
+
+In the next post, we'll dive into testing and debugging your financial code—critical skills for ensuring your calculations are accurate and robust.
+
+## Further Resources
+
+- [Git Documentation](https://git-scm.com/doc)
+- [GitHub Guides](https://guides.github.com/)
+- [PEP 8 Style Guide](https://pep8.org/)
+- [Real Python's Guide to Docstrings](https://realpython.com/documenting-python-code/)
+- [Sphinx Documentation](https://www.sphinx-doc.org/)
+
+**Questions for Practice:**
+
+1. Try creating a Git repository for a simple financial calculator with at least three ratio calculations
+2. Format your code with black and check it with flake8
+3. Write Google-style docstrings for each function
+4. Push your repository to GitHub and create a README explaining what your calculator does

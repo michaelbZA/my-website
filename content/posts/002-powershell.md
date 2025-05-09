@@ -39,7 +39,7 @@ PowerShell represents Microsoft's evolution of the command-line interface, desig
 
 ### Why PowerShell is Superior to Command Prompt
 
-PowerShell offers numerous advantages over traditional Command Prompt:
+PowerShell offers a number of advantages over traditional Command Prompt:
 
 - **Object-based pipeline**: Commands pass entire objects rather than just text
 - **Consistent syntax**: Commands follow a Verb-Noun pattern for intuitive learning
@@ -81,7 +81,7 @@ PowerShell commands are called "cmdlets" (pronounced "command-lets") and follow 
 - `Stop-Service`: Stops a Windows service
 - `New-Item`: Creates a new file or directory
 
-This standardized naming makes discovering and learning commands more intuitive.
+This standardised naming makes discovering and learning commands more intuitive.
 
 ### Pipeline: Chaining Commands
 
@@ -154,6 +154,24 @@ Remove-Item "C:\temp\test_backup.txt"
 # Read file content
 Get-Content "C:\temp\NewFolder\test.txt"
 ```
+
+#### Navigating the File System (Useful Aliases)
+
+Below are a few useful aliases that I use to navigate the file system
+
+| Command/Alias | Full Command | Description | Example |
+|---------------|--------------|-------------|---------|
+| `ls` | `Get-ChildItem` | Lists files and directories | `ls` or `ls -Force` (to show hidden items) |
+| `cd` | `Set-Location` | Changes directory | `cd C:\Users` or `cd ~` (home directory) |
+| `pwd` | `Get-Location` | Shows current directory path | `pwd` |
+| `mkdir` | `New-Item -ItemType Directory` | Creates a new directory | `mkdir NewFolder` |
+| `pushd` | `Push-Location` | Saves current location and moves to new location | `pushd C:\Temp` |
+| `popd` | `Pop-Location` | Returns to previously saved location | `popd` |
+| `cat` | `Get-Content` | Displays file contents | `cat file.txt` |
+| `touch` | `New-Item` | Creates a new file | `touch newfile.txt` |
+| `rm` | `Remove-Item` | Deletes files or directories | `rm file.txt` or `rm -Recurse folder` |
+| `cp` | `Copy-Item` | Copies files | `cp file.txt destination` |
+| `mv` | `Move-Item` | Moves or renames files | `mv file.txt newname.txt` |
 
 ### System Information and Management
 

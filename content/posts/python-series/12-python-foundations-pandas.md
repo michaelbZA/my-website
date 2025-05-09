@@ -1,7 +1,7 @@
 ---
 title: "Part 12: Data Analysis with pandas"
 date: 2025-07-17
-slug: python-foundations-pandas
+slug: data-analysis-with-pandas
 description: "Master data analysis in Python using pandas. Learn to work with Series and DataFrame objects, import data from various sources, and perform essential data manipulation operations."
 tags: ["python", "pandas", "data analysis", "dataframe", "csv", "excel", "data manipulation", "data cleaning"]
 categories: ["Python Series"]

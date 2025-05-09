@@ -467,8 +467,8 @@
 <p>Happy building!</p>
 ]]></content:encoded></item><item><title>VS Code Mastery</title><link>https://michaelbrunger.com/vscode-mastery/</link><pubDate>Fri, 02 May 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/vscode-mastery/</guid><description>&lt;h1 id="vs-code-mastery-a-beginners-guide-to-being-productive">VS Code Mastery: A Beginner&amp;rsquo;s Guide to Being Productive&lt;/h1>
 &lt;p>So you&amp;rsquo;ve downloaded VS Code and opened it up. Now what? In this guide, I&amp;rsquo;ll walk you through everything I&amp;rsquo;ve learned about making VS Code work for you, especially if you&amp;rsquo;re just getting started.&lt;/p>
-&lt;h2 id="why-i-switched-to-vs-code">Why I Switched to VS Code&lt;/h2>
-&lt;p>Before diving into the details, let me share why I chose VS Code:&lt;/p>
+&lt;h2 id="why-i-chose-vs-code">Why I Chose VS Code&lt;/h2>
+&lt;p>Before getting into the details, let me share why I chose VS Code:&lt;/p>
 &lt;ul>
 &lt;li>Lightweight enough to open quickly&lt;/li>
 &lt;li>Powerful enough for serious development&lt;/li>
@@ -479,8 +479,8 @@
 &lt;h2 id="getting-started-the-vs-code-interface">Getting Started: The VS Code Interface&lt;/h2>
 &lt;p>When you first open VS Code, here&amp;rsquo;s what you&amp;rsquo;re looking at:&lt;/p></description><content:encoded><![CDATA[<h1 id="vs-code-mastery-a-beginners-guide-to-being-productive">VS Code Mastery: A Beginner&rsquo;s Guide to Being Productive</h1>
 <p>So you&rsquo;ve downloaded VS Code and opened it up. Now what?  In this guide, I&rsquo;ll walk you through everything I&rsquo;ve learned about making VS Code work for you, especially if you&rsquo;re just getting started.</p>
-<h2 id="why-i-switched-to-vs-code">Why I Switched to VS Code</h2>
-<p>Before diving into the details, let me share why I chose VS Code:</p>
+<h2 id="why-i-chose-vs-code">Why I Chose VS Code</h2>
+<p>Before getting into the details, let me share why I chose VS Code:</p>
 <ul>
 <li>Lightweight enough to open quickly</li>
 <li>Powerful enough for serious development</li>
@@ -675,7 +675,7 @@
 <li>Create multiple terminals by clicking the <code>+</code> button</li>
 <li>Split terminal views with the split button</li>
 <li>Switch between terminals with the dropdown</li>
-<li>Rename terminals for better organization</li>
+<li>Rename terminals for better organisation</li>
 </ul>
 <p>You can configure your default shell in settings:</p>
 <ol>
@@ -705,7 +705,7 @@
 </ul>
 <p>The debug console lets you evaluate expressions and inspect variables in real-time, which was a revelation for me coming from print-based debugging.</p>
 <h2 id="customising-vs-code-to-your-preferences">Customising VS Code to Your Preferences</h2>
-<p>VS Code&rsquo;s customisation options are nearly endless. Here&rsquo;s how I personalized mine:</p>
+<p>VS Code&rsquo;s customisation options are nearly endless. Here&rsquo;s how I personalised mine:</p>
 <h3 id="settingsjson">Settings.json</h3>
 <p>My essential customisations:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
@@ -739,7 +739,7 @@
 </ul>
 <p>This allows you to have different settings for different projects.</p>
 <h2 id="working-with-git-integration">Working with Git Integration</h2>
-<p>VS Code&rsquo;s built-in Git support eliminated my need for separate Git clients:</p>
+<p>VS Code&rsquo;s built-in Git support eliminates the need for separate Git clients:</p>
 <ul>
 <li>The Source Control panel shows changes clearly</li>
 <li>Inline change markers show what&rsquo;s changed in each file</li>
@@ -800,7 +800,7 @@
 <li>Save the workspace file (File &gt; &ldquo;Save Workspace As&hellip;&rdquo;)</li>
 </ol>
 <p>This approach is perfect for microservice architectures or when working with frontend and backend code simultaneously.</p>
-<h2 id="lesser-known-features-i-love">Lesser-Known Features I Love</h2>
+<h2 id="lesser-known-features">Lesser-Known Features</h2>
 <p>Some features I discovered after using VS Code for a while:</p>
 <ul>
 <li><strong>Zen Mode</strong>: <code>Ctrl+K Z</code> (<code>Cmd+K Z</code> on Mac) for distraction-free coding</li>
@@ -850,7 +850,7 @@
 <p>This incremental approach helped me build confidence without feeling overwhelmed.</p>
 <h2 id="conclusion-vs-code-changed-how-i-code">Conclusion: VS Code Changed How I Code</h2>
 <p>When I first started using VS Code, I was just using it as a basic text editor. Now, it&rsquo;s become an extension of my thinking process when coding. The features I&rsquo;ve covered in this post have genuinely made me more productive and helped me write better code.</p>
-<p>Don&rsquo;t feel like you need to learn everything at once! Start with the Command Palette and a few shortcuts, then gradually expand your knowledge. Before long, you&rsquo;ll be navigating and editing code with an efficiency that will surprise you.</p>
+<p>Don&rsquo;t feel like you need to learn everything at once! Start with the Command Palette and a few shortcuts, then gradually expand your knowledge. Before long, you&rsquo;ll be navigating and editing code with an efficiency.</p>
 <h2 id="resources-for-going-further">Resources for Going Further</h2>
 <ul>
 <li><a href="https://code.visualstudio.com/docs">Official VS Code Documentation</a></li>
@@ -886,7 +886,7 @@
 <h2 id="enter-powershell-the-modern-command-line">Enter PowerShell: The Modern Command Line</h2>
 <p>PowerShell represents Microsoft&rsquo;s evolution of the command-line interface, designed to address the limitations of Command Prompt while providing a powerful environment for both casual users and system administrators.</p>
 <h3 id="why-powershell-is-superior-to-command-prompt">Why PowerShell is Superior to Command Prompt</h3>
-<p>PowerShell offers numerous advantages over traditional Command Prompt:</p>
+<p>PowerShell offers a number of advantages over traditional Command Prompt:</p>
 <ul>
 <li><strong>Object-based pipeline</strong>: Commands pass entire objects rather than just text</li>
 <li><strong>Consistent syntax</strong>: Commands follow a Verb-Noun pattern for intuitive learning</li>
@@ -918,7 +918,7 @@
 <li><code>Stop-Service</code>: Stops a Windows service</li>
 <li><code>New-Item</code>: Creates a new file or directory</li>
 </ul>
-<p>This standardized naming makes discovering and learning commands more intuitive.</p>
+<p>This standardised naming makes discovering and learning commands more intuitive.</p>
 <h3 id="pipeline-chaining-commands">Pipeline: Chaining Commands</h3>
 <p>One of PowerShell&rsquo;s most powerful features is the pipeline operator <code>|</code>, which passes the output of one command as input to another:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Get-Process | Sort-Object -Property CPU -Descending | Select-Object -First <span style="color:#ae81ff">5</span>
@@ -966,7 +966,87 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Read file content</span>
 </span></span><span style="display:flex;"><span>Get-Content <span style="color:#e6db74">&#34;C:\temp\NewFolder\test.txt&#34;</span>
-</span></span></code></pre></div><h3 id="system-information-and-management">System Information and Management</h3>
+</span></span></code></pre></div><h4 id="navigating-the-file-system-useful-aliases">Navigating the File System (Useful Aliases)</h4>
+<p>Below are a few useful aliases that I use to navigate the file system</p>
+<table>
+  <thead>
+      <tr>
+          <th>Command/Alias</th>
+          <th>Full Command</th>
+          <th>Description</th>
+          <th>Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>ls</code></td>
+          <td><code>Get-ChildItem</code></td>
+          <td>Lists files and directories</td>
+          <td><code>ls</code> or <code>ls -Force</code> (to show hidden items)</td>
+      </tr>
+      <tr>
+          <td><code>cd</code></td>
+          <td><code>Set-Location</code></td>
+          <td>Changes directory</td>
+          <td><code>cd C:\Users</code> or <code>cd ~</code> (home directory)</td>
+      </tr>
+      <tr>
+          <td><code>pwd</code></td>
+          <td><code>Get-Location</code></td>
+          <td>Shows current directory path</td>
+          <td><code>pwd</code></td>
+      </tr>
+      <tr>
+          <td><code>mkdir</code></td>
+          <td><code>New-Item -ItemType Directory</code></td>
+          <td>Creates a new directory</td>
+          <td><code>mkdir NewFolder</code></td>
+      </tr>
+      <tr>
+          <td><code>pushd</code></td>
+          <td><code>Push-Location</code></td>
+          <td>Saves current location and moves to new location</td>
+          <td><code>pushd C:\Temp</code></td>
+      </tr>
+      <tr>
+          <td><code>popd</code></td>
+          <td><code>Pop-Location</code></td>
+          <td>Returns to previously saved location</td>
+          <td><code>popd</code></td>
+      </tr>
+      <tr>
+          <td><code>cat</code></td>
+          <td><code>Get-Content</code></td>
+          <td>Displays file contents</td>
+          <td><code>cat file.txt</code></td>
+      </tr>
+      <tr>
+          <td><code>touch</code></td>
+          <td><code>New-Item</code></td>
+          <td>Creates a new file</td>
+          <td><code>touch newfile.txt</code></td>
+      </tr>
+      <tr>
+          <td><code>rm</code></td>
+          <td><code>Remove-Item</code></td>
+          <td>Deletes files or directories</td>
+          <td><code>rm file.txt</code> or <code>rm -Recurse folder</code></td>
+      </tr>
+      <tr>
+          <td><code>cp</code></td>
+          <td><code>Copy-Item</code></td>
+          <td>Copies files</td>
+          <td><code>cp file.txt destination</code></td>
+      </tr>
+      <tr>
+          <td><code>mv</code></td>
+          <td><code>Move-Item</code></td>
+          <td>Moves or renames files</td>
+          <td><code>mv file.txt newname.txt</code></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="system-information-and-management">System Information and Management</h3>
 <h4 id="process-management">Process Management</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># List all running processes</span>
 </span></span><span style="display:flex;"><span>Get-Process
