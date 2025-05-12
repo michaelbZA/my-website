@@ -1,1 +1,834 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Django on Michael Brunger</title><link>http://localhost:1313/tags/django/</link><description>Recent content in Django on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Tue, 06 May 2025 12:41:15 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/django/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 15: Web Development Foundations with Python</title><link>http://localhost:1313/python-foundations-web-development/</link><pubDate>Thu, 07 Aug 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/python-foundations-web-development/</guid><description>Explore web development options in Python. Learn Flask for lightweight applications, Django for full-featured sites, or web scraping with requests and BeautifulSoup. Deploy your first web app.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Django on Michael Brunger</title><link>http://localhost:1313/tags/django/</link><description>Recent content in Django on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Fri, 09 May 2025 14:44:55 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/django/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 15: Web Development Foundations with Python</title><link>http://localhost:1313/python-web-development-foundations/</link><pubDate>Thu, 07 Aug 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/python-web-development-foundations/</guid><description>Explore web development options in Python. Learn Flask for lightweight applications, Django for full-featured sites, or web scraping with requests and BeautifulSoup. Deploy your first web app.</description><content:encoded><![CDATA[<h1 id="python-learning-series-web-development-foundations">Python Learning Series: Web Development Foundations</h1>
+<p><em>Part 15 of my 17-part series on learning Python as a finance professional</em></p>
+<p>After exploring all the fundamentals of Python programming, it&rsquo;s time to put those skills to practical use by diving into web development. As a finance manager, I&rsquo;ve found that building simple web applications can help automate reports, create interactive dashboards, and share financial data across teams.</p>
+<p>In this post, I&rsquo;ll cover three popular approaches to web development with Python:</p>
+<ul>
+<li><strong>Option A</strong>: Flask - A lightweight web framework</li>
+<li><strong>Option B</strong>: Django - A full-featured web framework</li>
+<li><strong>Option C</strong>: Web Scraping - Extracting financial data from websites</li>
+</ul>
+<p>Let&rsquo;s explore each option with practical examples relevant to finance work.</p>
+<h2 id="option-a-flask---building-a-lightweight-financial-dashboard">Option A: Flask - Building a Lightweight Financial Dashboard</h2>
+<p>Flask is perfect when you need a simple web interface without the overhead of a full framework. Let&rsquo;s build a basic financial dashboard that displays company expense data.</p>
+<h3 id="setting-up-flask">Setting Up Flask</h3>
+<p>First, we need to install Flask:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Create and activate your virtual environment first</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Then install Flask</span>
+</span></span><span style="display:flex;"><span>pip install flask
+</span></span></code></pre></div><p>Now, let&rsquo;s create a simple Flask application in a file called <code>app.py</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, render_template
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> json
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> Flask(__name__)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Sample financial data (in a real app, this would come from a database)</span>
+</span></span><span style="display:flex;"><span>expense_data <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;month&#34;</span>: <span style="color:#e6db74">&#34;January&#34;</span>, <span style="color:#e6db74">&#34;marketing&#34;</span>: <span style="color:#ae81ff">2400</span>, <span style="color:#e6db74">&#34;operations&#34;</span>: <span style="color:#ae81ff">5000</span>, <span style="color:#e6db74">&#34;payroll&#34;</span>: <span style="color:#ae81ff">12000</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;month&#34;</span>: <span style="color:#e6db74">&#34;February&#34;</span>, <span style="color:#e6db74">&#34;marketing&#34;</span>: <span style="color:#ae81ff">1800</span>, <span style="color:#e6db74">&#34;operations&#34;</span>: <span style="color:#ae81ff">5100</span>, <span style="color:#e6db74">&#34;payroll&#34;</span>: <span style="color:#ae81ff">12000</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;month&#34;</span>: <span style="color:#e6db74">&#34;March&#34;</span>, <span style="color:#e6db74">&#34;marketing&#34;</span>: <span style="color:#ae81ff">2200</span>, <span style="color:#e6db74">&#34;operations&#34;</span>: <span style="color:#ae81ff">4800</span>, <span style="color:#e6db74">&#34;payroll&#34;</span>: <span style="color:#ae81ff">12500</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;month&#34;</span>: <span style="color:#e6db74">&#34;April&#34;</span>, <span style="color:#e6db74">&#34;marketing&#34;</span>: <span style="color:#ae81ff">2500</span>, <span style="color:#e6db74">&#34;operations&#34;</span>: <span style="color:#ae81ff">5200</span>, <span style="color:#e6db74">&#34;payroll&#34;</span>: <span style="color:#ae81ff">12500</span>}
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Calculate totals</span>
+</span></span><span style="display:flex;"><span>    total_marketing <span style="color:#f92672">=</span> sum(month[<span style="color:#e6db74">&#34;marketing&#34;</span>] <span style="color:#66d9ef">for</span> month <span style="color:#f92672">in</span> expense_data)
+</span></span><span style="display:flex;"><span>    total_operations <span style="color:#f92672">=</span> sum(month[<span style="color:#e6db74">&#34;operations&#34;</span>] <span style="color:#66d9ef">for</span> month <span style="color:#f92672">in</span> expense_data)
+</span></span><span style="display:flex;"><span>    total_payroll <span style="color:#f92672">=</span> sum(month[<span style="color:#e6db74">&#34;payroll&#34;</span>] <span style="color:#66d9ef">for</span> month <span style="color:#f92672">in</span> expense_data)
+</span></span><span style="display:flex;"><span>    grand_total <span style="color:#f92672">=</span> total_marketing <span style="color:#f92672">+</span> total_operations <span style="color:#f92672">+</span> total_payroll
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> render_template(
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;dashboard.html&#39;</span>, 
+</span></span><span style="display:flex;"><span>        expense_data<span style="color:#f92672">=</span>expense_data,
+</span></span><span style="display:flex;"><span>        total_marketing<span style="color:#f92672">=</span>total_marketing,
+</span></span><span style="display:flex;"><span>        total_operations<span style="color:#f92672">=</span>total_operations,
+</span></span><span style="display:flex;"><span>        total_payroll<span style="color:#f92672">=</span>total_payroll,
+</span></span><span style="display:flex;"><span>        grand_total<span style="color:#f92672">=</span>grand_total,
+</span></span><span style="display:flex;"><span>        chart_data<span style="color:#f92672">=</span>json<span style="color:#f92672">.</span>dumps(expense_data)
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    app<span style="color:#f92672">.</span>run(debug<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><h3 id="creating-templates">Creating Templates</h3>
+<p>Flask uses templates to generate HTML. Create a <code>templates</code> folder in the same directory as your <code>app.py</code> file, and add a new file called <code>dashboard.html</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;Finance Dashboard&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ url_for(&#39;static&#39;, filename=&#39;styles.css&#39;) }}&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/chart.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">h1</span>&gt;Quarterly Expense Dashboard&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;summary-box&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">h2</span>&gt;Q1 + April Expense Summary&lt;/<span style="color:#f92672">h2</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">p</span>&gt;Total Marketing: ${{ total_marketing }}&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">p</span>&gt;Total Operations: ${{ total_operations }}&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">p</span>&gt;Total Payroll: ${{ total_payroll }}&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;grand-total&#34;</span>&gt;Grand Total: ${{ grand_total }}&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;chart-container&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">canvas</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;expenseChart&#34;</span>&gt;&lt;/<span style="color:#f92672">canvas</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">table</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;expense-table&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">thead</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#f92672">tr</span>&gt;
+</span></span><span style="display:flex;"><span>                    &lt;<span style="color:#f92672">th</span>&gt;Month&lt;/<span style="color:#f92672">th</span>&gt;
+</span></span><span style="display:flex;"><span>                    &lt;<span style="color:#f92672">th</span>&gt;Marketing&lt;/<span style="color:#f92672">th</span>&gt;
+</span></span><span style="display:flex;"><span>                    &lt;<span style="color:#f92672">th</span>&gt;Operations&lt;/<span style="color:#f92672">th</span>&gt;
+</span></span><span style="display:flex;"><span>                    &lt;<span style="color:#f92672">th</span>&gt;Payroll&lt;/<span style="color:#f92672">th</span>&gt;
+</span></span><span style="display:flex;"><span>                    &lt;<span style="color:#f92672">th</span>&gt;Monthly Total&lt;/<span style="color:#f92672">th</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;/<span style="color:#f92672">tr</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;/<span style="color:#f92672">thead</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">tbody</span>&gt;
+</span></span><span style="display:flex;"><span>                {% for month in expense_data %}
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#f92672">tr</span>&gt;
+</span></span><span style="display:flex;"><span>                    &lt;<span style="color:#f92672">td</span>&gt;{{ month.month }}&lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>                    &lt;<span style="color:#f92672">td</span>&gt;${{ month.marketing }}&lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>                    &lt;<span style="color:#f92672">td</span>&gt;${{ month.operations }}&lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>                    &lt;<span style="color:#f92672">td</span>&gt;${{ month.payroll }}&lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>                    &lt;<span style="color:#f92672">td</span>&gt;${{ month.marketing + month.operations + month.payroll }}&lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;/<span style="color:#f92672">tr</span>&gt;
+</span></span><span style="display:flex;"><span>                {% endfor %}
+</span></span><span style="display:flex;"><span>            &lt;/<span style="color:#f92672">tbody</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">table</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Parse the data from Flask
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">expenseData</span> <span style="color:#f92672">=</span> {{ <span style="color:#a6e22e">chart_data</span><span style="color:#f92672">|</span><span style="color:#a6e22e">safe</span> }};
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Prepare data for Chart.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">labels</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">expenseData</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">item</span> =&gt; <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">month</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">marketingData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">expenseData</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">item</span> =&gt; <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">marketing</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">operationsData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">expenseData</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">item</span> =&gt; <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">operations</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">payrollData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">expenseData</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">item</span> =&gt; <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">payroll</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Create the chart
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ctx</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;expenseChart&#39;</span>).<span style="color:#a6e22e">getContext</span>(<span style="color:#e6db74">&#39;2d&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">expenseChart</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Chart</span>(<span style="color:#a6e22e">ctx</span>, {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;bar&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">labels</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">labels</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">datasets</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>                    {
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">label</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Marketing&#39;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">marketingData</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">backgroundColor</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;rgba(54, 162, 235, 0.5)&#39;</span>
+</span></span><span style="display:flex;"><span>                    },
+</span></span><span style="display:flex;"><span>                    {
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">label</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Operations&#39;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">operationsData</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">backgroundColor</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;rgba(255, 206, 86, 0.5)&#39;</span>
+</span></span><span style="display:flex;"><span>                    },
+</span></span><span style="display:flex;"><span>                    {
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">label</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Payroll&#39;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">payrollData</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">backgroundColor</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;rgba(255, 99, 132, 0.5)&#39;</span>
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                ]
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">responsive</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">scales</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">stacked</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>                    },
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">stacked</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">beginAtZero</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><h3 id="adding-css-styles">Adding CSS Styles</h3>
+<p>Create a <code>static</code> folder in the same directory as your <code>app.py</code> file, and add a file called <code>styles.css</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">body</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">font-family</span>: Arial, <span style="color:#66d9ef">sans-serif</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">line-height</span>: <span style="color:#ae81ff">1.6</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#f5f5f5</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">container</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">max-width</span>: <span style="color:#ae81ff">1000</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">auto</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background-color</span>: <span style="color:#66d9ef">white</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">border-radius</span>: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">box-shadow</span>: <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span> rgba(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0.1</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">h1</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#333</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">text-align</span>: <span style="color:#66d9ef">center</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">30</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">summary-box</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#f9f9f9</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">15</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">border-radius</span>: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">grand-total</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">font-weight</span>: <span style="color:#66d9ef">bold</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">1.2</span><span style="color:#66d9ef">em</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#0066cc</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">chart-container</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">30</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">400</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">expense-table</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">border-collapse</span>: <span style="color:#66d9ef">collapse</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">expense-table</span> <span style="color:#f92672">th</span><span style="color:#f92672">,</span> .<span style="color:#a6e22e">expense-table</span> <span style="color:#f92672">td</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">text-align</span>: <span style="color:#66d9ef">right</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">border-bottom</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#ae81ff">#ddd</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">expense-table</span> <span style="color:#f92672">th</span>:<span style="color:#a6e22e">first-child</span><span style="color:#f92672">,</span> .<span style="color:#a6e22e">expense-table</span> <span style="color:#f92672">td</span>:<span style="color:#a6e22e">first-child</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">text-align</span>: <span style="color:#66d9ef">left</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">expense-table</span> <span style="color:#f92672">th</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#f2f2f2</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">expense-table</span> <span style="color:#f92672">tr</span>:<span style="color:#a6e22e">hover</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#f5f5f5</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="running-the-flask-application">Running the Flask Application</h3>
+<p>Run your application by executing:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>python app<span style="color:#f92672">.</span>py
+</span></span></code></pre></div><p>Then open your browser to <code>http://127.0.0.1:5000/</code> to see your dashboard!</p>
+<h3 id="project-structure">Project Structure</h3>
+<p>Your project should have this structure:</p>
+<pre tabindex="0"><code>financial-dashboard/
+├── app.py
+├── static/
+│   └── styles.css
+└── templates/
+    └── dashboard.html
+</code></pre><h2 id="option-b-django---building-a-full-featured-financial-application">Option B: Django - Building a Full-Featured Financial Application</h2>
+<p>Django is a more robust framework that&rsquo;s perfect for complex applications. Let&rsquo;s create a simplified financial transaction tracker.</p>
+<h3 id="installing-django">Installing Django</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>pip install django
+</span></span></code></pre></div><h3 id="creating-a-new-django-project">Creating a New Django Project</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>django<span style="color:#f92672">-</span>admin startproject financial_tracker
+</span></span><span style="display:flex;"><span>cd financial_tracker
+</span></span><span style="display:flex;"><span>python manage<span style="color:#f92672">.</span>py startapp transactions
+</span></span></code></pre></div><h3 id="defining-models">Defining Models</h3>
+<p>Edit <code>transactions/models.py</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> django.db <span style="color:#f92672">import</span> models
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> django.utils <span style="color:#f92672">import</span> timezone
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Category</span>(models<span style="color:#f92672">.</span>Model):
+</span></span><span style="display:flex;"><span>    name <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __str__(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>name
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Meta</span>:
+</span></span><span style="display:flex;"><span>        verbose_name_plural <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Categories&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Transaction</span>(models<span style="color:#f92672">.</span>Model):
+</span></span><span style="display:flex;"><span>    TRANSACTION_TYPES <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>        (<span style="color:#e6db74">&#39;income&#39;</span>, <span style="color:#e6db74">&#39;Income&#39;</span>),
+</span></span><span style="display:flex;"><span>        (<span style="color:#e6db74">&#39;expense&#39;</span>, <span style="color:#e6db74">&#39;Expense&#39;</span>),
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    amount <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>DecimalField(max_digits<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, decimal_places<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    description <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">255</span>)
+</span></span><span style="display:flex;"><span>    category <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>ForeignKey(Category, on_delete<span style="color:#f92672">=</span>models<span style="color:#f92672">.</span>CASCADE)
+</span></span><span style="display:flex;"><span>    transaction_type <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, choices<span style="color:#f92672">=</span>TRANSACTION_TYPES)
+</span></span><span style="display:flex;"><span>    date <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>DateField(default<span style="color:#f92672">=</span>timezone<span style="color:#f92672">.</span>now)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __str__(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>description<span style="color:#e6db74">}</span><span style="color:#e6db74"> - $</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>amount<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><h3 id="registering-the-app">Registering the App</h3>
+<p>Edit <code>financial_tracker/settings.py</code> to add the app to <code>INSTALLED_APPS</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>INSTALLED_APPS <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;django.contrib.admin&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;django.contrib.auth&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;django.contrib.contenttypes&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;django.contrib.sessions&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;django.contrib.messages&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;django.contrib.staticfiles&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;transactions&#39;</span>,  <span style="color:#75715e"># Add your app here</span>
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><h3 id="creating-migrations-and-admin-interface">Creating Migrations and Admin Interface</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>python manage<span style="color:#f92672">.</span>py makemigrations
+</span></span><span style="display:flex;"><span>python manage<span style="color:#f92672">.</span>py migrate
+</span></span><span style="display:flex;"><span>python manage<span style="color:#f92672">.</span>py createsuperuser
+</span></span></code></pre></div><p>Register the models with the admin interface by editing <code>transactions/admin.py</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> django.contrib <span style="color:#f92672">import</span> admin
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> .models <span style="color:#f92672">import</span> Category, Transaction
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@admin.register</span>(Category)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CategoryAdmin</span>(admin<span style="color:#f92672">.</span>ModelAdmin):
+</span></span><span style="display:flex;"><span>    list_display <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;name&#39;</span>,)
+</span></span><span style="display:flex;"><span>    search_fields <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;name&#39;</span>,)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@admin.register</span>(Transaction)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TransactionAdmin</span>(admin<span style="color:#f92672">.</span>ModelAdmin):
+</span></span><span style="display:flex;"><span>    list_display <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;description&#39;</span>, <span style="color:#e6db74">&#39;amount&#39;</span>, <span style="color:#e6db74">&#39;category&#39;</span>, <span style="color:#e6db74">&#39;transaction_type&#39;</span>, <span style="color:#e6db74">&#39;date&#39;</span>)
+</span></span><span style="display:flex;"><span>    list_filter <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;category&#39;</span>, <span style="color:#e6db74">&#39;transaction_type&#39;</span>, <span style="color:#e6db74">&#39;date&#39;</span>)
+</span></span><span style="display:flex;"><span>    search_fields <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;description&#39;</span>,)
+</span></span><span style="display:flex;"><span>    date_hierarchy <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;date&#39;</span>
+</span></span></code></pre></div><h3 id="creating-views">Creating Views</h3>
+<p>Edit <code>transactions/views.py</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> django.shortcuts <span style="color:#f92672">import</span> render
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> django.db.models <span style="color:#f92672">import</span> Sum
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> .models <span style="color:#f92672">import</span> Transaction
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">dashboard</span>(request):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Get recent transactions</span>
+</span></span><span style="display:flex;"><span>    recent_transactions <span style="color:#f92672">=</span> Transaction<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>order_by(<span style="color:#e6db74">&#39;-date&#39;</span>)[:<span style="color:#ae81ff">10</span>]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Calculate summary statistics</span>
+</span></span><span style="display:flex;"><span>    total_income <span style="color:#f92672">=</span> Transaction<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(transaction_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;income&#39;</span>)<span style="color:#f92672">.</span>aggregate(Sum(<span style="color:#e6db74">&#39;amount&#39;</span>))[<span style="color:#e6db74">&#39;amount__sum&#39;</span>] <span style="color:#f92672">or</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    total_expenses <span style="color:#f92672">=</span> Transaction<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(transaction_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;expense&#39;</span>)<span style="color:#f92672">.</span>aggregate(Sum(<span style="color:#e6db74">&#39;amount&#39;</span>))[<span style="color:#e6db74">&#39;amount__sum&#39;</span>] <span style="color:#f92672">or</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    net_balance <span style="color:#f92672">=</span> total_income <span style="color:#f92672">-</span> total_expenses
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Get monthly data for chart</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">from</span> django.db.models.functions <span style="color:#f92672">import</span> TruncMonth
+</span></span><span style="display:flex;"><span>    monthly_data <span style="color:#f92672">=</span> Transaction<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>annotate(month<span style="color:#f92672">=</span>TruncMonth(<span style="color:#e6db74">&#39;date&#39;</span>)) \
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">.</span>values(<span style="color:#e6db74">&#39;month&#39;</span>, <span style="color:#e6db74">&#39;transaction_type&#39;</span>) \
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">.</span>annotate(total<span style="color:#f92672">=</span>Sum(<span style="color:#e6db74">&#39;amount&#39;</span>)) \
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">.</span>order_by(<span style="color:#e6db74">&#39;month&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Prepare data for chart</span>
+</span></span><span style="display:flex;"><span>    months <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    income_data <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    expense_data <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    current_month <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>    current_income <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    current_expense <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> monthly_data:
+</span></span><span style="display:flex;"><span>        month_str <span style="color:#f92672">=</span> item[<span style="color:#e6db74">&#39;month&#39;</span>]<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#39;%b %Y&#39;</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> current_month <span style="color:#f92672">!=</span> month_str:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> current_month <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>                months<span style="color:#f92672">.</span>append(current_month)
+</span></span><span style="display:flex;"><span>                income_data<span style="color:#f92672">.</span>append(current_income)
+</span></span><span style="display:flex;"><span>                expense_data<span style="color:#f92672">.</span>append(current_expense)
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>            current_month <span style="color:#f92672">=</span> month_str
+</span></span><span style="display:flex;"><span>            current_income <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>            current_expense <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> item[<span style="color:#e6db74">&#39;transaction_type&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;income&#39;</span>:
+</span></span><span style="display:flex;"><span>            current_income <span style="color:#f92672">=</span> float(item[<span style="color:#e6db74">&#39;total&#39;</span>])
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            current_expense <span style="color:#f92672">=</span> float(item[<span style="color:#e6db74">&#39;total&#39;</span>])
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Add the last month</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> current_month <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        months<span style="color:#f92672">.</span>append(current_month)
+</span></span><span style="display:flex;"><span>        income_data<span style="color:#f92672">.</span>append(current_income)
+</span></span><span style="display:flex;"><span>        expense_data<span style="color:#f92672">.</span>append(current_expense)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    context <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;recent_transactions&#39;</span>: recent_transactions,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;total_income&#39;</span>: total_income,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;total_expenses&#39;</span>: total_expenses,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;net_balance&#39;</span>: net_balance,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;months&#39;</span>: months,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;income_data&#39;</span>: income_data,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;expense_data&#39;</span>: expense_data,
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> render(request, <span style="color:#e6db74">&#39;transactions/dashboard.html&#39;</span>, context)
+</span></span></code></pre></div><h3 id="setting-up-urls">Setting Up URLs</h3>
+<p>Create <code>transactions/urls.py</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> django.urls <span style="color:#f92672">import</span> path
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> . <span style="color:#f92672">import</span> views
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>urlpatterns <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    path(<span style="color:#e6db74">&#39;&#39;</span>, views<span style="color:#f92672">.</span>dashboard, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;dashboard&#39;</span>),
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p>Then edit <code>financial_tracker/urls.py</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> django.contrib <span style="color:#f92672">import</span> admin
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> django.urls <span style="color:#f92672">import</span> path, include
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>urlpatterns <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    path(<span style="color:#e6db74">&#39;admin/&#39;</span>, admin<span style="color:#f92672">.</span>site<span style="color:#f92672">.</span>urls),
+</span></span><span style="display:flex;"><span>    path(<span style="color:#e6db74">&#39;&#39;</span>, include(<span style="color:#e6db74">&#39;transactions.urls&#39;</span>)),
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><h3 id="creating-templates-1">Creating Templates</h3>
+<p>Create directories:</p>
+<pre tabindex="0"><code>mkdir -p transactions/templates/transactions
+</code></pre><p>Create <code>transactions/templates/transactions/dashboard.html</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{% load static %}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;Financial Tracker&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{% static &#39;transactions/styles.css&#39; %}&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/chart.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">h1</span>&gt;Financial Tracker Dashboard&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;summary-container&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;summary-box income&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#f92672">h3</span>&gt;Total Income&lt;/<span style="color:#f92672">h3</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#f92672">p</span>&gt;${{ total_income }}&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;summary-box expenses&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#f92672">h3</span>&gt;Total Expenses&lt;/<span style="color:#f92672">h3</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#f92672">p</span>&gt;${{ total_expenses }}&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;summary-box balance&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#f92672">h3</span>&gt;Net Balance&lt;/<span style="color:#f92672">h3</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#f92672">p</span>&gt;${{ net_balance }}&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;chart-container&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">canvas</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;financialChart&#34;</span>&gt;&lt;/<span style="color:#f92672">canvas</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;recent-transactions&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">h2</span>&gt;Recent Transactions&lt;/<span style="color:#f92672">h2</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">table</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#f92672">thead</span>&gt;
+</span></span><span style="display:flex;"><span>                    &lt;<span style="color:#f92672">tr</span>&gt;
+</span></span><span style="display:flex;"><span>                        &lt;<span style="color:#f92672">th</span>&gt;Date&lt;/<span style="color:#f92672">th</span>&gt;
+</span></span><span style="display:flex;"><span>                        &lt;<span style="color:#f92672">th</span>&gt;Description&lt;/<span style="color:#f92672">th</span>&gt;
+</span></span><span style="display:flex;"><span>                        &lt;<span style="color:#f92672">th</span>&gt;Category&lt;/<span style="color:#f92672">th</span>&gt;
+</span></span><span style="display:flex;"><span>                        &lt;<span style="color:#f92672">th</span>&gt;Type&lt;/<span style="color:#f92672">th</span>&gt;
+</span></span><span style="display:flex;"><span>                        &lt;<span style="color:#f92672">th</span>&gt;Amount&lt;/<span style="color:#f92672">th</span>&gt;
+</span></span><span style="display:flex;"><span>                    &lt;/<span style="color:#f92672">tr</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;/<span style="color:#f92672">thead</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#f92672">tbody</span>&gt;
+</span></span><span style="display:flex;"><span>                    {% for transaction in recent_transactions %}
+</span></span><span style="display:flex;"><span>                    &lt;<span style="color:#f92672">tr</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ transaction.transaction_type }}&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                        &lt;<span style="color:#f92672">td</span>&gt;{{ transaction.date }}&lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>                        &lt;<span style="color:#f92672">td</span>&gt;{{ transaction.description }}&lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>                        &lt;<span style="color:#f92672">td</span>&gt;{{ transaction.category }}&lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>                        &lt;<span style="color:#f92672">td</span>&gt;{{ transaction.transaction_type|title }}&lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>                        &lt;<span style="color:#f92672">td</span>&gt;${{ transaction.amount }}&lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>                    &lt;/<span style="color:#f92672">tr</span>&gt;
+</span></span><span style="display:flex;"><span>                    {% endfor %}
+</span></span><span style="display:flex;"><span>                &lt;/<span style="color:#f92672">tbody</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;/<span style="color:#f92672">table</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Get data from context
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">months</span> <span style="color:#f92672">=</span> {{ <span style="color:#a6e22e">months</span><span style="color:#f92672">|</span><span style="color:#a6e22e">safe</span> }};
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">incomeData</span> <span style="color:#f92672">=</span> {{ <span style="color:#a6e22e">income_data</span><span style="color:#f92672">|</span><span style="color:#a6e22e">safe</span> }};
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">expenseData</span> <span style="color:#f92672">=</span> {{ <span style="color:#a6e22e">expense_data</span><span style="color:#f92672">|</span><span style="color:#a6e22e">safe</span> }};
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Create chart
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ctx</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;financialChart&#39;</span>).<span style="color:#a6e22e">getContext</span>(<span style="color:#e6db74">&#39;2d&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">financialChart</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Chart</span>(<span style="color:#a6e22e">ctx</span>, {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;bar&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">labels</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">months</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">datasets</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>                    {
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">label</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Income&#39;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">incomeData</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">backgroundColor</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;rgba(75, 192, 192, 0.5)&#39;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">borderColor</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;rgba(75, 192, 192, 1)&#39;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">borderWidth</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>                    },
+</span></span><span style="display:flex;"><span>                    {
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">label</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Expenses&#39;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">expenseData</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">backgroundColor</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;rgba(255, 99, 132, 0.5)&#39;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">borderColor</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;rgba(255, 99, 132, 1)&#39;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">borderWidth</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                ]
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">responsive</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">scales</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">beginAtZero</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><h3 id="adding-static-files">Adding Static Files</h3>
+<p>Create directories:</p>
+<pre tabindex="0"><code>mkdir -p transactions/static/transactions
+</code></pre><p>Create <code>transactions/static/transactions/styles.css</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">body</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">font-family</span>: Arial, <span style="color:#66d9ef">sans-serif</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">line-height</span>: <span style="color:#ae81ff">1.6</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#f5f5f5</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">container</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">max-width</span>: <span style="color:#ae81ff">1200</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">auto</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background-color</span>: <span style="color:#66d9ef">white</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">border-radius</span>: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">box-shadow</span>: <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span> rgba(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0.1</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">h1</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#333</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">text-align</span>: <span style="color:#66d9ef">center</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">30</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">summary-container</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">flex</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">justify-content</span>: <span style="color:#66d9ef">space-between</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">30</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">summary-box</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">flex</span>: <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">border-radius</span>: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">text-align</span>: <span style="color:#66d9ef">center</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">income</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#d4edda</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#155724</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">expenses</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#f8d7da</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#721c24</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">balance</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#cce5ff</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#004085</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">summary-box</span> <span style="color:#f92672">h3</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin-top</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">summary-box</span> <span style="color:#f92672">p</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">24</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">font-weight</span>: <span style="color:#66d9ef">bold</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">chart-container</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">30</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">400</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">recent-transactions</span> <span style="color:#f92672">h2</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">15</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">table</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">border-collapse</span>: <span style="color:#66d9ef">collapse</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">th</span><span style="color:#f92672">,</span> <span style="color:#f92672">td</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">12</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">15</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">text-align</span>: <span style="color:#66d9ef">left</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">border-bottom</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#ae81ff">#ddd</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">th</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#f2f2f2</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">tr</span>.<span style="color:#a6e22e">income</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background-color</span>: rgba(<span style="color:#ae81ff">212</span>, <span style="color:#ae81ff">237</span>, <span style="color:#ae81ff">218</span>, <span style="color:#ae81ff">0.2</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">tr</span>.<span style="color:#a6e22e">expense</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background-color</span>: rgba(<span style="color:#ae81ff">248</span>, <span style="color:#ae81ff">215</span>, <span style="color:#ae81ff">218</span>, <span style="color:#ae81ff">0.2</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">tr</span>:<span style="color:#a6e22e">hover</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#f5f5f5</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="running-the-django-application">Running the Django Application</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>python manage<span style="color:#f92672">.</span>py runserver
+</span></span></code></pre></div><p>Access the admin interface at <code>http://127.0.0.1:8000/admin/</code> and add some sample data. Then view your dashboard at <code>http://127.0.0.1:8000/</code>.</p>
+<h2 id="option-c-web-scraping---extracting-financial-data">Option C: Web Scraping - Extracting Financial Data</h2>
+<p>Let&rsquo;s create a simple web scraper to extract stock price data.</p>
+<h3 id="installing-required-libraries">Installing Required Libraries</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>pip install requests beautifulsoup4 pandas matplotlib
+</span></span></code></pre></div><h3 id="creating-a-stock-price-scraper">Creating a Stock Price Scraper</h3>
+<p>Create a file named <code>stock_scraper.py</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> bs4 <span style="color:#f92672">import</span> BeautifulSoup
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_stock_data</span>(ticker):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Scrape basic stock information for the given ticker.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    url <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;https://finance.yahoo.com/quote/</span><span style="color:#e6db74">{</span>ticker<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    headers <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;User-Agent&#34;</span>: <span style="color:#e6db74">&#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        response <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url, headers<span style="color:#f92672">=</span>headers)
+</span></span><span style="display:flex;"><span>        response<span style="color:#f92672">.</span>raise_for_status()  <span style="color:#75715e"># Raise exception for 4XX/5XX responses</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        soup <span style="color:#f92672">=</span> BeautifulSoup(response<span style="color:#f92672">.</span>text, <span style="color:#e6db74">&#39;html.parser&#39;</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Extract the company name</span>
+</span></span><span style="display:flex;"><span>        company_name <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;h1&#39;</span>, class_<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;D(ib)&#39;</span>)<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>strip()
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Extract current price</span>
+</span></span><span style="display:flex;"><span>        current_price <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;fin-streamer&#39;</span>, {<span style="color:#e6db74">&#39;data-field&#39;</span>: <span style="color:#e6db74">&#39;regularMarketPrice&#39;</span>})<span style="color:#f92672">.</span>text
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Extract previous close</span>
+</span></span><span style="display:flex;"><span>        prev_close_label <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;td&#39;</span>, text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Previous Close&#39;</span>)
+</span></span><span style="display:flex;"><span>        prev_close <span style="color:#f92672">=</span> prev_close_label<span style="color:#f92672">.</span>find_next_sibling(<span style="color:#e6db74">&#39;td&#39;</span>)<span style="color:#f92672">.</span>text <span style="color:#66d9ef">if</span> prev_close_label <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;N/A&#39;</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Extract open price</span>
+</span></span><span style="display:flex;"><span>        open_label <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;td&#39;</span>, text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Open&#39;</span>)
+</span></span><span style="display:flex;"><span>        open_price <span style="color:#f92672">=</span> open_label<span style="color:#f92672">.</span>find_next_sibling(<span style="color:#e6db74">&#39;td&#39;</span>)<span style="color:#f92672">.</span>text <span style="color:#66d9ef">if</span> open_label <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;N/A&#39;</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Extract day range</span>
+</span></span><span style="display:flex;"><span>        day_range_label <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;td&#39;</span>, text<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Day&#39;s Range&#34;</span>)
+</span></span><span style="display:flex;"><span>        day_range <span style="color:#f92672">=</span> day_range_label<span style="color:#f92672">.</span>find_next_sibling(<span style="color:#e6db74">&#39;td&#39;</span>)<span style="color:#f92672">.</span>text <span style="color:#66d9ef">if</span> day_range_label <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;N/A&#39;</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Extract 52 week range</span>
+</span></span><span style="display:flex;"><span>        week_range_label <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;td&#39;</span>, text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;52 Week Range&#39;</span>)
+</span></span><span style="display:flex;"><span>        week_range <span style="color:#f92672">=</span> week_range_label<span style="color:#f92672">.</span>find_next_sibling(<span style="color:#e6db74">&#39;td&#39;</span>)<span style="color:#f92672">.</span>text <span style="color:#66d9ef">if</span> week_range_label <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;N/A&#39;</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Extract volume</span>
+</span></span><span style="display:flex;"><span>        volume_label <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;td&#39;</span>, text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Volume&#39;</span>)
+</span></span><span style="display:flex;"><span>        volume <span style="color:#f92672">=</span> volume_label<span style="color:#f92672">.</span>find_next_sibling(<span style="color:#e6db74">&#39;td&#39;</span>)<span style="color:#f92672">.</span>text <span style="color:#66d9ef">if</span> volume_label <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;N/A&#39;</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Extract market cap</span>
+</span></span><span style="display:flex;"><span>        market_cap_label <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;td&#39;</span>, text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Market Cap&#39;</span>)
+</span></span><span style="display:flex;"><span>        market_cap <span style="color:#f92672">=</span> market_cap_label<span style="color:#f92672">.</span>find_next_sibling(<span style="color:#e6db74">&#39;td&#39;</span>)<span style="color:#f92672">.</span>text <span style="color:#66d9ef">if</span> market_cap_label <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;N/A&#39;</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Extract P/E ratio</span>
+</span></span><span style="display:flex;"><span>        pe_ratio_label <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;td&#39;</span>, text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;PE Ratio (TTM)&#39;</span>)
+</span></span><span style="display:flex;"><span>        pe_ratio <span style="color:#f92672">=</span> pe_ratio_label<span style="color:#f92672">.</span>find_next_sibling(<span style="color:#e6db74">&#39;td&#39;</span>)<span style="color:#f92672">.</span>text <span style="color:#66d9ef">if</span> pe_ratio_label <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;N/A&#39;</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Create a dictionary with all the data</span>
+</span></span><span style="display:flex;"><span>        stock_data <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;Company&#39;</span>: company_name,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;Ticker&#39;</span>: ticker,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;Current Price&#39;</span>: current_price,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;Previous Close&#39;</span>: prev_close,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;Open&#39;</span>: open_price,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;Day Range&#39;</span>: day_range,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;52 Week Range&#39;</span>: week_range,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;Volume&#39;</span>: volume,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;Market Cap&#39;</span>: market_cap,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;PE Ratio (TTM)&#39;</span>: pe_ratio,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;Last Updated&#39;</span>: datetime<span style="color:#f92672">.</span>now()<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#39;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74"> %H:%M:%S&#39;</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> stock_data
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Error fetching data for </span><span style="color:#e6db74">{</span>ticker<span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>e<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_historical_data</span>(ticker, period<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;1mo&#39;</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Scrape historical price data for charting.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    url <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;https://finance.yahoo.com/quote/</span><span style="color:#e6db74">{</span>ticker<span style="color:#e6db74">}</span><span style="color:#e6db74">/history&#34;</span>
+</span></span><span style="display:flex;"><span>    headers <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;User-Agent&#34;</span>: <span style="color:#e6db74">&#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># For a proper application, you would use Yahoo Finance API or another service</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># This is a simplified example for demonstration purposes</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Instead of actually scraping (which is complex for the history page),</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># we&#39;ll use pandas_datareader which is more reliable for historical data</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">import</span> pandas_datareader.data <span style="color:#66d9ef">as</span> web
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        start_date <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Timestamp<span style="color:#f92672">.</span>now() <span style="color:#f92672">-</span> pd<span style="color:#f92672">.</span>DateOffset(months<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> period <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;3mo&#39;</span>:
+</span></span><span style="display:flex;"><span>            start_date <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Timestamp<span style="color:#f92672">.</span>now() <span style="color:#f92672">-</span> pd<span style="color:#f92672">.</span>DateOffset(months<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> period <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;6mo&#39;</span>:
+</span></span><span style="display:flex;"><span>            start_date <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Timestamp<span style="color:#f92672">.</span>now() <span style="color:#f92672">-</span> pd<span style="color:#f92672">.</span>DateOffset(months<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> period <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;1y&#39;</span>:
+</span></span><span style="display:flex;"><span>            start_date <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Timestamp<span style="color:#f92672">.</span>now() <span style="color:#f92672">-</span> pd<span style="color:#f92672">.</span>DateOffset(years<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        end_date <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Timestamp<span style="color:#f92672">.</span>now()
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Get data from Yahoo Finance</span>
+</span></span><span style="display:flex;"><span>        df <span style="color:#f92672">=</span> web<span style="color:#f92672">.</span>DataReader(ticker, <span style="color:#e6db74">&#39;yahoo&#39;</span>, start_date, end_date)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> df
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Error fetching historical data for </span><span style="color:#e6db74">{</span>ticker<span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>e<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">plot_stock_price</span>(ticker, period<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;1mo&#39;</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Plot the historical stock price.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    df <span style="color:#f92672">=</span> get_historical_data(ticker, period)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> df <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">6</span>))
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>plot(df<span style="color:#f92672">.</span>index, df[<span style="color:#e6db74">&#39;Close&#39;</span>], label<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>ticker<span style="color:#e6db74">}</span><span style="color:#e6db74"> Close Price&#39;</span>)
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>ticker<span style="color:#e6db74">}</span><span style="color:#e6db74"> Stock Price - Last </span><span style="color:#e6db74">{</span>period<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Date&#39;</span>)
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Price ($)&#39;</span>)
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>grid(<span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>legend()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Save the figure</span>
+</span></span><span style="display:flex;"><span>    file_name <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>ticker<span style="color:#e6db74">}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">{</span>period<span style="color:#e6db74">}</span><span style="color:#e6db74">_price_chart.png&#34;</span>
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>savefig(file_name)
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> file_name
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Main function to demonstrate the stock scraper.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># List of stock tickers to analyze</span>
+</span></span><span style="display:flex;"><span>    tickers <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;AAPL&#39;</span>, <span style="color:#e6db74">&#39;MSFT&#39;</span>, <span style="color:#e6db74">&#39;GOOGL&#39;</span>, <span style="color:#e6db74">&#39;AMZN&#39;</span>]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Create a DataFrame to store all stock data</span>
+</span></span><span style="display:flex;"><span>    all_data <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> ticker <span style="color:#f92672">in</span> tickers:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Fetching data for </span><span style="color:#e6db74">{</span>ticker<span style="color:#e6db74">}</span><span style="color:#e6db74">...&#34;</span>)
+</span></span><span style="display:flex;"><span>        stock_data <span style="color:#f92672">=</span> get_stock_data(ticker)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> stock_data:
+</span></span><span style="display:flex;"><span>            all_data<span style="color:#f92672">.</span>append(stock_data)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Generate and save a price chart</span>
+</span></span><span style="display:flex;"><span>            chart_file <span style="color:#f92672">=</span> plot_stock_price(ticker, <span style="color:#e6db74">&#39;3mo&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> chart_file:
+</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Chart saved as </span><span style="color:#e6db74">{</span>chart_file<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Convert to DataFrame for easier analysis and display</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> all_data:
+</span></span><span style="display:flex;"><span>        df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(all_data)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Stock Data Summary:&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(df)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Save to CSV</span>
+</span></span><span style="display:flex;"><span>        df<span style="color:#f92672">.</span>to_csv(<span style="color:#e6db74">&#39;stock_data_summary.csv&#39;</span>, index<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;Data saved to stock_data_summary.csv&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    main()
+</span></span></code></pre></div><h3 id="running-the-web-scraper">Running the Web Scraper</h3>
+<p>Execute the script:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>pip install pandas<span style="color:#f92672">-</span>datareader  <span style="color:#75715e"># Additional dependency for the example</span>
+</span></span><span style="display:flex;"><span>python stock_scraper<span style="color:#f92672">.</span>py
+</span></span></code></pre></div><p>This script will:</p>
+<ol>
+<li>Fetch current stock data for Apple, Microsoft, Google, and Amazon</li>
+<li>Generate price charts for each stock</li>
+<li>Save all data to a CSV file</li>
+</ol>
+<h2 id="deploying-your-web-application">Deploying Your Web Application</h2>
+<p>Once you&rsquo;ve built your web application, you&rsquo;ll want to deploy it so others can access it.</p>
+<h3 id="deploying-to-render-free-alternative-to-heroku">Deploying to Render (Free Alternative to Heroku)</h3>
+<p>Render is a good free alternative since Heroku no longer offers a free tier.</p>
+<h4 id="for-flask-applications">For Flask Applications:</h4>
+<ol>
+<li>Create a <code>requirements.txt</code> file:</li>
+</ol>
+<pre tabindex="0"><code>flask==2.0.1
+gunicorn==20.1.0
+</code></pre><ol start="2">
+<li>Create a <code>Procfile</code>:</li>
+</ol>
+<pre tabindex="0"><code>web: gunicorn app:app
+</code></pre><ol start="3">
+<li>Create a new project on GitHub with your app code</li>
+<li>Sign up for a Render account at render.com</li>
+<li>Create a new Web Service</li>
+<li>Connect your GitHub repository</li>
+<li>Configure settings:
+<ul>
+<li>Environment: Python 3</li>
+<li>Build Command: <code>pip install -r requirements.txt</code></li>
+<li>Start Command: <code>gunicorn app:app</code></li>
+</ul>
+</li>
+<li>Click &ldquo;Create Web Service&rdquo;</li>
+</ol>
+<h4 id="for-django-applications">For Django Applications:</h4>
+<ol>
+<li>Update <code>settings.py</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Add your Render domain to allowed hosts</span>
+</span></span><span style="display:flex;"><span>ALLOWED_HOSTS <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#e6db74">&#39;127.0.0.1&#39;</span>, <span style="color:#e6db74">&#39;your-app-name.onrender.com&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Static files settings</span>
+</span></span><span style="display:flex;"><span>STATIC_URL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/static/&#39;</span>
+</span></span><span style="display:flex;"><span>STATIC_ROOT <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(BASE_DIR, <span style="color:#e6db74">&#39;staticfiles&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Configure database (use SQLite for simplicity)</span>
+</span></span><span style="display:flex;"><span>DATABASES <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;default&#39;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;ENGINE&#39;</span>: <span style="color:#e6db74">&#39;django.db.backends.sqlite3&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;NAME&#39;</span>: os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(BASE_DIR, <span style="color:#e6db74">&#39;db.sqlite3&#39;</span>),
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="2">
+<li>Create a <code>requirements.txt</code> file:</li>
+</ol>
+<pre tabindex="0"><code>django==4.0.0
+gunicorn==20.1.0
+whitenoise==5.3.0
+</code></pre><ol start="3">
+<li>Create a <code>Procfile</code>:</li>
+</ol>
+<pre tabindex="0"><code>web: gunicorn financial_tracker.wsgi
+</code></pre><ol start="4">
+<li>Follow the same steps as Flask to deploy on Render</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this post, we&rsquo;ve covered three different approaches to web development with Python:</p>
+<ol>
+<li><strong>Flask</strong> - A lightweight framework perfect for simple financial dashboards and internal tools</li>
+<li><strong>Django</strong> - A full-featured framework ideal for complex financial applications with user authentication, database models, and admin interfaces</li>
+<li><strong>Web Scraping</strong> - A technique to extract financial data from websites for analysis and visualization</li>
+</ol>
+<p>As a finance professional, I&rsquo;ve found that these web development skills can significantly enhance your workflow, whether it&rsquo;s creating simple dashboards for expense tracking, building full-featured financial applications, or scraping financial data for analysis.</p>
+<p>In the next post, we&rsquo;ll explore building desktop GUI applications with Tkinter, which can be useful for creating financial calculators and other tools that don&rsquo;t require a web interface.</p>
+<p>Let me know in the comments which approach you&rsquo;re most interested in exploring further, or if you have any questions about implementing these techniques for your specific financial use case.</p>
+<p><em>Note: Remember that web scraping should be done responsibly. Always check a website&rsquo;s robots.txt file and terms of service before scraping, and ensure you&rsquo;re not overloading their servers with requests.</em></p>
+]]></content:encoded></item></channel></rss>

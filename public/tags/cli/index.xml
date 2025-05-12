@@ -1,1 +1,601 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Cli on Michael Brunger</title><link>http://localhost:1313/tags/cli/</link><description>Recent content in Cli on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Tue, 06 May 2025 12:41:15 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/cli/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 9: Command-Line Tools &amp; Automation with Python</title><link>http://localhost:1313/python-foundations-automation/</link><pubDate>Thu, 26 Jun 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/python-foundations-automation/</guid><description>Build command-line interfaces with argparse, create installable CLI tools, automate file operations, control GUI applications, and develop practical automation projects.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Cli on Michael Brunger</title><link>http://localhost:1313/tags/cli/</link><description>Recent content in Cli on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Fri, 09 May 2025 14:44:55 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/cli/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 9: Command-Line Tools &amp; Automation with Python</title><link>http://localhost:1313/python-command-line-automation/</link><pubDate>Thu, 26 Jun 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/python-command-line-automation/</guid><description>Build command-line interfaces with argparse, create installable CLI tools, automate file operations, control GUI applications, and develop practical automation projects.</description><content:encoded><![CDATA[<h1 id="command-line-tools--automation-in-python">Command-Line Tools &amp; Automation in Python</h1>
+<p>As a finance professional learning to code, I&rsquo;ve discovered that some of the most practical Python applications aren&rsquo;t fancy data visualizations or machine learning models, but rather simple automation scripts that save time on repetitive tasks. In this post, I&rsquo;ll walk through how to build command-line tools and automate everyday processes using Python.</p>
+<h2 id="building-command-line-scripts-with-argparse">Building Command-Line Scripts with argparse</h2>
+<p>When you&rsquo;re working with financial data, you often need flexible tools that can handle different inputs. The <code>argparse</code> module lets you build command-line scripts that accept various arguments and options.</p>
+<h3 id="basic-argparse-structure">Basic argparse Structure</h3>
+<p>First, let&rsquo;s create a simple script that calculates compound interest:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> argparse
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_compound_interest</span>(principal, rate, time, compounds_per_year<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Calculate compound interest.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        principal: Initial investment amount
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        rate: Annual interest rate (decimal)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        time: Time in years
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        compounds_per_year: Number of times interest compounds per year
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        Final amount after compound interest
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> principal <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> rate<span style="color:#f92672">/</span>compounds_per_year)<span style="color:#f92672">**</span>(compounds_per_year<span style="color:#f92672">*</span>time)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Create argument parser</span>
+</span></span><span style="display:flex;"><span>    parser <span style="color:#f92672">=</span> argparse<span style="color:#f92672">.</span>ArgumentParser(description<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Calculate compound interest&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Add arguments</span>
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;principal&#39;</span>, type<span style="color:#f92672">=</span>float, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Initial investment amount&#39;</span>)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;rate&#39;</span>, type<span style="color:#f92672">=</span>float, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Annual interest rate (decimal)&#39;</span>)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;time&#39;</span>, type<span style="color:#f92672">=</span>float, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Time in years&#39;</span>)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--compounds&#39;</span>, type<span style="color:#f92672">=</span>int, default<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, 
+</span></span><span style="display:flex;"><span>                        help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Number of times interest compounds per year (default: 1)&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Parse arguments</span>
+</span></span><span style="display:flex;"><span>    args <span style="color:#f92672">=</span> parser<span style="color:#f92672">.</span>parse_args()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Calculate result</span>
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> calculate_compound_interest(
+</span></span><span style="display:flex;"><span>        args<span style="color:#f92672">.</span>principal, 
+</span></span><span style="display:flex;"><span>        args<span style="color:#f92672">.</span>rate, 
+</span></span><span style="display:flex;"><span>        args<span style="color:#f92672">.</span>time, 
+</span></span><span style="display:flex;"><span>        args<span style="color:#f92672">.</span>compounds
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Print result</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Initial principal: $</span><span style="color:#e6db74">{</span>args<span style="color:#f92672">.</span>principal<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Annual rate: </span><span style="color:#e6db74">{</span>args<span style="color:#f92672">.</span>rate<span style="color:#e6db74">:</span><span style="color:#e6db74">.2%</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Time: </span><span style="color:#e6db74">{</span>args<span style="color:#f92672">.</span>time<span style="color:#e6db74">}</span><span style="color:#e6db74"> years&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Compounds per year: </span><span style="color:#e6db74">{</span>args<span style="color:#f92672">.</span>compounds<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Final amount: $</span><span style="color:#e6db74">{</span>result<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Interest earned: $</span><span style="color:#e6db74">{</span>result <span style="color:#f92672">-</span> args<span style="color:#f92672">.</span>principal<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    main()
+</span></span></code></pre></div><p>Save this script as <code>compound_interest.py</code> and run it from the command line:</p>
+<pre tabindex="0"><code>python compound_interest.py 10000 0.05 5 --compounds 12
+</code></pre><p>This would calculate the compound interest on $10,000 at 5% annual interest for 5 years, compounded monthly.</p>
+<h3 id="understanding-argparse-components">Understanding argparse Components</h3>
+<p>Let&rsquo;s break down what&rsquo;s happening in our script:</p>
+<ol>
+<li>We create an <code>ArgumentParser</code> object with a description</li>
+<li>We add arguments with <code>add_argument()</code>:
+<ul>
+<li>Positional arguments (<code>principal</code>, <code>rate</code>, <code>time</code>) are required</li>
+<li>Optional arguments (like <code>--compounds</code>) start with <code>--</code> and have default values</li>
+</ul>
+</li>
+<li>We parse the command-line arguments with <code>parse_args()</code></li>
+<li>We access the values via <code>args.parameter_name</code></li>
+</ol>
+<h3 id="adding-help-text">Adding Help Text</h3>
+<p>One of the best features of <code>argparse</code> is automatic help text generation. Users can run your script with <code>-h</code> or <code>--help</code> to see instructions:</p>
+<pre tabindex="0"><code>python compound_interest.py --help
+</code></pre><p>Which produces:</p>
+<pre tabindex="0"><code>usage: compound_interest.py [-h] [--compounds COMPOUNDS] principal rate time
+
+Calculate compound interest
+
+positional arguments:
+  principal             Initial investment amount
+  rate                  Annual interest rate (decimal)
+  time                  Time in years
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --compounds COMPOUNDS Number of times interest compounds per year (default: 1)
+</code></pre><h3 id="more-argparse-features">More argparse Features</h3>
+<p>For financial applications, you might want to add more sophisticated options:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--currency&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;$&#39;</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Currency symbol to display&#39;</span>)
+</span></span><span style="display:flex;"><span>parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--output-file&#39;</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Save results to a file&#39;</span>)
+</span></span><span style="display:flex;"><span>parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--verbose&#39;</span>, <span style="color:#e6db74">&#39;-v&#39;</span>, action<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;store_true&#39;</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Display additional information&#39;</span>)
+</span></span></code></pre></div><p>The <code>action='store_true'</code> creates a flag that&rsquo;s either True or False depending on whether it&rsquo;s included.</p>
+<h2 id="packaging-entry-points-for-installable-commands">Packaging Entry Points for Installable Commands</h2>
+<p>If you find yourself using the same script frequently, you can package it so it&rsquo;s available as a system-wide command.</p>
+<h3 id="creating-a-package-structure">Creating a Package Structure</h3>
+<p>First, organize your files like this:</p>
+<pre tabindex="0"><code>finance_tools/
+├── finance_tools/
+│   ├── __init__.py
+│   ├── compound_interest.py
+│   └── other_modules.py
+├── README.md
+└── pyproject.toml
+</code></pre><h3 id="setting-up-pyprojecttoml">Setting Up pyproject.toml</h3>
+<p>Create a <code>pyproject.toml</code> file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">build-system</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">requires</span> = [<span style="color:#e6db74">&#34;setuptools&gt;=42&#34;</span>, <span style="color:#e6db74">&#34;wheel&#34;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">build-backend</span> = <span style="color:#e6db74">&#34;setuptools.build_meta&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">project</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;finance_tools&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">version</span> = <span style="color:#e6db74">&#34;0.1.0&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">description</span> = <span style="color:#e6db74">&#34;Financial calculation tools&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">readme</span> = <span style="color:#e6db74">&#34;README.md&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">authors</span> = [{<span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;Your Name&#34;</span>, <span style="color:#a6e22e">email</span> = <span style="color:#e6db74">&#34;your.email@example.com&#34;</span>}]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">license</span> = {<span style="color:#a6e22e">text</span> = <span style="color:#e6db74">&#34;MIT&#34;</span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">requires-python</span> = <span style="color:#e6db74">&#34;&gt;=3.6&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">project</span>.<span style="color:#a6e22e">scripts</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">compound-interest</span> = <span style="color:#e6db74">&#34;finance_tools.compound_interest:main&#34;</span>
+</span></span></code></pre></div><p>The <code>[project.scripts]</code> section is what creates the entry point. After installing this package, you&rsquo;ll be able to run <code>compound-interest</code> directly from your command line without typing <code>python</code> first.</p>
+<h3 id="installing-your-package">Installing Your Package</h3>
+<p>Install your package in development mode:</p>
+<pre tabindex="0"><code>pip install -e .
+</code></pre><p>Now you can run:</p>
+<pre tabindex="0"><code>compound-interest 10000 0.05 5 --compounds 12
+</code></pre><h2 id="automating-file-and-folder-tasks">Automating File and Folder Tasks</h2>
+<p>As a finance professional, you probably deal with lots of reports, spreadsheets, and data files. Python can help automate file handling tasks.</p>
+<h3 id="basic-file-operations-with-os-and-shutil">Basic File Operations with os and shutil</h3>
+<p>Here&rsquo;s a script that organizes financial statements by month and type:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> shutil
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> re
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> argparse
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">organize_financial_statements</span>(source_dir, target_dir):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Organize financial statements into folders by month and type.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Assumes filenames like: &#39;Income_Statement_2023-05-15.xlsx&#39; or &#39;Balance_Sheet_05_15_2023.pdf&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Create target directory if it doesn&#39;t exist</span>
+</span></span><span style="display:flex;"><span>    os<span style="color:#f92672">.</span>makedirs(target_dir, exist_ok<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Regular expressions for date patterns</span>
+</span></span><span style="display:flex;"><span>    patterns <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;(\d</span><span style="color:#e6db74">{4}</span><span style="color:#e6db74">)-(\d</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74">)-\d</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74">&#39;</span>,  <span style="color:#75715e"># YYYY-MM-DD</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;(\d</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74">)_\d</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74">_(\d</span><span style="color:#e6db74">{4}</span><span style="color:#e6db74">)&#39;</span>,  <span style="color:#75715e"># MM_DD_YYYY</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;(\d</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74">)-\d</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74">-(\d</span><span style="color:#e6db74">{4}</span><span style="color:#e6db74">)&#39;</span>   <span style="color:#75715e"># MM-DD-YYYY</span>
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Document types to look for</span>
+</span></span><span style="display:flex;"><span>    doc_types <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Income_Statement&#39;</span>, <span style="color:#e6db74">&#39;Balance_Sheet&#39;</span>, <span style="color:#e6db74">&#39;Cash_Flow&#39;</span>, <span style="color:#e6db74">&#39;Trial_Balance&#39;</span>]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Process each file in the source directory</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> filename <span style="color:#f92672">in</span> os<span style="color:#f92672">.</span>listdir(source_dir):
+</span></span><span style="display:flex;"><span>        file_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(source_dir, filename)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Skip directories</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>isdir(file_path):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Try to extract date</span>
+</span></span><span style="display:flex;"><span>        date_found <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> pattern <span style="color:#f92672">in</span> patterns:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">match</span> <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>search(pattern, filename)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">match</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># Extract year and month</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> len(<span style="color:#66d9ef">match</span><span style="color:#f92672">.</span>group(<span style="color:#ae81ff">1</span>)) <span style="color:#f92672">==</span> <span style="color:#ae81ff">4</span>:  <span style="color:#75715e"># If first group is year (YYYY-MM-DD)</span>
+</span></span><span style="display:flex;"><span>                    year, month <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span><span style="color:#f92672">.</span>group(<span style="color:#ae81ff">1</span>), <span style="color:#66d9ef">match</span><span style="color:#f92672">.</span>group(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span>:  <span style="color:#75715e"># If first group is month (MM_DD_YYYY)</span>
+</span></span><span style="display:flex;"><span>                    month, year <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span><span style="color:#f92672">.</span>group(<span style="color:#ae81ff">1</span>), <span style="color:#66d9ef">match</span><span style="color:#f92672">.</span>group(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                month_name <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>strptime(month, <span style="color:#e6db74">&#34;%m&#34;</span>)<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#34;%B&#34;</span>)
+</span></span><span style="display:flex;"><span>                date_found <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> date_found:
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># If no date pattern found, put in &#39;Unsorted&#39;</span>
+</span></span><span style="display:flex;"><span>            year, month_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Unsorted&#39;</span>, <span style="color:#e6db74">&#39;Unsorted&#39;</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Try to match document type</span>
+</span></span><span style="display:flex;"><span>        doc_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Other&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> dtype <span style="color:#f92672">in</span> doc_types:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> dtype <span style="color:#f92672">in</span> filename:
+</span></span><span style="display:flex;"><span>                doc_type <span style="color:#f92672">=</span> dtype
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Create year and month folders if they don&#39;t exist</span>
+</span></span><span style="display:flex;"><span>        year_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(target_dir, year)
+</span></span><span style="display:flex;"><span>        os<span style="color:#f92672">.</span>makedirs(year_dir, exist_ok<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        month_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(year_dir, month_name)
+</span></span><span style="display:flex;"><span>        os<span style="color:#f92672">.</span>makedirs(month_dir, exist_ok<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Create document type folder if it doesn&#39;t exist</span>
+</span></span><span style="display:flex;"><span>        doc_type_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(month_dir, doc_type)
+</span></span><span style="display:flex;"><span>        os<span style="color:#f92672">.</span>makedirs(doc_type_dir, exist_ok<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Copy the file to its destination</span>
+</span></span><span style="display:flex;"><span>        dest_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(doc_type_dir, filename)
+</span></span><span style="display:flex;"><span>        shutil<span style="color:#f92672">.</span>copy2(file_path, dest_path)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Copied </span><span style="color:#e6db74">{</span>filename<span style="color:#e6db74">}</span><span style="color:#e6db74"> to </span><span style="color:#e6db74">{</span>dest_path<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+</span></span><span style="display:flex;"><span>    parser <span style="color:#f92672">=</span> argparse<span style="color:#f92672">.</span>ArgumentParser(description<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Organize financial statements by date and type&#39;</span>)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;source_dir&#39;</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Directory containing financial statements&#39;</span>)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--target-dir&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;./Organized_Statements&#39;</span>,
+</span></span><span style="display:flex;"><span>                       help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Target directory for organized files (default: ./Organized_Statements)&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    args <span style="color:#f92672">=</span> parser<span style="color:#f92672">.</span>parse_args()
+</span></span><span style="display:flex;"><span>    organize_financial_statements(args<span style="color:#f92672">.</span>source_dir, args<span style="color:#f92672">.</span>target_dir)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Financial statement organization complete!&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    main()
+</span></span></code></pre></div><p>This script:</p>
+<ol>
+<li>Scans a directory for financial documents</li>
+<li>Extracts dates and document types from filenames</li>
+<li>Creates an organized folder structure by year, month, and document type</li>
+<li>Copies files to the appropriate locations</li>
+</ol>
+<h3 id="understanding-key-file-operations">Understanding Key File Operations</h3>
+<ul>
+<li><code>os.path.join()</code>: Combines path components correctly for your operating system</li>
+<li><code>os.makedirs()</code>: Creates directories recursively with <code>exist_ok=True</code> to avoid errors</li>
+<li><code>os.listdir()</code>: Lists files and directories in a path</li>
+<li><code>shutil.copy2()</code>: Copies files while preserving metadata</li>
+</ul>
+<h3 id="automating-financial-report-backups">Automating Financial Report Backups</h3>
+<p>Here&rsquo;s another practical example that creates date-stamped backups of your financial reports:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> shutil
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> datetime
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> argparse
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> zipfile
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">backup_financial_reports</span>(reports_dir, backup_dir<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Create a date-stamped ZIP backup of financial reports.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Set default backup directory if none provided</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> backup_dir <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        backup_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(reports_dir), <span style="color:#e6db74">&#39;Backups&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Create backup directory if it doesn&#39;t exist</span>
+</span></span><span style="display:flex;"><span>    os<span style="color:#f92672">.</span>makedirs(backup_dir, exist_ok<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Create timestamp for backup filename</span>
+</span></span><span style="display:flex;"><span>    timestamp <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>now()<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#39;%Y%m</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">_%H%M%S&#39;</span>)
+</span></span><span style="display:flex;"><span>    backup_filename <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Financial_Reports_Backup_</span><span style="color:#e6db74">{</span>timestamp<span style="color:#e6db74">}</span><span style="color:#e6db74">.zip&#34;</span>
+</span></span><span style="display:flex;"><span>    backup_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(backup_dir, backup_filename)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Create ZIP file</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> zipfile<span style="color:#f92672">.</span>ZipFile(backup_path, <span style="color:#e6db74">&#39;w&#39;</span>, zipfile<span style="color:#f92672">.</span>ZIP_DEFLATED) <span style="color:#66d9ef">as</span> zipf:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Walk through all files in the reports directory</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> root, _, files <span style="color:#f92672">in</span> os<span style="color:#f92672">.</span>walk(reports_dir):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> file <span style="color:#f92672">in</span> files:
+</span></span><span style="display:flex;"><span>                file_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(root, file)
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># Calculate path relative to reports_dir for ZIP structure</span>
+</span></span><span style="display:flex;"><span>                rel_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>relpath(file_path, reports_dir)
+</span></span><span style="display:flex;"><span>                zipf<span style="color:#f92672">.</span>write(file_path, rel_path)
+</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Added </span><span style="color:#e6db74">{</span>rel_path<span style="color:#e6db74">}</span><span style="color:#e6db74"> to backup&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Backup created at: </span><span style="color:#e6db74">{</span>backup_path<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Total size: </span><span style="color:#e6db74">{</span>os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>getsize(backup_path) <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1024</span><span style="color:#f92672">*</span><span style="color:#ae81ff">1024</span>)<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> MB&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> backup_path
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+</span></span><span style="display:flex;"><span>    parser <span style="color:#f92672">=</span> argparse<span style="color:#f92672">.</span>ArgumentParser(description<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Create a backup of financial reports&#39;</span>)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;reports_dir&#39;</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Directory containing financial reports&#39;</span>)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--backup-dir&#39;</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Target directory for backups&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    args <span style="color:#f92672">=</span> parser<span style="color:#f92672">.</span>parse_args()
+</span></span><span style="display:flex;"><span>    backup_financial_reports(args<span style="color:#f92672">.</span>reports_dir, args<span style="color:#f92672">.</span>backup_dir)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    main()
+</span></span></code></pre></div><h2 id="automating-gui-interactions-with-pyautogui">Automating GUI Interactions with PyAutoGUI</h2>
+<p>Sometimes you need to automate interactions with desktop applications that don&rsquo;t have APIs. For example, maybe you need to extract data from an older accounting system that can only export data through its GUI. PyAutoGUI can help automate these interactions.</p>
+<h3 id="installing-and-setting-up-pyautogui">Installing and Setting Up PyAutoGUI</h3>
+<pre tabindex="0"><code>pip install pyautogui
+</code></pre><h3 id="safety-features">Safety Features</h3>
+<p>PyAutoGUI has a fail-safe feature - quickly move your mouse to any corner of the screen to abort the script. This is crucial when you&rsquo;re testing automation that controls your mouse!</p>
+<h3 id="basic-pyautogui-example">Basic PyAutoGUI Example</h3>
+<p>Here&rsquo;s a simple script that could help export a monthly report from a financial application:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pyautogui
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> argparse
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Safety delay - gives you time to switch to the target application</span>
+</span></span><span style="display:flex;"><span>SAFETY_DELAY <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">export_monthly_report</span>(year, month):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Automate exporting a monthly report from a financial application.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        year: Year for the report
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        month: Month number (1-12) for the report
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Convert month number to name for the filename</span>
+</span></span><span style="display:flex;"><span>    month_name <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>strptime(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>month<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;%m&#34;</span>)<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#34;%B&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Preparing to export </span><span style="color:#e6db74">{</span>month_name<span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span>year<span style="color:#e6db74">}</span><span style="color:#e6db74"> report...&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Switch to your financial application within </span><span style="color:#e6db74">{</span>SAFETY_DELAY<span style="color:#e6db74">}</span><span style="color:#e6db74"> seconds!&#34;</span>)
+</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(SAFETY_DELAY)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Click on &#39;Reports&#39; menu</span>
+</span></span><span style="display:flex;"><span>    pyautogui<span style="color:#f92672">.</span>click(x<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, y<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>)  <span style="color:#75715e"># Adjust coordinates based on your application</span>
+</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Click on &#39;Monthly&#39; option</span>
+</span></span><span style="display:flex;"><span>    pyautogui<span style="color:#f92672">.</span>click(x<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, y<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>)  <span style="color:#75715e"># Adjust coordinates based on your application</span>
+</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Fill in date fields</span>
+</span></span><span style="display:flex;"><span>    pyautogui<span style="color:#f92672">.</span>typewrite(str(year))
+</span></span><span style="display:flex;"><span>    pyautogui<span style="color:#f92672">.</span>press(<span style="color:#e6db74">&#39;tab&#39;</span>)
+</span></span><span style="display:flex;"><span>    pyautogui<span style="color:#f92672">.</span>typewrite(str(month)<span style="color:#f92672">.</span>zfill(<span style="color:#ae81ff">2</span>))
+</span></span><span style="display:flex;"><span>    pyautogui<span style="color:#f92672">.</span>press(<span style="color:#e6db74">&#39;tab&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Click &#39;Generate Report&#39; button</span>
+</span></span><span style="display:flex;"><span>    pyautogui<span style="color:#f92672">.</span>click(x<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span>, y<span style="color:#f92672">=</span><span style="color:#ae81ff">300</span>)  <span style="color:#75715e"># Adjust coordinates based on your application</span>
+</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">3</span>)  <span style="color:#75715e"># Wait for report to generate</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Save the report</span>
+</span></span><span style="display:flex;"><span>    pyautogui<span style="color:#f92672">.</span>hotkey(<span style="color:#e6db74">&#39;ctrl&#39;</span>, <span style="color:#e6db74">&#39;s&#39;</span>)  <span style="color:#75715e"># Press Ctrl+S to save</span>
+</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Type the filename</span>
+</span></span><span style="display:flex;"><span>    filename <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Financial_Report_</span><span style="color:#e6db74">{</span>year<span style="color:#e6db74">}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">{</span>month_name<span style="color:#e6db74">}</span><span style="color:#e6db74">.xlsx&#34;</span>
+</span></span><span style="display:flex;"><span>    pyautogui<span style="color:#f92672">.</span>typewrite(filename)
+</span></span><span style="display:flex;"><span>    pyautogui<span style="color:#f92672">.</span>press(<span style="color:#e6db74">&#39;enter&#39;</span>)
+</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Report exported as </span><span style="color:#e6db74">{</span>filename<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+</span></span><span style="display:flex;"><span>    parser <span style="color:#f92672">=</span> argparse<span style="color:#f92672">.</span>ArgumentParser(description<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Automate monthly report export&#39;</span>)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--year&#39;</span>, type<span style="color:#f92672">=</span>int, default<span style="color:#f92672">=</span>datetime<span style="color:#f92672">.</span>now()<span style="color:#f92672">.</span>year, 
+</span></span><span style="display:flex;"><span>                        help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Year for the report (default: current year)&#39;</span>)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--month&#39;</span>, type<span style="color:#f92672">=</span>int, default<span style="color:#f92672">=</span>datetime<span style="color:#f92672">.</span>now()<span style="color:#f92672">.</span>month <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">or</span> <span style="color:#ae81ff">12</span>,
+</span></span><span style="display:flex;"><span>                        help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Month for the report (1-12, default: previous month)&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    args <span style="color:#f92672">=</span> parser<span style="color:#f92672">.</span>parse_args()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Validate month</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;=</span> args<span style="color:#f92672">.</span>month <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">12</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;Error: Month must be between 1 and 12&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    export_monthly_report(args<span style="color:#f92672">.</span>year, args<span style="color:#f92672">.</span>month)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    main()
+</span></span></code></pre></div><p><strong>Important note</strong>: The coordinates in this script (e.g., <code>pyautogui.click(x=100, y=20)</code>) need to be adjusted for your specific application. Use <code>pyautogui.position()</code> to get the coordinates of your mouse pointer.</p>
+<h3 id="pyautogui-key-functions">PyAutoGUI Key Functions</h3>
+<ul>
+<li><code>pyautogui.click(x, y)</code>: Move mouse to coordinates and click</li>
+<li><code>pyautogui.typewrite('text')</code>: Type text</li>
+<li><code>pyautogui.press('key')</code>: Press a single key</li>
+<li><code>pyautogui.hotkey('ctrl', 's')</code>: Press multiple keys simultaneously</li>
+<li><code>pyautogui.screenshot()</code>: Take a screenshot</li>
+<li><code>pyautogui.locateOnScreen('image.png')</code>: Find an image on screen</li>
+</ul>
+<h2 id="putting-it-all-together-sample-financial-automation-project">Putting It All Together: Sample Financial Automation Project</h2>
+<p>Let&rsquo;s build a financial quarter-end automation tool that:</p>
+<ol>
+<li>Creates organized backup of last quarter&rsquo;s data</li>
+<li>Generates reports using a GUI application</li>
+<li>Organizes the reports into the correct folders</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> argparse
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> datetime
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pyautogui
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> shutil
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> zipfile
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_last_quarter</span>(reference_date<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Calculate the previous quarter based on a reference date.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> reference_date <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        reference_date <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>now()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    current_month <span style="color:#f92672">=</span> reference_date<span style="color:#f92672">.</span>month
+</span></span><span style="display:flex;"><span>    current_year <span style="color:#f92672">=</span> reference_date<span style="color:#f92672">.</span>year
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Calculate previous quarter end month (3, 6, 9, or 12)</span>
+</span></span><span style="display:flex;"><span>    last_quarter_month <span style="color:#f92672">=</span> ((current_month <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">//</span> <span style="color:#ae81ff">3</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> last_quarter_month <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        last_quarter_month <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>        last_quarter_year <span style="color:#f92672">=</span> current_year <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        last_quarter_year <span style="color:#f92672">=</span> current_year
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> last_quarter_year, last_quarter_month
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_backup</span>(data_dir, backup_dir<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Create a date-stamped ZIP backup.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> backup_dir <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        backup_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(data_dir), <span style="color:#e6db74">&#39;Quarterly_Backups&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    os<span style="color:#f92672">.</span>makedirs(backup_dir, exist_ok<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    timestamp <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>now()<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#39;%Y%m</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">_%H%M%S&#39;</span>)
+</span></span><span style="display:flex;"><span>    backup_filename <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Financial_Data_Backup_</span><span style="color:#e6db74">{</span>timestamp<span style="color:#e6db74">}</span><span style="color:#e6db74">.zip&#34;</span>
+</span></span><span style="display:flex;"><span>    backup_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(backup_dir, backup_filename)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> zipfile<span style="color:#f92672">.</span>ZipFile(backup_path, <span style="color:#e6db74">&#39;w&#39;</span>, zipfile<span style="color:#f92672">.</span>ZIP_DEFLATED) <span style="color:#66d9ef">as</span> zipf:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> root, _, files <span style="color:#f92672">in</span> os<span style="color:#f92672">.</span>walk(data_dir):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> file <span style="color:#f92672">in</span> files:
+</span></span><span style="display:flex;"><span>                file_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(root, file)
+</span></span><span style="display:flex;"><span>                rel_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>relpath(file_path, data_dir)
+</span></span><span style="display:flex;"><span>                zipf<span style="color:#f92672">.</span>write(file_path, rel_path)
+</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Added </span><span style="color:#e6db74">{</span>rel_path<span style="color:#e6db74">}</span><span style="color:#e6db74"> to backup&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Backup created at: </span><span style="color:#e6db74">{</span>backup_path<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> backup_path
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">generate_quarterly_reports</span>(year, quarter, output_dir):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Automate generating quarterly reports using PyAutoGUI.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    os<span style="color:#f92672">.</span>makedirs(output_dir, exist_ok<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Calculate quarter end month</span>
+</span></span><span style="display:flex;"><span>    end_month <span style="color:#f92672">=</span> quarter <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Quarter name for folder organization</span>
+</span></span><span style="display:flex;"><span>    quarter_name <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Q</span><span style="color:#e6db74">{</span>quarter<span style="color:#e6db74">}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">{</span>year<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Preparing to generate </span><span style="color:#e6db74">{</span>quarter_name<span style="color:#e6db74">}</span><span style="color:#e6db74"> reports...&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Switch to your financial application within 5 seconds!&#34;</span>)
+</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># This is a simplified example - you would need to adjust coordinates</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># and actions based on your specific application</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Click on Reports menu</span>
+</span></span><span style="display:flex;"><span>    pyautogui<span style="color:#f92672">.</span>click(x<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, y<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>)
+</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Click on Quarterly Reports</span>
+</span></span><span style="display:flex;"><span>    pyautogui<span style="color:#f92672">.</span>click(x<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, y<span style="color:#f92672">=</span><span style="color:#ae81ff">80</span>)
+</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Enter year and quarter</span>
+</span></span><span style="display:flex;"><span>    pyautogui<span style="color:#f92672">.</span>typewrite(str(year))
+</span></span><span style="display:flex;"><span>    pyautogui<span style="color:#f92672">.</span>press(<span style="color:#e6db74">&#39;tab&#39;</span>)
+</span></span><span style="display:flex;"><span>    pyautogui<span style="color:#f92672">.</span>typewrite(str(quarter))
+</span></span><span style="display:flex;"><span>    pyautogui<span style="color:#f92672">.</span>press(<span style="color:#e6db74">&#39;tab&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Generate reports</span>
+</span></span><span style="display:flex;"><span>    report_types <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Income_Statement&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Balance_Sheet&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Cash_Flow&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Accounts_Receivable&#34;</span>
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> report_type <span style="color:#f92672">in</span> report_types:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Select report type from dropdown</span>
+</span></span><span style="display:flex;"><span>        pyautogui<span style="color:#f92672">.</span>press(<span style="color:#e6db74">&#39;down&#39;</span>, presses<span style="color:#f92672">=</span>report_types<span style="color:#f92672">.</span>index(report_type) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        pyautogui<span style="color:#f92672">.</span>press(<span style="color:#e6db74">&#39;enter&#39;</span>)
+</span></span><span style="display:flex;"><span>        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Click Generate button</span>
+</span></span><span style="display:flex;"><span>        pyautogui<span style="color:#f92672">.</span>click(x<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span>, y<span style="color:#f92672">=</span><span style="color:#ae81ff">300</span>)
+</span></span><span style="display:flex;"><span>        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">3</span>)  <span style="color:#75715e"># Wait for report to generate</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Save report</span>
+</span></span><span style="display:flex;"><span>        pyautogui<span style="color:#f92672">.</span>hotkey(<span style="color:#e6db74">&#39;ctrl&#39;</span>, <span style="color:#e6db74">&#39;s&#39;</span>)
+</span></span><span style="display:flex;"><span>        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Type filename and save to output directory</span>
+</span></span><span style="display:flex;"><span>        filename <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>report_type<span style="color:#e6db74">}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">{</span>quarter_name<span style="color:#e6db74">}</span><span style="color:#e6db74">.xlsx&#34;</span>
+</span></span><span style="display:flex;"><span>        filepath <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(output_dir, filename)
+</span></span><span style="display:flex;"><span>        pyautogui<span style="color:#f92672">.</span>typewrite(filepath)
+</span></span><span style="display:flex;"><span>        pyautogui<span style="color:#f92672">.</span>press(<span style="color:#e6db74">&#39;enter&#39;</span>)
+</span></span><span style="display:flex;"><span>        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Generated </span><span style="color:#e6db74">{</span>filename<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Return to report selection</span>
+</span></span><span style="display:flex;"><span>        pyautogui<span style="color:#f92672">.</span>click(x<span style="color:#f92672">=</span><span style="color:#ae81ff">150</span>, y<span style="color:#f92672">=</span><span style="color:#ae81ff">150</span>)
+</span></span><span style="display:flex;"><span>        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> output_dir
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">organize_reports</span>(reports_dir, organized_dir<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Organize reports into a structured folder system.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> organized_dir <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        organized_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(reports_dir), <span style="color:#e6db74">&#39;Organized_Reports&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    os<span style="color:#f92672">.</span>makedirs(organized_dir, exist_ok<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Process each file in the reports directory</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> filename <span style="color:#f92672">in</span> os<span style="color:#f92672">.</span>listdir(reports_dir):
+</span></span><span style="display:flex;"><span>        file_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(reports_dir, filename)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Skip directories</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>isdir(file_path):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Extract information from filename</span>
+</span></span><span style="display:flex;"><span>        parts <span style="color:#f92672">=</span> filename<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;_&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> len(parts) <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">3</span>:
+</span></span><span style="display:flex;"><span>            report_type <span style="color:#f92672">=</span> parts[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>            quarter_info <span style="color:#f92672">=</span> parts[<span style="color:#ae81ff">1</span>]  <span style="color:#75715e"># e.g., &#34;Q1&#34;</span>
+</span></span><span style="display:flex;"><span>            year <span style="color:#f92672">=</span> parts[<span style="color:#ae81ff">2</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;.&#39;</span>)[<span style="color:#ae81ff">0</span>]  <span style="color:#75715e"># Remove file extension</span>
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Create folders if they don&#39;t exist</span>
+</span></span><span style="display:flex;"><span>            year_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(organized_dir, year)
+</span></span><span style="display:flex;"><span>            os<span style="color:#f92672">.</span>makedirs(year_dir, exist_ok<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            quarter_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(year_dir, quarter_info)
+</span></span><span style="display:flex;"><span>            os<span style="color:#f92672">.</span>makedirs(quarter_dir, exist_ok<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Copy the file to its destination</span>
+</span></span><span style="display:flex;"><span>            dest_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(quarter_dir, filename)
+</span></span><span style="display:flex;"><span>            shutil<span style="color:#f92672">.</span>copy2(file_path, dest_path)
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Organized </span><span style="color:#e6db74">{</span>filename<span style="color:#e6db74">}</span><span style="color:#e6db74"> to </span><span style="color:#e6db74">{</span>dest_path<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> organized_dir
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+</span></span><span style="display:flex;"><span>    parser <span style="color:#f92672">=</span> argparse<span style="color:#f92672">.</span>ArgumentParser(description<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Automate quarterly financial processes&#39;</span>)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--data-dir&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;./Financial_Data&#39;</span>,
+</span></span><span style="display:flex;"><span>                       help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Directory containing financial data&#39;</span>)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--year&#39;</span>, type<span style="color:#f92672">=</span>int, 
+</span></span><span style="display:flex;"><span>                       help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Year for processing (default: previous quarter</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">s year)&#39;</span>)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--quarter&#39;</span>, type<span style="color:#f92672">=</span>int,
+</span></span><span style="display:flex;"><span>                       help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Quarter for processing (1-4, default: previous quarter)&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    args <span style="color:#f92672">=</span> parser<span style="color:#f92672">.</span>parse_args()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Determine year and quarter if not specified</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> args<span style="color:#f92672">.</span>year <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span> <span style="color:#f92672">or</span> args<span style="color:#f92672">.</span>quarter <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        calc_year, calc_month <span style="color:#f92672">=</span> get_last_quarter()
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Map month to quarter</span>
+</span></span><span style="display:flex;"><span>        calc_quarter <span style="color:#f92672">=</span> (calc_month <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">//</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> args<span style="color:#f92672">.</span>year <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            args<span style="color:#f92672">.</span>year <span style="color:#f92672">=</span> calc_year
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> args<span style="color:#f92672">.</span>quarter <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            args<span style="color:#f92672">.</span>quarter <span style="color:#f92672">=</span> calc_quarter
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Validate quarter</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;=</span> args<span style="color:#f92672">.</span>quarter <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">4</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;Error: Quarter must be between 1 and 4&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;=== Starting Quarter-End Process for Q</span><span style="color:#e6db74">{</span>args<span style="color:#f92672">.</span>quarter<span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span>args<span style="color:#f92672">.</span>year<span style="color:#e6db74">}</span><span style="color:#e6db74"> ===&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Step 1: Create backup</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">-- Step 1: Creating Data Backup --&#34;</span>)
+</span></span><span style="display:flex;"><span>    backup_path <span style="color:#f92672">=</span> create_backup(args<span style="color:#f92672">.</span>data_dir)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Step 2: Generate reports</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">-- Step 2: Generating Quarterly Reports --&#34;</span>)
+</span></span><span style="display:flex;"><span>    reports_dir <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;./Reports_Q</span><span style="color:#e6db74">{</span>args<span style="color:#f92672">.</span>quarter<span style="color:#e6db74">}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">{</span>args<span style="color:#f92672">.</span>year<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    reports_path <span style="color:#f92672">=</span> generate_quarterly_reports(args<span style="color:#f92672">.</span>year, args<span style="color:#f92672">.</span>quarter, reports_dir)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Step 3: Organize reports</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">-- Step 3: Organizing Reports --&#34;</span>)
+</span></span><span style="display:flex;"><span>    organized_dir <span style="color:#f92672">=</span> organize_reports(reports_path)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">=== Quarter-End Process Complete ===&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Data backup: </span><span style="color:#e6db74">{</span>backup_path<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Reports directory: </span><span style="color:#e6db74">{</span>reports_path<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Organized reports: </span><span style="color:#e6db74">{</span>organized_dir<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    main()
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>Automation is where Python really shines for finance professionals. Even if you never build a complex data model or web application, these automation tools can save you hours of repetitive work each week:</p>
+<ul>
+<li>CLI tools with <code>argparse</code> help you build flexible, reusable scripts</li>
+<li>Package entry points let you install your tools system-wide</li>
+<li>File operations with <code>os</code> and <code>shutil</code> organize your financial documents</li>
+<li>PyAutoGUI can automate interactions with desktop financial applications</li>
+</ul>
+<p>As you build your automation toolkit, start small with scripts that solve specific pain points in your workflow. Over time, you&rsquo;ll develop a collection of tools that dramatically increase your productivity.</p>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>Try automating a simple task you perform regularly</li>
+<li>Build a command-line tool for a financial calculation you frequently need</li>
+<li>Create a script to organize a messy folder of financial documents</li>
+<li>Consider which parts of your quarter-end process could be automated</li>
+</ul>
+<p>Remember that the best automations are the ones that solve your specific problems. The scripts in this post are just starting points - customize them to fit your unique workflow needs.</p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://docs.python.org/3/library/argparse.html">argparse documentation</a></li>
+<li><a href="https://pyautogui.readthedocs.io/en/latest/">PyAutoGUI documentation</a></li>
+<li><a href="https://packaging.python.org/en/latest/">Python Packaging User Guide</a></li>
+<li><a href="https://docs.python.org/3/library/shutil.html">shutil documentation</a></li>
+<li><a href="https://realpython.com/command-line-interfaces-python-argparse/">Real Python: Command-Line Apps with argparse</a></li>
+</ul>
+]]></content:encoded></item></channel></rss>

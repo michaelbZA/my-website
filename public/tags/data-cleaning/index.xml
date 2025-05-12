@@ -1,1 +1,482 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Data Cleaning on Michael Brunger</title><link>http://localhost:1313/tags/data-cleaning/</link><description>Recent content in Data Cleaning on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Tue, 06 May 2025 12:41:15 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/data-cleaning/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 12: Data Analysis with pandas</title><link>http://localhost:1313/python-foundations-pandas/</link><pubDate>Thu, 17 Jul 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/python-foundations-pandas/</guid><description>Master data analysis in Python using pandas. Learn to work with Series and DataFrame objects, import data from various sources, and perform essential data manipulation operations.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Data Cleaning on Michael Brunger</title><link>http://localhost:1313/tags/data-cleaning/</link><description>Recent content in Data Cleaning on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Fri, 09 May 2025 14:44:55 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/data-cleaning/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 12: Data Analysis with pandas</title><link>http://localhost:1313/data-analysis-with-pandas/</link><pubDate>Thu, 17 Jul 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/data-analysis-with-pandas/</guid><description>Master data analysis in Python using pandas. Learn to work with Series and DataFrame objects, import data from various sources, and perform essential data manipulation operations.</description><content:encoded><![CDATA[<h1 id="data-analysis-with-pandas-for-finance-and-accounting">Data Analysis with pandas for Finance and Accounting</h1>
+<p>Welcome to post #12 in our Python journey! In the previous post, we explored NumPy and its powerful numerical capabilities. Now we&rsquo;re taking a step up to pandas, which builds on NumPy&rsquo;s foundation to provide specialized tools for working with tabular and time series data—exactly the kind of data we deal with daily in finance and accounting.</p>
+<p>As a finance professional, I&rsquo;ve found pandas to be one of the most valuable tools in my Python toolkit. It&rsquo;s transformed how I handle everything from financial statements to transaction records. Let&rsquo;s dive in!</p>
+<h2 id="why-pandas-for-finance">Why pandas for Finance?</h2>
+<p>pandas is specifically designed for data analysis and manipulation, with particular strengths in:</p>
+<ul>
+<li>Working with tabular data (like spreadsheets, CSV files, and SQL tables)</li>
+<li>Handling time series (perfect for financial data)</li>
+<li>Cleaning messy data (a constant challenge in real-world accounting)</li>
+<li>Joining and merging datasets (combining data from multiple sources)</li>
+<li>Advanced grouping and aggregation (similar to pivot tables in Excel)</li>
+</ul>
+<p>If you&rsquo;ve spent hours manipulating data in Excel, pandas will feel both familiar yet incredibly more powerful—think Excel on steroids with the automation capabilities of Python.</p>
+<h2 id="installing-pandas">Installing pandas</h2>
+<p>Let&rsquo;s start by installing pandas:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>pip install pandas
+</span></span></code></pre></div><p>If you&rsquo;re using Anaconda, pandas is already included in the distribution.</p>
+<p>Let&rsquo;s verify the installation:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>print(pd<span style="color:#f92672">.</span>__version__)
+</span></span></code></pre></div><p>You should see the version number displayed (like <code>2.0.3</code> or similar). By convention, pandas is imported with the alias <code>pd</code> to make your code more readable.</p>
+<h2 id="the-core-pandas-data-structures">The Core pandas Data Structures</h2>
+<p>pandas provides two primary data structures:</p>
+<ol>
+<li><strong>Series</strong>: A one-dimensional labeled array (like a column in a spreadsheet)</li>
+<li><strong>DataFrame</strong>: A two-dimensional labeled data structure with columns (like a spreadsheet or SQL table)</li>
+</ol>
+<p>Let&rsquo;s explore both with financial examples.</p>
+<h3 id="series-one-dimensional-data">Series: One-Dimensional Data</h3>
+<p>A Series is essentially a column of data with labeled indices:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a Series of monthly expenses</span>
+</span></span><span style="display:flex;"><span>monthly_expenses <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Series([<span style="color:#ae81ff">1200</span>, <span style="color:#ae81ff">1500</span>, <span style="color:#ae81ff">1100</span>, <span style="color:#ae81ff">1800</span>], 
+</span></span><span style="display:flex;"><span>                            index<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;Rent&#39;</span>, <span style="color:#e6db74">&#39;Payroll&#39;</span>, <span style="color:#e6db74">&#39;Utilities&#39;</span>, <span style="color:#e6db74">&#39;Inventory&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(monthly_expenses)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Rent         1200</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Payroll      1500</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Utilities    1100</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Inventory    1800</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># dtype: int64</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Access by label</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Monthly rent: $</span><span style="color:#e6db74">{</span>monthly_expenses[<span style="color:#e6db74">&#39;Rent&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)  <span style="color:#75715e"># Output: Monthly rent: $1200</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Access by position</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Second highest expense: $</span><span style="color:#e6db74">{</span>monthly_expenses<span style="color:#f92672">.</span>iloc[<span style="color:#ae81ff">1</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)  <span style="color:#75715e"># Output: Second highest expense: $1500</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Perform calculations</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Total monthly expenses: $</span><span style="color:#e6db74">{</span>monthly_expenses<span style="color:#f92672">.</span>sum()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)  <span style="color:#75715e"># Output: Total monthly expenses: $5600</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Average expense: $</span><span style="color:#e6db74">{</span>monthly_expenses<span style="color:#f92672">.</span>mean()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)  <span style="color:#75715e"># Output: Average expense: $1400</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Filter expenses greater than 1200</span>
+</span></span><span style="display:flex;"><span>high_expenses <span style="color:#f92672">=</span> monthly_expenses[monthly_expenses <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1200</span>]
+</span></span><span style="display:flex;"><span>print(high_expenses)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Payroll      1500</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Inventory    1800</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># dtype: int64</span>
+</span></span></code></pre></div><p>Series are useful for representing:</p>
+<ul>
+<li>A single financial metric across multiple companies</li>
+<li>Monthly or yearly values for a specific account</li>
+<li>Daily stock prices</li>
+</ul>
+<h3 id="dataframe-two-dimensional-data">DataFrame: Two-Dimensional Data</h3>
+<p>DataFrames are where pandas really shines. Think of them as an Excel spreadsheet within Python:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Create a DataFrame representing a simplified income statement</span>
+</span></span><span style="display:flex;"><span>income_statement <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame({
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Q1&#39;</span>: [<span style="color:#ae81ff">100000</span>, <span style="color:#ae81ff">45000</span>, <span style="color:#ae81ff">15000</span>, <span style="color:#ae81ff">40000</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Q2&#39;</span>: [<span style="color:#ae81ff">110000</span>, <span style="color:#ae81ff">47000</span>, <span style="color:#ae81ff">15000</span>, <span style="color:#ae81ff">48000</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Q3&#39;</span>: [<span style="color:#ae81ff">95000</span>, <span style="color:#ae81ff">42000</span>, <span style="color:#ae81ff">16000</span>, <span style="color:#ae81ff">37000</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Q4&#39;</span>: [<span style="color:#ae81ff">125000</span>, <span style="color:#ae81ff">52000</span>, <span style="color:#ae81ff">17000</span>, <span style="color:#ae81ff">56000</span>]
+</span></span><span style="display:flex;"><span>}, index<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;Revenue&#39;</span>, <span style="color:#e6db74">&#39;COGS&#39;</span>, <span style="color:#e6db74">&#39;Operating Expenses&#39;</span>, <span style="color:#e6db74">&#39;Net Income&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(income_statement)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#                      Q1     Q2     Q3     Q4</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Revenue          100000 110000  95000 125000</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># COGS              45000  47000  42000  52000</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Operating Expenses 15000  15000  16000  17000</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Net Income        40000  48000  37000  56000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Or create the same DataFrame with a different orientation</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># (More commonly used format with rows as observations and columns as variables)</span>
+</span></span><span style="display:flex;"><span>income_statement_alt <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame({
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Quarter&#39;</span>: [<span style="color:#e6db74">&#39;Q1&#39;</span>, <span style="color:#e6db74">&#39;Q2&#39;</span>, <span style="color:#e6db74">&#39;Q3&#39;</span>, <span style="color:#e6db74">&#39;Q4&#39;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Revenue&#39;</span>: [<span style="color:#ae81ff">100000</span>, <span style="color:#ae81ff">110000</span>, <span style="color:#ae81ff">95000</span>, <span style="color:#ae81ff">125000</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;COGS&#39;</span>: [<span style="color:#ae81ff">45000</span>, <span style="color:#ae81ff">47000</span>, <span style="color:#ae81ff">42000</span>, <span style="color:#ae81ff">52000</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Operating_Expenses&#39;</span>: [<span style="color:#ae81ff">15000</span>, <span style="color:#ae81ff">15000</span>, <span style="color:#ae81ff">16000</span>, <span style="color:#ae81ff">17000</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Net_Income&#39;</span>: [<span style="color:#ae81ff">40000</span>, <span style="color:#ae81ff">48000</span>, <span style="color:#ae81ff">37000</span>, <span style="color:#ae81ff">56000</span>]
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(income_statement_alt)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#   Quarter  Revenue   COGS  Operating_Expenses  Net_Income</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 0      Q1   100000  45000               15000       40000</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1      Q2   110000  47000               15000       48000</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2      Q3    95000  42000               16000       37000</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3      Q4   125000  52000               17000       56000</span>
+</span></span></code></pre></div><p>The orientation you choose often depends on your data and analysis goals. For financial data:</p>
+<ul>
+<li>Use index for time periods and columns for accounts when tracking few accounts over time</li>
+<li>Use rows for time periods and columns for accounts when tracking many accounts</li>
+</ul>
+<h2 id="reading-data-from-external-sources">Reading Data from External Sources</h2>
+<p>In real-world finance, data often comes from external files. pandas excels at importing from various sources:</p>
+<h3 id="reading-from-csv">Reading from CSV</h3>
+<p>CSVs are common for exporting financial data:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Read a transaction register CSV file</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># transactions.csv contains: Date,Description,Category,Amount</span>
+</span></span><span style="display:flex;"><span>transactions <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;transactions.csv&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Preview the first 5 rows</span>
+</span></span><span style="display:flex;"><span>print(transactions<span style="color:#f92672">.</span>head())
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         Date               Description    Category  Amount</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 0  2023-01-05          Office Supplies    Expense   -89.99</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1  2023-01-07  Client Payment - ABC Inc     Income  1250.00</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2  2023-01-10                   Payroll    Expense -4500.00</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3  2023-01-15           Software License    Expense  -199.99</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 4  2023-01-18            Bank Interest     Income     2.13</span>
+</span></span></code></pre></div><h3 id="reading-from-excel">Reading from Excel</h3>
+<p>Excel files are ubiquitous in finance and accounting:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Install openpyxl first if you haven&#39;t:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># pip install openpyxl</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Read an Excel file, specifying the sheet</span>
+</span></span><span style="display:flex;"><span>financial_data <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_excel(<span style="color:#e6db74">&#39;financial_model.xlsx&#39;</span>, sheet_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Income Statement&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Preview the data</span>
+</span></span><span style="display:flex;"><span>print(financial_data<span style="color:#f92672">.</span>head())
+</span></span></code></pre></div><h3 id="connecting-to-databases">Connecting to Databases</h3>
+<p>For more enterprise-level finance applications:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># pip install sqlalchemy</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># pip install pymysql (or other database driver)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> create_engine
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Connect to database (example with MySQL)</span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;mysql+pymysql://username:password@localhost/finance_db&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Read data directly from SQL query</span>
+</span></span><span style="display:flex;"><span>sql_query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT * FROM general_ledger WHERE account_type = &#39;Asset&#39; AND transaction_date &gt; &#39;2023-01-01&#39;&#34;</span>
+</span></span><span style="display:flex;"><span>gl_data <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_sql(sql_query, engine)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(gl_data<span style="color:#f92672">.</span>head())
+</span></span></code></pre></div><h2 id="inspecting-and-exploring-your-data">Inspecting and Exploring Your Data</h2>
+<p>When you receive a new financial dataset, your first step is usually to understand its structure:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Assuming we&#39;ve loaded our transactions data</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Data shape (rows, columns): </span><span style="color:#e6db74">{</span>transactions<span style="color:#f92672">.</span>shape<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Column names:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(transactions<span style="color:#f92672">.</span>columns<span style="color:#f92672">.</span>tolist())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Data types:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(transactions<span style="color:#f92672">.</span>dtypes)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Summary statistics:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(transactions<span style="color:#f92672">.</span>describe())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Missing values:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(transactions<span style="color:#f92672">.</span>isnull()<span style="color:#f92672">.</span>sum())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Check for duplicates</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Duplicate rows: </span><span style="color:#e6db74">{</span>transactions<span style="color:#f92672">.</span>duplicated()<span style="color:#f92672">.</span>sum()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><h2 id="data-selection-and-filtering">Data Selection and Filtering</h2>
+<p>pandas offers powerful ways to select and filter data:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Select specific columns</span>
+</span></span><span style="display:flex;"><span>amounts_and_categories <span style="color:#f92672">=</span> transactions[[<span style="color:#e6db74">&#39;Category&#39;</span>, <span style="color:#e6db74">&#39;Amount&#39;</span>]]
+</span></span><span style="display:flex;"><span>print(amounts_and_categories<span style="color:#f92672">.</span>head())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Filter rows based on conditions</span>
+</span></span><span style="display:flex;"><span>expenses <span style="color:#f92672">=</span> transactions[transactions[<span style="color:#e6db74">&#39;Amount&#39;</span>] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>income <span style="color:#f92672">=</span> transactions[transactions[<span style="color:#e6db74">&#39;Amount&#39;</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Total expenses: $</span><span style="color:#e6db74">{</span>expenses[<span style="color:#e6db74">&#39;Amount&#39;</span>]<span style="color:#f92672">.</span>sum()<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Total income: $</span><span style="color:#e6db74">{</span>income[<span style="color:#e6db74">&#39;Amount&#39;</span>]<span style="color:#f92672">.</span>sum()<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Filter with multiple conditions</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Find large office expenses</span>
+</span></span><span style="display:flex;"><span>large_office_expenses <span style="color:#f92672">=</span> transactions[
+</span></span><span style="display:flex;"><span>    (transactions[<span style="color:#e6db74">&#39;Category&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;Expense&#39;</span>) <span style="color:#f92672">&amp;</span> 
+</span></span><span style="display:flex;"><span>    (transactions[<span style="color:#e6db74">&#39;Description&#39;</span>]<span style="color:#f92672">.</span>str<span style="color:#f92672">.</span>contains(<span style="color:#e6db74">&#39;Office&#39;</span>)) <span style="color:#f92672">&amp;</span> 
+</span></span><span style="display:flex;"><span>    (transactions[<span style="color:#e6db74">&#39;Amount&#39;</span>] <span style="color:#f92672">&lt;</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>print(large_office_expenses)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Select data from a specific date range</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># First, ensure Date is a datetime type</span>
+</span></span><span style="display:flex;"><span>transactions[<span style="color:#e6db74">&#39;Date&#39;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(transactions[<span style="color:#e6db74">&#39;Date&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Filter for Q1 data</span>
+</span></span><span style="display:flex;"><span>q1_data <span style="color:#f92672">=</span> transactions[(transactions[<span style="color:#e6db74">&#39;Date&#39;</span>] <span style="color:#f92672">&gt;=</span> <span style="color:#e6db74">&#39;2023-01-01&#39;</span>) <span style="color:#f92672">&amp;</span> 
+</span></span><span style="display:flex;"><span>                       (transactions[<span style="color:#e6db74">&#39;Date&#39;</span>] <span style="color:#f92672">&lt;=</span> <span style="color:#e6db74">&#39;2023-03-31&#39;</span>)]
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Q1 transaction count: </span><span style="color:#e6db74">{</span>len(q1_data)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><h2 id="handling-missing-data">Handling Missing Data</h2>
+<p>Missing data is a common challenge in financial datasets:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Check for missing values</span>
+</span></span><span style="display:flex;"><span>print(transactions<span style="color:#f92672">.</span>isnull()<span style="color:#f92672">.</span>sum())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Fill missing values in Amount column with 0</span>
+</span></span><span style="display:flex;"><span>transactions[<span style="color:#e6db74">&#39;Amount&#39;</span>] <span style="color:#f92672">=</span> transactions[<span style="color:#e6db74">&#39;Amount&#39;</span>]<span style="color:#f92672">.</span>fillna(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Fill missing categories with &#39;Uncategorized&#39;</span>
+</span></span><span style="display:flex;"><span>transactions[<span style="color:#e6db74">&#39;Category&#39;</span>] <span style="color:#f92672">=</span> transactions[<span style="color:#e6db74">&#39;Category&#39;</span>]<span style="color:#f92672">.</span>fillna(<span style="color:#e6db74">&#39;Uncategorized&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Drop rows with any remaining missing values</span>
+</span></span><span style="display:flex;"><span>transactions_clean <span style="color:#f92672">=</span> transactions<span style="color:#f92672">.</span>dropna()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Alternative: Only drop rows where specific columns are missing</span>
+</span></span><span style="display:flex;"><span>transactions_essential <span style="color:#f92672">=</span> transactions<span style="color:#f92672">.</span>dropna(subset<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;Date&#39;</span>, <span style="color:#e6db74">&#39;Amount&#39;</span>])
+</span></span></code></pre></div><h2 id="data-transformation-and-feature-engineering">Data Transformation and Feature Engineering</h2>
+<p>Often, you&rsquo;ll need to create new calculated fields for financial analysis:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Add a Month column for easier grouping</span>
+</span></span><span style="display:flex;"><span>transactions[<span style="color:#e6db74">&#39;Month&#39;</span>] <span style="color:#f92672">=</span> transactions[<span style="color:#e6db74">&#39;Date&#39;</span>]<span style="color:#f92672">.</span>dt<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#39;%Y-%m&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Add an Absolute Amount column for analysis</span>
+</span></span><span style="display:flex;"><span>transactions[<span style="color:#e6db74">&#39;Abs_Amount&#39;</span>] <span style="color:#f92672">=</span> transactions[<span style="color:#e6db74">&#39;Amount&#39;</span>]<span style="color:#f92672">.</span>abs()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Categorize transactions by size</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">categorize_amount</span>(amount):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> abs(amount) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">100</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;Small&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> abs(amount) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1000</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;Medium&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;Large&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>transactions[<span style="color:#e6db74">&#39;Size_Category&#39;</span>] <span style="color:#f92672">=</span> transactions[<span style="color:#e6db74">&#39;Amount&#39;</span>]<span style="color:#f92672">.</span>apply(categorize_amount)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a new column indicating if it&#39;s end of quarter</span>
+</span></span><span style="display:flex;"><span>transactions[<span style="color:#e6db74">&#39;Is_Quarter_End&#39;</span>] <span style="color:#f92672">=</span> transactions[<span style="color:#e6db74">&#39;Date&#39;</span>]<span style="color:#f92672">.</span>dt<span style="color:#f92672">.</span>is_quarter_end
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Add a calculated running balance</span>
+</span></span><span style="display:flex;"><span>transactions <span style="color:#f92672">=</span> transactions<span style="color:#f92672">.</span>sort_values(<span style="color:#e6db74">&#39;Date&#39;</span>)
+</span></span><span style="display:flex;"><span>transactions[<span style="color:#e6db74">&#39;Running_Balance&#39;</span>] <span style="color:#f92672">=</span> transactions[<span style="color:#e6db74">&#39;Amount&#39;</span>]<span style="color:#f92672">.</span>cumsum()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(transactions<span style="color:#f92672">.</span>head())
+</span></span></code></pre></div><h2 id="grouping-and-aggregation-the-heart-of-financial-analysis">Grouping and Aggregation: The Heart of Financial Analysis</h2>
+<p>Grouping operations are similar to Excel&rsquo;s pivot tables and are perfect for financial reporting:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Group by Category and calculate sum, count, and average</span>
+</span></span><span style="display:flex;"><span>category_summary <span style="color:#f92672">=</span> transactions<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;Category&#39;</span>)<span style="color:#f92672">.</span>agg({
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Amount&#39;</span>: [<span style="color:#e6db74">&#39;sum&#39;</span>, <span style="color:#e6db74">&#39;count&#39;</span>, <span style="color:#e6db74">&#39;mean&#39;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Description&#39;</span>: <span style="color:#e6db74">&#39;count&#39;</span>  <span style="color:#75715e"># count of transactions</span>
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(category_summary)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Group by Month and Category to see spending trends</span>
+</span></span><span style="display:flex;"><span>monthly_by_category <span style="color:#f92672">=</span> transactions<span style="color:#f92672">.</span>groupby([<span style="color:#e6db74">&#39;Month&#39;</span>, <span style="color:#e6db74">&#39;Category&#39;</span>])[<span style="color:#e6db74">&#39;Amount&#39;</span>]<span style="color:#f92672">.</span>sum()<span style="color:#f92672">.</span>unstack()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(monthly_by_category)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate monthly totals</span>
+</span></span><span style="display:flex;"><span>monthly_totals <span style="color:#f92672">=</span> transactions<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;Month&#39;</span>)[<span style="color:#e6db74">&#39;Amount&#39;</span>]<span style="color:#f92672">.</span>sum()
+</span></span><span style="display:flex;"><span>print(monthly_totals)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Find the month with the highest expenses</span>
+</span></span><span style="display:flex;"><span>monthly_expenses <span style="color:#f92672">=</span> transactions[transactions[<span style="color:#e6db74">&#39;Amount&#39;</span>] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;Month&#39;</span>)[<span style="color:#e6db74">&#39;Amount&#39;</span>]<span style="color:#f92672">.</span>sum()
+</span></span><span style="display:flex;"><span>highest_expense_month <span style="color:#f92672">=</span> monthly_expenses<span style="color:#f92672">.</span>idxmin()  <span style="color:#75715e"># min because expenses are negative</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Month with highest expenses: </span><span style="color:#e6db74">{</span>highest_expense_month<span style="color:#e6db74">}</span><span style="color:#e6db74">, Amount: $</span><span style="color:#e6db74">{</span>monthly_expenses<span style="color:#f92672">.</span>min()<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><h2 id="advanced-financial-calculations">Advanced Financial Calculations</h2>
+<p>Let&rsquo;s implement some practical financial calculations:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Monthly Profit and Loss Statement</span>
+</span></span><span style="display:flex;"><span>monthly_pl <span style="color:#f92672">=</span> transactions<span style="color:#f92672">.</span>pivot_table(
+</span></span><span style="display:flex;"><span>    index<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Month&#39;</span>,
+</span></span><span style="display:flex;"><span>    columns<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Category&#39;</span>,
+</span></span><span style="display:flex;"><span>    values<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Amount&#39;</span>,
+</span></span><span style="display:flex;"><span>    aggfunc<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sum&#39;</span>
+</span></span><span style="display:flex;"><span>)<span style="color:#f92672">.</span>fillna(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Add a Profit column</span>
+</span></span><span style="display:flex;"><span>monthly_pl[<span style="color:#e6db74">&#39;Profit&#39;</span>] <span style="color:#f92672">=</span> monthly_pl[<span style="color:#e6db74">&#39;Income&#39;</span>] <span style="color:#f92672">+</span> monthly_pl[<span style="color:#e6db74">&#39;Expense&#39;</span>]  <span style="color:#75715e"># Adding because expenses are negative</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(monthly_pl)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate running cash balance by date</span>
+</span></span><span style="display:flex;"><span>daily_net <span style="color:#f92672">=</span> transactions<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;Date&#39;</span>)[<span style="color:#e6db74">&#39;Amount&#39;</span>]<span style="color:#f92672">.</span>sum()<span style="color:#f92672">.</span>reset_index()
+</span></span><span style="display:flex;"><span>daily_net[<span style="color:#e6db74">&#39;Running_Balance&#39;</span>] <span style="color:#f92672">=</span> daily_net[<span style="color:#e6db74">&#39;Amount&#39;</span>]<span style="color:#f92672">.</span>cumsum()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(daily_net<span style="color:#f92672">.</span>head())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate 30-day moving average of daily transaction amounts</span>
+</span></span><span style="display:flex;"><span>transactions_by_date <span style="color:#f92672">=</span> transactions<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;Date&#39;</span>)[<span style="color:#e6db74">&#39;Amount&#39;</span>]<span style="color:#f92672">.</span>sum()
+</span></span><span style="display:flex;"><span>moving_avg_30d <span style="color:#f92672">=</span> transactions_by_date<span style="color:#f92672">.</span>rolling(window<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span>)<span style="color:#f92672">.</span>mean()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(moving_avg_30d<span style="color:#f92672">.</span>tail())
+</span></span></code></pre></div><h2 id="merging-and-joining-datasets">Merging and Joining Datasets</h2>
+<p>In finance, we often need to combine data from multiple sources:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Create a sample budget DataFrame</span>
+</span></span><span style="display:flex;"><span>budget <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame({
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Category&#39;</span>: [<span style="color:#e6db74">&#39;Rent&#39;</span>, <span style="color:#e6db74">&#39;Utilities&#39;</span>, <span style="color:#e6db74">&#39;Payroll&#39;</span>, <span style="color:#e6db74">&#39;Marketing&#39;</span>, <span style="color:#e6db74">&#39;Software&#39;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Budgeted_Amount&#39;</span>: [<span style="color:#ae81ff">1200</span>, <span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">5000</span>, <span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">500</span>]
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Group actual expenses by category</span>
+</span></span><span style="display:flex;"><span>actual_expenses <span style="color:#f92672">=</span> transactions[transactions[<span style="color:#e6db74">&#39;Amount&#39;</span>] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;Category&#39;</span>)[<span style="color:#e6db74">&#39;Amount&#39;</span>]<span style="color:#f92672">.</span>sum()<span style="color:#f92672">.</span>abs()<span style="color:#f92672">.</span>reset_index()
+</span></span><span style="display:flex;"><span>actual_expenses<span style="color:#f92672">.</span>columns <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Category&#39;</span>, <span style="color:#e6db74">&#39;Actual_Amount&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Merge the budget with actual expenses</span>
+</span></span><span style="display:flex;"><span>budget_vs_actual <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>merge(budget, actual_expenses, on<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Category&#39;</span>, how<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;outer&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate variance (negative means over budget)</span>
+</span></span><span style="display:flex;"><span>budget_vs_actual[<span style="color:#e6db74">&#39;Variance&#39;</span>] <span style="color:#f92672">=</span> budget_vs_actual[<span style="color:#e6db74">&#39;Budgeted_Amount&#39;</span>] <span style="color:#f92672">-</span> budget_vs_actual[<span style="color:#e6db74">&#39;Actual_Amount&#39;</span>]
+</span></span><span style="display:flex;"><span>budget_vs_actual[<span style="color:#e6db74">&#39;Variance_Percent&#39;</span>] <span style="color:#f92672">=</span> (budget_vs_actual[<span style="color:#e6db74">&#39;Variance&#39;</span>] <span style="color:#f92672">/</span> budget_vs_actual[<span style="color:#e6db74">&#39;Budgeted_Amount&#39;</span>]) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(budget_vs_actual)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Find categories that are over budget</span>
+</span></span><span style="display:flex;"><span>over_budget <span style="color:#f92672">=</span> budget_vs_actual[budget_vs_actual[<span style="color:#e6db74">&#39;Variance&#39;</span>] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Categories over budget:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(over_budget)
+</span></span></code></pre></div><h2 id="time-series-analysis-perfect-for-financial-data">Time Series Analysis: Perfect for Financial Data</h2>
+<p>pandas has exceptional support for time series data:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Convert Date to datetime if not already</span>
+</span></span><span style="display:flex;"><span>transactions[<span style="color:#e6db74">&#39;Date&#39;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(transactions[<span style="color:#e6db74">&#39;Date&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Set Date as index for time series analysis</span>
+</span></span><span style="display:flex;"><span>ts_data <span style="color:#f92672">=</span> transactions<span style="color:#f92672">.</span>set_index(<span style="color:#e6db74">&#39;Date&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Resample to get monthly totals</span>
+</span></span><span style="display:flex;"><span>monthly_data <span style="color:#f92672">=</span> ts_data[<span style="color:#e6db74">&#39;Amount&#39;</span>]<span style="color:#f92672">.</span>resample(<span style="color:#e6db74">&#39;M&#39;</span>)<span style="color:#f92672">.</span>sum()
+</span></span><span style="display:flex;"><span>print(monthly_data)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Compute rolling average (e.g., 3-month rolling revenue)</span>
+</span></span><span style="display:flex;"><span>income_only <span style="color:#f92672">=</span> ts_data[ts_data[<span style="color:#e6db74">&#39;Amount&#39;</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>rolling_3m_revenue <span style="color:#f92672">=</span> income_only[<span style="color:#e6db74">&#39;Amount&#39;</span>]<span style="color:#f92672">.</span>resample(<span style="color:#e6db74">&#39;M&#39;</span>)<span style="color:#f92672">.</span>sum()<span style="color:#f92672">.</span>rolling(window<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)<span style="color:#f92672">.</span>mean()
+</span></span><span style="display:flex;"><span>print(rolling_3m_revenue)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate percent change period-over-period</span>
+</span></span><span style="display:flex;"><span>monthly_growth <span style="color:#f92672">=</span> monthly_data<span style="color:#f92672">.</span>pct_change() <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Monthly growth rates (%):</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">{</span>monthly_growth<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Seasonal decomposition</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> statsmodels.tsa.seasonal <span style="color:#f92672">import</span> seasonal_decompose
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Need 2+ years of data for proper decomposition, but here&#39;s the concept:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Assuming we have enough data:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># decomposition = seasonal_decompose(monthly_data, model=&#39;additive&#39;, period=12)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># fig = decomposition.plot()</span>
+</span></span></code></pre></div><h2 id="handling-excel-like-functionality-with-pandas">Handling Excel-Like Functionality with pandas</h2>
+<p>If you&rsquo;re transitioning from Excel, pandas offers similar functionality with more power:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># VLOOKUP equivalent</span>
+</span></span><span style="display:flex;"><span>product_info <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame({
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Product_ID&#39;</span>: [<span style="color:#e6db74">&#39;A001&#39;</span>, <span style="color:#e6db74">&#39;B002&#39;</span>, <span style="color:#e6db74">&#39;C003&#39;</span>, <span style="color:#e6db74">&#39;D004&#39;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Product_Name&#39;</span>: [<span style="color:#e6db74">&#39;Laptop&#39;</span>, <span style="color:#e6db74">&#39;Monitor&#39;</span>, <span style="color:#e6db74">&#39;Keyboard&#39;</span>, <span style="color:#e6db74">&#39;Mouse&#39;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Unit_Cost&#39;</span>: [<span style="color:#ae81ff">1200</span>, <span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">80</span>, <span style="color:#ae81ff">25</span>]
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sales <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame({
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Date&#39;</span>: [<span style="color:#e6db74">&#39;2023-01-15&#39;</span>, <span style="color:#e6db74">&#39;2023-01-20&#39;</span>, <span style="color:#e6db74">&#39;2023-01-22&#39;</span>, <span style="color:#e6db74">&#39;2023-01-25&#39;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Product_ID&#39;</span>: [<span style="color:#e6db74">&#39;A001&#39;</span>, <span style="color:#e6db74">&#39;C003&#39;</span>, <span style="color:#e6db74">&#39;A001&#39;</span>, <span style="color:#e6db74">&#39;B002&#39;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Quantity&#39;</span>: [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Merge sales with product info (like VLOOKUP)</span>
+</span></span><span style="display:flex;"><span>sales_with_info <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>merge(sales, product_info, on<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Product_ID&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate total sales amount</span>
+</span></span><span style="display:flex;"><span>sales_with_info[<span style="color:#e6db74">&#39;Total_Cost&#39;</span>] <span style="color:#f92672">=</span> sales_with_info[<span style="color:#e6db74">&#39;Quantity&#39;</span>] <span style="color:#f92672">*</span> sales_with_info[<span style="color:#e6db74">&#39;Unit_Cost&#39;</span>]
+</span></span><span style="display:flex;"><span>print(sales_with_info)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pivot tables</span>
+</span></span><span style="display:flex;"><span>pivot_sales <span style="color:#f92672">=</span> sales_with_info<span style="color:#f92672">.</span>pivot_table(
+</span></span><span style="display:flex;"><span>    index<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Product_Name&#39;</span>,
+</span></span><span style="display:flex;"><span>    values<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;Quantity&#39;</span>, <span style="color:#e6db74">&#39;Total_Cost&#39;</span>],
+</span></span><span style="display:flex;"><span>    aggfunc<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;Quantity&#39;</span>: <span style="color:#e6db74">&#39;sum&#39;</span>, <span style="color:#e6db74">&#39;Total_Cost&#39;</span>: <span style="color:#e6db74">&#39;sum&#39;</span>}
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>print(pivot_sales)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Sort by total cost (descending)</span>
+</span></span><span style="display:flex;"><span>print(pivot_sales<span style="color:#f92672">.</span>sort_values(<span style="color:#e6db74">&#39;Total_Cost&#39;</span>, ascending<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>))
+</span></span></code></pre></div><h2 id="exporting-and-saving-your-analysis">Exporting and Saving Your Analysis</h2>
+<p>Once your analysis is complete, you&rsquo;ll often need to export the results:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Export as CSV</span>
+</span></span><span style="display:flex;"><span>budget_vs_actual<span style="color:#f92672">.</span>to_csv(<span style="color:#e6db74">&#39;budget_analysis.csv&#39;</span>, index<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Export to Excel</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> pd<span style="color:#f92672">.</span>ExcelWriter(<span style="color:#e6db74">&#39;financial_analysis.xlsx&#39;</span>) <span style="color:#66d9ef">as</span> writer:
+</span></span><span style="display:flex;"><span>    budget_vs_actual<span style="color:#f92672">.</span>to_excel(writer, sheet_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Budget Analysis&#39;</span>, index<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>    pivot_sales<span style="color:#f92672">.</span>to_excel(writer, sheet_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Sales by Product&#39;</span>)
+</span></span><span style="display:flex;"><span>    monthly_pl<span style="color:#f92672">.</span>to_excel(writer, sheet_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Monthly P&amp;L&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Export specific results to JSON (useful for web applications)</span>
+</span></span><span style="display:flex;"><span>over_budget<span style="color:#f92672">.</span>to_json(<span style="color:#e6db74">&#39;over_budget_alert.json&#39;</span>, orient<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;records&#39;</span>)
+</span></span></code></pre></div><h2 id="case-study-comprehensive-financial-analysis">Case Study: Comprehensive Financial Analysis</h2>
+<p>Let&rsquo;s pull everything together in a finance-focused case study:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 1. Load and prepare data</span>
+</span></span><span style="display:flex;"><span>transactions <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;transactions.csv&#39;</span>)
+</span></span><span style="display:flex;"><span>transactions[<span style="color:#e6db74">&#39;Date&#39;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(transactions[<span style="color:#e6db74">&#39;Date&#39;</span>])
+</span></span><span style="display:flex;"><span>transactions[<span style="color:#e6db74">&#39;Month&#39;</span>] <span style="color:#f92672">=</span> transactions[<span style="color:#e6db74">&#39;Date&#39;</span>]<span style="color:#f92672">.</span>dt<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#39;%Y-%m&#39;</span>)
+</span></span><span style="display:flex;"><span>transactions[<span style="color:#e6db74">&#39;Quarter&#39;</span>] <span style="color:#f92672">=</span> transactions[<span style="color:#e6db74">&#39;Date&#39;</span>]<span style="color:#f92672">.</span>dt<span style="color:#f92672">.</span>to_period(<span style="color:#e6db74">&#39;Q&#39;</span>)<span style="color:#f92672">.</span>astype(str)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. Clean data</span>
+</span></span><span style="display:flex;"><span>transactions[<span style="color:#e6db74">&#39;Category&#39;</span>] <span style="color:#f92672">=</span> transactions[<span style="color:#e6db74">&#39;Category&#39;</span>]<span style="color:#f92672">.</span>fillna(<span style="color:#e6db74">&#39;Uncategorized&#39;</span>)
+</span></span><span style="display:flex;"><span>transactions[<span style="color:#e6db74">&#39;Amount&#39;</span>] <span style="color:#f92672">=</span> transactions[<span style="color:#e6db74">&#39;Amount&#39;</span>]<span style="color:#f92672">.</span>fillna(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3. Create income and expense dataframes</span>
+</span></span><span style="display:flex;"><span>income <span style="color:#f92672">=</span> transactions[transactions[<span style="color:#e6db74">&#39;Amount&#39;</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>expenses <span style="color:#f92672">=</span> transactions[transactions[<span style="color:#e6db74">&#39;Amount&#39;</span>] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>expenses[<span style="color:#e6db74">&#39;Abs_Amount&#39;</span>] <span style="color:#f92672">=</span> expenses[<span style="color:#e6db74">&#39;Amount&#39;</span>]<span style="color:#f92672">.</span>abs()  <span style="color:#75715e"># Make expenses positive for easier calculations</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 4. Quarterly Financial Reports</span>
+</span></span><span style="display:flex;"><span>quarterly_summary <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame({
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Total_Income&#39;</span>: income<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;Quarter&#39;</span>)[<span style="color:#e6db74">&#39;Amount&#39;</span>]<span style="color:#f92672">.</span>sum(),
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Total_Expenses&#39;</span>: expenses<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;Quarter&#39;</span>)[<span style="color:#e6db74">&#39;Abs_Amount&#39;</span>]<span style="color:#f92672">.</span>sum(),
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>quarterly_summary[<span style="color:#e6db74">&#39;Net_Profit&#39;</span>] <span style="color:#f92672">=</span> quarterly_summary[<span style="color:#e6db74">&#39;Total_Income&#39;</span>] <span style="color:#f92672">-</span> quarterly_summary[<span style="color:#e6db74">&#39;Total_Expenses&#39;</span>]
+</span></span><span style="display:flex;"><span>quarterly_summary[<span style="color:#e6db74">&#39;Profit_Margin&#39;</span>] <span style="color:#f92672">=</span> quarterly_summary[<span style="color:#e6db74">&#39;Net_Profit&#39;</span>] <span style="color:#f92672">/</span> quarterly_summary[<span style="color:#e6db74">&#39;Total_Income&#39;</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Quarterly Financial Summary:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(quarterly_summary)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 5. Top 5 expense categories</span>
+</span></span><span style="display:flex;"><span>top_expenses <span style="color:#f92672">=</span> expenses<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;Category&#39;</span>)[<span style="color:#e6db74">&#39;Abs_Amount&#39;</span>]<span style="color:#f92672">.</span>sum()<span style="color:#f92672">.</span>sort_values(ascending<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)<span style="color:#f92672">.</span>head(<span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Top 5 Expense Categories:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(top_expenses)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 6. Monthly trend analysis</span>
+</span></span><span style="display:flex;"><span>monthly_net <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame({
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Income&#39;</span>: income<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;Month&#39;</span>)[<span style="color:#e6db74">&#39;Amount&#39;</span>]<span style="color:#f92672">.</span>sum(),
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Expenses&#39;</span>: expenses<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;Month&#39;</span>)[<span style="color:#e6db74">&#39;Abs_Amount&#39;</span>]<span style="color:#f92672">.</span>sum() <span style="color:#f92672">*</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>  <span style="color:#75715e"># Make expenses negative again</span>
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>monthly_net[<span style="color:#e6db74">&#39;Net&#39;</span>] <span style="color:#f92672">=</span> monthly_net[<span style="color:#e6db74">&#39;Income&#39;</span>] <span style="color:#f92672">+</span> monthly_net[<span style="color:#e6db74">&#39;Expenses&#39;</span>]  <span style="color:#75715e"># Net will be positive or negative</span>
+</span></span><span style="display:flex;"><span>monthly_net[<span style="color:#e6db74">&#39;3M_Rolling_Avg&#39;</span>] <span style="color:#f92672">=</span> monthly_net[<span style="color:#e6db74">&#39;Net&#39;</span>]<span style="color:#f92672">.</span>rolling(window<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)<span style="color:#f92672">.</span>mean()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Monthly Trend Analysis:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(monthly_net)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 7. Cash flow analysis</span>
+</span></span><span style="display:flex;"><span>transactions <span style="color:#f92672">=</span> transactions<span style="color:#f92672">.</span>sort_values(<span style="color:#e6db74">&#39;Date&#39;</span>)
+</span></span><span style="display:flex;"><span>transactions[<span style="color:#e6db74">&#39;Running_Balance&#39;</span>] <span style="color:#f92672">=</span> transactions[<span style="color:#e6db74">&#39;Amount&#39;</span>]<span style="color:#f92672">.</span>cumsum()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Find any days where cash balance went negative</span>
+</span></span><span style="display:flex;"><span>cash_issues <span style="color:#f92672">=</span> transactions[transactions[<span style="color:#e6db74">&#39;Running_Balance&#39;</span>] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> cash_issues<span style="color:#f92672">.</span>empty:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Cash Flow Alert - Negative Balance Detected:&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(cash_issues[[<span style="color:#e6db74">&#39;Date&#39;</span>, <span style="color:#e6db74">&#39;Running_Balance&#39;</span>]]<span style="color:#f92672">.</span>head())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 8. Year-over-year comparison (assuming we have multiple years of data)</span>
+</span></span><span style="display:flex;"><span>transactions[<span style="color:#e6db74">&#39;Year&#39;</span>] <span style="color:#f92672">=</span> transactions[<span style="color:#e6db74">&#39;Date&#39;</span>]<span style="color:#f92672">.</span>dt<span style="color:#f92672">.</span>year
+</span></span><span style="display:flex;"><span>yoy_income <span style="color:#f92672">=</span> income<span style="color:#f92672">.</span>groupby([<span style="color:#e6db74">&#39;Year&#39;</span>, <span style="color:#e6db74">&#39;Quarter&#39;</span>])[<span style="color:#e6db74">&#39;Amount&#39;</span>]<span style="color:#f92672">.</span>sum()<span style="color:#f92672">.</span>unstack()
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Year-over-Year Quarterly Income:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(yoy_income)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 9. Export key insights to Excel</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> pd<span style="color:#f92672">.</span>ExcelWriter(<span style="color:#e6db74">&#39;financial_insights.xlsx&#39;</span>) <span style="color:#66d9ef">as</span> writer:
+</span></span><span style="display:flex;"><span>    quarterly_summary<span style="color:#f92672">.</span>to_excel(writer, sheet_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Quarterly Summary&#39;</span>)
+</span></span><span style="display:flex;"><span>    top_expenses<span style="color:#f92672">.</span>to_excel(writer, sheet_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Top Expenses&#39;</span>)
+</span></span><span style="display:flex;"><span>    monthly_net<span style="color:#f92672">.</span>to_excel(writer, sheet_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Monthly Trends&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Financial analysis complete! Results exported to &#39;financial_insights.xlsx&#39;&#34;</span>)
+</span></span></code></pre></div><h2 id="key-takeaways-from-pandas-for-finance-professionals">Key Takeaways from pandas for Finance Professionals</h2>
+<p>For finance and accounting professionals, pandas offers several key advantages:</p>
+<ol>
+<li><strong>Automation</strong>: Automate repetitive data tasks that would take hours in Excel</li>
+<li><strong>Scale</strong>: Handle much larger datasets than Excel can manage</li>
+<li><strong>Reproducibility</strong>: Document your analysis as code for future reference or audit</li>
+<li><strong>Flexibility</strong>: Customize your analysis beyond what Excel templates allow</li>
+<li><strong>Integration</strong>: Connect directly to databases, APIs, and other data sources</li>
+<li><strong>Analysis Power</strong>: Perform complex statistical operations with minimal code</li>
+</ol>
+<h2 id="next-steps">Next Steps</h2>
+<p>Now that you understand the basics of pandas for financial data analysis, you&rsquo;re ready to move on to data visualization in our next post. We&rsquo;ll explore how to transform these financial insights into compelling visualizations using Matplotlib and Seaborn!</p>
+<h2 id="exercise-financial-data-analysis">Exercise: Financial Data Analysis</h2>
+<p>Before you go, try this exercise to practice your pandas skills:</p>
+<p>You have a CSV file of transactions with columns for Date, Description, Category, and Amount. Using pandas:</p>
+<ol>
+<li>Calculate the monthly income, expenses, and net profit</li>
+<li>Find the top 3 expense categories by total amount</li>
+<li>Create a month-over-month percentage change analysis of your net profit</li>
+<li>Identify any expense categories that show an increasing trend over time</li>
+</ol>
+<p>Good luck, and feel free to share your solutions in the comments!</p>
+<hr>
+<p><em>This post is part of my journey learning Python. I&rsquo;m a chartered accountant exploring programming to enhance my financial analysis toolkit. Follow along as we discover together how Python can transform our work in finance and accounting!</em></p>
+]]></content:encoded></item></channel></rss>

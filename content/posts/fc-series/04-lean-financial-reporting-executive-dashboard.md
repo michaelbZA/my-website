@@ -11,7 +11,7 @@ showToc: true
 TocOpen: false
 draft: false
 cover:
-    image: "images/lean-financial-reporting.jpg" # Create or replace with your own image
+    image: "images/lean-financial-reporting.jpg"
     alt: "One-page financial dashboard"
     caption: "Lean reporting that drives decisions"
     relative: false

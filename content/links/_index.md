@@ -33,11 +33,6 @@ Feel free to explore based on your interests. If you have suggestions for resour
 - [DevDocs](https://devdocs.io/) - Combined documentation of multiple APIs.
 - [Regex101](https://regex101.com/) - Build, test, and debug regex patterns.
 
-### Learning Resources
-- [freeCodeCamp](https://www.freecodecamp.org/) - Free coding lessons and certifications.
-- [DigitalOcean Community](https://www.digitalocean.com/community/tutorials) - In-depth tutorials for software developers.
-- [CodePen](https://codepen.io/) - A social development environment for front-end designers and developers.
-
 ---
 
 ## Data Science & AI
@@ -64,12 +59,6 @@ Feel free to explore based on your interests. If you have suggestions for resour
 
 ## Technology & Software
 
-### Tech News & Analysis
-- [Ars Technica](https://arstechnica.com/) - In-depth technology news and analysis.
-- [Hacker News](https://news.ycombinator.com/) - Social news website focusing on computer science and entrepreneurship.
-- [The Verge](https://www.theverge.com/) - Technology news and media network.
-- [MIT Technology Review](https://www.technologyreview.com/) - Analysis of new technologies and their commercial potential.
-
 ### Open Source Projects
 - [The GitHub Explorer](https://github.com/explore) - Discover interesting projects on GitHub.
 - [Open Source Alternative To](https://www.opensourcealternative.to/) - Open source alternatives to proprietary software.
@@ -84,12 +73,6 @@ Feel free to explore based on your interests. If you have suggestions for resour
 ---
 
 ## Science & Education
-
-### Scientific Publications
-- [Nature](https://www.nature.com/) - International weekly journal of science.
-- [PLOS ONE](https://journals.plos.org/plosone/) - Peer-reviewed open access scientific journal.
-- [ScienceDaily](https://www.sciencedaily.com/) - Breaking news about the latest scientific discoveries.
-- [Quanta Magazine](https://www.quantamagazine.org/) - Illuminating science with a focus on mathematics, physics, and computer science.
 
 ### Learning Platforms
 - [Coursera](https://www.coursera.org/) - Online courses from top universities and companies.

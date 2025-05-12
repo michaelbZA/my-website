@@ -1,1 +1,600 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Object-Oriented Programming on Michael Brunger</title><link>http://localhost:1313/tags/object-oriented-programming/</link><description>Recent content in Object-Oriented Programming on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Tue, 06 May 2025 12:41:15 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/object-oriented-programming/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 14: Introduction to Object-Oriented Programming (OOP) in Python</title><link>http://localhost:1313/python-foundations-oop/</link><pubDate>Thu, 31 Jul 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/python-foundations-oop/</guid><description>Understand the fundamentals of OOP in Python including classes, objects, methods, and attributes. Learn about encapsulation, inheritance, and polymorphism through practical examples.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Object-Oriented Programming on Michael Brunger</title><link>http://localhost:1313/tags/object-oriented-programming/</link><description>Recent content in Object-Oriented Programming on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Fri, 09 May 2025 14:44:55 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/object-oriented-programming/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 14: Introduction to Object-Oriented Programming (OOP) in Python</title><link>http://localhost:1313/introduction-object-oriented-programming-python/</link><pubDate>Thu, 31 Jul 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/introduction-object-oriented-programming-python/</guid><description>Understand the fundamentals of OOP in Python including classes, objects, methods, and attributes. Learn about encapsulation, inheritance, and polymorphism through practical examples.</description><content:encoded><![CDATA[<h1 id="introduction-to-object-oriented-programming-oop-in-python-a-finance-perspective">Introduction to Object-Oriented Programming (OOP) in Python: A Finance Perspective</h1>
+<p>As a finance professional learning Python, I&rsquo;ve discovered that Object-Oriented Programming (OOP) is one of those concepts that initially seems abstract but becomes incredibly powerful once you understand it. In this post, I&rsquo;ll break down what OOP is, why it matters, and how we can use it to model financial concepts in our code.</p>
+<h2 id="what-is-object-oriented-programming">What is Object-Oriented Programming?</h2>
+<p>In the simplest terms, OOP is a programming paradigm that organizes code around &ldquo;objects&rdquo; rather than functions and logic. An object bundles related data (attributes) and behaviors (methods) together.</p>
+<p>Think of it this way: in finance, we deal with various entities like accounts, investments, transactions, and financial instruments. Each has specific properties and actions associated with them. OOP gives us a way to represent these real-world entities in our code.</p>
+<h2 id="key-concepts-in-oop">Key Concepts in OOP</h2>
+<h3 id="1-classes-vs-objects">1. Classes vs. Objects</h3>
+<p><strong>Classes</strong> are like blueprints or templates that define the structure and behavior of a particular type of object. <strong>Objects</strong> are specific instances created from these classes.</p>
+<p>In finance terms:</p>
+<ul>
+<li>A <strong>class</strong> might be <code>BankAccount</code>, which describes what all bank accounts have in common</li>
+<li>An <strong>object</strong> would be a specific account, like <code>my_checking_account</code></li>
+</ul>
+<p>Let&rsquo;s create our first class:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BankAccount</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;A simple bank account class&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, account_number, holder_name, balance<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Initialize a new bank account&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>account_number <span style="color:#f92672">=</span> account_number
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>holder_name <span style="color:#f92672">=</span> holder_name
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>balance <span style="color:#f92672">=</span> balance
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>transactions <span style="color:#f92672">=</span> []
+</span></span></code></pre></div><h3 id="2-the-__init__-method-and-self">2. The <code>__init__</code> Method and <code>self</code></h3>
+<p>The <code>__init__</code> method (short for &ldquo;initialize&rdquo;) is a special method that runs automatically whenever we create a new object from a class. It&rsquo;s sometimes called a constructor.</p>
+<p><code>self</code> is a reference to the specific instance of the class that&rsquo;s being created or operated on. It&rsquo;s how the object keeps track of its own data.</p>
+<p>Let&rsquo;s create some bank account objects:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Creating instances of the BankAccount class</span>
+</span></span><span style="display:flex;"><span>checking <span style="color:#f92672">=</span> BankAccount(<span style="color:#e6db74">&#34;CHK123456&#34;</span>, <span style="color:#e6db74">&#34;John Doe&#34;</span>, <span style="color:#ae81ff">1000.00</span>)
+</span></span><span style="display:flex;"><span>savings <span style="color:#f92672">=</span> BankAccount(<span style="color:#e6db74">&#34;SAV789012&#34;</span>, <span style="color:#e6db74">&#34;John Doe&#34;</span>, <span style="color:#ae81ff">5000.00</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Accessing attributes</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Account Holder: </span><span style="color:#e6db74">{</span>checking<span style="color:#f92672">.</span>holder_name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Checking Balance: $</span><span style="color:#e6db74">{</span>checking<span style="color:#f92672">.</span>balance<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Savings Balance: $</span><span style="color:#e6db74">{</span>savings<span style="color:#f92672">.</span>balance<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p>Output:</p>
+<pre tabindex="0"><code>Account Holder: John Doe
+Checking Balance: $1000.00
+Savings Balance: $5000.00
+</code></pre><h3 id="3-methods-adding-behavior-to-our-objects">3. Methods: Adding Behavior to Our Objects</h3>
+<p>Methods are functions that belong to a class. They define what actions objects of that class can perform.</p>
+<p>Let&rsquo;s add some methods to our <code>BankAccount</code> class:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BankAccount</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;A simple bank account class&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, account_number, holder_name, balance<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Initialize a new bank account&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>account_number <span style="color:#f92672">=</span> account_number
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>holder_name <span style="color:#f92672">=</span> holder_name
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>balance <span style="color:#f92672">=</span> balance
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>transactions <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Record opening deposit if initial balance was provided</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> balance <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>transactions<span style="color:#f92672">.</span>append((<span style="color:#e6db74">&#34;DEPOSIT&#34;</span>, balance, <span style="color:#e6db74">&#34;Initial deposit&#34;</span>))
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">deposit</span>(self, amount, description<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Deposit&#34;</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Add funds to the account&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> amount <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;Deposit amount must be positive&#34;</span>)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>balance <span style="color:#f92672">+=</span> amount
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>transactions<span style="color:#f92672">.</span>append((<span style="color:#e6db74">&#34;DEPOSIT&#34;</span>, amount, description))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>balance
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">withdraw</span>(self, amount, description<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Withdrawal&#34;</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Remove funds from the account if sufficient balance exists&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> amount <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;Withdrawal amount must be positive&#34;</span>)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> amount <span style="color:#f92672">&gt;</span> self<span style="color:#f92672">.</span>balance:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;Insufficient funds&#34;</span>)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>balance <span style="color:#f92672">-=</span> amount
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>transactions<span style="color:#f92672">.</span>append((<span style="color:#e6db74">&#34;WITHDRAWAL&#34;</span>, amount, description))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>balance
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_balance</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Return the current balance&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>balance
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">print_statement</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Print a simple account statement&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Account Statement for </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>account_number<span style="color:#e6db74">}</span><span style="color:#e6db74"> (</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>holder_name<span style="color:#e6db74">}</span><span style="color:#e6db74">)&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Current Balance: $</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>balance<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Transaction History:&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;Type       | Amount     | Description&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> trans_type, amount, description <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>transactions:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>trans_type<span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;10</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> | $</span><span style="color:#e6db74">{</span>amount<span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;9.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> | </span><span style="color:#e6db74">{</span>description<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p>Now let&rsquo;s use our enhanced <code>BankAccount</code> class:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Create a new account</span>
+</span></span><span style="display:flex;"><span>account <span style="color:#f92672">=</span> BankAccount(<span style="color:#e6db74">&#34;CHK123456&#34;</span>, <span style="color:#e6db74">&#34;John Doe&#34;</span>, <span style="color:#ae81ff">1000.00</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Perform some transactions</span>
+</span></span><span style="display:flex;"><span>account<span style="color:#f92672">.</span>deposit(<span style="color:#ae81ff">500</span>, <span style="color:#e6db74">&#34;Paycheck&#34;</span>)
+</span></span><span style="display:flex;"><span>account<span style="color:#f92672">.</span>withdraw(<span style="color:#ae81ff">200</span>, <span style="color:#e6db74">&#34;Grocery shopping&#34;</span>)
+</span></span><span style="display:flex;"><span>account<span style="color:#f92672">.</span>deposit(<span style="color:#ae81ff">1000</span>, <span style="color:#e6db74">&#34;Tax refund&#34;</span>)
+</span></span><span style="display:flex;"><span>account<span style="color:#f92672">.</span>withdraw(<span style="color:#ae81ff">800</span>, <span style="color:#e6db74">&#34;Rent payment&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Print a statement</span>
+</span></span><span style="display:flex;"><span>account<span style="color:#f92672">.</span>print_statement()
+</span></span></code></pre></div><p>This would output:</p>
+<pre tabindex="0"><code>Account Statement for CHK123456 (John Doe)
+Current Balance: $1500.00
+
+Transaction History:
+Type       | Amount     | Description
+--------------------------------------------------
+DEPOSIT    | $1000.00   | Initial deposit
+DEPOSIT    | $500.00    | Paycheck
+WITHDRAWAL | $200.00    | Grocery shopping
+DEPOSIT    | $1000.00   | Tax refund
+WITHDRAWAL | $800.00    | Rent payment
+</code></pre><h2 id="the-four-pillars-of-oop">The Four Pillars of OOP</h2>
+<h3 id="1-encapsulation">1. Encapsulation</h3>
+<p>Encapsulation refers to bundling data and methods that operate on that data within a single unit (the class) and restricting direct access to some of an object&rsquo;s components. It helps protect the integrity of the data.</p>
+<p>In Python, we use naming conventions to indicate that certain attributes or methods should be treated as private (although Python doesn&rsquo;t strictly enforce this):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BankAccount</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, account_number, holder_name, balance<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0</span>):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>account_number <span style="color:#f92672">=</span> account_number
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>holder_name <span style="color:#f92672">=</span> holder_name
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_balance <span style="color:#f92672">=</span> balance  <span style="color:#75715e"># Prefixed with underscore to indicate it&#39;s &#34;protected&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>__transaction_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>  <span style="color:#75715e"># Double underscore for &#34;private&#34; attributes</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>transactions <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> balance <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>__record_transaction(<span style="color:#e6db74">&#34;DEPOSIT&#34;</span>, balance, <span style="color:#e6db74">&#34;Initial deposit&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__record_transaction</span>(self, trans_type, amount, description):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Private method to record transactions with IDs&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>transactions<span style="color:#f92672">.</span>append((self<span style="color:#f92672">.</span>__transaction_id, trans_type, amount, description))
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>__transaction_id <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">deposit</span>(self, amount, description<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Deposit&#34;</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> amount <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;Deposit amount must be positive&#34;</span>)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_balance <span style="color:#f92672">+=</span> amount
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>__record_transaction(<span style="color:#e6db74">&#34;DEPOSIT&#34;</span>, amount, description)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_balance
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Other methods...</span>
+</span></span></code></pre></div><p>With encapsulation:</p>
+<ul>
+<li>We&rsquo;ve made <code>_balance</code> protected (indicated by single underscore)</li>
+<li>We&rsquo;ve made <code>__transaction_id</code> and <code>__record_transaction</code> private (indicated by double underscore)</li>
+<li>We still provide public methods to interact with these protected attributes safely</li>
+</ul>
+<h3 id="2-inheritance">2. Inheritance</h3>
+<p>Inheritance allows a class to inherit attributes and methods from another class. The original class is called the parent or base class, and the new class is the child or derived class.</p>
+<p>Let&rsquo;s create specialized account types that inherit from our <code>BankAccount</code> class:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SavingsAccount</span>(BankAccount):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;A bank account that earns interest&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, account_number, holder_name, balance<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0</span>, interest_rate<span style="color:#f92672">=</span><span style="color:#ae81ff">0.01</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Call the parent class&#39;s __init__ method</span>
+</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span>__init__(account_number, holder_name, balance)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>interest_rate <span style="color:#f92672">=</span> interest_rate
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">apply_interest</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Apply interest to the account balance&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        interest <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>_balance <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>interest_rate
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>deposit(interest, <span style="color:#e6db74">&#34;Interest payment&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_balance
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CheckingAccount</span>(BankAccount):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;A bank account for frequent transactions with overdraft protection&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, account_number, holder_name, balance<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0</span>, overdraft_limit<span style="color:#f92672">=</span><span style="color:#ae81ff">100.0</span>):
+</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span>__init__(account_number, holder_name, balance)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>overdraft_limit <span style="color:#f92672">=</span> overdraft_limit
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">withdraw</span>(self, amount, description<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Withdrawal&#34;</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Override withdraw to implement overdraft protection&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> amount <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;Withdrawal amount must be positive&#34;</span>)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> amount <span style="color:#f92672">&gt;</span> (self<span style="color:#f92672">.</span>_balance <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>overdraft_limit):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Amount exceeds balance plus overdraft limit of $</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>overdraft_limit<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_balance <span style="color:#f92672">-=</span> amount
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_record_transaction(<span style="color:#e6db74">&#34;WITHDRAWAL&#34;</span>, amount, description)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>_balance <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>_record_transaction(<span style="color:#e6db74">&#34;FEE&#34;</span>, <span style="color:#ae81ff">15</span>, <span style="color:#e6db74">&#34;Overdraft fee&#34;</span>)
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>_balance <span style="color:#f92672">-=</span> <span style="color:#ae81ff">15</span>
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_balance
+</span></span></code></pre></div><p>Now we can use these specialized account types:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Create a savings account</span>
+</span></span><span style="display:flex;"><span>savings <span style="color:#f92672">=</span> SavingsAccount(<span style="color:#e6db74">&#34;SAV12345&#34;</span>, <span style="color:#e6db74">&#34;John Doe&#34;</span>, <span style="color:#ae81ff">5000.00</span>, <span style="color:#ae81ff">0.02</span>)  <span style="color:#75715e"># 2% interest</span>
+</span></span><span style="display:flex;"><span>savings<span style="color:#f92672">.</span>deposit(<span style="color:#ae81ff">1000</span>, <span style="color:#e6db74">&#34;Bonus&#34;</span>)
+</span></span><span style="display:flex;"><span>savings<span style="color:#f92672">.</span>apply_interest()  <span style="color:#75715e"># Apply interest</span>
+</span></span><span style="display:flex;"><span>savings<span style="color:#f92672">.</span>print_statement()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a checking account with overdraft protection</span>
+</span></span><span style="display:flex;"><span>checking <span style="color:#f92672">=</span> CheckingAccount(<span style="color:#e6db74">&#34;CHK67890&#34;</span>, <span style="color:#e6db74">&#34;John Doe&#34;</span>, <span style="color:#ae81ff">500.00</span>, <span style="color:#ae81ff">200.00</span>)  <span style="color:#75715e"># $200 overdraft limit</span>
+</span></span><span style="display:flex;"><span>checking<span style="color:#f92672">.</span>withdraw(<span style="color:#ae81ff">600</span>, <span style="color:#e6db74">&#34;Emergency expense&#34;</span>)  <span style="color:#75715e"># This will use the overdraft</span>
+</span></span><span style="display:flex;"><span>checking<span style="color:#f92672">.</span>print_statement()
+</span></span></code></pre></div><h3 id="3-polymorphism">3. Polymorphism</h3>
+<p>Polymorphism allows objects of different classes to be treated as objects of a common base class. The most common use is when a parent class reference is used to refer to a child class object.</p>
+<p>Let&rsquo;s see polymorphism in action with our bank accounts:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">process_month_end</span>(account):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Process month-end activities for any type of account&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Processing month-end for </span><span style="color:#e6db74">{</span>account<span style="color:#f92672">.</span>account_number<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Apply specific actions based on account type</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> isinstance(account, SavingsAccount):
+</span></span><span style="display:flex;"><span>        account<span style="color:#f92672">.</span>apply_interest()
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;Applied interest to savings account&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> isinstance(account, CheckingAccount):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> account<span style="color:#f92672">.</span>get_balance() <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">100</span>:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;Low balance warning issued&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Common actions for all account types</span>
+</span></span><span style="display:flex;"><span>    account<span style="color:#f92672">.</span>print_statement()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create different account types</span>
+</span></span><span style="display:flex;"><span>accounts <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    BankAccount(<span style="color:#e6db74">&#34;BNK-001&#34;</span>, <span style="color:#e6db74">&#34;Alice Smith&#34;</span>, <span style="color:#ae81ff">1500</span>),
+</span></span><span style="display:flex;"><span>    SavingsAccount(<span style="color:#e6db74">&#34;SAV-002&#34;</span>, <span style="color:#e6db74">&#34;Bob Johnson&#34;</span>, <span style="color:#ae81ff">5000</span>, <span style="color:#ae81ff">0.025</span>),
+</span></span><span style="display:flex;"><span>    CheckingAccount(<span style="color:#e6db74">&#34;CHK-003&#34;</span>, <span style="color:#e6db74">&#34;Carol Williams&#34;</span>, <span style="color:#ae81ff">750</span>, <span style="color:#ae81ff">300</span>)
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Process all accounts the same way, but with type-specific behaviors</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> account <span style="color:#f92672">in</span> accounts:
+</span></span><span style="display:flex;"><span>    process_month_end(account)
+</span></span></code></pre></div><p>This demonstrates polymorphism—we&rsquo;re treating different account types through a common interface, but each responds according to its specific implementation.</p>
+<h3 id="4-abstraction">4. Abstraction</h3>
+<p>Abstraction means hiding complex implementation details and showing only the necessary features of an object. Python supports abstraction through abstract base classes (ABCs).</p>
+<p>Let&rsquo;s create an abstract base class for financial instruments:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> abc <span style="color:#f92672">import</span> ABC, abstractmethod
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FinancialInstrument</span>(ABC):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Abstract base class for financial instruments&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, symbol, name, current_price):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>symbol <span style="color:#f92672">=</span> symbol
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> name
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>current_price <span style="color:#f92672">=</span> current_price
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@abstractmethod</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_value</span>(self, quantity):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Calculate the value of holding a certain quantity&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@abstractmethod</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">risk_level</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Return the risk level of this instrument&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update_price</span>(self, new_price):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Update the current price&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>current_price <span style="color:#f92672">=</span> new_price
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Stock</span>(FinancialInstrument):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;A stock/equity financial instrument&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, symbol, name, current_price, beta<span style="color:#f92672">=</span><span style="color:#ae81ff">1.0</span>):
+</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span>__init__(symbol, name, current_price)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>beta <span style="color:#f92672">=</span> beta  <span style="color:#75715e"># Beta measures volatility</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_value</span>(self, quantity):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>current_price <span style="color:#f92672">*</span> quantity
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">risk_level</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>beta <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.8</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Low&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> self<span style="color:#f92672">.</span>beta <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1.2</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Medium&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;High&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bond</span>(FinancialInstrument):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;A bond financial instrument&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, symbol, name, current_price, yield_rate, maturity_date):
+</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span>__init__(symbol, name, current_price)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>yield_rate <span style="color:#f92672">=</span> yield_rate
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>maturity_date <span style="color:#f92672">=</span> maturity_date
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_value</span>(self, quantity):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>current_price <span style="color:#f92672">*</span> quantity
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">risk_level</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Simple risk assessment based on yield</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>yield_rate <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.03</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Low&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> self<span style="color:#f92672">.</span>yield_rate <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.06</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Medium&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;High&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_income</span>(self, face_value, quantity):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Calculate annual income from the bond&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> face_value <span style="color:#f92672">*</span> quantity <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>yield_rate
+</span></span></code></pre></div><p>Note that we can&rsquo;t create an instance of <code>FinancialInstrument</code> directly because it&rsquo;s abstract. We must create one of its concrete subclasses.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Try to create an abstract class instance - this would fail</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># instrument = FinancialInstrument(&#34;ABST&#34;, &#34;Abstract Instrument&#34;, 100)  # This will raise an error</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create concrete implementations</span>
+</span></span><span style="display:flex;"><span>apple_stock <span style="color:#f92672">=</span> Stock(<span style="color:#e6db74">&#34;AAPL&#34;</span>, <span style="color:#e6db74">&#34;Apple Inc.&#34;</span>, <span style="color:#ae81ff">175.50</span>, <span style="color:#ae81ff">1.2</span>)
+</span></span><span style="display:flex;"><span>govt_bond <span style="color:#f92672">=</span> Bond(<span style="color:#e6db74">&#34;GOVT10&#34;</span>, <span style="color:#e6db74">&#34;10-Year Treasury&#34;</span>, <span style="color:#ae81ff">98.75</span>, <span style="color:#ae81ff">0.035</span>, <span style="color:#e6db74">&#34;2033-05-15&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Use polymorphism</span>
+</span></span><span style="display:flex;"><span>instruments <span style="color:#f92672">=</span> [apple_stock, govt_bond]
+</span></span><span style="display:flex;"><span>portfolio_value <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> instrument <span style="color:#f92672">in</span> instruments:
+</span></span><span style="display:flex;"><span>    quantity <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>  <span style="color:#75715e"># Assume we own 10 of each</span>
+</span></span><span style="display:flex;"><span>    value <span style="color:#f92672">=</span> instrument<span style="color:#f92672">.</span>calculate_value(quantity)
+</span></span><span style="display:flex;"><span>    portfolio_value <span style="color:#f92672">+=</span> value
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>instrument<span style="color:#f92672">.</span>symbol<span style="color:#e6db74">}</span><span style="color:#e6db74"> (</span><span style="color:#e6db74">{</span>instrument<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">):&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;  Risk Level: </span><span style="color:#e6db74">{</span>instrument<span style="color:#f92672">.</span>risk_level()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;  Value of 10 units: $</span><span style="color:#e6db74">{</span>value<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Total portfolio value: $</span><span style="color:#e6db74">{</span>portfolio_value<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><h2 id="practical-financial-application-portfolio-management">Practical Financial Application: Portfolio Management</h2>
+<p>Let&rsquo;s build a simple portfolio management system that demonstrates these OOP concepts together:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Asset</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Base class for any asset that can be held in a portfolio&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, symbol, name):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>symbol <span style="color:#f92672">=</span> symbol
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> name
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@abstractmethod</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">current_value</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Return the current value of this asset&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __str__(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>symbol<span style="color:#e6db74">}</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cash</span>(Asset):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Cash holdings in a portfolio&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, amount, currency<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;USD&#34;</span>):
+</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span>__init__(currency, <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Cash (</span><span style="color:#e6db74">{</span>currency<span style="color:#e6db74">}</span><span style="color:#e6db74">)&#34;</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>amount <span style="color:#f92672">=</span> amount
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">current_value</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>amount
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Stock</span>(Asset):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Stock/equity asset&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, symbol, name, shares, price_per_share):
+</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span>__init__(symbol, name)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>shares <span style="color:#f92672">=</span> shares
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>price <span style="color:#f92672">=</span> price_per_share
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">current_value</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>shares <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>price
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update_price</span>(self, new_price):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>price <span style="color:#f92672">=</span> new_price
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bond</span>(Asset):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Bond asset&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, symbol, name, face_value, quantity, market_price, yield_rate):
+</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span>__init__(symbol, name)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>face_value <span style="color:#f92672">=</span> face_value
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>quantity <span style="color:#f92672">=</span> quantity
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>market_price <span style="color:#f92672">=</span> market_price
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>yield_rate <span style="color:#f92672">=</span> yield_rate
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">current_value</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>market_price <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>quantity
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">annual_income</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>face_value <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>quantity <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>yield_rate
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Portfolio</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;A collection of financial assets&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, name, owner):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> name
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>owner <span style="color:#f92672">=</span> owner
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>assets <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_asset</span>(self, asset):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Add an asset to the portfolio&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>assets<span style="color:#f92672">.</span>append(asset)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_asset</span>(self, symbol):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Remove an asset from the portfolio by symbol&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>assets <span style="color:#f92672">=</span> [asset <span style="color:#66d9ef">for</span> asset <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>assets <span style="color:#66d9ef">if</span> asset<span style="color:#f92672">.</span>symbol <span style="color:#f92672">!=</span> symbol]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">total_value</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Calculate the total value of all assets&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> sum(asset<span style="color:#f92672">.</span>current_value() <span style="color:#66d9ef">for</span> asset <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>assets)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">asset_allocation</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Calculate the percentage allocation of each asset class&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        total <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>total_value()
+</span></span><span style="display:flex;"><span>        allocation <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> asset <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>assets:
+</span></span><span style="display:flex;"><span>            asset_type <span style="color:#f92672">=</span> type(asset)<span style="color:#f92672">.</span>__name__
+</span></span><span style="display:flex;"><span>            asset_value <span style="color:#f92672">=</span> asset<span style="color:#f92672">.</span>current_value()
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> asset_type <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> allocation:
+</span></span><span style="display:flex;"><span>                allocation[asset_type] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            allocation[asset_type] <span style="color:#f92672">+=</span> asset_value
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Convert to percentages</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> asset_type <span style="color:#f92672">in</span> allocation:
+</span></span><span style="display:flex;"><span>            allocation[asset_type] <span style="color:#f92672">=</span> (allocation[asset_type] <span style="color:#f92672">/</span> total) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> allocation
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">print_summary</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Print a summary of the portfolio&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">=== </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74"> Portfolio Summary ===&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Owner: </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>owner<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Total Value: $</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>total_value()<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Assets:&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#39;Symbol&#39;</span><span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;10</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#39;Type&#39;</span><span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;10</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#39;Name&#39;</span><span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;30</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#39;Value&#39;</span><span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;15</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">65</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> asset <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>assets:
+</span></span><span style="display:flex;"><span>            asset_type <span style="color:#f92672">=</span> type(asset)<span style="color:#f92672">.</span>__name__
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>asset<span style="color:#f92672">.</span>symbol<span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;10</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span>asset_type<span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;10</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span>asset<span style="color:#f92672">.</span>name<span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;30</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> $</span><span style="color:#e6db74">{</span>asset<span style="color:#f92672">.</span>current_value()<span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;15.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Asset Allocation:&#34;</span>)
+</span></span><span style="display:flex;"><span>        allocation <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>asset_allocation()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> asset_type, percentage <span style="color:#f92672">in</span> allocation<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>asset_type<span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>percentage<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">%&#34;</span>)
+</span></span></code></pre></div><p>Now let&rsquo;s use our portfolio management system:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Create a retirement portfolio</span>
+</span></span><span style="display:flex;"><span>retirement <span style="color:#f92672">=</span> Portfolio(<span style="color:#e6db74">&#34;Retirement&#34;</span>, <span style="color:#e6db74">&#34;John Doe&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Add assets</span>
+</span></span><span style="display:flex;"><span>retirement<span style="color:#f92672">.</span>add_asset(Cash(<span style="color:#ae81ff">15000</span>))
+</span></span><span style="display:flex;"><span>retirement<span style="color:#f92672">.</span>add_asset(Stock(<span style="color:#e6db74">&#34;AAPL&#34;</span>, <span style="color:#e6db74">&#34;Apple Inc.&#34;</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">175.50</span>))
+</span></span><span style="display:flex;"><span>retirement<span style="color:#f92672">.</span>add_asset(Stock(<span style="color:#e6db74">&#34;MSFT&#34;</span>, <span style="color:#e6db74">&#34;Microsoft Corporation&#34;</span>, <span style="color:#ae81ff">25</span>, <span style="color:#ae81ff">330.75</span>))
+</span></span><span style="display:flex;"><span>retirement<span style="color:#f92672">.</span>add_asset(Bond(<span style="color:#e6db74">&#34;T-BOND&#34;</span>, <span style="color:#e6db74">&#34;Treasury Bond&#34;</span>, <span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">980</span>, <span style="color:#ae81ff">0.035</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Print the portfolio summary</span>
+</span></span><span style="display:flex;"><span>retirement<span style="color:#f92672">.</span>print_summary()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Update a stock price and see the impact</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> asset <span style="color:#f92672">in</span> retirement<span style="color:#f92672">.</span>assets:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> isinstance(asset, Stock) <span style="color:#f92672">and</span> asset<span style="color:#f92672">.</span>symbol <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;AAPL&#34;</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Updating </span><span style="color:#e6db74">{</span>asset<span style="color:#f92672">.</span>symbol<span style="color:#e6db74">}</span><span style="color:#e6db74"> price from $</span><span style="color:#e6db74">{</span>asset<span style="color:#f92672">.</span>price<span style="color:#e6db74">}</span><span style="color:#e6db74"> to $190.25&#34;</span>)
+</span></span><span style="display:flex;"><span>        asset<span style="color:#f92672">.</span>update_price(<span style="color:#ae81ff">190.25</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Print the updated portfolio</span>
+</span></span><span style="display:flex;"><span>retirement<span style="color:#f92672">.</span>print_summary()
+</span></span></code></pre></div><h2 id="why-oop-matters-organizing-and-reusing-code">Why OOP Matters: Organizing and Reusing Code</h2>
+<p>OOP offers several advantages that become increasingly important as your projects grow:</p>
+<ol>
+<li>
+<p><strong>Organization</strong>: OOP helps structure your code around real-world entities, making it easier to understand and maintain.</p>
+</li>
+<li>
+<p><strong>Reusability</strong>: Inherit and extend classes rather than rewriting code from scratch.</p>
+</li>
+<li>
+<p><strong>Modularity</strong>: Each class handles a specific entity, making it easier to update, test, and debug.</p>
+</li>
+<li>
+<p><strong>Encapsulation</strong>: Hide implementation details and protect data integrity.</p>
+</li>
+<li>
+<p><strong>Real-world modeling</strong>: Financial concepts translate naturally to OOP—assets, accounts, transactions, and portfolios all become classes.</p>
+</li>
+</ol>
+<h2 id="common-oop-pitfalls-to-avoid">Common OOP Pitfalls to Avoid</h2>
+<ol>
+<li>
+<p><strong>Overengineering</strong>: Don&rsquo;t create complex class hierarchies if simpler solutions work. Start with basic classes and refine as needed.</p>
+</li>
+<li>
+<p><strong>Inheritance Overuse</strong>: Not everything needs inheritance. Consider composition (having one class contain instances of another) when appropriate.</p>
+</li>
+<li>
+<p><strong>Forgetting <code>self</code></strong>: Always include <code>self</code> as the first parameter in instance methods.</p>
+</li>
+<li>
+<p><strong>Misusing Private Attributes</strong>: Don&rsquo;t circumvent the leading underscore convention—it&rsquo;s there for a reason.</p>
+</li>
+</ol>
+<h2 id="practical-exercise-build-a-loan-calculator-class">Practical Exercise: Build a Loan Calculator Class</h2>
+<p>As a finance professional, understanding loan calculations is essential. Let&rsquo;s create a <code>Loan</code> class that encapsulates different loan calculations:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Loan</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;A class representing a loan with various calculation methods&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, principal, annual_interest_rate, years, compounding_periods<span style="color:#f92672">=</span><span style="color:#ae81ff">12</span>):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>principal <span style="color:#f92672">=</span> principal
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>annual_rate <span style="color:#f92672">=</span> annual_interest_rate
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>years <span style="color:#f92672">=</span> years
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>compounding_periods <span style="color:#f92672">=</span> compounding_periods
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">monthly_payment</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Calculate the fixed monthly payment&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Convert annual rate to monthly rate</span>
+</span></span><span style="display:flex;"><span>        r <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>annual_rate <span style="color:#f92672">/</span> <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>        n <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>years <span style="color:#f92672">*</span> <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Use the formula: PMT = P * (r * (1+r)^n) / ((1+r)^n - 1)</span>
+</span></span><span style="display:flex;"><span>        numerator <span style="color:#f92672">=</span> r <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> r) <span style="color:#f92672">**</span> n
+</span></span><span style="display:flex;"><span>        denominator <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> r) <span style="color:#f92672">**</span> n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> denominator <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>principal <span style="color:#f92672">/</span> n  <span style="color:#75715e"># Zero interest edge case</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>principal <span style="color:#f92672">*</span> (numerator <span style="color:#f92672">/</span> denominator)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">total_payment</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Calculate the total amount paid over the loan term&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>monthly_payment() <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>years <span style="color:#f92672">*</span> <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">total_interest</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Calculate the total interest paid over the loan term&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>total_payment() <span style="color:#f92672">-</span> self<span style="color:#f92672">.</span>principal
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">amortization_schedule</span>(self, show_every_period<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Generate an amortization schedule&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        schedule <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>        remaining_balance <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>principal
+</span></span><span style="display:flex;"><span>        monthly_rate <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>annual_rate <span style="color:#f92672">/</span> <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>        payment <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>monthly_payment()
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> period <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, self<span style="color:#f92672">.</span>years <span style="color:#f92672">*</span> <span style="color:#ae81ff">12</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>            interest_payment <span style="color:#f92672">=</span> remaining_balance <span style="color:#f92672">*</span> monthly_rate
+</span></span><span style="display:flex;"><span>            principal_payment <span style="color:#f92672">=</span> payment <span style="color:#f92672">-</span> interest_payment
+</span></span><span style="display:flex;"><span>            remaining_balance <span style="color:#f92672">-=</span> principal_payment
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> show_every_period <span style="color:#f92672">or</span> period <span style="color:#f92672">%</span> <span style="color:#ae81ff">12</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> period <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>                schedule<span style="color:#f92672">.</span>append({
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;period&#39;</span>: period,
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;payment&#39;</span>: payment,
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;principal&#39;</span>: principal_payment,
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;interest&#39;</span>: interest_payment,
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;remaining&#39;</span>: max(<span style="color:#ae81ff">0</span>, remaining_balance)  <span style="color:#75715e"># Avoid negative zero</span>
+</span></span><span style="display:flex;"><span>                })
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> schedule
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">print_loan_summary</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Print a summary of the loan details&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">=== Loan Summary ===&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Principal: $</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>principal<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Annual Interest Rate: </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>annual_rate<span style="color:#e6db74">:</span><span style="color:#e6db74">.2%</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Term: </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>years<span style="color:#e6db74">}</span><span style="color:#e6db74"> years&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Monthly Payment: $</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>monthly_payment()<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Total Payments: $</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>total_payment()<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Total Interest: $</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>total_interest()<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">print_amortization_table</span>(self, periods_per_year<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Print an amortization table&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        schedule <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>amortization_schedule(show_every_period<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">=== Amortization Schedule ===&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#39;Period&#39;</span><span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;10</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#39;Payment&#39;</span><span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;15</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#39;Principal&#39;</span><span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;15</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#39;Interest&#39;</span><span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;15</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#39;Remaining&#39;</span><span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;15</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">70</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> entry <span style="color:#f92672">in</span> schedule:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>entry[<span style="color:#e6db74">&#39;period&#39;</span>]<span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;10</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> $</span><span style="color:#e6db74">{</span>entry[<span style="color:#e6db74">&#39;payment&#39;</span>]<span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;14.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> $</span><span style="color:#e6db74">{</span>entry[<span style="color:#e6db74">&#39;principal&#39;</span>]<span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;14.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> $</span><span style="color:#e6db74">{</span>entry[<span style="color:#e6db74">&#39;interest&#39;</span>]<span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;14.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> $</span><span style="color:#e6db74">{</span>entry[<span style="color:#e6db74">&#39;remaining&#39;</span>]<span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;14.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Example use:</span>
+</span></span><span style="display:flex;"><span>home_loan <span style="color:#f92672">=</span> Loan(<span style="color:#ae81ff">350000</span>, <span style="color:#ae81ff">0.045</span>, <span style="color:#ae81ff">30</span>)  <span style="color:#75715e"># $350,000 at 4.5% for 30 years</span>
+</span></span><span style="display:flex;"><span>home_loan<span style="color:#f92672">.</span>print_loan_summary()
+</span></span><span style="display:flex;"><span>home_loan<span style="color:#f92672">.</span>print_amortization_table()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>car_loan <span style="color:#f92672">=</span> Loan(<span style="color:#ae81ff">30000</span>, <span style="color:#ae81ff">0.039</span>, <span style="color:#ae81ff">5</span>)  <span style="color:#75715e"># $30,000 at 3.9% for 5 years</span>
+</span></span><span style="display:flex;"><span>car_loan<span style="color:#f92672">.</span>print_loan_summary()
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>Object-Oriented Programming provides a powerful way to structure your Python code, especially when modeling real-world financial entities and processes. By organizing your code into classes with attributes and methods, you create reusable, maintainable components that can grow with your applications.</p>
+<p>In this post, we covered:</p>
+<ul>
+<li>The basics of classes and objects</li>
+<li>Method creation and the role of <code>self</code></li>
+<li>The four pillars of OOP: encapsulation, inheritance, polymorphism, and abstraction</li>
+<li>Practical financial applications using OOP principles</li>
+</ul>
+<p>As your Python skills progress, you&rsquo;ll find OOP concepts becoming increasingly valuable, especially for financial modeling, analysis, and application development.</p>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>Practice creating your own financial classes (e.g., Investment, FinancialReport)</li>
+<li>Explore more complex inheritance relationships</li>
+<li>Learn about dataclasses (Python 3.7+) for even cleaner class definitions</li>
+<li>Look into property decorators for more controlled attribute access</li>
+</ul>
+]]></content:encoded></item></channel></rss>

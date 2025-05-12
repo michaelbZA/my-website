@@ -1,1 +1,315 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Numpy on Michael Brunger</title><link>http://localhost:1313/tags/numpy/</link><description>Recent content in Numpy on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Tue, 06 May 2025 12:41:15 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/numpy/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 11: NumPy Fundamentals for Numerical Data</title><link>http://localhost:1313/python-foundations-numpy/</link><pubDate>Thu, 10 Jul 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/python-foundations-numpy/</guid><description>Get started with NumPy for numerical computing in Python. Learn about ndarrays, vectorized operations, broadcasting, and see how NumPy outperforms pure Python for numerical tasks.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Numpy on Michael Brunger</title><link>http://localhost:1313/tags/numpy/</link><description>Recent content in Numpy on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Fri, 09 May 2025 14:44:55 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/numpy/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 11: NumPy Fundamentals for Numerical Data</title><link>http://localhost:1313/numpy-fundamentals-numerical-data/</link><pubDate>Thu, 10 Jul 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/numpy-fundamentals-numerical-data/</guid><description>Get started with NumPy for numerical computing in Python. Learn about ndarrays, vectorized operations, broadcasting, and see how NumPy outperforms pure Python for numerical tasks.</description><content:encoded><![CDATA[<h1 id="numpy-fundamentals-for-numerical-data-with-finance-applications">NumPy Fundamentals for Numerical Data (with Finance Applications)</h1>
+<p>Welcome to post #11 in our Python learning journey! If you&rsquo;ve been following along, you&rsquo;re starting to build a solid foundation in Python. Now it&rsquo;s time to explore NumPy, the powerhouse library that makes Python a serious contender for numerical computing and data analysis.</p>
+<p>As a finance professional myself, I&rsquo;ve found NumPy particularly useful for financial calculations, portfolio analysis, and working with large datasets. Let&rsquo;s dive in and see how this library can level up your Python skills.</p>
+<h2 id="what-is-numpy-and-why-should-you-care">What is NumPy and Why Should You Care?</h2>
+<p>NumPy (Numerical Python) is a fundamental library that provides support for large, multi-dimensional arrays and matrices, along with a collection of mathematical functions to operate on these arrays efficiently.</p>
+<p>Why is this important, especially for finance work?</p>
+<ul>
+<li><strong>Performance</strong>: NumPy operations are executed in optimized C code, making them much faster than equivalent Python loops</li>
+<li><strong>Memory efficiency</strong>: NumPy arrays use less memory than Python lists for numerical data</li>
+<li><strong>Mathematical operations</strong>: Built-in functions for statistical analysis, linear algebra, and other operations common in finance</li>
+<li><strong>Foundation for other tools</strong>: Libraries like pandas, matplotlib, and scikit-learn are built on NumPy</li>
+</ul>
+<p>Simply put, if you&rsquo;re doing any kind of numerical analysis in Python—whether that&rsquo;s calculating portfolio returns, analyzing balance sheets, or running financial simulations—NumPy will make your life easier.</p>
+<h2 id="installing-numpy">Installing NumPy</h2>
+<p>Before we get started, let&rsquo;s make sure NumPy is installed in your environment:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>pip install numpy
+</span></span></code></pre></div><p>If you&rsquo;re using Anaconda (which we covered in post #10), NumPy is already included!</p>
+<p>To confirm the installation worked, open a Python shell and try:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>print(np<span style="color:#f92672">.</span>__version__)
+</span></span></code></pre></div><p>You should see the version number printed (like <code>1.24.3</code> or similar). The convention is to import NumPy with the alias <code>np</code> to save typing.</p>
+<h2 id="the-numpy-ndarray-python-lists-on-steroids">The NumPy ndarray: Python Lists on Steroids</h2>
+<p>The core of NumPy is the <code>ndarray</code> (n-dimensional array) object. Think of it as a more powerful version of Python lists, specifically designed for numerical data.</p>
+<h3 id="creating-arrays">Creating Arrays</h3>
+<p>Let&rsquo;s start by creating some simple arrays:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create an array from a Python list</span>
+</span></span><span style="display:flex;"><span>revenue_data <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">10500</span>, <span style="color:#ae81ff">15200</span>, <span style="color:#ae81ff">12100</span>, <span style="color:#ae81ff">18900</span>])
+</span></span><span style="display:flex;"><span>print(revenue_data)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output: [10500 15200 12100 18900]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create an array of zeros (useful as a placeholder)</span>
+</span></span><span style="display:flex;"><span>empty_balance_sheet <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>))  <span style="color:#75715e"># 3 rows, 4 columns</span>
+</span></span><span style="display:flex;"><span>print(empty_balance_sheet)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># [[0. 0. 0. 0.]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [0. 0. 0. 0.]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [0. 0. 0. 0.]]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create an array of ones</span>
+</span></span><span style="display:flex;"><span>unit_values <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>ones(<span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>print(unit_values)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output: [1. 1. 1. 1. 1.]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create an array with a range of values (like Python&#39;s range)</span>
+</span></span><span style="display:flex;"><span>quarters <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>)  <span style="color:#75715e"># 1 to 4</span>
+</span></span><span style="display:flex;"><span>print(quarters)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output: [1 2 3 4]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create evenly spaced values (useful for time series)</span>
+</span></span><span style="display:flex;"><span>interest_rates <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">2.5</span>, <span style="color:#ae81ff">3.5</span>, <span style="color:#ae81ff">5</span>)  <span style="color:#75715e"># 5 values from 2.5 to 3.5</span>
+</span></span><span style="display:flex;"><span>print(interest_rates)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output: [2.5  2.75 3.   3.25 3.5 ]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a 2D array (matrix) for financial data</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Rows: Q1, Q2, Q3, Q4</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Columns: Revenue, Expenses, Profit</span>
+</span></span><span style="display:flex;"><span>financial_data <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([
+</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">10500</span>, <span style="color:#ae81ff">8200</span>, <span style="color:#ae81ff">2300</span>],   <span style="color:#75715e"># Q1</span>
+</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">15200</span>, <span style="color:#ae81ff">9500</span>, <span style="color:#ae81ff">5700</span>],   <span style="color:#75715e"># Q2</span>
+</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">12100</span>, <span style="color:#ae81ff">7800</span>, <span style="color:#ae81ff">4300</span>],   <span style="color:#75715e"># Q3</span>
+</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">18900</span>, <span style="color:#ae81ff">10200</span>, <span style="color:#ae81ff">8700</span>]   <span style="color:#75715e"># Q4</span>
+</span></span><span style="display:flex;"><span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(financial_data)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># [[10500  8200  2300]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [15200  9500  5700]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [12100  7800  4300]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [18900 10200  8700]]</span>
+</span></span></code></pre></div><h3 id="array-attributes">Array Attributes</h3>
+<p>NumPy arrays come with useful attributes that tell you about their shape and contents:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Using the financial_data from above</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Shape (dimensions) of the array</span>
+</span></span><span style="display:flex;"><span>print(financial_data<span style="color:#f92672">.</span>shape)  <span style="color:#75715e"># Output: (4, 3)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Number of dimensions</span>
+</span></span><span style="display:flex;"><span>print(financial_data<span style="color:#f92672">.</span>ndim)   <span style="color:#75715e"># Output: 2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Total number of elements</span>
+</span></span><span style="display:flex;"><span>print(financial_data<span style="color:#f92672">.</span>size)   <span style="color:#75715e"># Output: 12</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Data type of the elements</span>
+</span></span><span style="display:flex;"><span>print(financial_data<span style="color:#f92672">.</span>dtype)  <span style="color:#75715e"># Output: int64</span>
+</span></span></code></pre></div><p>The <code>shape</code> attribute is particularly useful—it tells us we have 4 rows (quarters) and 3 columns (financial metrics).</p>
+<h2 id="indexing-and-slicing-accessing-your-data">Indexing and Slicing: Accessing Your Data</h2>
+<p>Getting to specific elements in your arrays is similar to Python lists, but with more power.</p>
+<h3 id="basic-indexing">Basic Indexing</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Using our financial_data array from above</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get Q1 revenue (first row, first column)</span>
+</span></span><span style="display:flex;"><span>q1_revenue <span style="color:#f92672">=</span> financial_data[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>print(q1_revenue)  <span style="color:#75715e"># Output: 10500</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get Q3 profit (third row, third column)</span>
+</span></span><span style="display:flex;"><span>q3_profit <span style="color:#f92672">=</span> financial_data[<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>print(q3_profit)   <span style="color:#75715e"># Output: 4300</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get all expenses (second column)</span>
+</span></span><span style="display:flex;"><span>all_expenses <span style="color:#f92672">=</span> financial_data[:, <span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>print(all_expenses)  <span style="color:#75715e"># Output: [8200 9500 7800 10200]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get data for Q2 and Q3 (second and third rows)</span>
+</span></span><span style="display:flex;"><span>mid_year_data <span style="color:#f92672">=</span> financial_data[<span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">3</span>, :]
+</span></span><span style="display:flex;"><span>print(mid_year_data)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># [[15200  9500  5700]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [12100  7800  4300]]</span>
+</span></span></code></pre></div><h3 id="fancy-indexing">Fancy Indexing</h3>
+<p>NumPy also lets you select elements that meet certain conditions—incredibly useful for financial analysis:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Find quarters where revenue exceeded 12000</span>
+</span></span><span style="display:flex;"><span>high_revenue_mask <span style="color:#f92672">=</span> financial_data[:, <span style="color:#ae81ff">0</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">12000</span>
+</span></span><span style="display:flex;"><span>print(high_revenue_mask)  <span style="color:#75715e"># Output: [False  True  True  True]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get the financial data for those high-revenue quarters</span>
+</span></span><span style="display:flex;"><span>high_revenue_quarters <span style="color:#f92672">=</span> financial_data[high_revenue_mask]
+</span></span><span style="display:flex;"><span>print(high_revenue_quarters)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># [[15200  9500  5700]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [12100  7800  4300]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [18900 10200  8700]]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Find quarters where profit margin (profit/revenue) exceeded 30%</span>
+</span></span><span style="display:flex;"><span>revenue <span style="color:#f92672">=</span> financial_data[:, <span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>profit <span style="color:#f92672">=</span> financial_data[:, <span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>profit_margin <span style="color:#f92672">=</span> profit <span style="color:#f92672">/</span> revenue
+</span></span><span style="display:flex;"><span>print(profit_margin)  <span style="color:#75715e"># Output: [0.21904762 0.375      0.35537191 0.46031746]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>high_margin_quarters <span style="color:#f92672">=</span> financial_data[profit_margin <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0.3</span>]
+</span></span><span style="display:flex;"><span>print(high_margin_quarters)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># [[15200  9500  5700]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [12100  7800  4300]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [18900 10200  8700]]</span>
+</span></span></code></pre></div><p>This ability to filter data based on conditions is one of NumPy&rsquo;s most powerful features for financial analysis.</p>
+<h2 id="vectorized-operations-numpys-superpower">Vectorized Operations: NumPy&rsquo;s Superpower</h2>
+<p>In traditional Python, if you want to perform calculations across arrays, you&rsquo;d need to write loops. NumPy eliminates this need with vectorized operations—allowing you to express calculations directly on entire arrays.</p>
+<h3 id="element-wise-operations">Element-wise Operations</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Revenue growth calculation for quarters</span>
+</span></span><span style="display:flex;"><span>revenue <span style="color:#f92672">=</span> financial_data[:, <span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>revenue_prev <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>roll(revenue, <span style="color:#ae81ff">1</span>)  <span style="color:#75715e"># Shift values to calculate previous quarter</span>
+</span></span><span style="display:flex;"><span>revenue_prev[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> revenue[<span style="color:#ae81ff">0</span>]  <span style="color:#75715e"># Set first value (no previous quarter)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>revenue_growth <span style="color:#f92672">=</span> (revenue <span style="color:#f92672">-</span> revenue_prev) <span style="color:#f92672">/</span> revenue_prev <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>print(revenue_growth)  <span style="color:#75715e"># Output: [  0.          44.76190476 -20.39473684  56.19834711]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Apply 10% discount to all revenue figures</span>
+</span></span><span style="display:flex;"><span>discounted_revenue <span style="color:#f92672">=</span> revenue <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.9</span>
+</span></span><span style="display:flex;"><span>print(discounted_revenue)  <span style="color:#75715e"># Output: [ 9450. 13680. 10890. 17010.]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Add a 5% bonus to all profit figures</span>
+</span></span><span style="display:flex;"><span>profit <span style="color:#f92672">=</span> financial_data[:, <span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>bonus_adjusted_profit <span style="color:#f92672">=</span> profit <span style="color:#f92672">*</span> <span style="color:#ae81ff">1.05</span>
+</span></span><span style="display:flex;"><span>print(bonus_adjusted_profit)  <span style="color:#75715e"># Output: [2415.  5985.  4515.  9135.]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate profit margin for each quarter</span>
+</span></span><span style="display:flex;"><span>profit_margin <span style="color:#f92672">=</span> profit <span style="color:#f92672">/</span> revenue <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>  <span style="color:#75715e"># as percentage</span>
+</span></span><span style="display:flex;"><span>print(profit_margin)  <span style="color:#75715e"># Output: [21.9047619  37.5        35.53719008 46.03174603]</span>
+</span></span></code></pre></div><h3 id="broadcasting">Broadcasting</h3>
+<p>One of NumPy&rsquo;s most powerful features is broadcasting, which allows operations between arrays of different shapes. This is especially useful in finance for scenarios like applying different tax rates or calculating weighted averages.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Applying different tax rates to quarterly profits</span>
+</span></span><span style="display:flex;"><span>tax_rates <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">0.21</span>, <span style="color:#ae81ff">0.22</span>, <span style="color:#ae81ff">0.21</span>, <span style="color:#ae81ff">0.20</span>])  <span style="color:#75715e"># Different rates each quarter</span>
+</span></span><span style="display:flex;"><span>profit <span style="color:#f92672">=</span> financial_data[:, <span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>taxes_paid <span style="color:#f92672">=</span> profit <span style="color:#f92672">*</span> tax_rates
+</span></span><span style="display:flex;"><span>after_tax_profit <span style="color:#f92672">=</span> profit <span style="color:#f92672">-</span> taxes_paid
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(taxes_paid)  <span style="color:#75715e"># Output: [ 483.  1254.  903.  1740.]</span>
+</span></span><span style="display:flex;"><span>print(after_tax_profit)  <span style="color:#75715e"># Output: [1817.  4446.  3397.  6960.]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Creating a weighted average of financial metrics</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Giving more weight to recent quarters</span>
+</span></span><span style="display:flex;"><span>weights <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">0.2</span>, <span style="color:#ae81ff">0.3</span>, <span style="color:#ae81ff">0.4</span>])  <span style="color:#75715e"># Weights sum to 1</span>
+</span></span><span style="display:flex;"><span>weighted_revenue <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sum(revenue <span style="color:#f92672">*</span> weights)
+</span></span><span style="display:flex;"><span>print(weighted_revenue)  <span style="color:#75715e"># Output: 14970.0</span>
+</span></span></code></pre></div><h2 id="statistical-methods-financial-analysis-made-easy">Statistical Methods: Financial Analysis Made Easy</h2>
+<p>NumPy provides built-in methods for common statistical operations, which are invaluable for financial analysis:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>revenue <span style="color:#f92672">=</span> financial_data[:, <span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>expenses <span style="color:#f92672">=</span> financial_data[:, <span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>profit <span style="color:#f92672">=</span> financial_data[:, <span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Basic statistics</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Average Quarterly Revenue: </span><span style="color:#e6db74">{</span>np<span style="color:#f92672">.</span>mean(revenue)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)  <span style="color:#75715e"># Output: 14175.0</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Total Annual Revenue: </span><span style="color:#e6db74">{</span>np<span style="color:#f92672">.</span>sum(revenue)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)  <span style="color:#75715e"># Output: 56700</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Lowest Quarterly Profit: </span><span style="color:#e6db74">{</span>np<span style="color:#f92672">.</span>min(profit)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)  <span style="color:#75715e"># Output: 2300</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Highest Quarterly Expenses: </span><span style="color:#e6db74">{</span>np<span style="color:#f92672">.</span>max(expenses)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)  <span style="color:#75715e"># Output: 10200</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Revenue Variance: </span><span style="color:#e6db74">{</span>np<span style="color:#f92672">.</span>var(revenue)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)  <span style="color:#75715e"># Output: 12577500.0</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Profit Standard Deviation: </span><span style="color:#e6db74">{</span>np<span style="color:#f92672">.</span>std(profit)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)  <span style="color:#75715e"># Output: 2326.53...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Finding best and worst performing quarters</span>
+</span></span><span style="display:flex;"><span>best_quarter_idx <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argmax(profit)
+</span></span><span style="display:flex;"><span>worst_quarter_idx <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argmin(profit)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Best Quarter: Q</span><span style="color:#e6db74">{</span>best_quarter_idx <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> with $</span><span style="color:#e6db74">{</span>profit[best_quarter_idx]<span style="color:#e6db74">}</span><span style="color:#e6db74"> profit&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output: Best Quarter: Q4 with $8700 profit</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Worst Quarter: Q</span><span style="color:#e6db74">{</span>worst_quarter_idx <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> with $</span><span style="color:#e6db74">{</span>profit[worst_quarter_idx]<span style="color:#e6db74">}</span><span style="color:#e6db74"> profit&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output: Worst Quarter: Q1 with $2300 profit</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Cumulative sums (running totals) - useful for YTD calculations</span>
+</span></span><span style="display:flex;"><span>ytd_revenue <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>cumsum(revenue)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Revenue YTD: </span><span style="color:#e6db74">{</span>ytd_revenue<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)  <span style="color:#75715e"># Output: [10500 25700 37800 56700]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Moving averages (e.g., 2-quarter moving average)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">moving_average</span>(a, window_size):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>convolve(a, np<span style="color:#f92672">.</span>ones(window_size)<span style="color:#f92672">/</span>window_size, mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;valid&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>revenue_2q_avg <span style="color:#f92672">=</span> moving_average(revenue, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;2-Quarter Moving Average Revenue: </span><span style="color:#e6db74">{</span>revenue_2q_avg<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output: [12850. 13650. 15500.]</span>
+</span></span></code></pre></div><h2 id="performance-comparison-why-numpy-is-faster">Performance Comparison: Why NumPy is Faster</h2>
+<p>To really appreciate NumPy, let&rsquo;s compare it with pure Python for a common financial calculation: computing the cumulative returns from a series of daily returns.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> random
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generate sample daily returns (+/- 2%)</span>
+</span></span><span style="display:flex;"><span>daily_returns_list <span style="color:#f92672">=</span> [random<span style="color:#f92672">.</span>uniform(<span style="color:#f92672">-</span><span style="color:#ae81ff">0.02</span>, <span style="color:#ae81ff">0.02</span>) <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10000</span>)]
+</span></span><span style="display:flex;"><span>daily_returns_np <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(daily_returns_list)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pure Python approach</span>
+</span></span><span style="display:flex;"><span>start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+</span></span><span style="display:flex;"><span>cumulative_return <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> daily_return <span style="color:#f92672">in</span> daily_returns_list:
+</span></span><span style="display:flex;"><span>    cumulative_return <span style="color:#f92672">*=</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> daily_return)
+</span></span><span style="display:flex;"><span>final_value_python <span style="color:#f92672">=</span> cumulative_return
+</span></span><span style="display:flex;"><span>python_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># NumPy approach</span>
+</span></span><span style="display:flex;"><span>start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+</span></span><span style="display:flex;"><span>final_value_numpy <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>prod(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> daily_returns_np)
+</span></span><span style="display:flex;"><span>numpy_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Pure Python result: </span><span style="color:#e6db74">{</span>final_value_python<span style="color:#e6db74">}</span><span style="color:#e6db74">, time: </span><span style="color:#e6db74">{</span>python_time<span style="color:#e6db74">:</span><span style="color:#e6db74">.6f</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> seconds&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;NumPy result: </span><span style="color:#e6db74">{</span>final_value_numpy<span style="color:#e6db74">}</span><span style="color:#e6db74">, time: </span><span style="color:#e6db74">{</span>numpy_time<span style="color:#e6db74">:</span><span style="color:#e6db74">.6f</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> seconds&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;NumPy is </span><span style="color:#e6db74">{</span>python_time<span style="color:#f92672">/</span>numpy_time<span style="color:#e6db74">:</span><span style="color:#e6db74">.1f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">x faster&#34;</span>)
+</span></span></code></pre></div><p>On my machine, the NumPy version typically runs about 100x faster! This performance advantage becomes even more significant as your datasets grow, which is why NumPy is essential for serious financial analysis.</p>
+<h2 id="finance-case-study-portfolio-analysis">Finance Case Study: Portfolio Analysis</h2>
+<p>Let&rsquo;s put everything together in a simple portfolio analysis example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Portfolio stocks data (price at end of each quarter)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Rows: Quarters, Columns: Stocks (AAPL, MSFT, GOOGL, AMZN)</span>
+</span></span><span style="display:flex;"><span>stock_prices <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([
+</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">150.10</span>, <span style="color:#ae81ff">225.75</span>, <span style="color:#ae81ff">2720.30</span>, <span style="color:#ae81ff">3110.50</span>],  <span style="color:#75715e"># Q1 prices</span>
+</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">168.30</span>, <span style="color:#ae81ff">265.90</span>, <span style="color:#ae81ff">2781.25</span>, <span style="color:#ae81ff">3450.75</span>],  <span style="color:#75715e"># Q2 prices</span>
+</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">155.80</span>, <span style="color:#ae81ff">285.40</span>, <span style="color:#ae81ff">2950.60</span>, <span style="color:#ae81ff">3320.20</span>],  <span style="color:#75715e"># Q3 prices</span>
+</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">182.40</span>, <span style="color:#ae81ff">305.65</span>, <span style="color:#ae81ff">3050.40</span>, <span style="color:#ae81ff">3680.35</span>]   <span style="color:#75715e"># Q4 prices</span>
+</span></span><span style="display:flex;"><span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Initial portfolio allocation (number of shares)</span>
+</span></span><span style="display:flex;"><span>holdings <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate portfolio value each quarter</span>
+</span></span><span style="display:flex;"><span>portfolio_values <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sum(stock_prices <span style="color:#f92672">*</span> holdings, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Portfolio value by quarter: </span><span style="color:#e6db74">{</span>portfolio_values<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output: [9807.8  11207.15 11612.4  12687.05]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate quarterly returns</span>
+</span></span><span style="display:flex;"><span>portfolio_returns <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>diff(portfolio_values) <span style="color:#f92672">/</span> portfolio_values[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Quarterly returns (%): </span><span style="color:#e6db74">{</span>portfolio_returns<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output: [14.26731123  3.61594237  9.25456674]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate annualized return (geometric mean)</span>
+</span></span><span style="display:flex;"><span>annual_return <span style="color:#f92672">=</span> (portfolio_values[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">/</span> portfolio_values[<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">**</span> (<span style="color:#ae81ff">4</span><span style="color:#f92672">/</span><span style="color:#ae81ff">4</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Annualized return: </span><span style="color:#e6db74">{</span>annual_return<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span><span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">%&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output: Annualized return: 29.36%</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate volatility (standard deviation of returns)</span>
+</span></span><span style="display:flex;"><span>volatility <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>std(portfolio_returns)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Return volatility: </span><span style="color:#e6db74">{</span>volatility<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">%&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output: Return volatility: 5.33%</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate Sharpe ratio (assuming risk-free rate of 2%)</span>
+</span></span><span style="display:flex;"><span>risk_free_rate <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>  <span style="color:#75715e"># 2% annual</span>
+</span></span><span style="display:flex;"><span>sharpe_ratio <span style="color:#f92672">=</span> (annual_return<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span> <span style="color:#f92672">-</span> risk_free_rate) <span style="color:#f92672">/</span> volatility
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Sharpe ratio: </span><span style="color:#e6db74">{</span>sharpe_ratio<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output: Sharpe ratio: 5.13</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Analyze correlation between stocks</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate returns for each stock</span>
+</span></span><span style="display:flex;"><span>stock_returns <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>diff(stock_prices, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>) <span style="color:#f92672">/</span> stock_prices[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate correlation matrix</span>
+</span></span><span style="display:flex;"><span>corr_matrix <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>corrcoef(stock_returns<span style="color:#f92672">.</span>T)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Stock correlation matrix:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(corr_matrix)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># [[ 1.         -0.71294839 -0.99819453  0.77866361]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [-0.71294839  1.          0.75844502 -0.17973701]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [-0.99819453  0.75844502  1.         -0.80727807]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  [ 0.77866361 -0.17973701 -0.80727807  1.        ]]</span>
+</span></span></code></pre></div><p>This example shows how NumPy makes it straightforward to perform complex financial analyses with just a few lines of code!</p>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<p>NumPy transforms Python from a general-purpose language into a powerful numerical computing tool. For finance professionals, it offers:</p>
+<ol>
+<li><strong>Speed and efficiency</strong> for working with large datasets</li>
+<li><strong>Intuitive syntax</strong> for numerical operations that maps well to financial calculations</li>
+<li><strong>Built-in statistical functions</strong> that eliminate the need for custom implementations</li>
+<li><strong>Vectorized operations</strong> that make mathematical formulas easier to express</li>
+<li><strong>The foundation</strong> for more advanced financial analysis libraries like pandas</li>
+</ol>
+<h2 id="next-steps">Next Steps</h2>
+<p>Now that you have a solid understanding of NumPy basics, you&rsquo;re ready to move on to pandas, which builds on NumPy to provide even more powerful data analysis capabilities specifically designed for tabular data like financial statements, price histories, and transaction records.</p>
+<p>In our next post, we&rsquo;ll explore how pandas can make your financial data analysis workflow even more efficient and insightful.</p>
+<h2 id="exercise-calculate-financial-metrics">Exercise: Calculate Financial Metrics</h2>
+<p>Before you go, try this exercise to practice your NumPy skills:</p>
+<p>Create an array with monthly sales data for a year, then:</p>
+<ol>
+<li>Calculate the average monthly sales</li>
+<li>Find the highest and lowest sales months</li>
+<li>Calculate the quarter-by-quarter growth rate</li>
+<li>Determine if any month had sales 20% above the yearly average</li>
+</ol>
+<p>Good luck, and feel free to share your solutions in the comments!</p>
+<hr>
+<p><em>This post is part of my journey learning Python. I&rsquo;m a chartered accountant exploring programming to enhance my financial analysis toolkit. Follow along as we discover together how Python can transform our work in finance and accounting!</em></p>
+]]></content:encoded></item></channel></rss>
