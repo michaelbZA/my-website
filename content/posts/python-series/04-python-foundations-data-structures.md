@@ -1,6 +1,6 @@
 ---
 title: "Part 4: Core Data Structures in Python"
-date: 2025-05-15
+date: 2025-05-20
 slug: python-core-data-structures
 description: "Explore Python's essential data structures: lists, tuples, dictionaries, and sets. Learn creation methods, manipulation techniques, and guidelines for choosing the right structure for your tasks."
 tags: ["python", "data structures", "lists", "tuples", "dictionaries", "sets", "collections"]
@@ -11,16 +11,16 @@ showToc: true
 TocOpen: false
 draft: false
 #weight: 4
-cover:
-    image: "images/python-series/part4-cover.jpg"
-    alt: "Python Data Structures"
-    caption: "Organizing data efficiently in Python"
-    relative: false
+#cover:
+    #image: "images/python-series/part4-cover.jpg"
+    #alt: "Python Data Structures"
+    #caption: "Organising data efficiently in Python"
+    #relative: false
 ---
 
 # Post 4: Core Data Structures
 
-Welcome to the fourth post in my Python learning journey. So far, we've installed Python, set up a development environment, and explored the basic syntax. Now it's time to dive deeper into Python's core data structures—the building blocks you'll use to organize and manipulate data in your programs.
+Welcome to the fourth post in my Python learning journey. So far, we've installed Python, set up a development environment, and explored the basic syntax. Now it's time to dive deeper into Python's core data structures; the building blocks you'll use to organise and manipulate data in your programs.
 
 In this post, we'll cover:
 
@@ -30,7 +30,7 @@ In this post, we'll cover:
 4. Sets: Unique value collections
 5. Choosing the right data structure
 
-As a finance professional, I've found these data structures similar to concepts we use every day—lists are like columns in spreadsheets, dictionaries resemble lookup tables, and sets are perfect for tracking unique items like account codes.
+I've found these data structures similar to concepts we use every day; lists are like columns in spreadsheets, dictionaries resemble lookup tables, and sets are perfect for tracking unique items like account codes.
 
 ---
 
@@ -397,7 +397,7 @@ unique_chars = set("mississippi")  # {'m', 'i', 's', 'p'}
 ### 4.2 Set Operations
 
 ```python
-employees_dept_a = {"Alice", "Bob", "Charlie", "David"}
+employees_dept_a = {"Jess", "Bob", "Charlie", "David"}
 employees_dept_b = {"Charlie", "David", "Eve", "Frank"}
 candidates = {"Eve", "Grace", "Heidi"}
 
@@ -440,8 +440,8 @@ transactions = [1001, 1002, 1001, 1003, 1002, 1004]
 unique_transactions = list(set(transactions))
 
 # Membership testing (very efficient for large datasets)
-if "Alice" in employees_dept_a:
-    print("Alice works in Department A")
+if "Jess" in employees_dept_a:
+    print("Jess works in Department A")
 
 # Finding common elements
 customer_ids = {101, 102, 103, 104, 105}
@@ -541,7 +541,7 @@ Let's apply these data structures by creating a simple portfolio tracker:
 
 ```python
 def portfolio_tracker():
-    # Initialize portfolio using a dictionary of dictionaries
+    # Initialise portfolio using a dictionary of dictionaries
     portfolio = {}
     transactions = []
     
@@ -691,7 +691,7 @@ This example demonstrates:
 
 ## What's Next?
 
-Now that we've covered Python's core data structures, the next post will explore functions, modules, and file I/O—essential tools for organizing your code and working with external data.
+Now that we've covered Python's core data structures, the next post will explore functions, modules, and file I/O—essential tools for organising your code and working with external data.
 
 Stay tuned for Post 5: Functions, Modules & File I/O!
 
