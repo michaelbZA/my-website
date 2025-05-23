@@ -117,6 +117,26 @@
     color: var(--accent);
 }
 
+/* Add these new styles */
+#theme-toggle {
+    font-size: 26px;
+    margin: auto 4px;
+}
+
+body.dark #moon {
+    vertical-align: middle;
+    display: none;
+}
+
+body:not(.dark) #sun {
+    display: none;
+}
+
+#moon, #sun {
+    display: inline-block;
+    vertical-align: middle;
+}
+
 /* Search */
 .search-wrapper {
     position: relative;

@@ -135,7 +135,7 @@ params:
   defaultTheme: dark
 
   # Disable the theme switcher button.
-  disableThemeToggle: true
+  disableThemeToggle: false
 
   # Explicitly set the build environment. Used for conditional logic in templates.
   # 'production' applies settings like minifcation, 'development' is for 'hugo server'.

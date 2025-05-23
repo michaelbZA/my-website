@@ -1,6 +1,6 @@
 ---
 title: "Lean Financial Reporting That Executives Actually Read"
-date: 2025-05-24
+date: 2025-05-23
 slug: lean-financial-reporting-executive-dashboard
 description: "Creating concise, actionable financial reports using Parmenter's one-page methodology"
 tags: ["financial reporting", "executive dashboards", "David Parmenter", "data visualisation"]
@@ -69,7 +69,7 @@ At the center of Parmenter's methodology is the dashboard concept—a single-pag
 
 1. **5-second rule**: Key messages should be absorbed in 5 seconds
 2. **Trend emphasis**: Show patterns over time, not just current values
-3. **Exception highlighting**: Use color and formatting to flag issues
+3. **Exception highlighting**: Use colour and formatting to flag issues
 4. **Standardised layout**: Consistent positioning of information
 5. **Forward projection**: Include forecast elements
 
@@ -174,7 +174,7 @@ Eliminate what Tufte calls "chart junk"—decorative elements that don't convey 
 - Remove grid lines unless essential
 - Eliminate 3D effects
 - Minimise text labels
-- Use subtle background colors if any
+- Use subtle background colours if any
 
 ### 2. Choose Appropriate Chart Types
 
@@ -187,13 +187,13 @@ Different data requires different visualisation:
 
 As Few notes, "The most common reporting mistake is using the wrong chart type for the data" (Few, 2006).
 
-### 3. Color Psychology
+### 3. Colour Psychology
 
-Use color strategically:
+Use colour strategically:
 - Red/yellow/green for performance indicators
 - Blue for neutral information
-- Consistent color scheme across all reports
-- No more than 5-7 colors total
+- Consistent colour scheme across all reports
+- No more than 5-7 colours total
 
 ### 4. Typography Matters
 

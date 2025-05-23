@@ -1,4 +1,245 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>David Parmenter on Michael Brunger</title><link>https://michaelbrunger.com/tags/david-parmenter/</link><description>Recent content in David Parmenter on Michael Brunger</description><image><title>Michael Brunger</title><url>https://michaelbrunger.com/site-feature-image.jpg</url><link>https://michaelbrunger.com/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Fri, 09 May 2025 14:44:55 +0100</lastBuildDate><atom:link href="https://michaelbrunger.com/tags/david-parmenter/index.xml" rel="self" type="application/rss+xml"/><item><title>KPIs That Actually Drive Performance</title><link>https://michaelbrunger.com/effective-kpis-drive-business-performance/</link><pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/effective-kpis-drive-business-performance/</guid><description>Implementing effective KPIs using David Parmenter&amp;#39;s methodology for meaningful performance measurement</description><content:encoded><![CDATA[<h2 id="the-kpi-crisis-in-modern-business">The KPI Crisis in Modern Business</h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>David Parmenter on Michael Brunger</title><link>https://michaelbrunger.com/tags/david-parmenter/</link><description>Recent content in David Parmenter on Michael Brunger</description><image><title>Michael Brunger</title><url>https://michaelbrunger.com/site-feature-image.jpg</url><link>https://michaelbrunger.com/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Tue, 20 May 2025 10:17:00 +0100</lastBuildDate><atom:link href="https://michaelbrunger.com/tags/david-parmenter/index.xml" rel="self" type="application/rss+xml"/><item><title>Lean Financial Reporting That Executives Actually Read</title><link>https://michaelbrunger.com/lean-financial-reporting-executive-dashboard/</link><pubDate>Fri, 23 May 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/lean-financial-reporting-executive-dashboard/</guid><description>Creating concise, actionable financial reports using Parmenter&amp;#39;s one-page methodology</description><content:encoded><![CDATA[<h2 id="the-reporting-paradox">The Reporting Paradox</h2>
+<p>Finance teams often find themselves caught in a frustrating paradox: they invest enormous effort into producing detailed reports that executives barely read. A survey by Financial Executives International found that finance departments spend up to 30% of their time on report preparation, yet 65% of executives admit to reading only summaries or conclusions (FEI, 2023).</p>
+<p>As David Parmenter observes in &ldquo;Winning CFOs: Implementing and Applying Better Practices&rdquo; (2012), &ldquo;Most finance teams are producing a monthly financial pack that is more like a doorstop than a decision support tool.&rdquo; This disconnect wastes valuable resources and misses the critical opportunity for finance to influence decision-making.</p>
+<h2 id="the-parmenter-approach-to-lean-reporting">The Parmenter Approach to Lean Reporting</h2>
+<p>David Parmenter&rsquo;s reporting methodology represents a radical departure from traditional financial reporting practices. At its core is a simple but powerful principle: &ldquo;Report the numbers that matter in a way that triggers action&rdquo; (Parmenter, 2012).</p>
+<h3 id="core-elements-of-parmenters-reporting-framework">Core Elements of Parmenter&rsquo;s Reporting Framework</h3>
+<ol>
+<li><strong>One-page reporting</strong>: Distilling complex information to a single page</li>
+<li><strong>Exception reporting</strong>: Highlighting only significant variances</li>
+<li><strong>Visual impact</strong>: Using graphs, charts, and visual cues instead of tables</li>
+<li><strong>Forward focus</strong>: Emphasising forecasts over historical results</li>
+<li><strong>Timeliness</strong>: Delivering information when it can still influence decisions</li>
+</ol>
+<p>As Parmenter states, &ldquo;A finance team should aim to replace their fifty-page monthly report with a series of one-page reports&rdquo; (Parmenter, 2010). This approach aligns with cognitive research showing decision-makers can effectively process limited information at once—typically 5-9 data points (Miller, 1956).</p>
+<h2 id="why-traditional-financial-reports-fail">Why Traditional Financial Reports Fail</h2>
+<h3 id="problem-1-information-overload">Problem 1: Information Overload</h3>
+<p>Traditional reports often provide exhaustive detail, overwhelming readers. Research by the American Psychological Association found that excessive information actually impairs decision quality (Schwartz, 2016).</p>
+<p>According to Edward Tufte, information design expert, &ldquo;There is no more powerful way to selectively destroy information than to present too much of it&rdquo; (Tufte, 2001).</p>
+<h3 id="problem-2-format-over-function">Problem 2: Format Over Function</h3>
+<p>Many reports follow accounting formats rather than decision-making formats. Parmenter notes, &ldquo;Traditional reports are structured for accountants, not for operational decision-makers&rdquo; (Parmenter, 2010).</p>
+<h3 id="problem-3-backward-focus">Problem 3: Backward Focus</h3>
+<p>Most financial reports emphasise what happened rather than what should happen next. As noted by Hope and Fraser in &ldquo;Beyond Budgeting&rdquo; (2003), &ldquo;Traditional reporting is like driving by looking in the rearview mirror.&rdquo;</p>
+<h3 id="problem-4-delayed-delivery">Problem 4: Delayed Delivery</h3>
+<p>Monthly cycles create inherent information lags. By the time data is reported, the opportunity for timely intervention has often passed. Parmenter emphasises that &ldquo;A late report, no matter how detailed, is of limited value&rdquo; (Parmenter, 2010).</p>
+<h3 id="problem-5-limited-context">Problem 5: Limited Context</h3>
+<p>Numbers without context rarely drive action. Research by the Corporate Executive Board found that executives value contextual insights more than raw data (CEB, 2018).</p>
+<h2 id="parmenters-one-page-reporting-methodology">Parmenter&rsquo;s One-Page Reporting Methodology</h2>
+<h3 id="the-dashboard-approach">The Dashboard Approach</h3>
+<p>At the center of Parmenter&rsquo;s methodology is the dashboard concept—a single-page visual summary focused on critical metrics. In &ldquo;Key Performance Indicators&rdquo; (2015), he outlines specific design principles:</p>
+<ol>
+<li><strong>5-second rule</strong>: Key messages should be absorbed in 5 seconds</li>
+<li><strong>Trend emphasis</strong>: Show patterns over time, not just current values</li>
+<li><strong>Exception highlighting</strong>: Use colour and formatting to flag issues</li>
+<li><strong>Standardised layout</strong>: Consistent positioning of information</li>
+<li><strong>Forward projection</strong>: Include forecast elements</li>
+</ol>
+<h3 id="the-report-in-one-page-structure">The &ldquo;Report in One Page&rdquo; Structure</h3>
+<p>Parmenter recommends a specific one-page format (Parmenter, 2012):</p>
+<ul>
+<li><strong>Top section</strong>: 3-5 critical KRIs with trend lines (25% of page)</li>
+<li><strong>Middle section</strong>: 4-6 exception highlights requiring attention (50% of page)</li>
+<li><strong>Bottom section</strong>: Brief narrative highlighting key insights (25% of page)</li>
+</ul>
+<p>This structure has been empirically tested to match executive information consumption patterns (Parmenter, 2015).</p>
+<h2 id="implementing-lean-reporting-a-step-by-step-approach">Implementing Lean Reporting: A Step-by-Step Approach</h2>
+<h3 id="step-1-identify-information-needs">Step 1: Identify Information Needs</h3>
+<p>Begin by understanding what decisions your reports should inform. As financial reporting expert Randall Bolten notes in &ldquo;Painting with Numbers&rdquo; (2012), &ldquo;Effective reporting starts with understanding how the information will be used.&rdquo;</p>
+<ul>
+<li><strong>Conduct stakeholder interviews</strong>: What decisions do they make monthly/weekly?</li>
+<li><strong>Review meeting minutes</strong>: What recurring questions arise?</li>
+<li><strong>Analyse information requests</strong>: What ad-hoc analyses are frequently requested?</li>
+</ul>
+<h3 id="step-2-audit-current-reports">Step 2: Audit Current Reports</h3>
+<p>Before creating new reports, evaluate existing ones. Parmenter recommends a structured audit (Parmenter, 2012):</p>
+<ul>
+<li><strong>Volume analysis</strong>: Count pages, charts, tables in current reporting</li>
+<li><strong>Usage tracking</strong>: Monitor which sections are referenced in meetings</li>
+<li><strong>Time allocation</strong>: Track preparation time for each report element</li>
+<li><strong>Decision impact</strong>: Identify which reports have triggered action</li>
+</ul>
+<h3 id="step-3-design-prototype-dashboards">Step 3: Design Prototype Dashboards</h3>
+<p>Following Parmenter&rsquo;s one-page methodology, create prototype dashboards for each major reporting area:</p>
+<ul>
+<li><strong>Executive summary</strong>: Overall organisational performance</li>
+<li><strong>Operational dashboards</strong>: Department-specific metrics</li>
+<li><strong>Project trackers</strong>: Status of major initiatives</li>
+<li><strong>Cash performance</strong>: Treasury and working capital</li>
+</ul>
+<p>Use visualisation best practices as outlined by data visualisation expert Stephen Few in &ldquo;Information Dashboard Design&rdquo; (2006): minimise chart junk, use appropriate chart types, and ensure visual clarity.</p>
+<h3 id="step-4-implement-exception-reporting">Step 4: Implement Exception Reporting</h3>
+<p>Exception reporting—highlighting only significant variances—is central to Parmenter&rsquo;s approach. Implement this by:</p>
+<ul>
+<li><strong>Establishing thresholds</strong>: Define what constitutes a significant variance</li>
+<li><strong>Creating alerts</strong>: Develop visual indicators for exceptions</li>
+<li><strong>Automating detection</strong>: Use technology to flag exceptions automatically</li>
+</ul>
+<p>As Parmenter emphasises, &ldquo;Executives don&rsquo;t need to know everything is fine—they need to know what requires their attention&rdquo; (Parmenter, 2012).</p>
+<h3 id="step-5-build-forecasting-elements">Step 5: Build Forecasting Elements</h3>
+<p>Expand reporting from historical focus to include forward-looking elements. According to Steve Player and Steve Morlidge in &ldquo;Future Ready&rdquo; (2010), effective forecasts share these characteristics:</p>
+<ul>
+<li><strong>Rolling horizon</strong>: Always maintain same forecast distance</li>
+<li><strong>Driver-based</strong>: Built on operational rather than financial drivers</li>
+<li><strong>Scenario-enabled</strong>: Show range of possible outcomes</li>
+<li><strong>Frequently updated</strong>: Refresh as new information becomes available</li>
+</ul>
+<h3 id="step-6-create-delivery-cadence">Step 6: Create Delivery Cadence</h3>
+<p>Implement appropriate reporting frequencies based on metric volatility and decision timelines. Parmenter suggests (2015):</p>
+<ul>
+<li><strong>Daily</strong>: Critical operational metrics (production, sales, cash)</li>
+<li><strong>Weekly</strong>: Performance indicators and project status</li>
+<li><strong>Monthly</strong>: KRIs and financial summaries</li>
+<li><strong>Quarterly</strong>: Strategic reviews and trend analysis</li>
+</ul>
+<h3 id="step-7-continuously-improve">Step 7: Continuously Improve</h3>
+<p>Implement a formal feedback mechanism to refine reporting. As Parmenter notes, &ldquo;The perfect dashboard is never created on the first attempt&rdquo; (Parmenter, 2012).</p>
+<h2 id="case-study-transforming-financial-reporting-at-a-retail-chain">Case Study: Transforming Financial Reporting at a Retail Chain</h2>
+<p><em>(Note: This case study is adapted from examples in Parmenter&rsquo;s publications)</em></p>
+<p>A multi-location retail business struggled with information overload. Their monthly reporting package exceeded 45 pages and took 15 days to produce after month-end. Following Parmenter&rsquo;s methodology:</p>
+<ol>
+<li>They interviewed key decision-makers about information needs</li>
+<li>Created three one-page dashboards (executive, store operations, inventory)</li>
+<li>Implemented a 3-tier reporting system:
+<ul>
+<li>Daily sales and inventory report (automated)</li>
+<li>Weekly performance dashboard (Tuesday delivery)</li>
+<li>Monthly executive summary (5 days after month-end)</li>
+</ul>
+</li>
+</ol>
+<p>Results after implementation:</p>
+<ul>
+<li>Report preparation time decreased by 70%</li>
+<li>Executive engagement with financial information increased</li>
+<li>Decision response time improved from weeks to days</li>
+<li>Finance team redirected 25 hours per month to analysis</li>
+</ul>
+<h2 id="visual-design-principles-for-financial-information">Visual Design Principles for Financial Information</h2>
+<p>Effective reporting isn&rsquo;t just about content—it&rsquo;s about presentation. Drawing from Edward Tufte&rsquo;s &ldquo;Visual Display of Quantitative Information&rdquo; (2001) and Stephen Few&rsquo;s work, consider these design principles:</p>
+<h3 id="1-signal-to-noise-ratio">1. Signal-to-Noise Ratio</h3>
+<p>Eliminate what Tufte calls &ldquo;chart junk&rdquo;—decorative elements that don&rsquo;t convey information:</p>
+<ul>
+<li>Remove grid lines unless essential</li>
+<li>Eliminate 3D effects</li>
+<li>Minimise text labels</li>
+<li>Use subtle background colours if any</li>
+</ul>
+<h3 id="2-choose-appropriate-chart-types">2. Choose Appropriate Chart Types</h3>
+<p>Different data requires different visualisation:</p>
+<ul>
+<li><strong>Time series</strong>: Line charts</li>
+<li><strong>Composition</strong>: Stacked bar charts</li>
+<li><strong>Comparison</strong>: Side-by-side bars</li>
+<li><strong>Correlation</strong>: Scatter plots</li>
+<li><strong>Distribution</strong>: Histograms</li>
+</ul>
+<p>As Few notes, &ldquo;The most common reporting mistake is using the wrong chart type for the data&rdquo; (Few, 2006).</p>
+<h3 id="3-colour-psychology">3. Colour Psychology</h3>
+<p>Use colour strategically:</p>
+<ul>
+<li>Red/yellow/green for performance indicators</li>
+<li>Blue for neutral information</li>
+<li>Consistent colour scheme across all reports</li>
+<li>No more than 5-7 colours total</li>
+</ul>
+<h3 id="4-typography-matters">4. Typography Matters</h3>
+<p>Text elements should enhance readability:</p>
+<ul>
+<li>Use sans-serif fonts for screen display</li>
+<li>Establish clear hierarchy with font sizes</li>
+<li>Left-align most text</li>
+<li>Right-align numbers for comparison</li>
+</ul>
+<h2 id="technology-enablers-for-lean-reporting">Technology Enablers for Lean Reporting</h2>
+<p>Modern tools make Parmenter&rsquo;s approach more achievable than ever:</p>
+<h3 id="data-visualisation-software">Data Visualisation Software</h3>
+<p>Tools like Tableau, Power BI, and Qlik provide:</p>
+<ul>
+<li>Interactive dashboards</li>
+<li>Data exploration capabilities</li>
+<li>Automated refreshes</li>
+<li>Exception highlighting</li>
+</ul>
+<h3 id="cloud-based-analytics">Cloud-Based Analytics</h3>
+<p>Cloud platforms offer advantages for distributed organisations:</p>
+<ul>
+<li>Real-time data access</li>
+<li>Mobile compatibility</li>
+<li>Collaborative analysis</li>
+<li>Centralised data governance</li>
+</ul>
+<h3 id="automated-data-integration">Automated Data Integration</h3>
+<p>ETL (Extract, Transform, Load) tools reduce manual effort:</p>
+<ul>
+<li>Scheduled data refreshes</li>
+<li>Cross-system integration</li>
+<li>Data cleansing automation</li>
+<li>Validation rules</li>
+</ul>
+<h2 id="the-financial-controllers-role-in-reporting-transformation">The Financial Controller&rsquo;s Role in Reporting Transformation</h2>
+<p>As financial controller, you are uniquely positioned to lead this transformation:</p>
+<ol>
+<li><strong>Challenge the status quo</strong>: Question every report and every page</li>
+<li><strong>Champion clarity</strong>: Advocate for users who need actionable information</li>
+<li><strong>Bridge functions</strong>: Connect financial data to operational context</li>
+<li><strong>Implement standards</strong>: Create reporting templates and guidelines</li>
+<li><strong>Measure impact</strong>: Track how reporting changes influence decisions</li>
+</ol>
+<p>As Parmenter emphasises in &ldquo;The Leading-Edge Manager&rsquo;s Guide to Success&rdquo; (2011), &ldquo;The finance team should be the organisation&rsquo;s leader in information presentation.&rdquo;</p>
+<h2 id="common-implementation-challenges">Common Implementation Challenges</h2>
+<h3 id="challenge-1-the-more-detail-mindset">Challenge 1: The &ldquo;More Detail&rdquo; Mindset</h3>
+<p>Some stakeholders believe more information is always better.</p>
+<p><strong>Solution</strong>: Parmenter suggests creating a &ldquo;drill-down&rdquo; capability—maintain the one-page summary but enable access to supporting detail on request.</p>
+<h3 id="challenge-2-weve-always-done-it-this-way">Challenge 2: &ldquo;We&rsquo;ve Always Done It This Way&rdquo;</h3>
+<p>Organisational inertia often preserves ineffective reporting.</p>
+<p><strong>Solution</strong>: Implement pilot projects with receptive stakeholders to demonstrate value, then use success stories to drive broader adoption.</p>
+<h3 id="challenge-3-system-limitations">Challenge 3: System Limitations</h3>
+<p>Legacy systems may not support modern visualisation.</p>
+<p><strong>Solution</strong>: Begin with manual dashboard creation while building the case for technology investment based on time savings.</p>
+<h3 id="challenge-4-skill-gaps">Challenge 4: Skill Gaps</h3>
+<p>Many finance teams lack data visualisation expertise.</p>
+<p><strong>Solution</strong>: Invest in targeted training on visualisation principles and tools. As Parmenter notes, &ldquo;This skill development pays immediate dividends&rdquo; (Parmenter, 2012).</p>
+<h2 id="self-assessment-how-lean-is-your-reporting">Self-Assessment: How Lean Is Your Reporting?</h2>
+<p>Evaluate your current reporting against these criteria:</p>
+<ol>
+<li>How many pages is your primary monthly financial report?</li>
+<li>What percentage of reported metrics are discussed in management meetings?</li>
+<li>How many days after period-end is your reporting available?</li>
+<li>What ratio of charts/graphics to tables exists in your reporting?</li>
+<li>Do your reports contain forward-looking elements?</li>
+<li>How often are reports actually referenced for decisions?</li>
+</ol>
+<p>The more your answers diverge from Parmenter&rsquo;s recommendations, the greater your opportunity for improvement.</p>
+<h2 id="action-plan-for-your-next-60-days">Action Plan for Your Next 60 Days</h2>
+<p>Based on Parmenter&rsquo;s implementation methodology (2012), consider these immediate actions:</p>
+<ol>
+<li><strong>Select one critical report</strong> to transform as a pilot</li>
+<li><strong>Interview three key users</strong> about their information needs</li>
+<li><strong>Create a one-page prototype</strong> using the Parmenter structure</li>
+<li><strong>Run parallel reporting</strong> (old and new) for one cycle</li>
+<li><strong>Gather feedback</strong> and refine</li>
+<li><strong>Document time savings</strong> and decision impact</li>
+<li><strong>Extend approach</strong> to additional reports</li>
+</ol>
+<h2 id="conclusion-from-reporting-to-insight">Conclusion: From Reporting to Insight</h2>
+<p>The transformation from traditional reporting to Parmenter&rsquo;s lean approach represents a fundamental shift in how finance delivers value. As he notes, &ldquo;It&rsquo;s not about producing less information—it&rsquo;s about producing more insight&rdquo; (Parmenter, 2015).</p>
+<p>By embracing these principles, financial controllers can escape the reporting treadmill and position finance as a true source of decision support.</p>
+<p>In our next post, we&rsquo;ll explore how to move beyond traditional budgeting to implement rolling forecasts that increase organisational agility and improve resource allocation.</p>
+<h2 id="references">References</h2>
+<p>Bolten, R. (2012). <em>Painting with Numbers: Presenting Financials and Other Numbers So People Will Understand You</em>. Wiley.</p>
+<p>Corporate Executive Board (CEB). (2018). <em>Finance Function Effectiveness Survey</em>. Gartner.</p>
+<p>Few, S. (2006). <em>Information Dashboard Design: The Effective Visual Communication of Data</em>. O&rsquo;Reilly Media.</p>
+<p>Financial Executives International (FEI). (2023). <em>Financial Reporting Practices Survey</em>. Financial Executives Research Foundation.</p>
+<p>Hope, J., &amp; Fraser, R. (2003). <em>Beyond Budgeting: How Managers Can Break Free from the Annual Performance Trap</em>. Harvard Business Press.</p>
+<p>Miller, G. A. (1956). The magical number seven, plus or minus two: Some limits on our capacity for processing information. <em>Psychological Review, 63</em>(2), 81–97.</p>
+<p>Parmenter, D. (2010). <em>Key Performance Indicators: Developing, Implementing, and Using Winning KPIs (2nd ed.)</em>. John Wiley &amp; Sons.</p>
+<p>Parmenter, D. (2011). <em>The Leading-Edge Manager&rsquo;s Guide to Success: Strategies and Better Practices</em>. John Wiley &amp; Sons.</p>
+<p>Parmenter, D. (2012). <em>Winning CFOs: Implementing and Applying Better Practices</em>. John Wiley &amp; Sons.</p>
+<p>Parmenter, D. (2015). <em>Key Performance Indicators: Developing, Implementing, and Using Winning KPIs (3rd ed.)</em>. John Wiley &amp; Sons.</p>
+<p>Player, S., &amp; Morlidge, S. (2010). <em>Future Ready: How to Master Business Forecasting</em>. Wiley.</p>
+<p>Schwartz, B. (2016). The Paradox of Choice: Why More Is Less. <em>Ecco Press</em>.</p>
+<p>Tufte, E. R. (2001). <em>The Visual Display of Quantitative Information (2nd ed.)</em>. Graphics Press.</p>
+]]></content:encoded></item><item><title>KPIs That Actually Drive Performance</title><link>https://michaelbrunger.com/effective-kpis-drive-business-performance/</link><pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/effective-kpis-drive-business-performance/</guid><description>Implementing effective KPIs using David Parmenter&amp;#39;s methodology for meaningful performance measurement</description><content:encoded><![CDATA[<h2 id="the-kpi-crisis-in-modern-business">The KPI Crisis in Modern Business</h2>
 <p>Most organisations are drowning in metrics while starving for insight. According to research by MIT Sloan Management Review, over 70% of executives believe their KPI systems don&rsquo;t provide the strategic guidance they need (Neely &amp; Bourne, 2020). This disconnect illustrates a fundamental problem: despite the prevalence of performance measurement systems, few organisations have metrics that genuinely drive improvement.</p>
 <p>As David Parmenter explains in his seminal work &ldquo;Key Performance Indicators: Developing, Implementing, and Using Winning KPIs&rdquo; (2015), &ldquo;Most organisations have been measuring the wrong things in the wrong way.&rdquo; The result is what he calls &ldquo;measurement dysfunction&rdquo;—where metrics create perverse incentives, drive suboptimal behaviors, or simply fail to influence performance at all.</p>
 <h2 id="parmenters-revolutionary-kpi-framework">Parmenter&rsquo;s Revolutionary KPI Framework</h2>
