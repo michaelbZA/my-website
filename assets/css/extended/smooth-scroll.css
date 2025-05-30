@@ -28,4 +28,11 @@ html {
     html {
         scroll-behavior: auto;
     }
+}
+
+/* For Firefox */
+.custom-scroll, 
+body {
+  scrollbar-width: thin; /* or 'auto' */
+  scrollbar-color: var(--tertiary) var(--theme); /* thumb color, track color */
 } 

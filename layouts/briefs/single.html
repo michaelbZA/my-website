@@ -1,0 +1,73 @@
+{{ define "main" }}
+  {{ partial "reading-progress.html" . }}
+
+      <!-- Article Meta Information -->
+      <div class="flex items-center gap-4 mb-6">
+        {{ with index .Params.tags 0 }}
+          <span class="inline-flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-sm font-semibold rounded-full shadow-sm">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" width="16" height="16">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            {{ . | title }}
+          </span>
+        {{ end }}
+        
+        <time class="flex items-center gap-2 text-slate-600 bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20" datetime="{{ .Date.Format "2006-01-02" }}">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" width="16" height="16">
+            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+          </svg>
+          {{ .Date.Format "January 2, 2006" }}
+        </time>
+
+        {{ if .ReadingTime }}
+          <div class="flex items-center gap-2 text-slate-600 bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" width="16" height="16">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+            </svg>
+            <span>{{ .ReadingTime }} minute read</span>
+          </div>
+        {{ end }}
+      </div>
+
+  <!-- Enhanced Article Content -->
+  <article class="max-w-4xl mx-auto px-6 py-16">
+    <!-- Content with Better Typography -->
+    <div class="prose prose-lg prose-slate max-w-none
+                prose-headings:font-bold prose-headings:text-slate-900 prose-headings:tracking-tight
+                prose-h1:text-3xl prose-h1:mb-8 prose-h1:leading-tight
+                prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-3 prose-h2:border-b prose-h2:border-slate-200
+                prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4
+                prose-p:text-slate-700 prose-p:leading-relaxed prose-p:mb-6
+                prose-a:text-blue-600 prose-a:no-underline prose-a:font-medium hover:prose-a:underline hover:prose-a:text-blue-700
+                prose-strong:text-slate-900 prose-strong:font-semibold
+                prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:bg-blue-50 prose-blockquote:p-6 prose-blockquote:my-8 prose-blockquote:rounded-r-lg
+                prose-ul:my-6 prose-li:my-2 prose-li:text-slate-700
+                prose-code:bg-slate-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-slate-900 prose-code:font-mono prose-code:text-sm
+                custom-scroll">
+      {{ .Content }}
+    </div>
+
+    <!-- Article Footer with Actions -->
+    <footer class="mt-16 pt-8 border-t border-slate-200">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <!-- Back Navigation -->
+        <a href="/briefs/" class="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors group">
+          <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 20 20" width="16" height="16">
+            <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+          </svg>
+          <span class="font-medium">Back to All Briefs</span>
+        </a>
+      </div>
+
+      <!-- Updated Timestamp -->
+      <div class="mt-8 text-center">
+        <div class="inline-flex items-center gap-2 text-sm text-slate-500 bg-slate-50 px-4 py-2 rounded-full">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" width="16" height="16">
+            <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
+          </svg>
+          Last updated {{ .Date.Format "3:04 PM on Jan 2, 2006" }}
+        </div>
+      </div>
+    </footer>
+  </article>
+{{ end }}

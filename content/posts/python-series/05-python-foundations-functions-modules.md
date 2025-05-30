@@ -1,6 +1,6 @@
 ---
 title: "Part 5: Functions, Modules & File I/O in Python"
-date: 2025-05-29
+date: 2025-05-30
 slug: python-functions-modules-file-io
 description: "Learn how to define and use functions, organize code into modules, leverage Python's Standard Library, and perform file operations for reading and writing data."
 tags: ["python", "functions", "modules", "packages", "standard library", "file io", "file handling"]
@@ -18,17 +18,27 @@ draft: false
     #relative: false
 --- 
 
-Functions, Modules & File I/O in Python
-As a finance manager diving into Python, I've found these next concepts incredibly useful for organizing code and working with external data. Let's explore how Python handles functions, modules, and file operations - all essential skills for financial analysis and reporting.
-Defining and Calling Functions
+# Functions, Modules & File I/O in Python
+
+These next concepts incredibly useful for organising code and working with external data. Let's explore how Python handles functions, modules, and file operations - all essential skills for financial analysis and reporting.
+
+## Defining and Calling Functions
+
 Functions are reusable blocks of code that perform specific tasks. They help keep your code DRY (Don't Repeat Yourself) and make it more maintainable.
-Basic Function Syntax
-pythondef function_name(parameters):
+
+### Basic Function Syntax
+
+```python
+def function_name(parameters):
     """Docstring explaining what the function does."""
     # Function body
     return result  # Optional
+```
+
 Here's a simple function that calculates compound interest:
-pythondef calculate_compound_interest(principal, rate, time, compounds_per_year=1):
+
+```python
+def calculate_compound_interest(principal, rate, time, compounds_per_year=1):
     """
     Calculate compound interest.
     
@@ -42,8 +52,12 @@ pythondef calculate_compound_interest(principal, rate, time, compounds_per_year=
         The final amount after compound interest
     """
     return principal * (1 + rate/compounds_per_year)**(compounds_per_year*time)
+```
+
 Let's call this function:
-python# Calculate investment growth at 5% interest, compounded quarterly for 10 years
+
+```python
+# Calculate investment growth at 5% interest, compounded quarterly for 10 years
 initial_investment = 10000
 final_amount = calculate_compound_interest(
     principal=initial_investment, 
@@ -52,12 +66,21 @@ final_amount = calculate_compound_interest(
     compounds_per_year=4
 )
 print(f"${initial_investment} will grow to ${final_amount:.2f} after 10 years")
-Output:
+```
+
+**Output:**
+```
 $10000 will grow to $16470.09 after 10 years
-Function Arguments
+```
+
+### Function Arguments
+
 Python offers flexible ways to handle function arguments:
-Positional vs. Keyword Arguments
-python# Positional arguments (order matters)
+
+#### Positional vs. Keyword Arguments
+
+```python
+# Positional arguments (order matters)
 result1 = calculate_compound_interest(10000, 0.05, 10, 4)
 
 # Keyword arguments (order doesn't matter)
@@ -67,14 +90,24 @@ result2 = calculate_compound_interest(
     compounds_per_year=4,
     time=10
 )
-Default Parameter Values
-In our function, compounds_per_year=1 provides a default value if not specified:
-python# Using the default compounds_per_year (annual compounding)
+```
+
+#### Default Parameter Values
+
+In our function, `compounds_per_year=1` provides a default value if not specified:
+
+```python
+# Using the default compounds_per_year (annual compounding)
 annual_result = calculate_compound_interest(10000, 0.05, 10)
 print(f"With annual compounding: ${annual_result:.2f}")
-Variable Number of Arguments
+```
+
+#### Variable Number of Arguments
+
 For functions that need to accept varying numbers of arguments:
-python# *args collects extra positional arguments as a tuple
+
+```python
+# *args collects extra positional arguments as a tuple
 def sum_all_values(*args):
     """Sum any number of values."""
     return sum(args)
@@ -98,10 +131,16 @@ report = create_financial_report(
     profit_margin=0.37
 )
 print(report)
-Variable Scope and Namespaces
+```
+
+## Variable Scope and Namespaces
+
 Understanding scope is crucial for debugging and writing clean code.
-Local vs. Global Scope
-pythontotal_assets = 1000000  # Global variable
+
+### Local vs. Global Scope
+
+```python
+total_assets = 1000000  # Global variable
 
 def calculate_roi(profit):
     investment = 100000  # Local variable
@@ -112,8 +151,12 @@ print(f"Total assets: ${total_assets}")
 
 roi = calculate_roi(25000)
 print(f"ROI: {roi}%")
-Local variables exist only within their function. Global variables can be accessed inside functions, but to modify them, you need the global keyword:
-pythonbalance = 5000  # Global variable
+```
+
+Local variables exist only within their function. Global variables can be accessed inside functions, but to modify them, you need the `global` keyword:
+
+```python
+balance = 5000  # Global variable
 
 def deposit(amount):
     global balance  # Tell Python we want to modify the global variable
@@ -133,13 +176,22 @@ deposit(1000)
 print(f"After deposit: ${balance}")
 withdraw(2000)
 print(f"After withdrawal: ${balance}")
-Namespaces
-Python uses namespaces to organize names and avoid conflicts. Each module, function, and class has its own namespace.
-Organizing Code into Modules and Packages
-As your financial scripts grow, organizing code becomes essential.
-Modules
-A module is simply a .py file containing code. Let's create a financial utilities module:
-python# financial_utils.py
+```
+
+### Namespaces
+
+Python uses namespaces to organise names and avoid conflicts. Each module, function, and class has its own namespace.
+
+## Organising Code into Modules and Packages
+
+As your financial scripts grow, organising code becomes essential.
+
+### Modules
+
+A module is simply a `.py` file containing code. Let's create a financial utilities module:
+
+```python
+# financial_utils.py
 def calculate_roi(profit, investment):
     """Calculate Return on Investment as a percentage."""
     return (profit / investment) * 100
@@ -156,8 +208,12 @@ def calculate_npv(cash_flows, discount_rate):
     for t, cash_flow in enumerate(cash_flows):
         npv += cash_flow / (1 + discount_rate) ** t
     return npv
+```
+
 To use this module:
-python# main.py
+
+```python
+# main.py
 import financial_utils
 
 # Calculate ROI
@@ -170,28 +226,47 @@ print(f"ROI: {roi}%")
 cash_flows = [-100000, 30000, 35000, 45000, 50000]  # Initial investment + 4 years of returns
 npv = financial_utils.calculate_npv(cash_flows, 0.08)
 print(f"NPV: ${npv:.2f}")
+```
+
 You can also import specific functions:
-pythonfrom financial_utils import calculate_roi, calculate_npv
+
+```python
+from financial_utils import calculate_roi, calculate_npv
 
 # Now use without the module prefix
 roi = calculate_roi(12500, 50000)
-Packages
-Packages are directories containing multiple modules. They require an __init__.py file (which can be empty) to be recognized as packages.
+```
+
+### Packages
+
+Packages are directories containing multiple modules. They require an `__init__.py` file (which can be empty) to be recognised as packages.
+
+```
 finance_package/
 ├── __init__.py
 ├── analysis.py
 ├── reporting.py
 └── utils.py
+```
+
 Using packages:
-python# Import specific modules from a package
+
+```python
+# Import specific modules from a package
 from finance_package import analysis, reporting
 
 # Import specific functions from a module in a package
 from finance_package.utils import calculate_roi
-Exploring the Standard Library
+```
+
+## Exploring the Standard Library
+
 Python comes with a rich standard library. Here are some modules particularly useful for financial applications:
-Math Module
-pythonimport math
+
+### Math Module
+
+```python
+import math
 
 # Calculate loan payment using the PMT formula
 principal = 250000
@@ -203,8 +278,12 @@ num_payments = years * 12
 # Monthly payment formula
 payment = principal * (monthly_rate * math.pow(1 + monthly_rate, num_payments)) / (math.pow(1 + monthly_rate, num_payments) - 1)
 print(f"Monthly mortgage payment: ${payment:.2f}")
-Random Module
-pythonimport random
+```
+
+### Random Module
+
+```python
+import random
 
 # Simulate stock price movements (very simplified)
 starting_price = 100
@@ -219,8 +298,12 @@ for day in range(30):
 print(f"Starting price: ${starting_price:.2f}")
 print(f"Ending price: ${prices[-1]:.2f}")
 print(f"30-day return: {(prices[-1]/prices[0] - 1) * 100:.2f}%")
-Datetime Module
-pythonfrom datetime import datetime, timedelta
+```
+
+### Datetime Module
+
+```python
+from datetime import datetime, timedelta
 
 # Calculate business days between dates
 def business_days_between(start_date, end_date):
@@ -242,8 +325,12 @@ if today > fiscal_year_end:
 
 business_days = business_days_between(today, fiscal_year_end)
 print(f"Business days until fiscal year end: {business_days}")
-OS and Sys Modules
-pythonimport os
+```
+
+### OS and Sys Modules
+
+```python
+import os
 import sys
 
 # Get the current working directory (useful for file paths)
@@ -259,27 +346,44 @@ for file in excel_files:
 # Get Python version and platform information
 print(f"Python version: {sys.version}")
 print(f"Platform: {sys.platform}")
-Reading from/Writing to Text Files
+```
+
+## Reading from/Writing to Text Files
+
 File operations are essential for financial data analysis, reporting, and automation.
-Opening and Closing Files
+
+### Opening and Closing Files
+
 The basic pattern is:
-python# Open a file in read mode
+
+```python
+# Open a file in read mode
 file = open('data.txt', 'r')
 # Do something with the file
 content = file.read()
 # Close the file
 file.close()
-However, this approach has problems if an error occurs before close(). The preferred way is using the with statement:
-The with Statement
-python# Automatically handles proper closing of the file
+```
+
+However, this approach has problems if an error occurs before `close()`. The preferred way is using the `with` statement:
+
+### The with Statement
+
+```python
+# Automatically handles proper closing of the file
 with open('data.txt', 'r') as file:
     content = file.read()
     # File processing here
 
 # File is automatically closed when the block ends
-Reading Text Files
+```
+
+### Reading Text Files
+
 Let's work with a sample CSV file containing financial transactions:
-python# Sample contents of transactions.csv:
+
+```python
+# Sample contents of transactions.csv:
 # date,description,amount
 # 2025-01-15,Office supplies,-129.99
 # 2025-01-18,Client payment,1500.00
@@ -291,12 +395,16 @@ with open('transactions.csv', 'r') as file:
     content = file.read()
     print("File contents:")
     print(content)
+```
+
 Reading line by line:
-pythonwith open('transactions.csv', 'r') as file:
+
+```python
+with open('transactions.csv', 'r') as file:
     # Skip header
     header = file.readline()
     
-    # Initialize counters
+    # Initialise counters
     total_income = 0
     total_expenses = 0
     
@@ -316,9 +424,14 @@ pythonwith open('transactions.csv', 'r') as file:
     print(f"Total income: ${total_income:.2f}")
     print(f"Total expenses: ${total_expenses:.2f}")
     print(f"Net cash flow: ${total_income + total_expenses:.2f}")
-Writing to Text Files
+```
+
+### Writing to Text Files
+
 Let's create a simple financial report:
-python# Sample transaction data
+
+```python
+# Sample transaction data
 transactions = [
     {"date": "2025-01-15", "description": "Office supplies", "amount": -129.99},
     {"date": "2025-01-18", "description": "Client payment", "amount": 1500.00},
@@ -353,17 +466,22 @@ with open('financial_report.txt', 'w') as report_file:
     report_file.write(f"Net Cash Flow:   ${net_cash_flow:.2f}\n")
 
 print("Financial report generated: financial_report.txt")
-Handling Different File Modes
+```
 
-'r': Read (default)
-'w': Write (creates new file or truncates existing)
-'a': Append (adds to end of file)
-'r+': Read and write
-'b': Binary mode (used with other modes, e.g., 'rb')
+### Handling Different File Modes
 
-Working with CSV Files
-While you can process CSV files manually as shown above, Python's csv module makes it easier:
-pythonimport csv
+- `'r'`: Read (default)
+- `'w'`: Write (creates new file or truncates existing)
+- `'a'`: Append (adds to end of file)
+- `'r+'`: Read and write
+- `'b'`: Binary mode (used with other modes, e.g., `'rb'`)
+
+## Working with CSV Files
+
+While you can process CSV files manually as shown above, Python's `csv` module makes it easier:
+
+```python
+import csv
 
 # Reading CSV
 with open('transactions.csv', 'r') as file:
@@ -404,14 +522,18 @@ with open('budget_forecast.csv', 'w', newline='') as file:
         })
 
 print("Budget forecast generated: budget_forecast.csv")
-Practical Example: Expense Analyzer
+```
+
+## Practical Example: Expense Analyser
+
 Let's combine everything we've learned into a practical financial tool that:
 
-Reads expense data from a CSV file
-Categorizes and analyzes expenses
-Generates a report with summary statistics
+1. Reads expense data from a CSV file
+2. Categorises and analyses expenses
+3. Generates a report with summary statistics
 
-pythonimport csv
+```python
+import csv
 from datetime import datetime
 import os
 
@@ -509,7 +631,7 @@ def main():
             writer.writerow(['date', 'category', 'description', 'amount'])
             writer.writerow(['2025-01-05', 'Office', 'Printer paper', 24.99])
             writer.writerow(['2025-01-10', 'Software', 'Accounting software', 89.99])
-            writer.writerow(['2025-01-15', 'Office', 'Desk organizer', 32.50])
+            writer.writerow(['2025-01-15', 'Office', 'Desk organiser', 32.50])
             writer.writerow(['2025-01-18', 'Travel', 'Client meeting transportation', 45.75])
             writer.writerow(['2025-01-22', 'Software', 'Cloud storage subscription', 9.99])
             writer.writerow(['2025-01-25', 'Meals', 'Team lunch', 87.50])
@@ -533,15 +655,20 @@ def main():
 
 if __name__ == "__main__":
     main()
+```
+
 This script demonstrates:
 
-Function definitions with docstrings
-File I/O with the with statement
-CSV processing
-Module imports and usage
-Error handling
+- Function definitions with docstrings
+- File I/O with the `with` statement
+- CSV processing
+- Module imports and usage
+- Error handling
 
-Conclusion
+## Conclusion
+
 Functions, modules, and file I/O form the backbone of most Python applications, especially for financial tasks. By mastering these concepts, you'll be well-equipped to build tools for financial analysis, reporting, and automation.
+
 In the next post, we'll explore virtual environments and package management, which will help you manage dependencies for larger projects.
-Practice Exercise: Try extending the expense analyzer to calculate monthly trends or generate a simple visualization of spending by category. This will help reinforce the concepts we've covered while building something useful for your financial toolkit.
+
+**Practice Exercise:** Try extending the expense analyser to calculate monthly trends or generate a simple visualisation of spending by category. This will help reinforce the concepts we've covered while building something useful for your financial toolkit.

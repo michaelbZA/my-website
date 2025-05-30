@@ -1,482 +1,528 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>File Handling on Michael Brunger</title><link>http://localhost:1313/tags/file-handling/</link><description>Recent content in File Handling on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Fri, 09 May 2025 14:44:55 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/file-handling/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 5: Functions, Modules &amp; File I/O in Python</title><link>http://localhost:1313/python-functions-modules-file-io/</link><pubDate>Thu, 29 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/python-functions-modules-file-io/</guid><description>Learn how to define and use functions, organize code into modules, leverage Python&amp;#39;s Standard Library, and perform file operations for reading and writing data.</description><content:encoded><![CDATA[<p>Functions, Modules &amp; File I/O in Python
-As a finance manager diving into Python, I&rsquo;ve found these next concepts incredibly useful for organizing code and working with external data. Let&rsquo;s explore how Python handles functions, modules, and file operations - all essential skills for financial analysis and reporting.
-Defining and Calling Functions
-Functions are reusable blocks of code that perform specific tasks. They help keep your code DRY (Don&rsquo;t Repeat Yourself) and make it more maintainable.
-Basic Function Syntax
-pythondef function_name(parameters):
-&ldquo;&ldquo;&ldquo;Docstring explaining what the function does.&rdquo;&rdquo;&rdquo;
-# Function body
-return result  # Optional
-Here&rsquo;s a simple function that calculates compound interest:
-pythondef calculate_compound_interest(principal, rate, time, compounds_per_year=1):
-&quot;&quot;&quot;
-Calculate compound interest.</p>
-<pre><code>Args:
-    principal: Initial investment amount
-    rate: Annual interest rate (as decimal, e.g., 0.05 for 5%)
-    time: Time period in years
-    compounds_per_year: Number of times interest compounds per year (default=1)
-
-Returns:
-    The final amount after compound interest
-&quot;&quot;&quot;
-return principal * (1 + rate/compounds_per_year)**(compounds_per_year*time)
-</code></pre>
-<p>Let&rsquo;s call this function:
-python# Calculate investment growth at 5% interest, compounded quarterly for 10 years
-initial_investment = 10000
-final_amount = calculate_compound_interest(
-principal=initial_investment,
-rate=0.05,
-time=10,
-compounds_per_year=4
-)
-print(f&quot;${initial_investment} will grow to ${final_amount:.2f} after 10 years&quot;)
-Output:
-$10000 will grow to $16470.09 after 10 years
-Function Arguments
-Python offers flexible ways to handle function arguments:
-Positional vs. Keyword Arguments
-python# Positional arguments (order matters)
-result1 = calculate_compound_interest(10000, 0.05, 10, 4)</p>
-<h1 id="keyword-arguments-order-doesnt-matter">Keyword arguments (order doesn&rsquo;t matter)</h1>
-<p>result2 = calculate_compound_interest(
-rate=0.05,
-principal=10000,
-compounds_per_year=4,
-time=10
-)
-Default Parameter Values
-In our function, compounds_per_year=1 provides a default value if not specified:
-python# Using the default compounds_per_year (annual compounding)
-annual_result = calculate_compound_interest(10000, 0.05, 10)
-print(f&quot;With annual compounding: ${annual_result:.2f}&quot;)
-Variable Number of Arguments
-For functions that need to accept varying numbers of arguments:
-python# *args collects extra positional arguments as a tuple
-def sum_all_values(*args):
-&ldquo;&ldquo;&ldquo;Sum any number of values.&rdquo;&rdquo;&rdquo;
-return sum(args)</p>
-<h1 id="kwargs-collects-extra-keyword-arguments-as-a-dictionary">**kwargs collects extra keyword arguments as a dictionary</h1>
-<p>def create_financial_report(report_date, **kwargs):
-&ldquo;&ldquo;&ldquo;Create a financial report with flexible data points.&rdquo;&rdquo;&rdquo;
-report = {&ldquo;date&rdquo;: report_date}
-report.update(kwargs)
-return report</p>
-<h1 id="example-usage">Example usage</h1>
-<p>total = sum_all_values(100, 250, 300, 75)
-print(f&quot;Total: ${total}&quot;)</p>
-<p>report = create_financial_report(
-&ldquo;2025-04-28&rdquo;,
-revenue=150000,
-expenses=95000,
-net_profit=55000,
-profit_margin=0.37
-)
-print(report)
-Variable Scope and Namespaces
-Understanding scope is crucial for debugging and writing clean code.
-Local vs. Global Scope
-pythontotal_assets = 1000000  # Global variable</p>
-<p>def calculate_roi(profit):
-investment = 100000  # Local variable
-return profit / investment * 100</p>
-<h1 id="investment-is-not-accessible-here">investment is not accessible here</h1>
-<p>print(f&quot;Total assets: ${total_assets}&quot;)</p>
-<p>roi = calculate_roi(25000)
-print(f&quot;ROI: {roi}%&quot;)
-Local variables exist only within their function. Global variables can be accessed inside functions, but to modify them, you need the global keyword:
-pythonbalance = 5000  # Global variable</p>
-<p>def deposit(amount):
-global balance  # Tell Python we want to modify the global variable
-balance += amount
-return balance</p>
-<p>def withdraw(amount):
-global balance
-if balance &gt;= amount:
-balance -= amount
-return balance
-else:
-return &ldquo;Insufficient funds&rdquo;</p>
-<p>print(f&quot;Initial balance: ${balance}&quot;)
-deposit(1000)
-print(f&quot;After deposit: ${balance}&quot;)
-withdraw(2000)
-print(f&quot;After withdrawal: ${balance}&quot;)
-Namespaces
-Python uses namespaces to organize names and avoid conflicts. Each module, function, and class has its own namespace.
-Organizing Code into Modules and Packages
-As your financial scripts grow, organizing code becomes essential.
-Modules
-A module is simply a .py file containing code. Let&rsquo;s create a financial utilities module:
-python# financial_utils.py
-def calculate_roi(profit, investment):
-&ldquo;&ldquo;&ldquo;Calculate Return on Investment as a percentage.&rdquo;&rdquo;&rdquo;
-return (profit / investment) * 100</p>
-<p>def calculate_npv(cash_flows, discount_rate):
-&quot;&quot;&quot;
-Calculate Net Present Value of a series of cash flows.</p>
-<pre><code>Args:
-    cash_flows: List of cash flows, where index 0 is the initial investment (negative)
-    discount_rate: Discount rate as decimal (e.g., 0.1 for 10%)
-&quot;&quot;&quot;
-npv = 0
-for t, cash_flow in enumerate(cash_flows):
-    npv += cash_flow / (1 + discount_rate) ** t
-return npv
-</code></pre>
-<p>To use this module:
-python# main.py
-import financial_utils</p>
-<h1 id="calculate-roi">Calculate ROI</h1>
-<p>investment = 50000
-profit = 12500
-roi = financial_utils.calculate_roi(profit, investment)
-print(f&quot;ROI: {roi}%&quot;)</p>
-<h1 id="calculate-npv-of-a-project">Calculate NPV of a project</h1>
-<p>cash_flows = [-100000, 30000, 35000, 45000, 50000]  # Initial investment + 4 years of returns
-npv = financial_utils.calculate_npv(cash_flows, 0.08)
-print(f&quot;NPV: ${npv:.2f}&quot;)
-You can also import specific functions:
-pythonfrom financial_utils import calculate_roi, calculate_npv</p>
-<h1 id="now-use-without-the-module-prefix">Now use without the module prefix</h1>
-<p>roi = calculate_roi(12500, 50000)
-Packages
-Packages are directories containing multiple modules. They require an <strong>init</strong>.py file (which can be empty) to be recognized as packages.
-finance_package/
-├── <strong>init</strong>.py
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>File Handling on Michael Brunger</title><link>https://michaelbrunger.com/tags/file-handling/</link><description>Recent content in File Handling on Michael Brunger</description><image><title>Michael Brunger</title><url>https://michaelbrunger.com/site-feature-image.jpg</url><link>https://michaelbrunger.com/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Fri, 09 May 2025 14:44:55 +0100</lastBuildDate><atom:link href="https://michaelbrunger.com/tags/file-handling/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 5: Functions, Modules &amp; File I/O in Python</title><link>https://michaelbrunger.com/python-functions-modules-file-io/</link><pubDate>Fri, 30 May 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/python-functions-modules-file-io/</guid><description>Learn how to define and use functions, organize code into modules, leverage Python&amp;#39;s Standard Library, and perform file operations for reading and writing data.</description><content:encoded><![CDATA[<h1 id="functions-modules--file-io-in-python">Functions, Modules &amp; File I/O in Python</h1>
+<p>These next concepts incredibly useful for organising code and working with external data. Let&rsquo;s explore how Python handles functions, modules, and file operations - all essential skills for financial analysis and reporting.</p>
+<h2 id="defining-and-calling-functions">Defining and Calling Functions</h2>
+<p>Functions are reusable blocks of code that perform specific tasks. They help keep your code DRY (Don&rsquo;t Repeat Yourself) and make it more maintainable.</p>
+<h3 id="basic-function-syntax">Basic Function Syntax</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">function_name</span>(parameters):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Docstring explaining what the function does.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Function body</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> result  <span style="color:#75715e"># Optional</span>
+</span></span></code></pre></div><p>Here&rsquo;s a simple function that calculates compound interest:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_compound_interest</span>(principal, rate, time, compounds_per_year<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Calculate compound interest.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        principal: Initial investment amount
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        rate: Annual interest rate (as decimal, e.g., 0.05 for 5%)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        time: Time period in years
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        compounds_per_year: Number of times interest compounds per year (default=1)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        The final amount after compound interest
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> principal <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> rate<span style="color:#f92672">/</span>compounds_per_year)<span style="color:#f92672">**</span>(compounds_per_year<span style="color:#f92672">*</span>time)
+</span></span></code></pre></div><p>Let&rsquo;s call this function:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Calculate investment growth at 5% interest, compounded quarterly for 10 years</span>
+</span></span><span style="display:flex;"><span>initial_investment <span style="color:#f92672">=</span> <span style="color:#ae81ff">10000</span>
+</span></span><span style="display:flex;"><span>final_amount <span style="color:#f92672">=</span> calculate_compound_interest(
+</span></span><span style="display:flex;"><span>    principal<span style="color:#f92672">=</span>initial_investment, 
+</span></span><span style="display:flex;"><span>    rate<span style="color:#f92672">=</span><span style="color:#ae81ff">0.05</span>, 
+</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, 
+</span></span><span style="display:flex;"><span>    compounds_per_year<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;$</span><span style="color:#e6db74">{</span>initial_investment<span style="color:#e6db74">}</span><span style="color:#e6db74"> will grow to $</span><span style="color:#e6db74">{</span>final_amount<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> after 10 years&#34;</span>)
+</span></span></code></pre></div><p><strong>Output:</strong></p>
+<pre tabindex="0"><code>$10000 will grow to $16470.09 after 10 years
+</code></pre><h3 id="function-arguments">Function Arguments</h3>
+<p>Python offers flexible ways to handle function arguments:</p>
+<h4 id="positional-vs-keyword-arguments">Positional vs. Keyword Arguments</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Positional arguments (order matters)</span>
+</span></span><span style="display:flex;"><span>result1 <span style="color:#f92672">=</span> calculate_compound_interest(<span style="color:#ae81ff">10000</span>, <span style="color:#ae81ff">0.05</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Keyword arguments (order doesn&#39;t matter)</span>
+</span></span><span style="display:flex;"><span>result2 <span style="color:#f92672">=</span> calculate_compound_interest(
+</span></span><span style="display:flex;"><span>    rate<span style="color:#f92672">=</span><span style="color:#ae81ff">0.05</span>,
+</span></span><span style="display:flex;"><span>    principal<span style="color:#f92672">=</span><span style="color:#ae81ff">10000</span>,
+</span></span><span style="display:flex;"><span>    compounds_per_year<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>,
+</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><h4 id="default-parameter-values">Default Parameter Values</h4>
+<p>In our function, <code>compounds_per_year=1</code> provides a default value if not specified:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Using the default compounds_per_year (annual compounding)</span>
+</span></span><span style="display:flex;"><span>annual_result <span style="color:#f92672">=</span> calculate_compound_interest(<span style="color:#ae81ff">10000</span>, <span style="color:#ae81ff">0.05</span>, <span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;With annual compounding: $</span><span style="color:#e6db74">{</span>annual_result<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><h4 id="variable-number-of-arguments">Variable Number of Arguments</h4>
+<p>For functions that need to accept varying numbers of arguments:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># *args collects extra positional arguments as a tuple</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">sum_all_values</span>(<span style="color:#f92672">*</span>args):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Sum any number of values.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> sum(args)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># **kwargs collects extra keyword arguments as a dictionary</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_financial_report</span>(report_date, <span style="color:#f92672">**</span>kwargs):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Create a financial report with flexible data points.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    report <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;date&#34;</span>: report_date}
+</span></span><span style="display:flex;"><span>    report<span style="color:#f92672">.</span>update(kwargs)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> report
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Example usage</span>
+</span></span><span style="display:flex;"><span>total <span style="color:#f92672">=</span> sum_all_values(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">250</span>, <span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">75</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Total: $</span><span style="color:#e6db74">{</span>total<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>report <span style="color:#f92672">=</span> create_financial_report(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;2025-04-28&#34;</span>,
+</span></span><span style="display:flex;"><span>    revenue<span style="color:#f92672">=</span><span style="color:#ae81ff">150000</span>,
+</span></span><span style="display:flex;"><span>    expenses<span style="color:#f92672">=</span><span style="color:#ae81ff">95000</span>,
+</span></span><span style="display:flex;"><span>    net_profit<span style="color:#f92672">=</span><span style="color:#ae81ff">55000</span>,
+</span></span><span style="display:flex;"><span>    profit_margin<span style="color:#f92672">=</span><span style="color:#ae81ff">0.37</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>print(report)
+</span></span></code></pre></div><h2 id="variable-scope-and-namespaces">Variable Scope and Namespaces</h2>
+<p>Understanding scope is crucial for debugging and writing clean code.</p>
+<h3 id="local-vs-global-scope">Local vs. Global Scope</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>total_assets <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000000</span>  <span style="color:#75715e"># Global variable</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_roi</span>(profit):
+</span></span><span style="display:flex;"><span>    investment <span style="color:#f92672">=</span> <span style="color:#ae81ff">100000</span>  <span style="color:#75715e"># Local variable</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> profit <span style="color:#f92672">/</span> investment <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># investment is not accessible here</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Total assets: $</span><span style="color:#e6db74">{</span>total_assets<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>roi <span style="color:#f92672">=</span> calculate_roi(<span style="color:#ae81ff">25000</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;ROI: </span><span style="color:#e6db74">{</span>roi<span style="color:#e6db74">}</span><span style="color:#e6db74">%&#34;</span>)
+</span></span></code></pre></div><p>Local variables exist only within their function. Global variables can be accessed inside functions, but to modify them, you need the <code>global</code> keyword:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>balance <span style="color:#f92672">=</span> <span style="color:#ae81ff">5000</span>  <span style="color:#75715e"># Global variable</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">deposit</span>(amount):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">global</span> balance  <span style="color:#75715e"># Tell Python we want to modify the global variable</span>
+</span></span><span style="display:flex;"><span>    balance <span style="color:#f92672">+=</span> amount
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> balance
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">withdraw</span>(amount):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">global</span> balance
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> balance <span style="color:#f92672">&gt;=</span> amount:
+</span></span><span style="display:flex;"><span>        balance <span style="color:#f92672">-=</span> amount
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> balance
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Insufficient funds&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Initial balance: $</span><span style="color:#e6db74">{</span>balance<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>deposit(<span style="color:#ae81ff">1000</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;After deposit: $</span><span style="color:#e6db74">{</span>balance<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>withdraw(<span style="color:#ae81ff">2000</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;After withdrawal: $</span><span style="color:#e6db74">{</span>balance<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><h3 id="namespaces">Namespaces</h3>
+<p>Python uses namespaces to organise names and avoid conflicts. Each module, function, and class has its own namespace.</p>
+<h2 id="organising-code-into-modules-and-packages">Organising Code into Modules and Packages</h2>
+<p>As your financial scripts grow, organising code becomes essential.</p>
+<h3 id="modules">Modules</h3>
+<p>A module is simply a <code>.py</code> file containing code. Let&rsquo;s create a financial utilities module:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># financial_utils.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_roi</span>(profit, investment):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Calculate Return on Investment as a percentage.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (profit <span style="color:#f92672">/</span> investment) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_npv</span>(cash_flows, discount_rate):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Calculate Net Present Value of a series of cash flows.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        cash_flows: List of cash flows, where index 0 is the initial investment (negative)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        discount_rate: Discount rate as decimal (e.g., 0.1 for 10%)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    npv <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> t, cash_flow <span style="color:#f92672">in</span> enumerate(cash_flows):
+</span></span><span style="display:flex;"><span>        npv <span style="color:#f92672">+=</span> cash_flow <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> discount_rate) <span style="color:#f92672">**</span> t
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> npv
+</span></span></code></pre></div><p>To use this module:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># main.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> financial_utils
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate ROI</span>
+</span></span><span style="display:flex;"><span>investment <span style="color:#f92672">=</span> <span style="color:#ae81ff">50000</span>
+</span></span><span style="display:flex;"><span>profit <span style="color:#f92672">=</span> <span style="color:#ae81ff">12500</span>
+</span></span><span style="display:flex;"><span>roi <span style="color:#f92672">=</span> financial_utils<span style="color:#f92672">.</span>calculate_roi(profit, investment)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;ROI: </span><span style="color:#e6db74">{</span>roi<span style="color:#e6db74">}</span><span style="color:#e6db74">%&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate NPV of a project</span>
+</span></span><span style="display:flex;"><span>cash_flows <span style="color:#f92672">=</span> [<span style="color:#f92672">-</span><span style="color:#ae81ff">100000</span>, <span style="color:#ae81ff">30000</span>, <span style="color:#ae81ff">35000</span>, <span style="color:#ae81ff">45000</span>, <span style="color:#ae81ff">50000</span>]  <span style="color:#75715e"># Initial investment + 4 years of returns</span>
+</span></span><span style="display:flex;"><span>npv <span style="color:#f92672">=</span> financial_utils<span style="color:#f92672">.</span>calculate_npv(cash_flows, <span style="color:#ae81ff">0.08</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;NPV: $</span><span style="color:#e6db74">{</span>npv<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p>You can also import specific functions:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> financial_utils <span style="color:#f92672">import</span> calculate_roi, calculate_npv
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Now use without the module prefix</span>
+</span></span><span style="display:flex;"><span>roi <span style="color:#f92672">=</span> calculate_roi(<span style="color:#ae81ff">12500</span>, <span style="color:#ae81ff">50000</span>)
+</span></span></code></pre></div><h3 id="packages">Packages</h3>
+<p>Packages are directories containing multiple modules. They require an <code>__init__.py</code> file (which can be empty) to be recognised as packages.</p>
+<pre tabindex="0"><code>finance_package/
+├── __init__.py
 ├── analysis.py
 ├── reporting.py
 └── utils.py
-Using packages:
-python# Import specific modules from a package
-from finance_package import analysis, reporting</p>
-<h1 id="import-specific-functions-from-a-module-in-a-package">Import specific functions from a module in a package</h1>
-<p>from finance_package.utils import calculate_roi
-Exploring the Standard Library
-Python comes with a rich standard library. Here are some modules particularly useful for financial applications:
-Math Module
-pythonimport math</p>
-<h1 id="calculate-loan-payment-using-the-pmt-formula">Calculate loan payment using the PMT formula</h1>
-<p>principal = 250000
-annual_rate = 0.04  # 4%
-years = 30
-monthly_rate = annual_rate / 12
-num_payments = years * 12</p>
-<h1 id="monthly-payment-formula">Monthly payment formula</h1>
-<p>payment = principal * (monthly_rate * math.pow(1 + monthly_rate, num_payments)) / (math.pow(1 + monthly_rate, num_payments) - 1)
-print(f&quot;Monthly mortgage payment: ${payment:.2f}&quot;)
-Random Module
-pythonimport random</p>
-<h1 id="simulate-stock-price-movements-very-simplified">Simulate stock price movements (very simplified)</h1>
-<p>starting_price = 100
-daily_volatility = 0.015  # 1.5%</p>
-<p>prices = [starting_price]
-for day in range(30):
-change = random.normalvariate(0, daily_volatility)
-new_price = prices[-1] * (1 + change)
-prices.append(new_price)</p>
-<p>print(f&quot;Starting price: ${starting_price:.2f}&quot;)
-print(f&quot;Ending price: ${prices[-1]:.2f}&quot;)
-print(f&quot;30-day return: {(prices[-1]/prices[0] - 1) * 100:.2f}%&quot;)
-Datetime Module
-pythonfrom datetime import datetime, timedelta</p>
-<h1 id="calculate-business-days-between-dates">Calculate business days between dates</h1>
-<p>def business_days_between(start_date, end_date):
-&ldquo;&ldquo;&ldquo;Count business days between two dates (excluding weekends).&rdquo;&rdquo;&rdquo;
-days = 0
-current_date = start_date
-while current_date &lt;= end_date:
-# Monday = 0, Sunday = 6
-if current_date.weekday() &lt; 5:  # Only count weekdays (0-4)
-days += 1
-current_date += timedelta(days=1)
-return days</p>
-<h1 id="calculate-days-until-fiscal-year-end">Calculate days until fiscal year end</h1>
-<p>today = datetime.now()
-fiscal_year_end = datetime(today.year, 12, 31)
-if today &gt; fiscal_year_end:
-fiscal_year_end = datetime(today.year + 1, 12, 31)</p>
-<p>business_days = business_days_between(today, fiscal_year_end)
-print(f&quot;Business days until fiscal year end: {business_days}&quot;)
-OS and Sys Modules
-pythonimport os
-import sys</p>
-<h1 id="get-the-current-working-directory-useful-for-file-paths">Get the current working directory (useful for file paths)</h1>
-<p>current_dir = os.getcwd()
-print(f&quot;Current directory: {current_dir}&quot;)</p>
-<h1 id="list-all-excel-files-in-the-current-directory">List all Excel files in the current directory</h1>
-<p>excel_files = [file for file in os.listdir() if file.endswith((&rsquo;.xlsx&rsquo;, &lsquo;.xls&rsquo;))]
-print(&ldquo;Excel files found:&rdquo;)
-for file in excel_files:
-print(f&quot;- {file}&quot;)</p>
-<h1 id="get-python-version-and-platform-information">Get Python version and platform information</h1>
-<p>print(f&quot;Python version: {sys.version}&quot;)
-print(f&quot;Platform: {sys.platform}&quot;)
-Reading from/Writing to Text Files
-File operations are essential for financial data analysis, reporting, and automation.
-Opening and Closing Files
-The basic pattern is:
-python# Open a file in read mode
-file = open(&lsquo;data.txt&rsquo;, &lsquo;r&rsquo;)</p>
-<h1 id="do-something-with-the-file">Do something with the file</h1>
-<p>content = file.read()</p>
-<h1 id="close-the-file">Close the file</h1>
-<p>file.close()
-However, this approach has problems if an error occurs before close(). The preferred way is using the with statement:
-The with Statement
-python# Automatically handles proper closing of the file
-with open(&lsquo;data.txt&rsquo;, &lsquo;r&rsquo;) as file:
-content = file.read()
-# File processing here</p>
-<h1 id="file-is-automatically-closed-when-the-block-ends">File is automatically closed when the block ends</h1>
-<p>Reading Text Files
-Let&rsquo;s work with a sample CSV file containing financial transactions:
-python# Sample contents of transactions.csv:</p>
-<h1 id="datedescriptionamount">date,description,amount</h1>
-<h1 id="2025-01-15office-supplies-12999">2025-01-15,Office supplies,-129.99</h1>
-<h1 id="2025-01-18client-payment150000">2025-01-18,Client payment,1500.00</h1>
-<h1 id="2025-01-22software-subscription-4999">2025-01-22,Software subscription,-49.99</h1>
-<h1 id="2025-01-30consulting-fees275000">2025-01-30,Consulting fees,2750.00</h1>
-<p>with open(&rsquo;transactions.csv&rsquo;, &lsquo;r&rsquo;) as file:
-# Read the entire file as a single string
-content = file.read()
-print(&ldquo;File contents:&rdquo;)
-print(content)
-Reading line by line:
-pythonwith open(&rsquo;transactions.csv&rsquo;, &lsquo;r&rsquo;) as file:
-# Skip header
-header = file.readline()</p>
-<pre><code># Initialize counters
-total_income = 0
-total_expenses = 0
-
-# Process each transaction
-for line in file:
-    # Remove whitespace and split by comma
-    date, description, amount = line.strip().split(',')
-    
-    # Convert amount to float
-    amount = float(amount)
-    
-    if amount &gt;= 0:
-        total_income += amount
-    else:
-        total_expenses += amount
-
-print(f&quot;Total income: ${total_income:.2f}&quot;)
-print(f&quot;Total expenses: ${total_expenses:.2f}&quot;)
-print(f&quot;Net cash flow: ${total_income + total_expenses:.2f}&quot;)
-</code></pre>
-<p>Writing to Text Files
-Let&rsquo;s create a simple financial report:
-python# Sample transaction data
-transactions = [
-{&ldquo;date&rdquo;: &ldquo;2025-01-15&rdquo;, &ldquo;description&rdquo;: &ldquo;Office supplies&rdquo;, &ldquo;amount&rdquo;: -129.99},
-{&ldquo;date&rdquo;: &ldquo;2025-01-18&rdquo;, &ldquo;description&rdquo;: &ldquo;Client payment&rdquo;, &ldquo;amount&rdquo;: 1500.00},
-{&ldquo;date&rdquo;: &ldquo;2025-01-22&rdquo;, &ldquo;description&rdquo;: &ldquo;Software subscription&rdquo;, &ldquo;amount&rdquo;: -49.99},
-{&ldquo;date&rdquo;: &ldquo;2025-01-30&rdquo;, &ldquo;description&rdquo;: &ldquo;Consulting fees&rdquo;, &ldquo;amount&rdquo;: 2750.00}
-]</p>
-<h1 id="calculate-summary-statistics">Calculate summary statistics</h1>
-<p>total_income = sum(t[&ldquo;amount&rdquo;] for t in transactions if t[&ldquo;amount&rdquo;] &gt; 0)
-total_expenses = sum(t[&ldquo;amount&rdquo;] for t in transactions if t[&ldquo;amount&rdquo;] &lt; 0)
-net_cash_flow = total_income + total_expenses</p>
-<h1 id="write-the-report-to-a-file">Write the report to a file</h1>
-<p>with open(&lsquo;financial_report.txt&rsquo;, &lsquo;w&rsquo;) as report_file:
-report_file.write(&ldquo;MONTHLY FINANCIAL REPORT\n&rdquo;)
-report_file.write(&quot;======================\n\n&quot;)</p>
-<pre><code>report_file.write(&quot;TRANSACTION DETAILS:\n&quot;)
-report_file.write(&quot;-----------------\n&quot;)
-
-for t in transactions:
-    amount_str = f&quot;${abs(t['amount']):.2f}&quot;
-    if t[&quot;amount&quot;] &lt; 0:
-        amount_str = f&quot;-{amount_str}&quot;
-    
-    report_file.write(f&quot;{t['date']} | {t['description'].ljust(20)} | {amount_str}\n&quot;)
-
-report_file.write(&quot;\nSUMMARY:\n&quot;)
-report_file.write(&quot;--------\n&quot;)
-report_file.write(f&quot;Total Income:    ${total_income:.2f}\n&quot;)
-report_file.write(f&quot;Total Expenses:  ${total_expenses:.2f}\n&quot;)
-report_file.write(f&quot;Net Cash Flow:   ${net_cash_flow:.2f}\n&quot;)
-</code></pre>
-<p>print(&ldquo;Financial report generated: financial_report.txt&rdquo;)
-Handling Different File Modes</p>
-<p>&lsquo;r&rsquo;: Read (default)
-&lsquo;w&rsquo;: Write (creates new file or truncates existing)
-&lsquo;a&rsquo;: Append (adds to end of file)
-&lsquo;r+&rsquo;: Read and write
-&lsquo;b&rsquo;: Binary mode (used with other modes, e.g., &lsquo;rb&rsquo;)</p>
-<p>Working with CSV Files
-While you can process CSV files manually as shown above, Python&rsquo;s csv module makes it easier:
-pythonimport csv</p>
-<h1 id="reading-csv">Reading CSV</h1>
-<p>with open(&rsquo;transactions.csv&rsquo;, &lsquo;r&rsquo;) as file:
-csv_reader = csv.DictReader(file)</p>
-<pre><code># Process each row as a dictionary
-transactions = []
-for row in csv_reader:
-    # Convert amount from string to float
-    row['amount'] = float(row['amount'])
-    transactions.append(row)
-
-print(f&quot;Loaded {len(transactions)} transactions&quot;)
-</code></pre>
-<h1 id="writing-csv">Writing CSV</h1>
-<p>with open(&lsquo;budget_forecast.csv&rsquo;, &lsquo;w&rsquo;, newline=&rsquo;&rsquo;) as file:
-# Define column headers
-fieldnames = [&lsquo;month&rsquo;, &lsquo;revenue&rsquo;, &rsquo;expenses&rsquo;, &lsquo;profit&rsquo;]</p>
-<pre><code># Create CSV writer
-csv_writer = csv.DictWriter(file, fieldnames=fieldnames)
-
-# Write header row
-csv_writer.writeheader()
-
-# Write data rows
-for month in range(1, 13):
-    # Simple forecast model (for demonstration)
-    revenue = 15000 + (month * 500)  # Increasing monthly
-    expenses = 10000 + (month * 200)  # Increasing but slower
-    profit = revenue - expenses
-    
-    csv_writer.writerow({
-        'month': f&quot;2025-{month:02d}&quot;,
-        'revenue': revenue,
-        'expenses': expenses,
-        'profit': profit
-    })
-</code></pre>
-<p>print(&ldquo;Budget forecast generated: budget_forecast.csv&rdquo;)
-Practical Example: Expense Analyzer
-Let&rsquo;s combine everything we&rsquo;ve learned into a practical financial tool that:</p>
-<p>Reads expense data from a CSV file
-Categorizes and analyzes expenses
-Generates a report with summary statistics</p>
-<p>pythonimport csv
-from datetime import datetime
-import os</p>
-<p>def load_expenses(filename):
-&ldquo;&ldquo;&ldquo;Load expense data from a CSV file.&rdquo;&rdquo;&rdquo;
-expenses = []</p>
-<pre><code>with open(filename, 'r') as file:
-    reader = csv.DictReader(file)
-    for row in reader:
-        # Convert amount to float and date to datetime
-        row['amount'] = float(row['amount'])
-        row['date'] = datetime.strptime(row['date'], '%Y-%m-%d')
-        expenses.append(row)
-
-return expenses
-</code></pre>
-<p>def categorize_expenses(expenses):
-&ldquo;&ldquo;&ldquo;Group expenses by category.&rdquo;&rdquo;&rdquo;
-categories = {}</p>
-<pre><code>for expense in expenses:
-    category = expense['category']
-    
-    if category not in categories:
-        categories[category] = []
-    
-    categories[category].append(expense)
-
-return categories
-</code></pre>
-<p>def calculate_category_totals(categories):
-&ldquo;&ldquo;&ldquo;Calculate total amount for each expense category.&rdquo;&rdquo;&rdquo;
-totals = {}</p>
-<pre><code>for category, expenses in categories.items():
-    totals[category] = sum(expense['amount'] for expense in expenses)
-
-return totals
-</code></pre>
-<p>def generate_expense_report(expenses, categories, totals, output_file):
-&ldquo;&ldquo;&ldquo;Generate a detailed expense report.&rdquo;&rdquo;&rdquo;
-total_expenses = sum(totals.values())</p>
-<pre><code>with open(output_file, 'w') as file:
-    # Write header
-    file.write(&quot;EXPENSE ANALYSIS REPORT\n&quot;)
-    file.write(&quot;======================\n\n&quot;)
-    
-    # Write summary
-    file.write(f&quot;Total Expenses: ${total_expenses:.2f}\n&quot;)
-    file.write(f&quot;Number of Transactions: {len(expenses)}\n&quot;)
-    file.write(f&quot;Date Range: {min(e['date'] for e in expenses).strftime('%Y-%m-%d')} to {max(e['date'] for e in expenses).strftime('%Y-%m-%d')}\n\n&quot;)
-    
-    # Write category breakdown
-    file.write(&quot;EXPENSE BREAKDOWN BY CATEGORY\n&quot;)
-    file.write(&quot;----------------------------\n&quot;)
-    
-    # Sort categories by total amount (descending)
-    sorted_categories = sorted(totals.items(), key=lambda x: x[1], reverse=True)
-    
-    for category, amount in sorted_categories:
-        percentage = (amount / total_expenses) * 100
-        file.write(f&quot;{category.ljust(20)} ${amount:.2f} ({percentage:.1f}%)\n&quot;)
-    
-    # Write transaction details for each category
-    file.write(&quot;\nDETAILED TRANSACTIONS BY CATEGORY\n&quot;)
-    file.write(&quot;--------------------------------\n\n&quot;)
-    
-    for category, amount in sorted_categories:
-        file.write(f&quot;{category.upper()}\n&quot;)
-        file.write(f&quot;{'-' * len(category)}\n&quot;)
-        
-        # Sort expenses by date
-        sorted_expenses = sorted(categories[category], key=lambda x: x['date'])
-        
-        for expense in sorted_expenses:
-            date_str = expense['date'].strftime('%Y-%m-%d')
-            file.write(f&quot;{date_str} | {expense['description'].ljust(30)} | ${expense['amount']:.2f}\n&quot;)
-        
-        # Add category subtotal
-        file.write(f&quot;{'SUBTOTAL:'.ljust(41)} ${amount:.2f}\n\n&quot;)
-</code></pre>
-<h1 id="usage-example-assuming-we-have-an-expensescsv-file">Usage example (assuming we have an expenses.csv file)</h1>
-<p>def main():
-# Check if the input file exists
-input_file = &rsquo;expenses.csv&rsquo;
-if not os.path.exists(input_file):
-print(f&quot;Error: File &lsquo;{input_file}&rsquo; not found.&quot;)
-print(&ldquo;Creating a sample expense file for demonstration&hellip;&rdquo;)</p>
-<pre><code>    # Create a sample file for demonstration
-    with open(input_file, 'w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow(['date', 'category', 'description', 'amount'])
-        writer.writerow(['2025-01-05', 'Office', 'Printer paper', 24.99])
-        writer.writerow(['2025-01-10', 'Software', 'Accounting software', 89.99])
-        writer.writerow(['2025-01-15', 'Office', 'Desk organizer', 32.50])
-        writer.writerow(['2025-01-18', 'Travel', 'Client meeting transportation', 45.75])
-        writer.writerow(['2025-01-22', 'Software', 'Cloud storage subscription', 9.99])
-        writer.writerow(['2025-01-25', 'Meals', 'Team lunch', 87.50])
-        writer.writerow(['2025-01-29', 'Office', 'Printer ink', 65.85])
-        writer.writerow(['2025-02-03', 'Travel', 'Conference registration', 299.00])
-        writer.writerow(['2025-02-07', 'Meals', 'Client dinner', 125.40])
-        writer.writerow(['2025-02-15', 'Software', 'Data analysis tool', 149.99])
-    
-    print(f&quot;Sample file '{input_file}' created.&quot;)
-
-# Process the expense data
-expenses = load_expenses(input_file)
-categories = categorize_expenses(expenses)
-totals = calculate_category_totals(categories)
-
-# Generate the report
-output_file = 'expense_report.txt'
-generate_expense_report(expenses, categories, totals, output_file)
-
-print(f&quot;Expense report generated: {output_file}&quot;)
-</code></pre>
-<p>if <strong>name</strong> == &ldquo;<strong>main</strong>&rdquo;:
-main()
-This script demonstrates:</p>
-<p>Function definitions with docstrings
-File I/O with the with statement
-CSV processing
-Module imports and usage
-Error handling</p>
-<p>Conclusion
-Functions, modules, and file I/O form the backbone of most Python applications, especially for financial tasks. By mastering these concepts, you&rsquo;ll be well-equipped to build tools for financial analysis, reporting, and automation.
-In the next post, we&rsquo;ll explore virtual environments and package management, which will help you manage dependencies for larger projects.
-Practice Exercise: Try extending the expense analyzer to calculate monthly trends or generate a simple visualization of spending by category. This will help reinforce the concepts we&rsquo;ve covered while building something useful for your financial toolkit.</p>
+</code></pre><p>Using packages:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Import specific modules from a package</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> finance_package <span style="color:#f92672">import</span> analysis, reporting
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Import specific functions from a module in a package</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> finance_package.utils <span style="color:#f92672">import</span> calculate_roi
+</span></span></code></pre></div><h2 id="exploring-the-standard-library">Exploring the Standard Library</h2>
+<p>Python comes with a rich standard library. Here are some modules particularly useful for financial applications:</p>
+<h3 id="math-module">Math Module</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> math
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate loan payment using the PMT formula</span>
+</span></span><span style="display:flex;"><span>principal <span style="color:#f92672">=</span> <span style="color:#ae81ff">250000</span>
+</span></span><span style="display:flex;"><span>annual_rate <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.04</span>  <span style="color:#75715e"># 4%</span>
+</span></span><span style="display:flex;"><span>years <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>
+</span></span><span style="display:flex;"><span>monthly_rate <span style="color:#f92672">=</span> annual_rate <span style="color:#f92672">/</span> <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>num_payments <span style="color:#f92672">=</span> years <span style="color:#f92672">*</span> <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Monthly payment formula</span>
+</span></span><span style="display:flex;"><span>payment <span style="color:#f92672">=</span> principal <span style="color:#f92672">*</span> (monthly_rate <span style="color:#f92672">*</span> math<span style="color:#f92672">.</span>pow(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> monthly_rate, num_payments)) <span style="color:#f92672">/</span> (math<span style="color:#f92672">.</span>pow(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> monthly_rate, num_payments) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Monthly mortgage payment: $</span><span style="color:#e6db74">{</span>payment<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><h3 id="random-module">Random Module</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> random
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Simulate stock price movements (very simplified)</span>
+</span></span><span style="display:flex;"><span>starting_price <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>daily_volatility <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.015</span>  <span style="color:#75715e"># 1.5%</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>prices <span style="color:#f92672">=</span> [starting_price]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> day <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">30</span>):
+</span></span><span style="display:flex;"><span>    change <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>normalvariate(<span style="color:#ae81ff">0</span>, daily_volatility)
+</span></span><span style="display:flex;"><span>    new_price <span style="color:#f92672">=</span> prices[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> change)
+</span></span><span style="display:flex;"><span>    prices<span style="color:#f92672">.</span>append(new_price)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Starting price: $</span><span style="color:#e6db74">{</span>starting_price<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Ending price: $</span><span style="color:#e6db74">{</span>prices[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;30-day return: </span><span style="color:#e6db74">{</span>(prices[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">/</span>prices[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span><span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">%&#34;</span>)
+</span></span></code></pre></div><h3 id="datetime-module">Datetime Module</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime, timedelta
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate business days between dates</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">business_days_between</span>(start_date, end_date):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Count business days between two dates (excluding weekends).&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    days <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    current_date <span style="color:#f92672">=</span> start_date
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> current_date <span style="color:#f92672">&lt;=</span> end_date:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Monday = 0, Sunday = 6</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> current_date<span style="color:#f92672">.</span>weekday() <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span>:  <span style="color:#75715e"># Only count weekdays (0-4)</span>
+</span></span><span style="display:flex;"><span>            days <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        current_date <span style="color:#f92672">+=</span> timedelta(days<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> days
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate days until fiscal year end</span>
+</span></span><span style="display:flex;"><span>today <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>now()
+</span></span><span style="display:flex;"><span>fiscal_year_end <span style="color:#f92672">=</span> datetime(today<span style="color:#f92672">.</span>year, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">31</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> today <span style="color:#f92672">&gt;</span> fiscal_year_end:
+</span></span><span style="display:flex;"><span>    fiscal_year_end <span style="color:#f92672">=</span> datetime(today<span style="color:#f92672">.</span>year <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">31</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>business_days <span style="color:#f92672">=</span> business_days_between(today, fiscal_year_end)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Business days until fiscal year end: </span><span style="color:#e6db74">{</span>business_days<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><h3 id="os-and-sys-modules">OS and Sys Modules</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get the current working directory (useful for file paths)</span>
+</span></span><span style="display:flex;"><span>current_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getcwd()
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Current directory: </span><span style="color:#e6db74">{</span>current_dir<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># List all Excel files in the current directory</span>
+</span></span><span style="display:flex;"><span>excel_files <span style="color:#f92672">=</span> [file <span style="color:#66d9ef">for</span> file <span style="color:#f92672">in</span> os<span style="color:#f92672">.</span>listdir() <span style="color:#66d9ef">if</span> file<span style="color:#f92672">.</span>endswith((<span style="color:#e6db74">&#39;.xlsx&#39;</span>, <span style="color:#e6db74">&#39;.xls&#39;</span>))]
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Excel files found:&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> file <span style="color:#f92672">in</span> excel_files:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;- </span><span style="color:#e6db74">{</span>file<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get Python version and platform information</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Python version: </span><span style="color:#e6db74">{</span>sys<span style="color:#f92672">.</span>version<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Platform: </span><span style="color:#e6db74">{</span>sys<span style="color:#f92672">.</span>platform<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><h2 id="reading-fromwriting-to-text-files">Reading from/Writing to Text Files</h2>
+<p>File operations are essential for financial data analysis, reporting, and automation.</p>
+<h3 id="opening-and-closing-files">Opening and Closing Files</h3>
+<p>The basic pattern is:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Open a file in read mode</span>
+</span></span><span style="display:flex;"><span>file <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#39;data.txt&#39;</span>, <span style="color:#e6db74">&#39;r&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Do something with the file</span>
+</span></span><span style="display:flex;"><span>content <span style="color:#f92672">=</span> file<span style="color:#f92672">.</span>read()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Close the file</span>
+</span></span><span style="display:flex;"><span>file<span style="color:#f92672">.</span>close()
+</span></span></code></pre></div><p>However, this approach has problems if an error occurs before <code>close()</code>. The preferred way is using the <code>with</code> statement:</p>
+<h3 id="the-with-statement">The with Statement</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Automatically handles proper closing of the file</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;data.txt&#39;</span>, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> file:
+</span></span><span style="display:flex;"><span>    content <span style="color:#f92672">=</span> file<span style="color:#f92672">.</span>read()
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># File processing here</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># File is automatically closed when the block ends</span>
+</span></span></code></pre></div><h3 id="reading-text-files">Reading Text Files</h3>
+<p>Let&rsquo;s work with a sample CSV file containing financial transactions:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Sample contents of transactions.csv:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># date,description,amount</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2025-01-15,Office supplies,-129.99</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2025-01-18,Client payment,1500.00</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2025-01-22,Software subscription,-49.99</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2025-01-30,Consulting fees,2750.00</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;transactions.csv&#39;</span>, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> file:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Read the entire file as a single string</span>
+</span></span><span style="display:flex;"><span>    content <span style="color:#f92672">=</span> file<span style="color:#f92672">.</span>read()
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;File contents:&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(content)
+</span></span></code></pre></div><p>Reading line by line:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;transactions.csv&#39;</span>, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> file:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Skip header</span>
+</span></span><span style="display:flex;"><span>    header <span style="color:#f92672">=</span> file<span style="color:#f92672">.</span>readline()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Initialise counters</span>
+</span></span><span style="display:flex;"><span>    total_income <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    total_expenses <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Process each transaction</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> file:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Remove whitespace and split by comma</span>
+</span></span><span style="display:flex;"><span>        date, description, amount <span style="color:#f92672">=</span> line<span style="color:#f92672">.</span>strip()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;,&#39;</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Convert amount to float</span>
+</span></span><span style="display:flex;"><span>        amount <span style="color:#f92672">=</span> float(amount)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> amount <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            total_income <span style="color:#f92672">+=</span> amount
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            total_expenses <span style="color:#f92672">+=</span> amount
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Total income: $</span><span style="color:#e6db74">{</span>total_income<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Total expenses: $</span><span style="color:#e6db74">{</span>total_expenses<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Net cash flow: $</span><span style="color:#e6db74">{</span>total_income <span style="color:#f92672">+</span> total_expenses<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><h3 id="writing-to-text-files">Writing to Text Files</h3>
+<p>Let&rsquo;s create a simple financial report:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Sample transaction data</span>
+</span></span><span style="display:flex;"><span>transactions <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;date&#34;</span>: <span style="color:#e6db74">&#34;2025-01-15&#34;</span>, <span style="color:#e6db74">&#34;description&#34;</span>: <span style="color:#e6db74">&#34;Office supplies&#34;</span>, <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#f92672">-</span><span style="color:#ae81ff">129.99</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;date&#34;</span>: <span style="color:#e6db74">&#34;2025-01-18&#34;</span>, <span style="color:#e6db74">&#34;description&#34;</span>: <span style="color:#e6db74">&#34;Client payment&#34;</span>, <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">1500.00</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;date&#34;</span>: <span style="color:#e6db74">&#34;2025-01-22&#34;</span>, <span style="color:#e6db74">&#34;description&#34;</span>: <span style="color:#e6db74">&#34;Software subscription&#34;</span>, <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#f92672">-</span><span style="color:#ae81ff">49.99</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;date&#34;</span>: <span style="color:#e6db74">&#34;2025-01-30&#34;</span>, <span style="color:#e6db74">&#34;description&#34;</span>: <span style="color:#e6db74">&#34;Consulting fees&#34;</span>, <span style="color:#e6db74">&#34;amount&#34;</span>: <span style="color:#ae81ff">2750.00</span>}
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate summary statistics</span>
+</span></span><span style="display:flex;"><span>total_income <span style="color:#f92672">=</span> sum(t[<span style="color:#e6db74">&#34;amount&#34;</span>] <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> transactions <span style="color:#66d9ef">if</span> t[<span style="color:#e6db74">&#34;amount&#34;</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>total_expenses <span style="color:#f92672">=</span> sum(t[<span style="color:#e6db74">&#34;amount&#34;</span>] <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> transactions <span style="color:#66d9ef">if</span> t[<span style="color:#e6db74">&#34;amount&#34;</span>] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>net_cash_flow <span style="color:#f92672">=</span> total_income <span style="color:#f92672">+</span> total_expenses
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Write the report to a file</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;financial_report.txt&#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span>) <span style="color:#66d9ef">as</span> report_file:
+</span></span><span style="display:flex;"><span>    report_file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#34;MONTHLY FINANCIAL REPORT</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    report_file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#34;======================</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    report_file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#34;TRANSACTION DETAILS:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    report_file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#34;-----------------</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> transactions:
+</span></span><span style="display:flex;"><span>        amount_str <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;$</span><span style="color:#e6db74">{</span>abs(t[<span style="color:#e6db74">&#39;amount&#39;</span>])<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> t[<span style="color:#e6db74">&#34;amount&#34;</span>] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            amount_str <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;-</span><span style="color:#e6db74">{</span>amount_str<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        report_file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>t[<span style="color:#e6db74">&#39;date&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74"> | </span><span style="color:#e6db74">{</span>t[<span style="color:#e6db74">&#39;description&#39;</span>]<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">20</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74"> | </span><span style="color:#e6db74">{</span>amount_str<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    report_file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">SUMMARY:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    report_file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#34;--------</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    report_file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Total Income:    $</span><span style="color:#e6db74">{</span>total_income<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    report_file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Total Expenses:  $</span><span style="color:#e6db74">{</span>total_expenses<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    report_file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Net Cash Flow:   $</span><span style="color:#e6db74">{</span>net_cash_flow<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Financial report generated: financial_report.txt&#34;</span>)
+</span></span></code></pre></div><h3 id="handling-different-file-modes">Handling Different File Modes</h3>
+<ul>
+<li><code>'r'</code>: Read (default)</li>
+<li><code>'w'</code>: Write (creates new file or truncates existing)</li>
+<li><code>'a'</code>: Append (adds to end of file)</li>
+<li><code>'r+'</code>: Read and write</li>
+<li><code>'b'</code>: Binary mode (used with other modes, e.g., <code>'rb'</code>)</li>
+</ul>
+<h2 id="working-with-csv-files">Working with CSV Files</h2>
+<p>While you can process CSV files manually as shown above, Python&rsquo;s <code>csv</code> module makes it easier:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> csv
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Reading CSV</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;transactions.csv&#39;</span>, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> file:
+</span></span><span style="display:flex;"><span>    csv_reader <span style="color:#f92672">=</span> csv<span style="color:#f92672">.</span>DictReader(file)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Process each row as a dictionary</span>
+</span></span><span style="display:flex;"><span>    transactions <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> row <span style="color:#f92672">in</span> csv_reader:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Convert amount from string to float</span>
+</span></span><span style="display:flex;"><span>        row[<span style="color:#e6db74">&#39;amount&#39;</span>] <span style="color:#f92672">=</span> float(row[<span style="color:#e6db74">&#39;amount&#39;</span>])
+</span></span><span style="display:flex;"><span>        transactions<span style="color:#f92672">.</span>append(row)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Loaded </span><span style="color:#e6db74">{</span>len(transactions)<span style="color:#e6db74">}</span><span style="color:#e6db74"> transactions&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Writing CSV</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;budget_forecast.csv&#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span>, newline<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>) <span style="color:#66d9ef">as</span> file:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Define column headers</span>
+</span></span><span style="display:flex;"><span>    fieldnames <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;month&#39;</span>, <span style="color:#e6db74">&#39;revenue&#39;</span>, <span style="color:#e6db74">&#39;expenses&#39;</span>, <span style="color:#e6db74">&#39;profit&#39;</span>]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Create CSV writer</span>
+</span></span><span style="display:flex;"><span>    csv_writer <span style="color:#f92672">=</span> csv<span style="color:#f92672">.</span>DictWriter(file, fieldnames<span style="color:#f92672">=</span>fieldnames)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Write header row</span>
+</span></span><span style="display:flex;"><span>    csv_writer<span style="color:#f92672">.</span>writeheader()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Write data rows</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> month <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">13</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Simple forecast model (for demonstration)</span>
+</span></span><span style="display:flex;"><span>        revenue <span style="color:#f92672">=</span> <span style="color:#ae81ff">15000</span> <span style="color:#f92672">+</span> (month <span style="color:#f92672">*</span> <span style="color:#ae81ff">500</span>)  <span style="color:#75715e"># Increasing monthly</span>
+</span></span><span style="display:flex;"><span>        expenses <span style="color:#f92672">=</span> <span style="color:#ae81ff">10000</span> <span style="color:#f92672">+</span> (month <span style="color:#f92672">*</span> <span style="color:#ae81ff">200</span>)  <span style="color:#75715e"># Increasing but slower</span>
+</span></span><span style="display:flex;"><span>        profit <span style="color:#f92672">=</span> revenue <span style="color:#f92672">-</span> expenses
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        csv_writer<span style="color:#f92672">.</span>writerow({
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;month&#39;</span>: <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;2025-</span><span style="color:#e6db74">{</span>month<span style="color:#e6db74">:</span><span style="color:#e6db74">02d</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;revenue&#39;</span>: revenue,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;expenses&#39;</span>: expenses,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;profit&#39;</span>: profit
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Budget forecast generated: budget_forecast.csv&#34;</span>)
+</span></span></code></pre></div><h2 id="practical-example-expense-analyser">Practical Example: Expense Analyser</h2>
+<p>Let&rsquo;s combine everything we&rsquo;ve learned into a practical financial tool that:</p>
+<ol>
+<li>Reads expense data from a CSV file</li>
+<li>Categorises and analyses expenses</li>
+<li>Generates a report with summary statistics</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> csv
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_expenses</span>(filename):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Load expense data from a CSV file.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    expenses <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> open(filename, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> file:
+</span></span><span style="display:flex;"><span>        reader <span style="color:#f92672">=</span> csv<span style="color:#f92672">.</span>DictReader(file)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> row <span style="color:#f92672">in</span> reader:
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Convert amount to float and date to datetime</span>
+</span></span><span style="display:flex;"><span>            row[<span style="color:#e6db74">&#39;amount&#39;</span>] <span style="color:#f92672">=</span> float(row[<span style="color:#e6db74">&#39;amount&#39;</span>])
+</span></span><span style="display:flex;"><span>            row[<span style="color:#e6db74">&#39;date&#39;</span>] <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>strptime(row[<span style="color:#e6db74">&#39;date&#39;</span>], <span style="color:#e6db74">&#39;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>            expenses<span style="color:#f92672">.</span>append(row)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> expenses
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">categorize_expenses</span>(expenses):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Group expenses by category.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    categories <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> expense <span style="color:#f92672">in</span> expenses:
+</span></span><span style="display:flex;"><span>        category <span style="color:#f92672">=</span> expense[<span style="color:#e6db74">&#39;category&#39;</span>]
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> category <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> categories:
+</span></span><span style="display:flex;"><span>            categories[category] <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        categories[category]<span style="color:#f92672">.</span>append(expense)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> categories
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_category_totals</span>(categories):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Calculate total amount for each expense category.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    totals <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> category, expenses <span style="color:#f92672">in</span> categories<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>        totals[category] <span style="color:#f92672">=</span> sum(expense[<span style="color:#e6db74">&#39;amount&#39;</span>] <span style="color:#66d9ef">for</span> expense <span style="color:#f92672">in</span> expenses)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> totals
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">generate_expense_report</span>(expenses, categories, totals, output_file):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Generate a detailed expense report.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    total_expenses <span style="color:#f92672">=</span> sum(totals<span style="color:#f92672">.</span>values())
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> open(output_file, <span style="color:#e6db74">&#39;w&#39;</span>) <span style="color:#66d9ef">as</span> file:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Write header</span>
+</span></span><span style="display:flex;"><span>        file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#34;EXPENSE ANALYSIS REPORT</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#34;======================</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Write summary</span>
+</span></span><span style="display:flex;"><span>        file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Total Expenses: $</span><span style="color:#e6db74">{</span>total_expenses<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Number of Transactions: </span><span style="color:#e6db74">{</span>len(expenses)<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Date Range: </span><span style="color:#e6db74">{</span>min(e[<span style="color:#e6db74">&#39;date&#39;</span>] <span style="color:#66d9ef">for</span> e <span style="color:#f92672">in</span> expenses)<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#39;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74"> to </span><span style="color:#e6db74">{</span>max(e[<span style="color:#e6db74">&#39;date&#39;</span>] <span style="color:#66d9ef">for</span> e <span style="color:#f92672">in</span> expenses)<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#39;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span>)<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Write category breakdown</span>
+</span></span><span style="display:flex;"><span>        file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#34;EXPENSE BREAKDOWN BY CATEGORY</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#34;----------------------------</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Sort categories by total amount (descending)</span>
+</span></span><span style="display:flex;"><span>        sorted_categories <span style="color:#f92672">=</span> sorted(totals<span style="color:#f92672">.</span>items(), key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x[<span style="color:#ae81ff">1</span>], reverse<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> category, amount <span style="color:#f92672">in</span> sorted_categories:
+</span></span><span style="display:flex;"><span>            percentage <span style="color:#f92672">=</span> (amount <span style="color:#f92672">/</span> total_expenses) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>            file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>category<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">20</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74"> $</span><span style="color:#e6db74">{</span>amount<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> (</span><span style="color:#e6db74">{</span>percentage<span style="color:#e6db74">:</span><span style="color:#e6db74">.1f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">%)</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Write transaction details for each category</span>
+</span></span><span style="display:flex;"><span>        file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">DETAILED TRANSACTIONS BY CATEGORY</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#34;--------------------------------</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> category, amount <span style="color:#f92672">in</span> sorted_categories:
+</span></span><span style="display:flex;"><span>            file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>category<span style="color:#f92672">.</span>upper()<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>            file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">*</span> len(category)<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Sort expenses by date</span>
+</span></span><span style="display:flex;"><span>            sorted_expenses <span style="color:#f92672">=</span> sorted(categories[category], key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x[<span style="color:#e6db74">&#39;date&#39;</span>])
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> expense <span style="color:#f92672">in</span> sorted_expenses:
+</span></span><span style="display:flex;"><span>                date_str <span style="color:#f92672">=</span> expense[<span style="color:#e6db74">&#39;date&#39;</span>]<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#39;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>                file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>date_str<span style="color:#e6db74">}</span><span style="color:#e6db74"> | </span><span style="color:#e6db74">{</span>expense[<span style="color:#e6db74">&#39;description&#39;</span>]<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">30</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74"> | $</span><span style="color:#e6db74">{</span>expense[<span style="color:#e6db74">&#39;amount&#39;</span>]<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Add category subtotal</span>
+</span></span><span style="display:flex;"><span>            file<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#39;SUBTOTAL:&#39;</span><span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">41</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74"> $</span><span style="color:#e6db74">{</span>amount<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Usage example (assuming we have an expenses.csv file)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Check if the input file exists</span>
+</span></span><span style="display:flex;"><span>    input_file <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;expenses.csv&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>exists(input_file):
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Error: File &#39;</span><span style="color:#e6db74">{</span>input_file<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39; not found.&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;Creating a sample expense file for demonstration...&#34;</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Create a sample file for demonstration</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> open(input_file, <span style="color:#e6db74">&#39;w&#39;</span>, newline<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>) <span style="color:#66d9ef">as</span> file:
+</span></span><span style="display:flex;"><span>            writer <span style="color:#f92672">=</span> csv<span style="color:#f92672">.</span>writer(file)
+</span></span><span style="display:flex;"><span>            writer<span style="color:#f92672">.</span>writerow([<span style="color:#e6db74">&#39;date&#39;</span>, <span style="color:#e6db74">&#39;category&#39;</span>, <span style="color:#e6db74">&#39;description&#39;</span>, <span style="color:#e6db74">&#39;amount&#39;</span>])
+</span></span><span style="display:flex;"><span>            writer<span style="color:#f92672">.</span>writerow([<span style="color:#e6db74">&#39;2025-01-05&#39;</span>, <span style="color:#e6db74">&#39;Office&#39;</span>, <span style="color:#e6db74">&#39;Printer paper&#39;</span>, <span style="color:#ae81ff">24.99</span>])
+</span></span><span style="display:flex;"><span>            writer<span style="color:#f92672">.</span>writerow([<span style="color:#e6db74">&#39;2025-01-10&#39;</span>, <span style="color:#e6db74">&#39;Software&#39;</span>, <span style="color:#e6db74">&#39;Accounting software&#39;</span>, <span style="color:#ae81ff">89.99</span>])
+</span></span><span style="display:flex;"><span>            writer<span style="color:#f92672">.</span>writerow([<span style="color:#e6db74">&#39;2025-01-15&#39;</span>, <span style="color:#e6db74">&#39;Office&#39;</span>, <span style="color:#e6db74">&#39;Desk organiser&#39;</span>, <span style="color:#ae81ff">32.50</span>])
+</span></span><span style="display:flex;"><span>            writer<span style="color:#f92672">.</span>writerow([<span style="color:#e6db74">&#39;2025-01-18&#39;</span>, <span style="color:#e6db74">&#39;Travel&#39;</span>, <span style="color:#e6db74">&#39;Client meeting transportation&#39;</span>, <span style="color:#ae81ff">45.75</span>])
+</span></span><span style="display:flex;"><span>            writer<span style="color:#f92672">.</span>writerow([<span style="color:#e6db74">&#39;2025-01-22&#39;</span>, <span style="color:#e6db74">&#39;Software&#39;</span>, <span style="color:#e6db74">&#39;Cloud storage subscription&#39;</span>, <span style="color:#ae81ff">9.99</span>])
+</span></span><span style="display:flex;"><span>            writer<span style="color:#f92672">.</span>writerow([<span style="color:#e6db74">&#39;2025-01-25&#39;</span>, <span style="color:#e6db74">&#39;Meals&#39;</span>, <span style="color:#e6db74">&#39;Team lunch&#39;</span>, <span style="color:#ae81ff">87.50</span>])
+</span></span><span style="display:flex;"><span>            writer<span style="color:#f92672">.</span>writerow([<span style="color:#e6db74">&#39;2025-01-29&#39;</span>, <span style="color:#e6db74">&#39;Office&#39;</span>, <span style="color:#e6db74">&#39;Printer ink&#39;</span>, <span style="color:#ae81ff">65.85</span>])
+</span></span><span style="display:flex;"><span>            writer<span style="color:#f92672">.</span>writerow([<span style="color:#e6db74">&#39;2025-02-03&#39;</span>, <span style="color:#e6db74">&#39;Travel&#39;</span>, <span style="color:#e6db74">&#39;Conference registration&#39;</span>, <span style="color:#ae81ff">299.00</span>])
+</span></span><span style="display:flex;"><span>            writer<span style="color:#f92672">.</span>writerow([<span style="color:#e6db74">&#39;2025-02-07&#39;</span>, <span style="color:#e6db74">&#39;Meals&#39;</span>, <span style="color:#e6db74">&#39;Client dinner&#39;</span>, <span style="color:#ae81ff">125.40</span>])
+</span></span><span style="display:flex;"><span>            writer<span style="color:#f92672">.</span>writerow([<span style="color:#e6db74">&#39;2025-02-15&#39;</span>, <span style="color:#e6db74">&#39;Software&#39;</span>, <span style="color:#e6db74">&#39;Data analysis tool&#39;</span>, <span style="color:#ae81ff">149.99</span>])
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Sample file &#39;</span><span style="color:#e6db74">{</span>input_file<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39; created.&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Process the expense data</span>
+</span></span><span style="display:flex;"><span>    expenses <span style="color:#f92672">=</span> load_expenses(input_file)
+</span></span><span style="display:flex;"><span>    categories <span style="color:#f92672">=</span> categorize_expenses(expenses)
+</span></span><span style="display:flex;"><span>    totals <span style="color:#f92672">=</span> calculate_category_totals(categories)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Generate the report</span>
+</span></span><span style="display:flex;"><span>    output_file <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;expense_report.txt&#39;</span>
+</span></span><span style="display:flex;"><span>    generate_expense_report(expenses, categories, totals, output_file)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Expense report generated: </span><span style="color:#e6db74">{</span>output_file<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    main()
+</span></span></code></pre></div><p>This script demonstrates:</p>
+<ul>
+<li>Function definitions with docstrings</li>
+<li>File I/O with the <code>with</code> statement</li>
+<li>CSV processing</li>
+<li>Module imports and usage</li>
+<li>Error handling</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Functions, modules, and file I/O form the backbone of most Python applications, especially for financial tasks. By mastering these concepts, you&rsquo;ll be well-equipped to build tools for financial analysis, reporting, and automation.</p>
+<p>In the next post, we&rsquo;ll explore virtual environments and package management, which will help you manage dependencies for larger projects.</p>
+<p><strong>Practice Exercise:</strong> Try extending the expense analyser to calculate monthly trends or generate a simple visualisation of spending by category. This will help reinforce the concepts we&rsquo;ve covered while building something useful for your financial toolkit.</p>
 ]]></content:encoded></item></channel></rss>

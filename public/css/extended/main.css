@@ -1,0 +1,10 @@
+/* Main CSS file that imports all split CSS files */
+
+@import 'variables.css';
+@import 'typography.css';
+@import 'layout.css';
+@import 'components.css';
+@import 'utilities.css';
+@import 'smooth-scroll.css';
+@import 'menu.css';
+@import 'series.css'; 

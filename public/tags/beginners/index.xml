@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Beginners on Michael Brunger</title><link>https://michaelbrunger.com/tags/beginners/</link><description>Recent content in Beginners on Michael Brunger</description><image><title>Michael Brunger</title><url>https://michaelbrunger.com/site-feature-image.jpg</url><link>https://michaelbrunger.com/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Thu, 08 May 2025 14:54:50 +0100</lastBuildDate><atom:link href="https://michaelbrunger.com/tags/beginners/index.xml" rel="self" type="application/rss+xml"/><item><title>Introduction to Git</title><link>https://michaelbrunger.com/introduction-to-git/</link><pubDate>Wed, 30 Apr 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/introduction-to-git/</guid><description>&lt;h1 id="git-crash-course-for-beginners-commands-workflow--terminology">Git Crash Course for Beginners: Commands, Workflow &amp;amp; Terminology&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Beginners on Michael Brunger</title><link>https://michaelbrunger.com/tags/beginners/</link><description>Recent content in Beginners on Michael Brunger</description><image><title>Michael Brunger</title><url>https://michaelbrunger.com/site-feature-image.jpg</url><link>https://michaelbrunger.com/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Sun, 25 May 2025 21:46:26 +0100</lastBuildDate><atom:link href="https://michaelbrunger.com/tags/beginners/index.xml" rel="self" type="application/rss+xml"/><item><title>Introduction to Git</title><link>https://michaelbrunger.com/introduction-to-git/</link><pubDate>Wed, 30 Apr 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/introduction-to-git/</guid><description>&lt;h1 id="git-crash-course-for-beginners-commands-workflow--terminology">Git Crash Course for Beginners: Commands, Workflow &amp;amp; Terminology&lt;/h1>
 &lt;p>If you&amp;rsquo;re new to Git, you&amp;rsquo;re about to discover one of the most powerful tools in a developer&amp;rsquo;s toolkit. Git allows you to track changes, collaborate with others, and maintain different versions of your project. This comprehensive guide will take you through everything you need to know to get started with Git on Windows.&lt;/p>
 &lt;h2 id="setting-up-git">Setting Up Git&lt;/h2>
-&lt;p>If you&amp;rsquo;ve already downloaded Git (which you mentioned you have), you&amp;rsquo;re one step ahead! Now let&amp;rsquo;s configure your identity:&lt;/p></description><content:encoded><![CDATA[<h1 id="git-crash-course-for-beginners-commands-workflow--terminology">Git Crash Course for Beginners: Commands, Workflow &amp; Terminology</h1>
+&lt;p>Download Git and configure your identity:&lt;/p></description><content:encoded><![CDATA[<h1 id="git-crash-course-for-beginners-commands-workflow--terminology">Git Crash Course for Beginners: Commands, Workflow &amp; Terminology</h1>
 <p>If you&rsquo;re new to Git, you&rsquo;re about to discover one of the most powerful tools in a developer&rsquo;s toolkit. Git allows you to track changes, collaborate with others, and maintain different versions of your project. This comprehensive guide will take you through everything you need to know to get started with Git on Windows.</p>
 <h2 id="setting-up-git">Setting Up Git</h2>
-<p>If you&rsquo;ve already downloaded Git (which you mentioned you have), you&rsquo;re one step ahead! Now let&rsquo;s configure your identity:</p>
+<p>Download Git and configure your identity:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git config --global user.name <span style="color:#e6db74">&#34;Your Name&#34;</span>
 </span></span><span style="display:flex;"><span>git config --global user.email <span style="color:#e6db74">&#34;your.email@example.com&#34;</span>
 </span></span></code></pre></div><p>Run these commands once when you first install Git. They&rsquo;ll associate your name and email with every commit you make.</p>
@@ -14,7 +14,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>mkdir my-project
 </span></span><span style="display:flex;"><span>cd my-project
 </span></span><span style="display:flex;"><span>git init
-</span></span></code></pre></div><p>This creates a new folder and initializes it as a Git repository.</p>
+</span></span></code></pre></div><p>This creates a new folder and initialises it as a Git repository.</p>
 <h3 id="clone-an-existing-repository">Clone an Existing Repository</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git clone https<span style="color:#960050;background-color:#1e0010">:</span>//github.com/username/repository-name.git
 </span></span><span style="display:flex;"><span>cd repository-name
@@ -154,7 +154,7 @@
 <p><strong>Remote Repository</strong> - A Git repository stored on a server or service (like GitHub, GitLab, Bitbucket).</p>
 <p><strong>Origin</strong> - The default name Git gives to the remote repository from which you cloned.</p>
 <p><strong>Upstream</strong> - The original repository that you forked from (commonly used in open-source projects).</p>
-<h3 id="connection--synchronization">Connection &amp; Synchronization</h3>
+<h3 id="connection--synchronisation">Connection &amp; Synchronisation</h3>
 <p><strong>Remote</strong> - A connection to another repository, usually on a server.</p>
 <p><strong>Tracking Branch</strong> - A local branch that has a direct relationship to a remote branch.</p>
 <p><strong>Upstream Branch</strong> - The remote branch that your local branch is tracking.</p>
@@ -183,12 +183,12 @@
 <h3 id="practical-terminology">Practical Terminology</h3>
 <p><strong>Pull Request (PR)</strong> - On platforms like GitHub, a request to merge changes from one branch to another, usually with code review.</p>
 <p><strong>Code Review</strong> - The process of examining code changes before they&rsquo;re merged.</p>
-<p><strong>Branch Protection</strong> - Rules that prevent certain actions on important branches without proper authorization.</p>
+<p><strong>Branch Protection</strong> - Rules that prevent certain actions on important branches without proper authorisation.</p>
 <p><strong>Continuous Integration (CI)</strong> - Automated testing that runs whenever code is pushed to a repository.</p>
 <p><strong>Continuous Deployment (CD)</strong> - Automated deployment of code that passes CI tests.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>Git can seem intimidating at first, but with practice, these commands and concepts will become second nature. The key is to use Git regularly, starting with simple operations and gradually incorporating more advanced features into your workflow.</p>
-<p>Remember, Git is designed to be a safety net for your code. Don&rsquo;t be afraid to experiment—you can always recover your work if something goes wrong. Happy coding!</p>
+<p>Git is designed to be a safety net for your code. Don&rsquo;t be afraid to experiment; you can always recover your work if something goes wrong.</p>
 ]]></content:encoded></item><item><title>Python Learning Path: From Fundamentals to Intermediate Applications</title><link>https://michaelbrunger.com/python-learning-path/</link><pubDate>Sun, 27 Apr 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/python-learning-path/</guid><description>A comprehensive 17-post curriculum taking you from Python installation to building real-world applications. Covers core language features, professional practices, data analysis tools, and practical project development.</description><content:encoded><![CDATA[<h2 id="my-python-learning-journey">My Python Learning Journey</h2>
 <p>Welcome to my Python learning series! As a finance professional exploring programming, I&rsquo;m documenting my entire journey through 17 posts that take you from absolute beginner to building practical applications.</p>
 <h2 id="what-to-expect-from-this-series">What to Expect from This Series</h2>

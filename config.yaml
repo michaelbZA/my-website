@@ -28,7 +28,7 @@ outputs:
 # Moved here from the module import for clarity and standard Hugo practice.
 enableRobotsTXT: true  # Generate a robots.txt file (good for SEO).
 buildDrafts: false     # Don't build posts marked as 'draft: true' in front matter.
-buildFuture: false     # Don't build posts with a date in the future.
+buildFuture: true     # Allow future-dated content (needed for briefs)
 enableEmoji: true      # Enable emoji support (requires UTF-8).
 enableGitInfo: true    # Include Git commit info (date, hash) in build data if available.
 canonifyURLs: true     # Ensure URLs are absolute and structured consistently (e.g., trailing slash).
@@ -57,6 +57,7 @@ taxonomies:
   category: categories  # e.g., /categories/programming/
   tag: tags             # e.g., /tags/python/
   series: series        # e.g., /series/web-development-basics/
+  brief: briefs        # e.g., /briefs/daily-brief/
 
 ########################################################################################################################
 # AUTHOR INFORMATION
@@ -79,15 +80,15 @@ menu:
     - identifier: home   # Unique internal identifier for the menu item.
       name: Home         # Text displayed in the menu.
       url: /             # The URL the menu item links to. Use "/" for the homepage.
-      weight: 10         # Controls the order (lower numbers appear first).
+      weight: 10 
+    - identifier: briefs
+      name: Daily Briefs
+      url: /briefs/
+      weight: 15       # Controls the order (lower numbers appear first).
     - identifier: posts
       name: Posts
       url: /posts/
       weight: 20
-    - identifier: search
-      name: Search
-      url: /search/
-      weight: 45
     - identifier: about
       name: About
       url: /about/
@@ -96,6 +97,10 @@ menu:
       name: Links
       url: /links/
       weight: 40
+    - identifier: search
+      name: Search
+      url: /search/
+      weight: 45
     - identifier: contact
       name: Contact
       url: /contact/
@@ -157,6 +162,11 @@ params:
   homeLayout: cards
   # Number of columns for the 'cards' layout.
   cardsColumns: 3
+
+  mainSections:
+    - posts
+    - series
+    - briefs
 
   # Display settings for blog posts.
   showReadingTime: true     # Show estimated reading time.
