@@ -28,7 +28,7 @@ outputs:
 # Moved here from the module import for clarity and standard Hugo practice.
 enableRobotsTXT: true  # Generate a robots.txt file (good for SEO).
 buildDrafts: false     # Don't build posts marked as 'draft: true' in front matter.
-buildFuture: true     # Allow future-dated content (needed for briefs)
+buildFuture: false     # Allow future-dated content (needed for briefs)
 enableEmoji: true      # Enable emoji support (requires UTF-8).
 enableGitInfo: true    # Include Git commit info (date, hash) in build data if available.
 canonifyURLs: true     # Ensure URLs are absolute and structured consistently (e.g., trailing slash).
