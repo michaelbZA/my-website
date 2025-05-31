@@ -4,6 +4,12 @@ const axios = require('axios');
 const fs = require('fs').promises;
 const path = require('path');
 const { format } = require('date-fns');
+const http = require('http');
+const https = require('https');
+
+// Create agents with keepAlive disabled
+const httpAgent = new http.Agent({ keepAlive: false });
+const httpsAgent = new https.Agent({ keepAlive: false });
 
 const parser = new Parser({
   timeout: 30000, // 30 second timeout
@@ -236,20 +242,22 @@ ${articleTexts}
 
 Create a concise brief that's informative and well-structured. Total length should be 500-600 words, with each category summary being 50-75 words maximum (no need to show the word count). Focus on actionable insights.`;
 
-    const response = await axios.post('https://api.x.ai/v1/chat/completions', {
-      model: 'grok-3-mini',
-      messages: [{ role: 'user', content: prompt }],
-      max_tokens: 2200,
-      temperature: 0.7,
-      stream: false
-    }, {
-      headers: {
-        'Authorization': `Bearer ${process.env.XAI_API_KEY}`,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      timeout: 60000 // 60 second timeout
-    });
+const response = await axios.post('https://api.x.ai/v1/chat/completions', {
+  model: 'grok-3-mini',
+  messages: [{ role: 'user', content: prompt }],
+  max_tokens: 2200,
+  temperature: 0.7,
+  stream: false
+}, {
+  headers: {
+    'Authorization': `Bearer ${process.env.XAI_API_KEY}`,
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  },
+  timeout: 60000,
+  httpAgent: httpAgent,
+  httpsAgent: httpsAgent
+});
 
     if (!response.data || !response.data.choices || !response.data.choices[0] || !response.data.choices[0].message) {
       throw new Error('Invalid response format from XAI API');
@@ -447,6 +455,8 @@ async function main() {
     const finalCheck = await fs.readFile(filePath, 'utf8');
     console.log(`📝 Final file preview (first 200 chars):`);
     console.log(finalCheck.substring(0, 200) + '...');
+
+    process.exit(0);
     
   } catch (error) {
     console.error('❌ Error generating brief:', error);

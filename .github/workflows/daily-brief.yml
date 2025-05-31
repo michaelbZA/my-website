@@ -1,5 +1,4 @@
 name: Generate Daily News Brief
-
 on:
   schedule:
     # Runs at 7 AM UTC (8 AM UK time in winter, 7 AM UK time in summer)
@@ -9,52 +8,56 @@ on:
 jobs:
   generate-brief:
     runs-on: ubuntu-latest
-    timeout-minutes: 15  # Increased timeout for network operations
-    
+    timeout-minutes: 10  # Reduced timeout since script should complete quickly
+   
     permissions:
       contents: write # Explicitly grant write permissions
       issues: write  # For creating issues on failure
-    
+   
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         fetch-depth: 0 # Ensure full history for git operations
-    
+   
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '20'
         cache: 'npm'
-    
+   
     - name: Create package.json if not exists
       run: |
         if [ ! -f package.json ]; then
           npm init -y
         fi
-    
+   
     - name: Install dependencies
       run: |
         npm install rss-parser axios date-fns dotenv
-    
+   
     - name: Generate news brief
+      timeout-minutes: 8  # Add timeout to this specific step
       env:
         XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
-        NODE_TLS_REJECT_UNAUTHORIZED: '0'  # Add this if there are SSL issues
-      run: node scripts/generate-brief.js
-    
+        # Remove NODE_TLS_REJECT_UNAUTHORIZED unless absolutely necessary
+      run: |
+        echo "Starting brief generation..."
+        node scripts/generate-brief.js
+        echo "Brief generation completed"
+   
     - name: Debug - Check if files were created
       run: |
         echo "Checking if brief files were created..."
         ls -la content/briefs/ || echo "Briefs directory doesn't exist"
         find . -name "*.md" -newer /tmp -type f 2>/dev/null || echo "No recent .md files found"
-    
+   
     - name: Configure git
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-    
+   
     - name: Commit and push if changed
       run: |
         git add content/briefs/
@@ -64,7 +67,7 @@ jobs:
           git commit -m "📰 Daily news brief - $(date +'%Y-%m-%d')"
           git push
         fi
-    
+   
     - name: Create issue on failure
       if: failure()
       uses: actions/github-script@v7
@@ -75,7 +78,7 @@ jobs:
             repo: context.repo.repo,
             title: `Daily Brief Generation Failed - ${new Date().toISOString().split('T')[0]}`,
             body: `The daily news brief generation failed. Please check the workflow logs for details.
-            
+           
             Common issues to check:
             - Network connectivity to RSS feeds
             - XAI API key validity
