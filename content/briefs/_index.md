@@ -1,6 +1,6 @@
 ---
 title: "Daily News Briefs"
-date: 2025-05-30T13:33:26.513Z
+date: 2025-05-31T21:40:50.276Z
 draft: false
 summary: "Daily intelligence briefs covering tech, AI, politics, UK and world news"
 ---
@@ -16,3 +16,5 @@ Articles published within the last 48 hours are extracted, de-duplicated, and so
 If an AI key is available, these stories are passed to a language model (currently Grok-3 Mini) along with a structured prompt that generates a concise and readable intelligence-style brief. If no AI is available, a fallback system categorises and lists articles in markdown format under key topics.
 
 The end result is a balanced, daily digest — summarising essential developments across technology, politics, finance, and more — ready to be published as a markdown file to the site using GitHub Actions.
+
+*Last updated: 2025-05-31T21:40:50.276Z*
