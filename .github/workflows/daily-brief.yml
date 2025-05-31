@@ -9,6 +9,7 @@ on:
 jobs:
   generate-brief:
     runs-on: ubuntu-latest
+    timeout-minutes: 10  # Add timeout for the entire job
     
     permissions:
       contents: write # Explicitly grant write permissions
@@ -71,6 +72,7 @@ jobs:
         git push || exit 1
         
         echo "Changes pushed successfully!"
+      timeout-minutes: 2  # Add timeout for git operations
     
     - name: Create issue on failure
       if: failure()
