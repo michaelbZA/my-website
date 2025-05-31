@@ -65,11 +65,8 @@ jobs:
         echo "Committing changes..."
         git commit -m "📰 Daily news brief - $(date +'%Y-%m-%d')" || exit 1
         
-        echo "Pulling latest changes..."
-        git pull --rebase || exit 1
-        
         echo "Pushing changes..."
-        git push || exit 1
+        git push origin HEAD:${GITHUB_REF#refs/heads/} || exit 1
         
         echo "Changes pushed successfully!"
       timeout-minutes: 2  # Add timeout for git operations
