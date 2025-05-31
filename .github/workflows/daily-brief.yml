@@ -12,6 +12,7 @@ jobs:
     
     permissions:
       contents: write # Explicitly grant write permissions
+      issues: write  # For creating issues on failure
     
     steps:
     - name: Checkout repository
@@ -53,10 +54,11 @@ jobs:
     - name: Commit and push changes
       if: steps.verify-changed-files.outputs.changed == 'true'
       run: |
-        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
         git add content/briefs/
         git commit -m "📰 Daily news brief - $(date +'%Y-%m-%d')"
+        git pull --rebase
         git push
     
     - name: Create issue on failure

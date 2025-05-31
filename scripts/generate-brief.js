@@ -18,7 +18,7 @@ const RSS_FEEDS = [
 // US Sources
 { name: 'Fox News', url: 'https://feeds.foxnews.com/foxnews/latest', lean: 'right' },
 { name: 'NPR', url: 'https://feeds.npr.org/1001/rss.xml', lean: 'left' },
-{ name: 'Politico', url: 'https://www.politico.com/feed/', lean: 'center' },
+{ name: 'Politico', url: 'https://www.politico.com/rss/politicopicks.xml', lean: 'center' },
 
 // Tech Sources
 { name: 'TechCrunch', url: 'https://techcrunch.com/feed/', lean: 'center' },
@@ -29,8 +29,8 @@ const RSS_FEEDS = [
 { name: 'AI News', url: 'https://artificialintelligence-news.com/feed/', lean: 'center' },
 
 // International News
-{ name: 'Reuters', url: 'https://www.reutersagency.com/feed/?best-topics=tech&post_type=best', lean: 'center' },
-{ name: 'AP News', url: 'https://www.ap.org/feeds/', lean: 'center' },
+{ name: 'Reuters', url: 'https://www.reutersagency.com/feed/?best-regions=europe&post_type=best', lean: 'center' },
+{ name: 'AP News', url: 'https://www.ap.org/feeds/news/', lean: 'center' },
 { name: 'Al Jazeera', url: 'https://www.aljazeera.com/xml/rss/all.xml', lean: 'center-left' },
 { name: 'Nikkei Asia', url: 'https://asia.nikkei.com/rss/feed/nar', lean: 'center' },
 { name: 'The Hindu', url: 'https://www.thehindu.com/news/national/feeder/default.rss', lean: 'center' },
@@ -187,7 +187,7 @@ Create a concise brief that's informative and well-structured. Total length shou
     const response = await axios.post('https://api.x.ai/v1/chat/completions', {
       model: 'grok-3-mini',
       messages: [{ role: 'user', content: prompt }],
-      max_tokens: 2000,
+      max_tokens: 2200,
       temperature: 0.7,
       stream: false
     }, {
@@ -195,10 +195,7 @@ Create a concise brief that's informative and well-structured. Total length shou
         'Authorization': `Bearer ${process.env.XAI_API_KEY}`,
         'Content-Type': 'application/json',
         'Accept': 'application/json'
-      },
-      httpsAgent: new (require('https').Agent)({
-        rejectUnauthorized: false
-      })
+      }
     });
 
     if (!response.data || !response.data.choices || !response.data.choices[0] || !response.data.choices[0].message) {
@@ -294,16 +291,12 @@ async function generateHugoMarkdown(summary, articles) {
 title: "Daily Brief - ${readableDate}"
 date: ${today.toISOString()}
 draft: false
+type: "brief"
 summary: "Daily intelligence brief covering tech, AI, politics, UK and world news"
 tags: ["news", "daily-brief", "tech", "politics", "ai"]
 showReadingTime: false
 showToc: false
 ---
-
-# Daily Intelligence Brief
-*${readableDate}*
-
-## Executive Summary
 
 ${cleanSummary}
 
@@ -380,7 +373,7 @@ async function main() {
 async function createBriefsSection() {
   const briefsIndexContent = `---
 title: "Daily News Briefs"
-date: ${new Date().toISOString()}
+date: 2025-05-30T13:33:26.513Z
 draft: false
 summary: "Daily intelligence briefs covering tech, AI, politics, UK and world news"
 ---
