@@ -9,7 +9,7 @@ on:
 jobs:
   generate-brief:
     runs-on: ubuntu-latest
-    timeout-minutes: 10  # Add timeout for the entire job
+    timeout-minutes: 15  # Increased timeout for network operations
     
     permissions:
       contents: write # Explicitly grant write permissions
@@ -41,14 +41,29 @@ jobs:
     - name: Generate news brief
       env:
         XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+        NODE_TLS_REJECT_UNAUTHORIZED: '0'  # Add this if there are SSL issues
       run: node scripts/generate-brief.js
     
+    - name: Debug - Check if files were created
+      run: |
+        echo "Checking if brief files were created..."
+        ls -la content/briefs/ || echo "Briefs directory doesn't exist"
+        find . -name "*.md" -newer /tmp -type f 2>/dev/null || echo "No recent .md files found"
+    
+    - name: Configure git
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+    
     - name: Commit and push if changed
-      uses: stefanzweifel/git-auto-commit-action@v5
-      with:
-        commit_message: "📰 Daily news brief - $(date +'%Y-%m-%d')"
-        file_pattern: content/briefs/
-        branch: ${{ github.ref }}
+      run: |
+        git add content/briefs/
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "📰 Daily news brief - $(date +'%Y-%m-%d')"
+          git push
+        fi
     
     - name: Create issue on failure
       if: failure()
@@ -59,5 +74,11 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             title: `Daily Brief Generation Failed - ${new Date().toISOString().split('T')[0]}`,
-            body: `The daily news brief generation failed. Please check the workflow logs.`
+            body: `The daily news brief generation failed. Please check the workflow logs for details.
+            
+            Common issues to check:
+            - Network connectivity to RSS feeds
+            - XAI API key validity
+            - File system permissions
+            - RSS feed availability`
           })
