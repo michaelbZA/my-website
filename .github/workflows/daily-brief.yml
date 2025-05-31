@@ -54,12 +54,23 @@ jobs:
     - name: Commit and push changes
       if: steps.verify-changed-files.outputs.changed == 'true'
       run: |
+        echo "Configuring git..."
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
+        
+        echo "Adding files..."
         git add content/briefs/
-        git commit -m "📰 Daily news brief - $(date +'%Y-%m-%d')"
-        git pull --rebase
-        git push
+        
+        echo "Committing changes..."
+        git commit -m "📰 Daily news brief - $(date +'%Y-%m-%d')" || exit 1
+        
+        echo "Pulling latest changes..."
+        git pull --rebase || exit 1
+        
+        echo "Pushing changes..."
+        git push || exit 1
+        
+        echo "Changes pushed successfully!"
     
     - name: Create issue on failure
       if: failure()
