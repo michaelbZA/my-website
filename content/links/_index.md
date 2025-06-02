@@ -43,7 +43,6 @@ Feel free to explore based on your interests. If you have suggestions for resour
 - [Morning Brew](https://www.morningbrew.com) — Business and tech news.
 - [CFO Brew](https://www.morningbrew.com/cfo) — Financial leadership and CFO insights.
 - [Colossus Weekly](https://www.joincolossus.com/episodes) — Investing and business podcasts.
-- [The Browser](https://thebrowser.com) — Five high-quality articles daily.
 
 ---
 
