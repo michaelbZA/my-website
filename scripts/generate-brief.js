@@ -29,7 +29,7 @@ const RSS_FEEDS = [
   // US Sources
   { name: 'Fox News', url: 'https://feeds.foxnews.com/foxnews/latest', lean: 'right' },
   { name: 'NPR', url: 'https://feeds.npr.org/1001/rss.xml', lean: 'left' },
-  { name: 'Politico', url: 'https://www.politico.com/rss/politicopicks.xml', lean: 'center' },
+  { name: 'Politico', url: 'https://rss.politico.com/politics-news.xml', lean: 'center' },
 
   // Tech Sources
   { name: 'TechCrunch', url: 'https://techcrunch.com/feed/', lean: 'center' },
@@ -40,8 +40,6 @@ const RSS_FEEDS = [
   { name: 'AI News', url: 'https://artificialintelligence-news.com/feed/', lean: 'center' },
 
   // International News
-  { name: 'Reuters', url: 'https://www.reutersagency.com/feed/?best-regions=europe&post_type=best', lean: 'center' },
-  { name: 'AP News', url: 'https://www.ap.org/feeds/news/', lean: 'center' },
   { name: 'Al Jazeera', url: 'https://www.aljazeera.com/xml/rss/all.xml', lean: 'center-left' },
   { name: 'Nikkei Asia', url: 'https://asia.nikkei.com/rss/feed/nar', lean: 'center' },
   { name: 'The Hindu', url: 'https://www.thehindu.com/news/national/feeder/default.rss', lean: 'center' },
@@ -193,12 +191,12 @@ async function generateSummary(articles) {
       `**${article.source}** (${article.lean}): ${article.title}\n${article.content.slice(0, 500)}...`
     ).join('\n\n');
 
-    const prompt = `You are an intelligence analyst creating a daily brief. Your task is to analyze these news articles and create a concise, well-structured summary.
+    const prompt = `You are an intelligence analyst creating a daily brief. Your task is to analyse these news articles and create a concise, well-structured summary.
 
 Please follow this structure:
 
 ## Executive Summary
-Provide 1-2 paragraphs summarizing the most critical developments.
+Provide 1-2 paragraphs summarising the most critical developments.
 
 ## Key Trends & Sentiment
 - List 2 key emerging trends
@@ -231,13 +229,13 @@ For each category below, provide a single paragraph summary (50-75 words) focusi
 For each category:
 - Focus on the single most significant development
 - Rate its significance (High/Medium/Low)
-- Keep to 50-75 words maximum (don't show the word count at the end)
+- Keep to 50-75 words maximum
 
 ## Key Takeaways
 - List 3 most important implications
 - Note 1-2 developments to watch
 
-Articles to analyze:
+Articles to analyse:
 ${articleTexts}
 
 Create a concise brief that's informative and well-structured. Total length should be 500-600 words, with each category summary being 50-75 words maximum (no need to show the word count). Focus on actionable insights.`;
@@ -329,7 +327,7 @@ function generateSimpleSummary(articles) {
 
   let summary = '## Daily News Brief\n\n';
   summary += `Generated on ${format(new Date(), 'EEEE, MMMM do, yyyy')} at ${format(new Date(), 'HH:mm')} UTC\n\n`;
-  summary += `**Total Articles Analyzed**: ${articles.length}\n\n`;
+  summary += `**Total Articles Analysed**: ${articles.length}\n\n`;
   
   Object.entries(categories).forEach(([category, categoryArticles]) => {
     if (categoryArticles.length > 0) {
