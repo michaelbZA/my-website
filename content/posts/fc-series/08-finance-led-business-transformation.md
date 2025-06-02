@@ -10,11 +10,11 @@ series_order: 8
 showToc: true
 TocOpen: false
 draft: false
-cover:
-    image: "images/finance-led-transformation.jpg" # Create or replace with your own image
-    alt: "Finance leader presenting transformation plan"
-    caption: "Finance as a driver of organizational change"
-    relative: false
+#cover:
+    #image: "images/finance-led-transformation.jpg" # Create or replace with your own image
+    #alt: "Finance leader presenting transformation plan"
+    #caption: "Finance as a driver of organizational change"
+    #relative: false
 ---
 
 # Part 7: Finance-Led Business Transformation

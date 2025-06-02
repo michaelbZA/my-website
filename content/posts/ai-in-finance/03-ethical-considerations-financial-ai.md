@@ -1,6 +1,6 @@
 ---
 title: "Ethical Considerations in Financial AI"
-date: 2025-07-24T09:00:00-05:00
+date: 2025-07-29
 draft: false
 description: "Navigate the complex ethical landscape of AI implementation in finance, including bias, transparency, privacy and compliance concerns."
 slug: "ethical-considerations-financial-ai"

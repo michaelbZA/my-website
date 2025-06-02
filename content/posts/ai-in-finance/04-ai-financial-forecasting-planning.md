@@ -1,7 +1,7 @@
 ---
 title: "AI for Financial Forecasting and Planning"
 date: 2025-07-31T09:00:00-05:00
-draft: false
+draft: true
 description: "Transform your financial planning and forecasting processes with AI technologies, balancing machine learning capabilities with human expertise."
 slug: "ai-financial-forecasting-planning"
 tags: ["financial forecasting", "FP&A", "machine learning", "predictive analytics", "scenario planning"]

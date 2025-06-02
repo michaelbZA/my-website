@@ -67,6 +67,18 @@ You'll notice your command prompt changes to show the active environment:
 (env) C:\Users\YourName\Documents\financial-analysis-project>
 ```
 
+If you're using PowerShell instead of Command Prompt on Windows, the commands are slightly different:
+
+```
+.\env\Scripts\Activate.ps1
+```
+
+If you encounter execution policy restrictions, you may need to allow script execution:
+
+```
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
 Now any Python commands will use this isolated environment.
 
 ### Notes for macOS/Linux
@@ -492,8 +504,6 @@ print(report)
 
 ## Conclusion
 
-Virtual environments and proper packaging are essential skills for any Python developer, especially when working on financial applications where consistency and reproducibility are critical. By mastering these concepts, you'll ensure your projects are well-organisd, shareable, and isolated from potential dependency conflicts.
+Virtual environments and proper packaging are essential skills for any Python developer, especially when working on financial applications where consistency and reproducibility are critical. By mastering these concepts, you'll ensure your projects are well-organised, shareable, and isolated from potential dependency conflicts.
 
-In the next post, we'll dive into code quality and collaboration tools that will help you write cleaner, more maintainable financial applications and work effectively with others.
-
-**Practice Exercise:** Create a virtual environment for a financial dashboard project. Install pandas, matplotlib, and Flask. Create a requirements.txt file and share it with a colleague (or another computer) to test the reproducibility of your environment.
+In the next post, we'll look at code quality and collaboration tools that will help you write cleaner, more maintainable financial applications and work effectively with others.

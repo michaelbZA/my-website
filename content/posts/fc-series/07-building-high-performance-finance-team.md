@@ -10,11 +10,11 @@ series_order: 7
 showToc: true
 TocOpen: false
 draft: false
-cover:
-    image: "images/high-performance-finance-team.jpg" # Create or replace with your own image
-    alt: "Finance team collaboration"
-    caption: "Building exceptional finance capabilities"
-    relative: false
+#cover:
+    #image: "images/high-performance-finance-team.jpg" # Create or replace with your own image
+    #alt: "Finance team collaboration"
+    #caption: "Building exceptional finance capabilities"
+    #relative: false
 ---
 
 # Part 6: Building a High-Performance Finance Team
@@ -23,9 +23,9 @@ cover:
 
 ## The Finance Team Evolution
 
-As finance functions transition from traditional accounting and reporting roles to strategic business partnership, the capabilities and culture of the finance team must evolve accordingly. David Parmenter, in "The Financial Controller and CFO's Toolkit," emphasizes that "winning finance teams" are distinguished not just by technical competence but by their ability to influence business outcomes.
+As finance functions transition from traditional accounting and reporting roles to strategic business partnership, the capabilities and culture of the finance team must evolve accordingly. David Parmenter, in "The Financial Controller and CFO's Toolkit," emphasises that "winning finance teams" are distinguished not just by technical competence but by their ability to influence business outcomes.
 
-According to Parmenter, "The difference between an average finance team and a world-class one isn't just knowledge—it's how that knowledge is applied to create value for the organization."
+According to Parmenter, "The difference between an average finance team and a world-class one isn't just knowledge—it's how that knowledge is applied to create value for the organisation."
 
 This post explores how finance leaders can build high-performance teams capable of meeting the evolving demands of modern business.
 
@@ -38,17 +38,17 @@ David Parmenter proposes a comprehensive framework for developing high-performan
 The traditional hierarchical structure of finance departments often impedes performance. Parmenter advocates for a flatter team structure with clear accountability:
 
 - **Finance business partners** embedded within operational units
-- **Centers of excellence** for specialized knowledge (tax, treasury, etc.)
+- **Centers of excellence** for specialised knowledge (tax, treasury, etc.)
 - **Shared service centers** for transactional processes
 - **Small, agile teams** focused on specific business outcomes
 
-According to Parmenter, "Structure should follow strategy—organize your team around the outcomes you want to achieve, not historical departmental boundaries."
+According to Parmenter, "Structure should follow strategy—organise your team around the outcomes you want to achieve, not historical departmental boundaries."
 
 ### 2. Skills and Capabilities
 
 Modern finance teams require a broader skill set than traditional accounting-focused departments. Parmenter identifies several critical competencies:
 
-- **Business acumen** - Understanding the organization's business model and value drivers
+- **Business acumen** - Understanding the organisation's business model and value drivers
 - **Data analytics** - Ability to extract insights from complex data sets
 - **Communication** - Translating financial concepts for non-financial audiences
 - **Change management** - Implementing new processes and systems effectively
@@ -59,11 +59,11 @@ Parmenter notes, "Technical accounting skills are the price of entry—they get 
 
 ### 3. Systems and Processes
 
-High-performance teams leverage effective systems and processes to maximize productivity:
+High-performance teams leverage effective systems and processes to maximise productivity:
 
-- **Standardized workflows** for routine activities
+- **Standardised workflows** for routine activities
 - **Knowledge management systems** to capture and share institutional knowledge
-- **Performance management frameworks** aligned with organizational goals
+- **Performance management frameworks** aligned with organisational goals
 - **Continuous improvement mechanisms** to identify and address inefficiencies
 - **Technology enablement** to automate transactional work
 
@@ -80,7 +80,7 @@ Perhaps most importantly, high-performance finance teams cultivate a distinctive
 - **Customer-centric** orientation (both internal and external customers)
 - **Balanced scorecard** perspective beyond just financial metrics
 
-Parmenter emphasizes, "Culture isn't just how people behave when everything is going well—it's how they respond when things get difficult."
+Parmenter emphasises, "Culture isn't just how people behave when everything is going well—it's how they respond when things get difficult."
 
 ## Identifying and Developing Talent Within Your Team
 
@@ -132,7 +132,7 @@ As Parmenter notes, "Experience is the best teacher—expose your team to divers
 - Representing finance in operational meetings
 - Conducting training for non-finance colleagues
 
-Parmenter emphasizes, "Development happens at the edge of comfort—provide challenges that stretch but don't break your team members."
+Parmenter emphasises, "Development happens at the edge of comfort—provide challenges that stretch but don't break your team members."
 
 ## Creating a Culture of Continuous Improvement
 
@@ -143,16 +143,16 @@ High-performance finance teams are never satisfied with the status quo. They con
 Borrowing from lean manufacturing principles, Parmenter advocates applying kaizen (continuous improvement) methodologies to finance:
 
 1. **Make problems visible** - Create visual management systems that highlight issues
-2. **Standardize processes** - Document standard procedures as the foundation for improvement
+2. **Standardise processes** - Document standard procedures as the foundation for improvement
 3. **Measure what matters** - Establish KPIs for finance team performance (cycle times, accuracy, etc.)
 4. **Create improvement mechanisms** - Regular sessions to identify and address inefficiencies
-5. **Celebrate small wins** - Recognize incremental improvements to build momentum
+5. **Celebrate small wins** - Recognise incremental improvements to build momentum
 
 ### Process Improvement Techniques
 
 Specific tools that finance teams can apply include:
 
-- **Value stream mapping** - Visualizing end-to-end processes to identify waste
+- **Value stream mapping** - Visualising end-to-end processes to identify waste
 - **5 Whys analysis** - Drilling to root causes of problems
 - **PDCA cycles** (Plan-Do-Check-Act) - Structured approach to testing improvements
 - **Gemba walks** - Observing processes firsthand to identify improvement opportunities
@@ -166,7 +166,7 @@ Jack Stack, author of "The Great Game of Business," developed the concept of ope
 
 ### 1. Financial Transparency
 
-- Sharing financial information broadly within the organization
+- Sharing financial information broadly within the organisation
 - Teaching employees to understand financial statements
 - Connecting individual actions to financial outcomes
 - Demystifying financial terminology and concepts
@@ -180,7 +180,7 @@ Jack Stack, author of "The Great Game of Business," developed the concept of ope
 
 ### 3. Shared Rewards
 
-- Aligning incentives with organizational success
+- Aligning incentives with organisational success
 - Creating bonus systems tied to measurable outcomes
 - Celebrating wins collectively
 - Fostering mutual accountability for results
@@ -206,15 +206,15 @@ Developing a high-performance finance team requires systematic upskilling. Parme
 ### 1. Technical Skills Development
 
 - **ERP and systems training** - Ensuring proficiency with core tools
-- **Advanced Excel and data visualization** - Building analytical capabilities
+- **Advanced Excel and data visualisation** - Building analytical capabilities
 - **Accounting and regulatory updates** - Maintaining technical foundation
 - **Financial modeling** - Enhancing forecasting and scenario planning skills
 - **Process improvement methodologies** - Teaching lean and six sigma techniques
 
 ### 2. Business Acumen Building
 
-- **Industry immersion** - Understanding the organization's competitive landscape
-- **Business model training** - Learning how the organization creates value
+- **Industry immersion** - Understanding the organisation's competitive landscape
+- **Business model training** - Learning how the organisation creates value
 - **Strategy sessions** - Participating in strategic planning discussions
 - **Customer exposure** - Interacting directly with external customers
 - **Operational shadowing** - Spending time in key operational areas
@@ -229,7 +229,7 @@ Developing a high-performance finance team requires systematic upskilling. Parme
 
 ### 4. Learning Formats
 
-Parmenter emphasizes the importance of varied learning formats:
+Parmenter emphasises the importance of varied learning formats:
 
 - **Formal classroom training** - For foundational knowledge
 - **On-the-job application** - Immediate use of new skills
@@ -242,10 +242,10 @@ As Parmenter notes, "The most effective learning combines instruction, applicati
 
 ## Case Study: Finance Transformation at a Global Manufacturer
 
-This case study, based on a composite of organizations in Parmenter's research, illustrates the principles of high-performance team building in action:
+This case study, based on a composite of organisations in Parmenter's research, illustrates the principles of high-performance team building in action:
 
 ### Background
-A global manufacturing company with $3 billion in annual revenue had a finance team that was respected for accuracy but criticized for being reactive and transaction-focused. The newly appointed CFO aimed to transform the team into a strategic business partner.
+A global manufacturing company with $3 billion in annual revenue had a finance team that was respected for accuracy but criticised for being reactive and transaction-focused. The newly appointed CFO aimed to transform the team into a strategic business partner.
 
 ### Key Challenges
 - 80% of finance time spent on transaction processing and reporting
@@ -263,8 +263,8 @@ A global manufacturing company with $3 billion in annual revenue had a finance t
 - Established clear performance metrics for the transformation
 
 #### Phase 2: Structural Changes (6 months)
-- Reorganized from functional silos to business-aligned teams
-- Created centers of excellence for specialized knowledge
+- Reorganised from functional silos to business-aligned teams
+- Created centers of excellence for specialised knowledge
 - Established a shared service center for transactional activities
 - Implemented business partner roles embedded in operational units
 
@@ -277,7 +277,7 @@ A global manufacturing company with $3 billion in annual revenue had a finance t
 #### Phase 4: Cultural Transformation (18+ months)
 - Introduced open-book management principles
 - Implemented continuous improvement methodologies
-- Changed performance evaluation criteria to emphasize business impact
+- Changed performance evaluation criteria to emphasise business impact
 - Celebrated and rewarded new behaviors aligned with vision
 
 ### Results
@@ -288,7 +288,7 @@ After two years, the transformation delivered significant results:
 - Internal customer satisfaction increased from 3.2 to 4.7 (on 5-point scale)
 - Finance-led initiatives delivered $45 million in cost savings and revenue enhancements
 
-As the CFO commented, "We transformed from being financial record-keepers to true business partners driving organizational performance."
+As the CFO commented, "We transformed from being financial record-keepers to true business partners driving organisational performance."
 
 ## Self-Assessment: How High-Performing Is Your Finance Team?
 
@@ -317,19 +317,17 @@ Rate your team on these dimensions from 1 (strongly disagree) to 5 (strongly agr
 2. **Clarify your vision** - Define what "high performance" means in your specific context
 3. **Identify development needs** - Map the gap between current and desired capabilities
 4. **Create learning paths** - Develop tailored development plans for team members
-5. **Review team structure** - Align organizational design with strategic priorities
+5. **Review team structure** - Align organisational design with strategic priorities
 6. **Implement mentoring** - Create formal and informal knowledge-sharing mechanisms
-7. **Measure and recognize** - Establish metrics for team performance and celebrate progress
+7. **Measure and recognise** - Establish metrics for team performance and celebrate progress
 
 ## Conclusion
 
-Building a high-performance finance team is not a one-time project but an ongoing journey of development and improvement. By applying Parmenter's team development framework and Stack's open-book management principles, finance leaders can create teams that deliver exceptional value to their organizations.
+Building a high-performance finance team is not a one-time project but an ongoing journey of development and improvement. By applying Parmenter's team development framework and Stack's open-book management principles, finance leaders can create teams that deliver exceptional value to their organisations.
 
-As David Parmenter emphasizes, "The finance function of the future will be judged not by the accuracy of its reporting but by the impact of its insights." By investing in your team's capabilities, structure, processes, and culture, you can position your finance function as a true strategic partner in organizational success.
+As David Parmenter emphasises, "The finance function of the future will be judged not by the accuracy of its reporting but by the impact of its insights." By investing in your team's capabilities, structure, processes, and culture, you can position your finance function as a true strategic partner in organisational success.
 
 ---
-
-*What approaches have you found most effective in developing finance team capabilities? Have you implemented any elements of Parmenter's framework or Stack's open-book management? Share your experiences in the comments below, and stay tuned for Part 7 of this series, where we'll explore finance-led business transformation.*
 
 ## References
 
