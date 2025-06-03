@@ -6,6 +6,8 @@ const path = require('path');
 const { format } = require('date-fns');
 const http = require('http');
 const https = require('https');
+const pLimit = require('p-limit');
+const sanitizeHtml = require('sanitize-html');
 
 // Create agents with keepAlive disabled
 const httpAgent = new http.Agent({ keepAlive: false });
@@ -17,6 +19,8 @@ const parser = new Parser({
     'User-Agent': 'Mozilla/5.0 (compatible; NewsBot/1.0)'
   }
 });
+
+const limit = pLimit(5); // Max 5 concurrent requests
 
 // Diverse news sources for balanced perspective
 const RSS_FEEDS = [
@@ -87,62 +91,69 @@ async function fetchArticles() {
   
   console.log(`Starting to fetch from ${RSS_FEEDS.length} RSS feeds...`);
   
-  // Process feeds with individual error handling
-  const fetchPromises = RSS_FEEDS.map(async (feed) => {
-    try {
-      console.log(`Fetching from ${feed.name}...`);
-      
-      // Add timeout and retry logic
-      const feedData = await parser.parseURL(feed.url);
-      
-      if (!feedData.items || feedData.items.length === 0) {
-        console.warn(`No items found in feed: ${feed.name}`);
+  // Process feeds with individual error handling and rate limiting
+  const fetchPromises = RSS_FEEDS.map(feed => 
+    limit(async () => {
+      try {
+        console.log(`Fetching from ${feed.name}...`);
+        
+        const feedData = await parser.parseURL(feed.url);
+        
+        if (!feedData.items || feedData.items.length === 0) {
+          console.warn(`No items found in feed: ${feed.name}`);
+          return [];
+        }
+        
+        const relevantArticles = feedData.items
+          .filter(item => {
+            // Check if article has required fields
+            if (!item.title || !item.link || !item.pubDate) {
+              return false;
+            }
+
+            // First check if article is within time window
+            const articleDate = new Date(item.pubDate);
+            if (isNaN(articleDate.getTime())) {
+              console.warn(`Invalid date for article: ${item.title}`);
+              return false;
+            }
+            
+            const hoursOld = (now - articleDate) / (1000 * 60 * 60);
+            if (hoursOld > MAX_ARTICLE_AGE_HOURS) {
+              return false;
+            }
+
+            // Then check if it matches keywords
+            const text = `${item.title} ${item.contentSnippet || item.content || ''}`.toLowerCase();
+            return KEYWORDS.some(keyword => text.includes(keyword.toLowerCase()));
+          })
+          .slice(0, 5) // Max 5 articles per source
+          .map(item => ({
+            title: sanitizeHtml(item.title, { 
+              allowedTags: [],
+              allowedAttributes: {}
+            }),
+            link: item.link,
+            pubDate: item.pubDate,
+            content: sanitizeHtml(item.contentSnippet || item.content || '', {
+              allowedTags: [], // or ['p', 'br'] if you want to keep some basic formatting
+              allowedAttributes: {}
+            }),
+            source: feed.name,
+            lean: feed.lean
+          }));
+        
+        console.log(`Found ${relevantArticles.length} relevant articles from ${feed.name}`);
+        return relevantArticles;
+        
+      } catch (error) {
+        const errorMsg = `Error fetching ${feed.name}: ${error.message}`;
+        console.error(errorMsg);
+        errors.push(errorMsg);
         return [];
       }
-      
-      const relevantArticles = feedData.items
-        .filter(item => {
-          // Check if article has required fields
-          if (!item.title || !item.link || !item.pubDate) {
-            return false;
-          }
-
-          // First check if article is within time window
-          const articleDate = new Date(item.pubDate);
-          if (isNaN(articleDate.getTime())) {
-            console.warn(`Invalid date for article: ${item.title}`);
-            return false;
-          }
-          
-          const hoursOld = (now - articleDate) / (1000 * 60 * 60);
-          if (hoursOld > MAX_ARTICLE_AGE_HOURS) {
-            return false;
-          }
-
-          // Then check if it matches keywords
-          const text = `${item.title} ${item.contentSnippet || item.content || ''}`.toLowerCase();
-          return KEYWORDS.some(keyword => text.includes(keyword.toLowerCase()));
-        })
-        .slice(0, 5) // Max 5 articles per source
-        .map(item => ({
-          title: item.title,
-          link: item.link,
-          pubDate: item.pubDate,
-          content: item.contentSnippet || item.content || '',
-          source: feed.name,
-          lean: feed.lean
-        }));
-      
-      console.log(`Found ${relevantArticles.length} relevant articles from ${feed.name}`);
-      return relevantArticles;
-      
-    } catch (error) {
-      const errorMsg = `Error fetching ${feed.name}: ${error.message}`;
-      console.error(errorMsg);
-      errors.push(errorMsg);
-      return [];
-    }
-  });
+    })
+  );
   
   // Wait for all feeds to complete
   const results = await Promise.allSettled(fetchPromises);
@@ -397,6 +408,68 @@ function getBadge(lean) {
   return badges[lean] || '⚪';
 }
 
+function deduplicateArticles(articles) {
+  const uniqueArticles = [];
+  const seenTitles = new Set();
+
+  articles.forEach(article => {
+    // Normalize the title for comparison
+    const normalizedTitle = article.title
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, '') // Remove special characters
+      .replace(/\s+/g, ' ')        // Normalize whitespace
+      .trim();
+
+    // Check if this is a duplicate
+    const isDuplicate = Array.from(seenTitles).some(existingTitle => {
+      // Check if either title contains the other
+      return normalizedTitle.includes(existingTitle) || 
+             existingTitle.includes(normalizedTitle) ||
+             // Add Levenshtein distance check for similar titles
+             levenshteinDistance(normalizedTitle, existingTitle) < 10;
+    });
+
+    if (!isDuplicate) {
+      seenTitles.add(normalizedTitle);
+      uniqueArticles.push(article);
+    }
+  });
+
+  return uniqueArticles;
+}
+
+// Helper function to calculate Levenshtein distance
+function levenshteinDistance(a, b) {
+  if (a.length === 0) return b.length;
+  if (b.length === 0) return a.length;
+
+  const matrix = [];
+
+  for (let i = 0; i <= b.length; i++) {
+    matrix[i] = [i];
+  }
+
+  for (let j = 0; j <= a.length; j++) {
+    matrix[0][j] = j;
+  }
+
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      if (b.charAt(i - 1) === a.charAt(j - 1)) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j - 1] + 1,
+          matrix[i][j - 1] + 1,
+          matrix[i - 1][j] + 1
+        );
+      }
+    }
+  }
+
+  return matrix[b.length][a.length];
+}
+
 async function main() {
   try {
     console.log('Starting daily brief generation...');
@@ -415,10 +488,13 @@ async function main() {
     });
     console.log('📊 Articles by source:', sourceCounts);
     
-    const summary = await generateSummary(articles);
+    const uniqueArticles = deduplicateArticles(articles);
+    console.log(`✅ Deduplicated to ${uniqueArticles.length} unique articles`);
+    
+    const summary = await generateSummary(uniqueArticles);
     console.log('✅ Summary generated successfully');
     
-    const markdown = await generateHugoMarkdown(summary, articles);
+    const markdown = await generateHugoMarkdown(summary, uniqueArticles);
     console.log('✅ Markdown generated successfully');
     
     // Create content/briefs directory if it doesn't exist
