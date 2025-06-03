@@ -3,7 +3,7 @@ title: "Welcome to My Website"
 draft: false
 ---
 
-## Welcome to my corner of the internet. 
+## Welcome to my corner of the internet
 
 I am a South African chartered accountant based in England, documenting my learning journey across Python, finance, and various other interests. 
 
