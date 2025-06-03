@@ -1,8 +1,8 @@
 name: Generate Daily News Brief
 on:
   schedule:
-    # Runs at 7 AM UTC (8 AM UK time in winter, 7 AM UK time in summer)
-    - cron: '0 7 * * *'
+    # Runs at 6 AM UTC (7 AM UK time in winter, 6 AM UK time in summer)
+    - cron: '0 6 * * *'
   workflow_dispatch: # Allows manual triggering
 
 jobs:
