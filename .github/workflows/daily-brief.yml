@@ -27,15 +27,8 @@ jobs:
         node-version: '20'
         cache: 'npm'
    
-    - name: Create package.json if not exists
-      run: |
-        if [ ! -f package.json ]; then
-          npm init -y
-        fi
-   
     - name: Install dependencies
-      run: |
-        npm install rss-parser axios date-fns dotenv
+      run: npm ci
    
     - name: Generate news brief
       timeout-minutes: 8  # Add timeout to this specific step
