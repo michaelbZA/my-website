@@ -6,7 +6,7 @@ const path = require('path');
 const { format } = require('date-fns');
 const http = require('http');
 const https = require('https');
-const pLimit = require('p-limit');
+const pLimit = require('p-limit').default;
 const sanitizeHtml = require('sanitize-html');
 
 // Create agents with keepAlive disabled

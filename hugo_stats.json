@@ -344,7 +344,6 @@
       "bbc-news-",
       "bbc-news--1",
       "bbc-news--2",
-      "bbc-news--3",
       "booleans",
       "branch-management",
       "building-for-production",
@@ -525,7 +524,6 @@
       "none-type",
       "npr-",
       "npr--1",
-      "npr--2",
       "numbers",
       "on-linux-debianubuntu",
       "on-macos-using-homebrew",
@@ -643,6 +641,7 @@
       "the-command-palette-your-best-friend",
       "the-daily-git-workflow",
       "the-dashboard-approach",
+      "the-economist-",
       "the-evolution-of-finance-leadership",
       "the-financial-controllers-role-in-kpi-implementation",
       "the-financial-controllers-role-in-reporting-transformation",
@@ -716,6 +715,7 @@
       "yahoo-finance-",
       "yahoo-finance--1",
       "yahoo-finance--2",
+      "yahoo-finance--3",
       "your-rights"
     ]
   }
