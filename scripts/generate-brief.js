@@ -127,7 +127,7 @@ async function fetchArticles() {
             const text = `${item.title} ${item.contentSnippet || item.content || ''}`.toLowerCase();
             return KEYWORDS.some(keyword => text.includes(keyword.toLowerCase()));
           })
-          .slice(0, 5) // Max 5 articles per source
+          .slice(0, 3) // Max 3 articles per source
           .map(item => ({
             title: sanitizeHtml(item.title, { 
               allowedTags: [],
@@ -181,7 +181,7 @@ async function fetchArticles() {
   // Sort by date, most recent first
   return allArticles
     .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
-    .slice(0, 20); // Top 20 articles
+    .slice(0, 35); // Top 35 articles
 }
 
 /**
@@ -199,7 +199,7 @@ async function generateSummary(articles) {
     console.log('Generating AI summary...');
     
     const articleTexts = articles.map(article => 
-      `**${article.source}** (${article.lean}): ${article.title}\n${article.content.slice(0, 500)}...`
+      `**${article.source}** (${article.lean}): ${article.title}\n${article.content.slice(0, 1200)}...`
     ).join('\n\n');
 
     const prompt = `You are an intelligence analyst creating a daily brief. Your task is to analyse these news articles and create a concise, well-structured summary.
@@ -254,7 +254,7 @@ Create a concise brief that's informative and well-structured. Total length shou
 const response = await axios.post('https://api.x.ai/v1/chat/completions', {
   model: 'grok-3-mini',
   messages: [{ role: 'user', content: prompt }],
-  max_tokens: 2200,
+  max_tokens: 2500,
   temperature: 0.7,
   stream: false
 }, {
