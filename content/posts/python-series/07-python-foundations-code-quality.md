@@ -28,7 +28,7 @@ As a finance professional learning Python, you'll soon want to move beyond writi
 
 Imagine you've built a Python script that calculates key financial ratios from quarterly reports. After sharing it with your team, you make changes that accidentally break the debt-to-equity calculation. Without version control, finding and fixing this error could be a nightmare. With Git, you can simply revert to the previous working version.
 
-In finance, where accuracy is paramount and regulatory compliance often requires audit trails, version control isn't just convenient—it's essential.
+In finance, where accuracy is paramount and regulatory compliance often requires audit trails, version control is essential.
 
 ### Getting Started with Git
 
@@ -107,8 +107,6 @@ git add ratio_calculator.py
 ```bash
 git commit -m "Add basic financial ratio calculator functions"
 ```
-
-Congrats! You've made your first commit.
 
 ### Core Git Commands for Daily Use
 
@@ -194,7 +192,7 @@ When working with a team of financial analysts, direct changes to the main codeb
 4. Have teammates review your code
 5. Merge the PR once approved
 
-This workflow is perfect for finance teams where code accuracy is critical—imagine catching calculation errors before they make it into production reports!
+This workflow is perfect for finance teams where code accuracy is critical; catching calculation errors before they make it into production reports!
 
 ## Writing Clean, PEP 8 Compliant Code
 
@@ -336,7 +334,7 @@ from .ratio_analysis import calculate_current_ratio
 
 ### Docstrings: Your Future Self Will Thank You
 
-Documentation isn't just for others—it's for you six months from now when you can't remember why you wrote that complex financial calculation a certain way.
+Documentation isn't just for others, it's useful for you six months from now when you can't remember why you wrote that complex financial calculation a certain way.
 
 #### Google Style Docstrings
 
@@ -475,7 +473,7 @@ financial-analysis-toolkit/
 
 As a finance professional using Python, the practices outlined in this post will help you create reliable, maintainable code that you can confidently share with colleagues or the wider finance community. Taking the time to learn these professional techniques now will save you countless hours in the future and elevate the quality of your financial analysis tools.
 
-In the next post, we'll dive into testing and debugging your financial code—critical skills for ensuring your calculations are accurate and robust.
+In the next post, we'll look at testing and debugging your financial code—critical skills for ensuring your calculations are accurate and robust.
 
 ## Further Resources
 

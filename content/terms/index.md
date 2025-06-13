@@ -1,11 +1,18 @@
 ---
 title: "Terms of Use"
 date: 2025-04-26T10:10:00+01:00
-layout: "single"
+type: "terms"
 draft: false
 description: "Terms of Use for Michael's Website"
 ShowToc: false
 hideMeta: true
+ShowReadingTime: false
+ShowBreadCrumbs: false
+ShowPostNav: false
+ShowShareButtons: false
+ShowRssButtonInSectionTermList: false
+disableShare: true
+disableAnchoredHeadings: true
 ---
 
 # Terms of Use

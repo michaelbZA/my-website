@@ -1,0 +1,9 @@
+{{ define "main" }}
+  {{/* 
+    Privacy Policy section—only render the Markdown body,
+    no title/date/reading‑time chrome 
+  */}}
+  <main class="content">
+    {{ .Content }}
+  </main>
+{{ end }}

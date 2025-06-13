@@ -1,7 +1,7 @@
 ---
 title: "Privacy Policy"
 date: 2025-04-26T10:00:00+01:00
-layout: "single"
+type: "privacy"
 draft: false
 description: "Privacy Policy for Michael's Website"
 ShowToc: false

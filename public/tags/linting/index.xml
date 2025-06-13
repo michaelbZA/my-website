@@ -3,7 +3,7 @@
 <h2 id="version-control-git--github-for-financial-projects">Version Control: Git &amp; GitHub for Financial Projects</h2>
 <h3 id="why-version-control-matters-in-finance">Why Version Control Matters in Finance</h3>
 <p>Imagine you&rsquo;ve built a Python script that calculates key financial ratios from quarterly reports. After sharing it with your team, you make changes that accidentally break the debt-to-equity calculation. Without version control, finding and fixing this error could be a nightmare. With Git, you can simply revert to the previous working version.</p>
-<p>In finance, where accuracy is paramount and regulatory compliance often requires audit trails, version control isn&rsquo;t just convenient—it&rsquo;s essential.</p>
+<p>In finance, where accuracy is paramount and regulatory compliance often requires audit trails, version control is essential.</p>
 <h3 id="getting-started-with-git">Getting Started with Git</h3>
 <p>First, <a href="https://git-scm.com/downloads">download and install Git</a> for your operating system.</p>
 <p>Once installed, open a command prompt or terminal and set up your identity:</p>
@@ -63,8 +63,7 @@
 <li>Commit the changes:</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Add basic financial ratio calculator functions&#34;</span>
-</span></span></code></pre></div><p>Congrats! You&rsquo;ve made your first commit.</p>
-<h3 id="core-git-commands-for-daily-use">Core Git Commands for Daily Use</h3>
+</span></span></code></pre></div><h3 id="core-git-commands-for-daily-use">Core Git Commands for Daily Use</h3>
 <ul>
 <li><code>git status</code>: Check which files have been modified</li>
 <li><code>git diff</code>: See exactly what changed in your files</li>
@@ -121,7 +120,7 @@
 <li>Have teammates review your code</li>
 <li>Merge the PR once approved</li>
 </ol>
-<p>This workflow is perfect for finance teams where code accuracy is critical—imagine catching calculation errors before they make it into production reports!</p>
+<p>This workflow is perfect for finance teams where code accuracy is critical; catching calculation errors before they make it into production reports!</p>
 <h2 id="writing-clean-pep-8-compliant-code">Writing Clean, PEP 8 Compliant Code</h2>
 <h3 id="what-is-pep-8">What is PEP 8?</h3>
 <p>PEP 8 is Python&rsquo;s style guide—a set of conventions for writing readable code. In finance, where you might be sharing models with auditors or other stakeholders, clean code is particularly important.</p>
@@ -224,7 +223,7 @@ per-file-ignores =
 </span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> .ratio_analysis <span style="color:#f92672">import</span> calculate_current_ratio
 </span></span></code></pre></div><h2 id="writing-effective-documentation">Writing Effective Documentation</h2>
 <h3 id="docstrings-your-future-self-will-thank-you">Docstrings: Your Future Self Will Thank You</h3>
-<p>Documentation isn&rsquo;t just for others—it&rsquo;s for you six months from now when you can&rsquo;t remember why you wrote that complex financial calculation a certain way.</p>
+<p>Documentation isn&rsquo;t just for others, it&rsquo;s useful for you six months from now when you can&rsquo;t remember why you wrote that complex financial calculation a certain way.</p>
 <h4 id="google-style-docstrings">Google Style Docstrings</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_npv</span>(cash_flows, discount_rate):
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
@@ -353,7 +352,7 @@ per-file-ignores =
 </ol>
 <h2 id="conclusion">Conclusion</h2>
 <p>As a finance professional using Python, the practices outlined in this post will help you create reliable, maintainable code that you can confidently share with colleagues or the wider finance community. Taking the time to learn these professional techniques now will save you countless hours in the future and elevate the quality of your financial analysis tools.</p>
-<p>In the next post, we&rsquo;ll dive into testing and debugging your financial code—critical skills for ensuring your calculations are accurate and robust.</p>
+<p>In the next post, we&rsquo;ll look at testing and debugging your financial code—critical skills for ensuring your calculations are accurate and robust.</p>
 <h2 id="further-resources">Further Resources</h2>
 <ul>
 <li><a href="https://git-scm.com/doc">Git Documentation</a></li>

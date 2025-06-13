@@ -553,7 +553,7 @@ summary: "Daily intelligence briefs covering tech, AI, politics, UK and world ne
 
 Each morning, an automated script scans a curated selection of over 15 trusted RSS news feeds from across the political and geographic spectrum — including sources like BBC, The Guardian, Fox News, Al Jazeera, The Economist, and more. These feeds are filtered for relevance using a custom set of keywords spanning tech, politics, the economy, global affairs, climate, and security.
 
-Articles published within the last 48 hours are extracted, de-duplicated, and sorted by recency. A maximum of 20 of the most relevant stories are selected.
+Articles published within the last 48 hours are extracted, de-duplicated, and sorted by recency. A maximum of 35 of the most relevant stories are selected.
 
 If an AI key is available, these stories are passed to a language model (currently Grok-3 Mini) along with a structured prompt that generates a concise and readable intelligence-style brief. If no AI is available, a fallback system categorises and lists articles in markdown format under key topics.
 

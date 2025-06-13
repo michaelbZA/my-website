@@ -1,0 +1,26 @@
+{{ define "main" }}
+  {{/* 
+    Terms & Conditions section—only render the Markdown body,
+    no title/date/reading‑time chrome 
+  */}}
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+{{ end }}
+
+{{ define "right-sidebar" }}
+{{ end }}
+
+{{ define "left-sidebar" }}
+{{ end }}
+
+{{ define "breadcrumb" }}
+{{ end }}
+
+{{ define "reading-time" }}
+{{ end }}
+
+{{ define "post-meta" }}
+{{ end }}
+
+{{/* Empty template to override the reading progress bar */}}

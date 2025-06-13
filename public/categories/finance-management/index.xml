@@ -1,4 +1,360 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Finance Management on Michael Brunger</title><link>https://michaelbrunger.com/categories/finance-management/</link><description>Recent content in Finance Management on Michael Brunger</description><image><title>Michael Brunger</title><url>https://michaelbrunger.com/site-feature-image.jpg</url><link>https://michaelbrunger.com/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Sat, 31 May 2025 21:34:12 +0100</lastBuildDate><atom:link href="https://michaelbrunger.com/categories/finance-management/index.xml" rel="self" type="application/rss+xml"/><item><title>Beyond Traditional Budgeting</title><link>https://michaelbrunger.com/beyond-traditional-budgeting-rolling-forecasts/</link><pubDate>Sat, 31 May 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/beyond-traditional-budgeting-rolling-forecasts/</guid><description>Implementing quarterly rolling forecasts and moving beyond annual budget constraints</description><content:encoded><![CDATA[<h1 id="part-4-beyond-traditional-budgeting">Part 4: Beyond Traditional Budgeting</h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Finance Management on Michael Brunger</title><link>https://michaelbrunger.com/categories/finance-management/</link><description>Recent content in Finance Management on Michael Brunger</description><image><title>Michael Brunger</title><url>https://michaelbrunger.com/site-feature-image.jpg</url><link>https://michaelbrunger.com/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Mon, 02 Jun 2025 12:01:43 +0100</lastBuildDate><atom:link href="https://michaelbrunger.com/categories/finance-management/index.xml" rel="self" type="application/rss+xml"/><item><title>Month-End Close Transformation</title><link>https://michaelbrunger.com/month-end-close-process-transformation/</link><pubDate>Sat, 07 Jun 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/month-end-close-process-transformation/</guid><description>Streamlining your month-end close process using Parmenter&amp;#39;s fast close methodology</description><content:encoded><![CDATA[<h1 id="part-5-month-end-close-transformation">Part 5: Month-End Close Transformation</h1>
+<p><em>This post continues my &ldquo;learning in public&rdquo; journey as a finance manager. All concepts and frameworks are attributed to their original creators, primarily David Parmenter and other thought leaders in the field.</em></p>
+<h2 id="the-month-end-burden">The Month-End Burden</h2>
+<p>The month-end close process is often one of the most stressful and resource-intensive activities for finance teams. As David Parmenter states in &ldquo;The Financial Controller and CFO&rsquo;s Toolkit,&rdquo; many organisations are trapped in a &ldquo;month-end reporting death spiral&rdquo; where teams spend weeks preparing reports that arrive too late to influence decision-making.</p>
+<p>According to Parmenter&rsquo;s research, the average finance team spends 8-10 working days on the month-end close, with some taking 15+ days. By the time reports are finalised, the information is already outdated. As Parmenter notes, &ldquo;By day eight, it is too late to change the current month&rsquo;s performance, and the next month is already well underway.&rdquo;</p>
+<p>This inefficiency creates several problems:</p>
+<ol>
+<li><strong>Value erosion</strong> - Finance staff spend most of their time looking backward rather than forward</li>
+<li><strong>Decision delay</strong> - Management makes decisions based on old information</li>
+<li><strong>Resource drain</strong> - Excessive time spent on reporting leaves little capacity for analysis</li>
+<li><strong>Staff burnout</strong> - The monthly rush creates stress and reduces job satisfaction</li>
+<li><strong>Error risk</strong> - Rushed processes increase the likelihood of mistakes</li>
+</ol>
+<h2 id="parmenters-fast-close-methodology">Parmenter&rsquo;s Fast Close Methodology</h2>
+<p>David Parmenter advocates for a radical rethinking of the month-end process, with the goal of completing the close within three working days. His &ldquo;fast close&rdquo; methodology is based on studying organisations that consistently close their books quickly and accurately.</p>
+<h3 id="the-10-steps-to-fast-close-success">The 10 Steps to Fast Close Success</h3>
+<p>Parmenter outlines ten key steps for transforming your month-end process:</p>
+<h4 id="1-sell-the-change-to-the-senior-management-team">1. Sell the Change to the Senior Management Team</h4>
+<ul>
+<li>Quantify the cost of the current process</li>
+<li>Highlight the business benefits of faster information</li>
+<li>Set clear targets for improvement (e.g., close in 3 days within 6 months)</li>
+</ul>
+<h4 id="2-document-the-current-process-in-detail">2. Document the Current Process in Detail</h4>
+<ul>
+<li>Map every task in the current close</li>
+<li>Note who performs each task and how long it takes</li>
+<li>Identify dependencies between tasks</li>
+</ul>
+<h4 id="3-ban-month-end-activities-before-month-end">3. Ban Month-End Activities Before Month-End</h4>
+<ul>
+<li>Stop any &ldquo;soft closes&rdquo; or pre-month-end activities</li>
+<li>Focus on getting the process right rather than starting early</li>
+</ul>
+<h4 id="4-adopt-day-one-two-and-three-priorities">4. Adopt Day One, Two, and Three Priorities</h4>
+<ul>
+<li>Identify what must be completed on each day of the close</li>
+<li>Create a visual board showing daily targets and progress</li>
+</ul>
+<h4 id="5-move-accounting-processes-into-the-front-office">5. Move Accounting Processes into the Front Office</h4>
+<ul>
+<li>Train operational staff to code and enter transactions correctly</li>
+<li>Implement systems that capture accounting information at the source</li>
+<li>Use electronic workflows to automate approval processes</li>
+</ul>
+<h4 id="6-limit-journal-entries">6. Limit Journal Entries</h4>
+<ul>
+<li>Analyse root causes of recurring journals</li>
+<li>Fix underlying system issues rather than creating workarounds</li>
+<li>Implement materiality thresholds for adjustments</li>
+</ul>
+<h4 id="7-identify-and-minimise-bottlenecks">7. Identify and Minimise Bottlenecks</h4>
+<ul>
+<li>Focus on the critical path activities</li>
+<li>Assign additional resources to bottleneck tasks</li>
+<li>Restructure processes to eliminate waiting time</li>
+</ul>
+<h4 id="8-report-daily-and-weekly-kpis">8. Report Daily and Weekly KPIs</h4>
+<ul>
+<li>Create a cadence of daily flash reports and weekly summaries</li>
+<li>Reduce the importance of month-end by providing more frequent updates</li>
+</ul>
+<h4 id="9-replace-reports-with-performance-dashboards">9. Replace Reports with Performance Dashboards</h4>
+<ul>
+<li>Design user-friendly dashboards for different stakeholder groups</li>
+<li>Focus on key performance drivers, not just financial outcomes</li>
+</ul>
+<h4 id="10-present-monthly-results-on-day-three">10. Present Monthly Results on Day Three</h4>
+<ul>
+<li>Conduct a disciplined review meeting with key stakeholders</li>
+<li>Focus on exceptions and trends rather than detailed variance analysis</li>
+</ul>
+<p>As Parmenter emphasises, &ldquo;The fast close is not about working faster or longer hours; it&rsquo;s about working smarter through process redesign.&rdquo;</p>
+<h2 id="process-mapping-your-current-close">Process Mapping Your Current Close</h2>
+<p>Before implementing changes, it&rsquo;s crucial to thoroughly understand your current process. A detailed process map serves as the foundation for improvement initiatives.</p>
+<h3 id="how-to-map-your-month-end-close">How to Map Your Month-End Close</h3>
+<ol>
+<li>
+<p><strong>Create a task inventory</strong></p>
+<ul>
+<li>List every task performed during month-end</li>
+<li>Include who performs each task and estimated time</li>
+<li>Note dependencies between tasks</li>
+</ul>
+</li>
+<li>
+<p><strong>Develop a visual timeline</strong></p>
+<ul>
+<li>Plot tasks on a calendar showing start and end times</li>
+<li>Identify the critical path (tasks that determine overall duration)</li>
+<li>Highlight bottlenecks and waiting periods</li>
+</ul>
+</li>
+<li>
+<p><strong>Categorise activities</strong></p>
+<ul>
+<li>Essential vs. non-essential tasks</li>
+<li>Value-adding vs. non-value-adding activities</li>
+<li>Critical path vs. non-critical path items</li>
+</ul>
+</li>
+<li>
+<p><strong>Document pain points</strong></p>
+<ul>
+<li>Interview team members about challenges</li>
+<li>Identify recurring problems and their root causes</li>
+<li>Note areas with frequent errors or rework</li>
+</ul>
+</li>
+</ol>
+<h3 id="sample-process-mapping-template">Sample Process Mapping Template</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Task</th>
+          <th>Owner</th>
+          <th>Duration</th>
+          <th>Predecessors</th>
+          <th>Value Add</th>
+          <th>Critical Path?</th>
+          <th>Improvement Opportunity</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Bank reconciliation</td>
+          <td>AP Clerk</td>
+          <td>4 hours</td>
+          <td>None</td>
+          <td>Medium</td>
+          <td>Yes</td>
+          <td>Implement daily reconciliation</td>
+      </tr>
+      <tr>
+          <td>Inventory valuation</td>
+          <td>Cost Accountant</td>
+          <td>8 hours</td>
+          <td>Physical count</td>
+          <td>High</td>
+          <td>Yes</td>
+          <td>Automate using system calculations</td>
+      </tr>
+      <tr>
+          <td>Accrue expenses</td>
+          <td>Staff Accountant</td>
+          <td>6 hours</td>
+          <td>AP cutoff</td>
+          <td>Medium</td>
+          <td>Yes</td>
+          <td>Use standard accruals for predictable items</td>
+      </tr>
+      <tr>
+          <td>Revenue recognition</td>
+          <td>Revenue Accountant</td>
+          <td>5 hours</td>
+          <td>Sales report</td>
+          <td>High</td>
+          <td>Yes</td>
+          <td>Implement daily revenue recognition</td>
+      </tr>
+      <tr>
+          <td>Consolidation</td>
+          <td>Manager</td>
+          <td>10 hours</td>
+          <td>Subsidiaries closed</td>
+          <td>High</td>
+          <td>Yes</td>
+          <td>Create standardised templates</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="identifying-and-eliminating-bottlenecks">Identifying and Eliminating Bottlenecks</h2>
+<p>With a detailed process map in hand, you can focus on eliminating the bottlenecks that extend your close timeline.</p>
+<h3 id="common-month-end-bottlenecks">Common Month-End Bottlenecks</h3>
+<p>According to Parmenter&rsquo;s research, these are the most common bottlenecks in the month-end process:</p>
+<ol>
+<li><strong>Intercompany reconciliations</strong> - Discrepancies between related entities</li>
+<li><strong>Fixed asset accounting</strong> - Late capitalisation of projects and additions</li>
+<li><strong>Inventory valuation</strong> - Delayed count information or complex calculations</li>
+<li><strong>Revenue recognition</strong> - Manual calculations for complex contracts</li>
+<li><strong>Accruals and provisions</strong> - Waiting for information from operations</li>
+<li><strong>Manual journal entries</strong> - Excessive adjustments requiring review and approval</li>
+<li><strong>Consolidation</strong> - Waiting for subsidiary results or manual consolidation processes</li>
+</ol>
+<h3 id="strategies-for-eliminating-bottlenecks">Strategies for Eliminating Bottlenecks</h3>
+<p>For each bottleneck, consider these approaches:</p>
+<ol>
+<li><strong>Eliminate</strong> - Can the task be eliminated entirely?</li>
+<li><strong>Automate</strong> - Can technology perform the task more efficiently?</li>
+<li><strong>Simplify</strong> - Can the process be streamlined or standardised?</li>
+<li><strong>Reallocate</strong> - Can resources be shifted to accelerate critical path activities?</li>
+<li><strong>Move earlier</strong> - Can the task be performed before month-end?</li>
+<li><strong>Move later</strong> - Can the task be performed after preliminary results are released?</li>
+</ol>
+<h2 id="technology-enablers-for-faster-closing">Technology Enablers for Faster Closing</h2>
+<p>Technology plays a crucial role in accelerating the month-end close. Modern systems can automate routine tasks, enforce controls, and provide real-time visibility into the close process.</p>
+<h3 id="key-technologies-for-fast-close">Key Technologies for Fast Close</h3>
+<ol>
+<li>
+<p><strong>ERP systems with built-in close management</strong></p>
+<ul>
+<li>Centralised close calendars and task assignments</li>
+<li>Automated reconciliations and variance analysis</li>
+<li>System-generated journal entries for routine transactions</li>
+</ul>
+</li>
+<li>
+<p><strong>Close management software</strong></p>
+<ul>
+<li>Specialised applications like BlackLine, Trintech, or FloQast</li>
+<li>Task tracking and status reporting</li>
+<li>Automated reconciliations and documentation</li>
+</ul>
+</li>
+<li>
+<p><strong>Robotic Process Automation (RPA)</strong></p>
+<ul>
+<li>Software &ldquo;bots&rdquo; that perform routine, rule-based tasks</li>
+<li>Particularly effective for data extraction, validation, and entry</li>
+<li>Can work 24/7 to prepare for the close</li>
+</ul>
+</li>
+<li>
+<p><strong>Business Intelligence tools</strong></p>
+<ul>
+<li>Self-service reporting and visualisation tools</li>
+<li>Exception-based highlighting of unusual variances</li>
+<li>Drill-down capabilities for investigating issues</li>
+</ul>
+</li>
+<li>
+<p><strong>Cloud-based collaboration platforms</strong></p>
+<ul>
+<li>Real-time visibility into close status for all stakeholders</li>
+<li>Centralised documentation and audit trails</li>
+<li>Remote access for distributed teams</li>
+</ul>
+</li>
+</ol>
+<p>As Parmenter notes, &ldquo;While technology is an important enabler, it must be implemented alongside process improvements to achieve sustainable results.&rdquo;</p>
+<h2 id="case-study-companies-that-close-in-1-3-days">Case Study: Companies That Close in 1-3 Days</h2>
+<p>Several organisations have successfully transformed their month-end close processes to consistently deliver results within three days. Here&rsquo;s a composite case study based on Parmenter&rsquo;s research:</p>
+<h3 id="global-manufacturing-company">Global Manufacturing Company</h3>
+<p><strong>Before Transformation:</strong></p>
+<ul>
+<li>12-day close process</li>
+<li>70% of finance time spent on transaction processing and reporting</li>
+<li>Over 1,000 manual journal entries each month</li>
+<li>80-page monthly report that few executives read thoroughly</li>
+</ul>
+<p><strong>Transformation Approach:</strong></p>
+<ol>
+<li>Mapped and analysed the entire close process</li>
+<li>Implemented daily flash reports for key metrics</li>
+<li>Reduced journal entries by 80% through system improvements</li>
+<li>Automated account reconciliations</li>
+<li>Implemented materiality thresholds for adjustments</li>
+<li>Created a digital close calendar with real-time status tracking</li>
+<li>Redesigned reports as one-page dashboards for each business unit</li>
+</ol>
+<p><strong>Results:</strong></p>
+<ul>
+<li>Close completed in 3 days</li>
+<li>Finance staff time on transaction processing reduced by 60%</li>
+<li>Error rates decreased by 75%</li>
+<li>Executive satisfaction with financial reporting increased significantly</li>
+<li>Finance team now spends more time on forward-looking analysis</li>
+</ul>
+<p>As the CFO commented, &ldquo;We&rsquo;re no longer just reporting history; we&rsquo;re helping to shape the future.&rdquo;</p>
+<h2 id="managing-the-transition-a-practical-roadmap">Managing the Transition: A Practical Roadmap</h2>
+<p>Transforming your month-end close is a significant change management initiative. Here&rsquo;s a phased approach based on Parmenter&rsquo;s recommendations:</p>
+<h3 id="phase-1-foundation-1-2-months">Phase 1: Foundation (1-2 months)</h3>
+<ul>
+<li>Secure executive sponsorship</li>
+<li>Document the current process in detail</li>
+<li>Benchmark against leading practices</li>
+<li>Set clear targets (e.g., 5-day close within 3 months, 3-day close within 6 months)</li>
+<li>Establish a cross-functional improvement team</li>
+</ul>
+<h3 id="phase-2-quick-wins-2-3-months">Phase 2: Quick Wins (2-3 months)</h3>
+<ul>
+<li>Implement materiality thresholds for adjustments</li>
+<li>Standardise and templatise recurring journal entries</li>
+<li>Create a visual close calendar with clear task ownership</li>
+<li>Implement daily cutoffs for transaction processing</li>
+<li>Reduce the scope of month-end reports to essential information</li>
+</ul>
+<h3 id="phase-3-process-redesign-3-6-months">Phase 3: Process Redesign (3-6 months)</h3>
+<ul>
+<li>Move reconciliations to daily or weekly cycles</li>
+<li>Implement continuous accounting principles</li>
+<li>Automate routine reconciliations and calculations</li>
+<li>Redesign the consolidation process</li>
+<li>Create exception-based review processes</li>
+</ul>
+<h3 id="phase-4-sustainability-6-months">Phase 4: Sustainability (6+ months)</h3>
+<ul>
+<li>Implement close management technology</li>
+<li>Create a continuous improvement mechanism</li>
+<li>Monitor and address emerging bottlenecks</li>
+<li>Train backup resources for key roles</li>
+<li>Expand the use of flash reports and rolling forecasts</li>
+</ul>
+<h2 id="building-a-fast-close-culture">Building a Fast Close Culture</h2>
+<p>Technical changes alone won&rsquo;t create sustainable improvement. According to Parmenter, creating a fast close culture requires addressing behavioral and organisational elements:</p>
+<ol>
+<li><strong>Celebrate progress</strong> - Recognise and reward improvements in close timing and quality</li>
+<li><strong>Share the burden</strong> - Make the close a company-wide priority, not just a finance responsibility</li>
+<li><strong>Enforce deadlines</strong> - Hold all departments accountable for providing timely information</li>
+<li><strong>Focus on root causes</strong> - Address the underlying issues, not just the symptoms</li>
+<li><strong>Encourage innovation</strong> - Create space for team members to suggest improvements</li>
+<li><strong>Train for versatility</strong> - Cross-train team members to eliminate single points of failure</li>
+</ol>
+<h2 id="self-assessment-how-efficient-is-your-close">Self-Assessment: How Efficient Is Your Close?</h2>
+<p>Rate your organisation on these dimensions from 1 (strongly disagree) to 5 (strongly agree):</p>
+<ol>
+<li>Our month-end close is completed within 5 working days</li>
+<li>We have mapped and documented our entire close process</li>
+<li>We have eliminated most manual journal entries</li>
+<li>Our reconciliations are performed on a daily or weekly basis</li>
+<li>We use technology to automate routine close activities</li>
+<li>Our close process has clearly defined owners for each task</li>
+<li>We provide flash reports throughout the month, not just at month-end</li>
+<li>We have materiality thresholds for month-end adjustments</li>
+<li>Our finance team has time for analysis, not just processing and reporting</li>
+<li>We continuously improve our close process</li>
+</ol>
+<p><strong>Scoring:</strong></p>
+<ul>
+<li>40-50: Leading practice</li>
+<li>30-39: Good practice with room for improvement</li>
+<li>20-29: Significant improvement opportunities</li>
+<li>10-19: Transformational change needed</li>
+</ul>
+<h2 id="action-items-for-finance-leaders">Action Items for Finance Leaders</h2>
+<ol>
+<li><strong>Time your current close</strong> - Document how long each component of your close actually takes</li>
+<li><strong>Calculate the cost</strong> - Estimate the total cost of your close process (people, systems, opportunity cost)</li>
+<li><strong>Map your process</strong> - Create a visual representation of your current close activities</li>
+<li><strong>Identify your bottlenecks</strong> - Determine which activities are on the critical path</li>
+<li><strong>Set clear targets</strong> - Establish specific goals for close duration and quality</li>
+<li><strong>Start small</strong> - Implement one or two quick wins to build momentum</li>
+<li><strong>Measure and communicate progress</strong> - Track improvements and share results widely</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>Transforming your month-end close process represents one of the most significant opportunities to improve finance function efficiency and effectiveness. By following Parmenter&rsquo;s fast close methodology, you can free up valuable resources for more strategic activities while providing more timely information to decision-makers.</p>
+<p>As David Parmenter emphasises, &ldquo;The month-end close is not an end in itself but a means to provide timely information for decision-making.&rdquo; By adopting the principles outlined in this post, you can begin shifting your finance function from backward-looking scorekeeping to forward-looking business partnership.</p>
+<hr>
+<h2 id="references">References</h2>
+<ul>
+<li>Parmenter, D. (2017). The Financial Controller and CFO&rsquo;s Toolkit: Lean Practices to Transform Your Finance Team. Wiley.</li>
+<li>Bragg, S. (2013). The Fast Close Handbook. AccountingTools, Inc.</li>
+<li>APQC. (2022). General Accounting and Reporting: Financial Close Process Benchmarks. American Productivity &amp; Quality Center.</li>
+<li>Deloitte. (2020). Closing the Gap: The Future of the Financial Close. Deloitte Development LLC.</li>
+<li>Blackline. (2022). The Modern Finance Platform: Closing the Books with Confidence. BlackLine Systems, Inc.</li>
+</ul>
+]]></content:encoded></item><item><title>Beyond Traditional Budgeting</title><link>https://michaelbrunger.com/beyond-traditional-budgeting-rolling-forecasts/</link><pubDate>Sat, 31 May 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/beyond-traditional-budgeting-rolling-forecasts/</guid><description>Implementing quarterly rolling forecasts and moving beyond annual budget constraints</description><content:encoded><![CDATA[<h1 id="part-4-beyond-traditional-budgeting">Part 4: Beyond Traditional Budgeting</h1>
 <p><em>This post is part of my &ldquo;learning in public&rdquo; journey as I transition into my role as a finance manager. All concepts and frameworks are attributed to their original creators, primarily David Parmenter and other thought leaders in the field.</em></p>
 <h2 id="the-problem-with-traditional-annual-budgets">The Problem with Traditional Annual Budgets</h2>
 <p>Most organisations still cling to the annual budgeting process despite mounting evidence of its ineffectiveness. As David Parmenter points out in his book &ldquo;The Financial Controller and CFO&rsquo;s Toolkit,&rdquo; traditional budgets often become outdated shortly after completion due to rapidly changing business conditions.</p>
