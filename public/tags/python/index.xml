@@ -1,4 +1,532 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Python on Michael Brunger</title><link>https://michaelbrunger.com/tags/python/</link><description>Recent content in Python on Michael Brunger</description><image><title>Michael Brunger</title><url>https://michaelbrunger.com/site-feature-image.jpg</url><link>https://michaelbrunger.com/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Mon, 02 Jun 2025 12:01:43 +0100</lastBuildDate><atom:link href="https://michaelbrunger.com/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 7: Code Quality &amp; Collaboration in Python</title><link>https://michaelbrunger.com/python-virtual-environments-packaging/</link><pubDate>Thu, 12 Jun 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/python-virtual-environments-packaging/</guid><description>Learn version control with Git and GitHub, write clean PEP 8-compliant code, use linters and auto-formatters, and create effective documentation for your Python projects.</description><content:encoded><![CDATA[<h1 id="code-quality--collaboration-building-finance-tools-that-last">Code Quality &amp; Collaboration: Building Finance Tools That Last</h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Python on Michael Brunger</title><link>https://michaelbrunger.com/tags/python/</link><description>Recent content in Python on Michael Brunger</description><image><title>Michael Brunger</title><url>https://michaelbrunger.com/site-feature-image.jpg</url><link>https://michaelbrunger.com/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Fri, 13 Jun 2025 13:53:27 +0100</lastBuildDate><atom:link href="https://michaelbrunger.com/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Part 8: Testing &amp; Debugging Python Code</title><link>https://michaelbrunger.com/python-testing-debugging/</link><pubDate>Thu, 19 Jun 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/python-testing-debugging/</guid><description>Master unit testing with unittest and pytest, learn Test-Driven Development workflows, handle custom exceptions, use the debugger effectively, and implement structured logging.</description><content:encoded><![CDATA[<h1 id="testing--debugging-building-reliable-financial-tools">Testing &amp; Debugging: Building Reliable Financial Tools</h1>
+<p>When working with financial data and calculations, accuracy is essential. A small bug in your code could mean reporting incorrect figures, making flawed investment decisions, or even compliance issues. This post will guide you through testing and debugging techniques that ensure your financial Python code works correctly and reliably.</p>
+<h2 id="why-testing-matters-in-finance">Why Testing Matters in Finance</h2>
+<p>Imagine you&rsquo;ve created a Python script that calculates loan amortisation schedules. Your company uses this tool to price thousands of loans. If there&rsquo;s an error in your interest calculation logic, even a small one, the financial impact could be enormous.</p>
+<p>As a finance professional, you need confidence in your code. Testing provides that confidence by systematically verifying that your calculations work correctly across a range of scenarios and edge cases.</p>
+<h2 id="unit-testing-basics">Unit Testing Basics</h2>
+<p>Unit testing involves testing individual components (usually functions) in isolation to ensure they work as expected.</p>
+<h3 id="getting-started-with-unittest">Getting Started with unittest</h3>
+<p>Python&rsquo;s built-in <code>unittest</code> framework provides all the tools you need for basic testing. Let&rsquo;s test our financial ratio calculator from the previous post:</p>
+<p>First, create a file called <code>test_ratio_calculator.py</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> unittest
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> ratio_calculator <span style="color:#f92672">import</span> calculate_current_ratio, calculate_debt_to_equity
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestFinancialRatios</span>(unittest<span style="color:#f92672">.</span>TestCase):
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_current_ratio</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Test basic calculation</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>assertEqual(calculate_current_ratio(<span style="color:#ae81ff">100000</span>, <span style="color:#ae81ff">50000</span>), <span style="color:#ae81ff">2.0</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Test with zero liabilities - should raise ValueError</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> self<span style="color:#f92672">.</span>assertRaises(<span style="color:#a6e22e">ValueError</span>):
+</span></span><span style="display:flex;"><span>            calculate_current_ratio(<span style="color:#ae81ff">100000</span>, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_debt_to_equity</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Test basic calculation</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>assertEqual(calculate_debt_to_equity(<span style="color:#ae81ff">200000</span>, <span style="color:#ae81ff">400000</span>), <span style="color:#ae81ff">0.5</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Test highly leveraged company</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>assertEqual(calculate_debt_to_equity(<span style="color:#ae81ff">800000</span>, <span style="color:#ae81ff">200000</span>), <span style="color:#ae81ff">4.0</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Test with zero equity - should raise ValueError</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> self<span style="color:#f92672">.</span>assertRaises(<span style="color:#a6e22e">ValueError</span>):
+</span></span><span style="display:flex;"><span>            calculate_debt_to_equity(<span style="color:#ae81ff">100000</span>, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    unittest<span style="color:#f92672">.</span>main()
+</span></span></code></pre></div><p>Run the tests with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python test_ratio_calculator.py
+</span></span></code></pre></div><p>If all tests pass, you&rsquo;ll see something like:</p>
+<pre tabindex="0"><code>..
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK
+</code></pre><p>If a test fails, <code>unittest</code> will tell you which test failed and why, helping you pinpoint the issue.</p>
+<h3 id="common-assertions-in-unittest">Common Assertions in unittest</h3>
+<p>Here are some assertions particularly useful for financial calculations:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Checking exact equality</span>
+</span></span><span style="display:flex;"><span>self<span style="color:#f92672">.</span>assertEqual(calculate_npv(cash_flows, <span style="color:#ae81ff">0.1</span>), <span style="color:#ae81ff">1025.79</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Checking approximate equality (for floating point calculations)</span>
+</span></span><span style="display:flex;"><span>self<span style="color:#f92672">.</span>assertAlmostEqual(calculate_irr([<span style="color:#f92672">-</span><span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">600</span>]), <span style="color:#ae81ff">0.0734</span>, places<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Checking if a value is greater than another</span>
+</span></span><span style="display:flex;"><span>self<span style="color:#f92672">.</span>assertGreater(calculate_profit_margin(revenue, costs), <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Checking if an exception is raised for invalid inputs</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> self<span style="color:#f92672">.</span>assertRaises(<span style="color:#a6e22e">ValueError</span>):
+</span></span><span style="display:flex;"><span>    calculate_pe_ratio(stock_price<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>, earnings_per_share<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</span></span></code></pre></div><h2 id="moving-to-pytest">Moving to pytest</h2>
+<p>While <code>unittest</code> is perfectly capable, <code>pytest</code> offers a more modern and flexible approach to testing. Let&rsquo;s see how we might test the same functions with <code>pytest</code>:</p>
+<ol>
+<li>Install pytest:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install pytest
+</span></span></code></pre></div><ol start="2">
+<li>Create a file named <code>test_ratios_pytest.py</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pytest
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> ratio_calculator <span style="color:#f92672">import</span> calculate_current_ratio, calculate_debt_to_equity
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_current_ratio_basic</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> calculate_current_ratio(<span style="color:#ae81ff">100000</span>, <span style="color:#ae81ff">50000</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">2.0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_current_ratio_zero_liabilities</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> pytest<span style="color:#f92672">.</span>raises(<span style="color:#a6e22e">ValueError</span>):
+</span></span><span style="display:flex;"><span>        calculate_current_ratio(<span style="color:#ae81ff">100000</span>, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_debt_to_equity_basic</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> calculate_debt_to_equity(<span style="color:#ae81ff">200000</span>, <span style="color:#ae81ff">400000</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0.5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_debt_to_equity_high_leverage</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> calculate_debt_to_equity(<span style="color:#ae81ff">800000</span>, <span style="color:#ae81ff">200000</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">4.0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_debt_to_equity_zero_equity</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> pytest<span style="color:#f92672">.</span>raises(<span style="color:#a6e22e">ValueError</span>):
+</span></span><span style="display:flex;"><span>        calculate_debt_to_equity(<span style="color:#ae81ff">100000</span>, <span style="color:#ae81ff">0</span>)
+</span></span></code></pre></div><ol start="3">
+<li>Run the tests:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pytest test_ratios_pytest.py -v
+</span></span></code></pre></div><p>The <code>-v</code> flag gives you verbose output showing each test that was run.</p>
+<h3 id="the-power-of-pytest-fixtures">The Power of pytest Fixtures</h3>
+<p>One of pytest&rsquo;s most powerful features is fixtures, which let you set up preconditions for your tests. This is especially useful for financial testing where you might have complex data structures:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pytest
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> financial_analyzer <span style="color:#f92672">import</span> StockAnalyzer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@pytest.fixture</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">sample_stock_data</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Return a sample dataset that can be used by multiple tests</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;ticker&#39;</span>: <span style="color:#e6db74">&#39;AAPL&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;prices&#39;</span>: [<span style="color:#ae81ff">150.25</span>, <span style="color:#ae81ff">151.30</span>, <span style="color:#ae81ff">149.80</span>, <span style="color:#ae81ff">152.50</span>, <span style="color:#ae81ff">153.75</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;volumes&#39;</span>: [<span style="color:#ae81ff">12345678</span>, <span style="color:#ae81ff">9876543</span>, <span style="color:#ae81ff">11234567</span>, <span style="color:#ae81ff">10234567</span>, <span style="color:#ae81ff">13456789</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;financials&#39;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;revenue&#39;</span>: <span style="color:#ae81ff">365.82</span>,  <span style="color:#75715e"># In billions</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;net_income&#39;</span>: <span style="color:#ae81ff">94.68</span>,  <span style="color:#75715e"># In billions</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;total_assets&#39;</span>: <span style="color:#ae81ff">351.0</span>,  <span style="color:#75715e"># In billions</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;total_liabilities&#39;</span>: <span style="color:#ae81ff">287.91</span>,  <span style="color:#75715e"># In billions</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;shareholders_equity&#39;</span>: <span style="color:#ae81ff">63.09</span>  <span style="color:#75715e"># In billions</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_pe_ratio_calculation</span>(sample_stock_data):
+</span></span><span style="display:flex;"><span>    analyzer <span style="color:#f92672">=</span> StockAnalyzer(sample_stock_data)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Assuming current price is the last in the list and EPS is net_income / outstanding_shares</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># For this example, let&#39;s say outstanding_shares is 16.07B</span>
+</span></span><span style="display:flex;"><span>    expected_pe <span style="color:#f92672">=</span> <span style="color:#ae81ff">150.25</span> <span style="color:#f92672">/</span> (<span style="color:#ae81ff">94.68</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">16.07</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> round(analyzer<span style="color:#f92672">.</span>calculate_pe_ratio(), <span style="color:#ae81ff">2</span>) <span style="color:#f92672">==</span> round(expected_pe, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_debt_to_equity_ratio</span>(sample_stock_data):
+</span></span><span style="display:flex;"><span>    analyzer <span style="color:#f92672">=</span> StockAnalyzer(sample_stock_data)
+</span></span><span style="display:flex;"><span>    expected_ratio <span style="color:#f92672">=</span> <span style="color:#ae81ff">287.91</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">63.09</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> round(analyzer<span style="color:#f92672">.</span>calculate_debt_to_equity(), <span style="color:#ae81ff">2</span>) <span style="color:#f92672">==</span> round(expected_ratio, <span style="color:#ae81ff">2</span>)
+</span></span></code></pre></div><p>This way, you set up your test data once and reuse it across multiple tests.</p>
+<h3 id="parameterised-tests-for-multiple-scenarios">Parameterised Tests for Multiple Scenarios</h3>
+<p>Financial calculations often need to be tested with multiple sets of inputs. Pytest&rsquo;s parameterisation makes this elegant:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pytest
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> finance_calcs <span style="color:#f92672">import</span> calculate_compound_interest
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@pytest.mark.parametrize</span>(<span style="color:#e6db74">&#34;principal,rate,time,compounding,expected&#34;</span>, [
+</span></span><span style="display:flex;"><span>    (<span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">0.05</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1276.28</span>),    <span style="color:#75715e"># Annual compounding</span>
+</span></span><span style="display:flex;"><span>    (<span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">0.05</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">1283.36</span>),   <span style="color:#75715e"># Monthly compounding</span>
+</span></span><span style="display:flex;"><span>    (<span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">0.05</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">365</span>, <span style="color:#ae81ff">1284.52</span>),  <span style="color:#75715e"># Daily compounding</span>
+</span></span><span style="display:flex;"><span>])
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_compound_interest</span>(principal, rate, time, compounding, expected):
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> calculate_compound_interest(principal, rate, time, compounding)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> round(result, <span style="color:#ae81ff">2</span>) <span style="color:#f92672">==</span> expected
+</span></span></code></pre></div><p>This tests our compound interest function with annual, monthly, and daily compounding periods, all in a single test function.</p>
+<h2 id="test-driven-development-tdd-for-finance">Test-Driven Development (TDD) for Finance</h2>
+<p>Test-Driven Development is a methodology where you write tests before you write code. For financial calculations, this approach can be particularly beneficial:</p>
+<ol>
+<li><strong>Write the test first</strong>: Define what your function should do before implementing it</li>
+<li><strong>Run the test and watch it fail</strong>: Confirm the test works</li>
+<li><strong>Write the implementation</strong>: Create the function to make the test pass</li>
+<li><strong>Run the test again</strong>: Verify your implementation works</li>
+<li><strong>Refactor</strong>: Clean up your code while ensuring tests continue to pass</li>
+</ol>
+<h3 id="a-tdd-example-calculating-ebitda">A TDD Example: Calculating EBITDA</h3>
+<p>Let&rsquo;s say we need to add an EBITDA calculation function. Following TDD:</p>
+<ol>
+<li>First, write the test:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># test_financial_metrics.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pytest
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> financial_metrics <span style="color:#f92672">import</span> calculate_ebitda
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_calculate_ebitda</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># EBITDA = Net Income + Interest + Taxes + Depreciation + Amortisation</span>
+</span></span><span style="display:flex;"><span>    income_statement <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;net_income&#39;</span>: <span style="color:#ae81ff">1000000</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;interest_expense&#39;</span>: <span style="color:#ae81ff">200000</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;income_tax&#39;</span>: <span style="color:#ae81ff">300000</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;depreciation&#39;</span>: <span style="color:#ae81ff">150000</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;amortisation&#39;</span>: <span style="color:#ae81ff">50000</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    expected_ebitda <span style="color:#f92672">=</span> <span style="color:#ae81ff">1700000</span>  <span style="color:#75715e"># Sum of all the components</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> calculate_ebitda(income_statement) <span style="color:#f92672">==</span> expected_ebitda
+</span></span></code></pre></div><ol start="2">
+<li>Run the test (it will fail since we haven&rsquo;t implemented the function yet):</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pytest test_financial_metrics.py
+</span></span></code></pre></div><ol start="3">
+<li>Implement the function:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># financial_metrics.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_ebitda</span>(income_statement):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Calculate EBITDA from income statement components.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        income_statement (dict): Dictionary containing income statement items
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        float: EBITDA value
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>        income_statement[<span style="color:#e6db74">&#39;net_income&#39;</span>] <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>        income_statement[<span style="color:#e6db74">&#39;interest_expense&#39;</span>] <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>        income_statement[<span style="color:#e6db74">&#39;income_tax&#39;</span>] <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>        income_statement[<span style="color:#e6db74">&#39;depreciation&#39;</span>] <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>        income_statement[<span style="color:#e6db74">&#39;amortisation&#39;</span>]
+</span></span><span style="display:flex;"><span>    )
+</span></span></code></pre></div><ol start="4">
+<li>Run the test again - it should pass now!</li>
+</ol>
+<h2 id="debugging-financial-code">Debugging Financial Code</h2>
+<p>Even with tests, bugs will sometimes creep into your code. Let&rsquo;s explore techniques to find and fix them.</p>
+<h3 id="print-driven-debugging">Print-Driven Debugging</h3>
+<p>The simplest debugging technique is adding <code>print()</code> statements to your code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_loan_payment</span>(principal, annual_rate, years):
+</span></span><span style="display:flex;"><span>    monthly_rate <span style="color:#f92672">=</span> annual_rate <span style="color:#f92672">/</span> <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Monthly rate: </span><span style="color:#e6db74">{</span>monthly_rate<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    num_payments <span style="color:#f92672">=</span> years <span style="color:#f92672">*</span> <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Number of payments: </span><span style="color:#e6db74">{</span>num_payments<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    payment <span style="color:#f92672">=</span> principal <span style="color:#f92672">*</span> (monthly_rate <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> monthly_rate) <span style="color:#f92672">**</span> num_payments) <span style="color:#f92672">/</span> \
+</span></span><span style="display:flex;"><span>              ((<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> monthly_rate) <span style="color:#f92672">**</span> num_payments <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Calculated payment: </span><span style="color:#e6db74">{</span>payment<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> payment
+</span></span></code></pre></div><p>While simple, this approach can be effective for quick debugging sessions.</p>
+<h3 id="using-pythons-built-in-debugger-pdb">Using Python&rsquo;s Built-in Debugger (pdb)</h3>
+<p>For more complex issues, Python&rsquo;s debugger (pdb) gives you interactive control:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">analyze_portfolio</span>(holdings):
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">import</span> pdb; pdb<span style="color:#f92672">.</span>set_trace()  <span style="color:#75715e"># Debugger will start here</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    total_value <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> ticker, data <span style="color:#f92672">in</span> holdings<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>        shares <span style="color:#f92672">=</span> data[<span style="color:#e6db74">&#39;shares&#39;</span>]
+</span></span><span style="display:flex;"><span>        price <span style="color:#f92672">=</span> data[<span style="color:#e6db74">&#39;current_price&#39;</span>]
+</span></span><span style="display:flex;"><span>        position_value <span style="color:#f92672">=</span> shares <span style="color:#f92672">*</span> price
+</span></span><span style="display:flex;"><span>        total_value <span style="color:#f92672">+=</span> position_value
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> total_value
+</span></span></code></pre></div><p>When this code runs, it will pause at the <code>pdb.set_trace()</code> line and drop you into an interactive debugger. Common commands include:</p>
+<ul>
+<li><code>n</code> (next): Execute the current line and move to the next one</li>
+<li><code>s</code> (step): Step into a function call</li>
+<li><code>c</code> (continue): Continue execution until the next breakpoint</li>
+<li><code>p variable_name</code>: Print the value of a variable</li>
+<li><code>q</code> (quit): Exit the debugger</li>
+</ul>
+<h3 id="ide-based-debugging">IDE-Based Debugging</h3>
+<p>Most modern IDEs offer powerful visual debugging:</p>
+<ol>
+<li>Set a breakpoint by clicking in the margin next to your code</li>
+<li>Start the debugger (usually with a &ldquo;Debug&rdquo; button)</li>
+<li>The program will pause at your breakpoint</li>
+<li>Examine variables, step through code, and find issues</li>
+</ol>
+<p>This is particularly useful for financial applications where you need to inspect complex data structures or track down calculation errors.</p>
+<h3 id="common-financial-code-bugs">Common Financial Code Bugs</h3>
+<p>Watch out for these common issues in financial code:</p>
+<ol>
+<li><strong>Rounding errors</strong>: Financial calculations often require precise decimal handling</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Problematic: Floating point imprecision</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.1</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.2</span>  <span style="color:#75715e"># Returns 0.30000000000000004</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Better: Use Decimal for financial calculations</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> decimal <span style="color:#f92672">import</span> Decimal
+</span></span><span style="display:flex;"><span>Decimal(<span style="color:#e6db74">&#39;0.1&#39;</span>) <span style="color:#f92672">+</span> Decimal(<span style="color:#e6db74">&#39;0.2&#39;</span>)  <span style="color:#75715e"># Returns Decimal(&#39;0.3&#39;)</span>
+</span></span></code></pre></div><ol start="2">
+<li><strong>Off-by-one errors in time periods</strong>: Check if your code correctly handles time period boundaries</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Is this calculating 29 or 30 days of interest?</span>
+</span></span><span style="display:flex;"><span>days_in_month <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>
+</span></span><span style="display:flex;"><span>daily_interest <span style="color:#f92672">=</span> principal <span style="color:#f92672">*</span> (annual_rate <span style="color:#f92672">/</span> <span style="color:#ae81ff">365</span>)
+</span></span><span style="display:flex;"><span>total_interest <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Potential off-by-one error</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> day <span style="color:#f92672">in</span> range(days_in_month):  <span style="color:#75715e"># This gives 0-29, so only 30 days</span>
+</span></span><span style="display:flex;"><span>    total_interest <span style="color:#f92672">+=</span> daily_interest
+</span></span></code></pre></div><ol start="3">
+<li><strong>Negative input validation</strong>: Financial functions often have domain restrictions</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_loan_payment</span>(principal, rate, years):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Validate inputs</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> principal <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;Principal must be positive&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> rate <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;Interest rate cannot be negative&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> years <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;Loan term must be positive&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Rest of the calculation</span>
+</span></span></code></pre></div><h2 id="custom-exceptions-for-financial-validation">Custom Exceptions for Financial Validation</h2>
+<p>Creating custom exceptions helps make your financial code more robust and self-documenting:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NegativePrincipalError</span>(<span style="color:#a6e22e">ValueError</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Raised when a negative principal amount is provided&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ZeroDivisionFinancialError</span>(<span style="color:#a6e22e">ValueError</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Raised when a financial calculation would result in division by zero&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_return_on_investment</span>(gain, cost):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Calculate ROI: (Gain - Cost) / Cost
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        gain (float): The amount gained from the investment
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        cost (float): The cost of the investment
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        float: ROI as a decimal
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Raises:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        NegativePrincipalError: If cost is negative
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        ZeroDivisionFinancialError: If cost is zero
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> cost <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">raise</span> NegativePrincipalError(<span style="color:#e6db74">&#34;Investment cost cannot be negative&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> cost <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">raise</span> ZeroDivisionFinancialError(<span style="color:#e6db74">&#34;Cannot calculate ROI with zero cost&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (gain <span style="color:#f92672">-</span> cost) <span style="color:#f92672">/</span> cost
+</span></span></code></pre></div><p>These custom exceptions make error handling clearer and provide better feedback to users of your code.</p>
+<h2 id="structured-logging-for-financial-applications">Structured Logging for Financial Applications</h2>
+<p>For production financial applications, proper logging is essential for auditing and debugging:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> logging
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Set up logging</span>
+</span></span><span style="display:flex;"><span>logging<span style="color:#f92672">.</span>basicConfig(
+</span></span><span style="display:flex;"><span>    filename<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;financial_calculations.log&#39;</span>,
+</span></span><span style="display:flex;"><span>    level<span style="color:#f92672">=</span>logging<span style="color:#f92672">.</span>INFO,
+</span></span><span style="display:flex;"><span>    format<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%(asctime)s</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">%(name)s</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">%(levelname)s</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">%(message)s</span><span style="color:#e6db74">&#39;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_mortgage_payment</span>(principal, rate, years):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Calculate monthly mortgage payment&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    logging<span style="color:#f92672">.</span>info(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Calculating mortgage payment: principal=</span><span style="color:#e6db74">{</span>principal<span style="color:#e6db74">}</span><span style="color:#e6db74">, rate=</span><span style="color:#e6db74">{</span>rate<span style="color:#e6db74">}</span><span style="color:#e6db74">, years=</span><span style="color:#e6db74">{</span>years<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        monthly_rate <span style="color:#f92672">=</span> rate <span style="color:#f92672">/</span> <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>        num_payments <span style="color:#f92672">=</span> years <span style="color:#f92672">*</span> <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> monthly_rate <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            payment <span style="color:#f92672">=</span> principal <span style="color:#f92672">/</span> num_payments
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            payment <span style="color:#f92672">=</span> principal <span style="color:#f92672">*</span> (monthly_rate <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> monthly_rate) <span style="color:#f92672">**</span> num_payments) <span style="color:#f92672">/</span> \
+</span></span><span style="display:flex;"><span>                      ((<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> monthly_rate) <span style="color:#f92672">**</span> num_payments <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        logging<span style="color:#f92672">.</span>info(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Calculated payment: </span><span style="color:#e6db74">{</span>payment<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> payment
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>        logging<span style="color:#f92672">.</span>error(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Error calculating mortgage payment: </span><span style="color:#e6db74">{</span>str(e)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">raise</span>
+</span></span></code></pre></div><p>This creates a log file with timestamped entries that can be invaluable for tracking down issues in complex financial applications.</p>
+<h3 id="logging-levels">Logging Levels</h3>
+<p>Different logging levels serve different purposes:</p>
+<ul>
+<li><code>logging.DEBUG</code>: Detailed information, typically useful only for diagnosing problems</li>
+<li><code>logging.INFO</code>: Confirmation that things are working as expected</li>
+<li><code>logging.WARNING</code>: Indication that something unexpected happened, but the program is still working</li>
+<li><code>logging.ERROR</code>: Due to a more serious problem, the program couldn&rsquo;t perform a function</li>
+<li><code>logging.CRITICAL</code>: A serious error indicating the program may be unable to continue running</li>
+</ul>
+<p>For financial applications, consider using these levels to differentiate between routine calculations and potential issues:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">analyze_investment_portfolio</span>(portfolio):
+</span></span><span style="display:flex;"><span>    logging<span style="color:#f92672">.</span>info(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Analyzing portfolio with </span><span style="color:#e6db74">{</span>len(portfolio)<span style="color:#e6db74">}</span><span style="color:#e6db74"> positions&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> position <span style="color:#f92672">in</span> portfolio:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Log routine information</span>
+</span></span><span style="display:flex;"><span>        logging<span style="color:#f92672">.</span>debug(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Processing position: </span><span style="color:#e6db74">{</span>position[<span style="color:#e6db74">&#39;ticker&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Log potential concerns</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> position[<span style="color:#e6db74">&#39;allocation&#39;</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0.20</span>:  <span style="color:#75715e"># More than 20% in single position</span>
+</span></span><span style="display:flex;"><span>            logging<span style="color:#f92672">.</span>warning(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;High concentration in </span><span style="color:#e6db74">{</span>position[<span style="color:#e6db74">&#39;ticker&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>position[<span style="color:#e6db74">&#39;allocation&#39;</span>]<span style="color:#e6db74">:</span><span style="color:#e6db74">.1%</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Log serious issues</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> position[<span style="color:#e6db74">&#39;value&#39;</span>] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            logging<span style="color:#f92672">.</span>error(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Negative position value for </span><span style="color:#e6db74">{</span>position[<span style="color:#e6db74">&#39;ticker&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>position[<span style="color:#e6db74">&#39;value&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><h3 id="handling-sensitive-financial-data-in-logs">Handling Sensitive Financial Data in Logs</h3>
+<p>Be careful not to log sensitive financial information:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># BAD: Logging personal financial data</span>
+</span></span><span style="display:flex;"><span>logging<span style="color:#f92672">.</span>info(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Processing transaction for account </span><span style="color:#e6db74">{</span>account_number<span style="color:#e6db74">}</span><span style="color:#e6db74">, balance: </span><span style="color:#e6db74">{</span>balance<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># GOOD: Log only what&#39;s necessary without exposing private data</span>
+</span></span><span style="display:flex;"><span>logging<span style="color:#f92672">.</span>info(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Processing transaction for account ending in </span><span style="color:#e6db74">{</span>account_number[<span style="color:#f92672">-</span><span style="color:#ae81ff">4</span>:]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><h2 id="putting-it-all-together-a-complete-financial-testing-example">Putting It All Together: A Complete Financial Testing Example</h2>
+<p>Let&rsquo;s bring everything together with a complete example for a financial calculator module:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># financial_calculator.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> decimal <span style="color:#f92672">import</span> Decimal
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> logging
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Set up logging</span>
+</span></span><span style="display:flex;"><span>logging<span style="color:#f92672">.</span>basicConfig(
+</span></span><span style="display:flex;"><span>    filename<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;financial_calculator.log&#39;</span>,
+</span></span><span style="display:flex;"><span>    level<span style="color:#f92672">=</span>logging<span style="color:#f92672">.</span>INFO,
+</span></span><span style="display:flex;"><span>    format<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%(asctime)s</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">%(name)s</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">%(levelname)s</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">%(message)s</span><span style="color:#e6db74">&#39;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FinancialError</span>(<span style="color:#a6e22e">Exception</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Base class for financial calculation errors&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NegativeValueError</span>(FinancialError):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Raised when a negative value is provided where it&#39;s not allowed&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ZeroValueError</span>(FinancialError):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Raised when a zero value is provided where it&#39;s not allowed&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">npv</span>(cash_flows, discount_rate):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Calculate Net Present Value for a series of cash flows.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        cash_flows (list): List of cash flows where the first element is typically negative (investment)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        discount_rate (float): Annual discount rate as a decimal (e.g., 0.1 for 10%)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        Decimal: Net Present Value rounded to 2 decimal places
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Raises:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        TypeError: If inputs are not in the expected format
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        ValueError: If discount_rate is less than -1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    logging<span style="color:#f92672">.</span>info(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Calculating NPV with discount rate: </span><span style="color:#e6db74">{</span>discount_rate<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    logging<span style="color:#f92672">.</span>debug(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Cash flows: </span><span style="color:#e6db74">{</span>cash_flows<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> isinstance(cash_flows, (list, tuple)):
+</span></span><span style="display:flex;"><span>        logging<span style="color:#f92672">.</span>error(<span style="color:#e6db74">&#34;Cash flows must be a list or tuple&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">TypeError</span>(<span style="color:#e6db74">&#34;Cash flows must be a list or tuple&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> all(isinstance(cf, (int, float, Decimal)) <span style="color:#66d9ef">for</span> cf <span style="color:#f92672">in</span> cash_flows):
+</span></span><span style="display:flex;"><span>        logging<span style="color:#f92672">.</span>error(<span style="color:#e6db74">&#34;All cash flows must be numeric&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">TypeError</span>(<span style="color:#e6db74">&#34;All cash flows must be numeric&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> discount_rate <span style="color:#f92672">&lt;</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        logging<span style="color:#f92672">.</span>error(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Invalid discount rate: </span><span style="color:#e6db74">{</span>discount_rate<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;Discount rate cannot be less than -100%&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Convert to Decimal for precise financial calculations</span>
+</span></span><span style="display:flex;"><span>    npv_value <span style="color:#f92672">=</span> Decimal(<span style="color:#e6db74">&#39;0&#39;</span>)
+</span></span><span style="display:flex;"><span>    rate <span style="color:#f92672">=</span> Decimal(str(discount_rate))
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i, cf <span style="color:#f92672">in</span> enumerate(cash_flows):
+</span></span><span style="display:flex;"><span>        cf_decimal <span style="color:#f92672">=</span> Decimal(str(cf))
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Initial cash flow isn&#39;t discounted</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            npv_value <span style="color:#f92672">+=</span> cf_decimal
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            npv_value <span style="color:#f92672">+=</span> cf_decimal <span style="color:#f92672">/</span> (Decimal(<span style="color:#e6db74">&#39;1&#39;</span>) <span style="color:#f92672">+</span> rate) <span style="color:#f92672">**</span> Decimal(str(i))
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    logging<span style="color:#f92672">.</span>info(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;NPV calculation result: </span><span style="color:#e6db74">{</span>npv_value<span style="color:#f92672">.</span>quantize(Decimal(<span style="color:#e6db74">&#39;0.01&#39;</span>))<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> npv_value<span style="color:#f92672">.</span>quantize(Decimal(<span style="color:#e6db74">&#39;0.01&#39;</span>))  <span style="color:#75715e"># Round to 2 decimal places</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">irr</span>(cash_flows, guess<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, tolerance<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0001</span>, max_iterations<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Calculate Internal Rate of Return for a series of cash flows.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        cash_flows (list): List of cash flows where the first element is typically negative
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        guess (float): Initial guess for IRR
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        tolerance (float): The calculation will stop when the result is within this tolerance
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        max_iterations (int): Maximum number of iterations to perform
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        float: The internal rate of return as a decimal
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Raises:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        ValueError: If calculation doesn&#39;t converge
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Implementation using Newton&#39;s method</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># (Full implementation would go here)</span>
+</span></span><span style="display:flex;"><span>    logging<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;IRR calculation requested&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Simplified example return for brevity</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0.1548</span>
+</span></span></code></pre></div><p>And here&rsquo;s how we would test this module:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># test_financial_calculator.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pytest
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> decimal <span style="color:#f92672">import</span> Decimal
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> financial_calculator <span style="color:#f92672">import</span> npv, irr, NegativeValueError, ZeroValueError
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestNPV</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_basic_npv_calculation</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Initial investment of 1000, followed by 4 annual returns</span>
+</span></span><span style="display:flex;"><span>        cash_flows <span style="color:#f92672">=</span> [<span style="color:#f92672">-</span><span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">300</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">assert</span> npv(cash_flows, <span style="color:#ae81ff">0.1</span>) <span style="color:#f92672">==</span> Decimal(<span style="color:#e6db74">&#39;152.92&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_npv_with_all_positive_values</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># All positive cash flows (unusual but mathematically valid)</span>
+</span></span><span style="display:flex;"><span>        cash_flows <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">500</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">assert</span> npv(cash_flows, <span style="color:#ae81ff">0.1</span>) <span style="color:#f92672">&gt;</span> Decimal(<span style="color:#e6db74">&#39;1000&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_npv_with_high_discount_rate</span>(self):
+</span></span><span style="display:flex;"><span>        cash_flows <span style="color:#f92672">=</span> [<span style="color:#f92672">-</span><span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">300</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># High discount rate should reduce NPV</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">assert</span> npv(cash_flows, <span style="color:#ae81ff">0.25</span>) <span style="color:#f92672">&lt;</span> npv(cash_flows, <span style="color:#ae81ff">0.1</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_npv_with_invalid_input</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Test with non-list input</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> pytest<span style="color:#f92672">.</span>raises(<span style="color:#a6e22e">TypeError</span>):
+</span></span><span style="display:flex;"><span>            npv(<span style="color:#e6db74">&#34;not a list&#34;</span>, <span style="color:#ae81ff">0.1</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Test with non-numeric cash flows</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> pytest<span style="color:#f92672">.</span>raises(<span style="color:#a6e22e">TypeError</span>):
+</span></span><span style="display:flex;"><span>            npv([<span style="color:#f92672">-</span><span style="color:#ae81ff">1000</span>, <span style="color:#e6db74">&#34;300&#34;</span>, <span style="color:#ae81ff">400</span>], <span style="color:#ae81ff">0.1</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Test with invalid discount rate</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> pytest<span style="color:#f92672">.</span>raises(<span style="color:#a6e22e">ValueError</span>):
+</span></span><span style="display:flex;"><span>            npv([<span style="color:#f92672">-</span><span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">400</span>], <span style="color:#f92672">-</span><span style="color:#ae81ff">1.5</span>)  <span style="color:#75715e"># Can&#39;t have less than -100% discount</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestIRR</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_basic_irr_calculation</span>(self):
+</span></span><span style="display:flex;"><span>        cash_flows <span style="color:#f92672">=</span> [<span style="color:#f92672">-</span><span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">300</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Using almost equal because IRR can have small floating point differences</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">assert</span> abs(irr(cash_flows) <span style="color:#f92672">-</span> <span style="color:#ae81ff">0.1548</span>) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.0001</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Additional IRR tests would go here...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># We could add more test classes for other financial functions</span>
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>For finance professionals using Python, robust testing and debugging are essential practices that ensure your calculations are reliable and accurate. By incorporating unit tests, effective debugging strategies, and structured logging into your workflow, you can build financial tools that you and your colleagues can trust.</p>
+<p>In our next post, we&rsquo;ll explore how to turn your financial scripts into proper command-line tools and automate routine financial tasks; a crucial skill for improving your productivity as a finance professional.</p>
+<h2 id="practice-exercises">Practice Exercises</h2>
+<ol>
+<li>Create a simple function to calculate compound interest with different compounding periods, then write tests for it using pytest.</li>
+<li>Debug a financial calculation by setting breakpoints and using your IDE&rsquo;s debugging tools.</li>
+<li>Implement a custom exception for a financial calculation and write a test that verifies it&rsquo;s raised appropriately.</li>
+<li>Add structured logging to a financial script you&rsquo;ve already written.</li>
+</ol>
+<h2 id="further-resources">Further Resources</h2>
+<ul>
+<li><a href="https://docs.pytest.org/">pytest Documentation</a></li>
+<li><a href="https://docs.python.org/3/library/pdb.html">Python Debugging with pdb</a></li>
+<li><a href="https://docs.python.org/3/library/logging.html">Python&rsquo;s logging Module</a></li>
+<li><a href="https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530/">Test-Driven Development by Example</a> by Kent Beck</li>
+<li><a href="https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882/">Clean Code</a> by Robert C. Martin</li>
+</ul>
+]]></content:encoded></item><item><title>Part 7: Code Quality &amp; Collaboration in Python</title><link>https://michaelbrunger.com/python-virtual-environments-packaging/</link><pubDate>Thu, 12 Jun 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/python-virtual-environments-packaging/</guid><description>Learn version control with Git and GitHub, write clean PEP 8-compliant code, use linters and auto-formatters, and create effective documentation for your Python projects.</description><content:encoded><![CDATA[<h1 id="code-quality--collaboration-building-finance-tools-that-last">Code Quality &amp; Collaboration: Building Finance Tools That Last</h1>
 <p>As a finance professional learning Python, you&rsquo;ll soon want to move beyond writing scripts just for yourself. Whether you&rsquo;re building financial models, automating reporting, or creating data analysis tools, there comes a point when your code needs to be shared with colleagues or even the wider finance community. This post will guide you through best practices for creating high-quality, shareable code.</p>
 <h2 id="version-control-git--github-for-financial-projects">Version Control: Git &amp; GitHub for Financial Projects</h2>
 <h3 id="why-version-control-matters-in-finance">Why Version Control Matters in Finance</h3>
@@ -352,7 +880,7 @@ per-file-ignores =
 </ol>
 <h2 id="conclusion">Conclusion</h2>
 <p>As a finance professional using Python, the practices outlined in this post will help you create reliable, maintainable code that you can confidently share with colleagues or the wider finance community. Taking the time to learn these professional techniques now will save you countless hours in the future and elevate the quality of your financial analysis tools.</p>
-<p>In the next post, we&rsquo;ll look at testing and debugging your financial code—critical skills for ensuring your calculations are accurate and robust.</p>
+<p>In the next post, we&rsquo;ll look at testing and debugging your financial code, which are critical skills for ensuring your calculations are accurate and robust.</p>
 <h2 id="further-resources">Further Resources</h2>
 <ul>
 <li><a href="https://git-scm.com/doc">Git Documentation</a></li>

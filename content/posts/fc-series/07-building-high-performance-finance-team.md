@@ -42,7 +42,7 @@ The traditional hierarchical structure of finance departments often impedes perf
 - **Shared service centers** for transactional processes
 - **Small, agile teams** focused on specific business outcomes
 
-According to Parmenter, "Structure should follow strategy—organise your team around the outcomes you want to achieve, not historical departmental boundaries."
+According to Parmenter, "Structure should follow strategy; organise your team around the outcomes you want to achieve, not historical departmental boundaries."
 
 ### 2. Skills and Capabilities
 

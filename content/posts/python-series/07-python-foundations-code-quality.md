@@ -473,7 +473,7 @@ financial-analysis-toolkit/
 
 As a finance professional using Python, the practices outlined in this post will help you create reliable, maintainable code that you can confidently share with colleagues or the wider finance community. Taking the time to learn these professional techniques now will save you countless hours in the future and elevate the quality of your financial analysis tools.
 
-In the next post, we'll look at testing and debugging your financial code—critical skills for ensuring your calculations are accurate and robust.
+In the next post, we'll look at testing and debugging your financial code, which are critical skills for ensuring your calculations are accurate and robust.
 
 ## Further Resources
 

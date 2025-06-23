@@ -20,7 +20,7 @@ draft: false
 
 # Command-Line Tools & Automation in Python
 
-As a finance professional learning to code, I've discovered that some of the most practical Python applications aren't fancy data visualizations or machine learning models, but rather simple automation scripts that save time on repetitive tasks. In this post, I'll walk through how to build command-line tools and automate everyday processes using Python.
+I've discovered that some of the most practical Python applications aren't fancy data visualisations or machine learning models, but rather simple automation scripts that save time on repetitive tasks. In this post, I'll walk through how to build command-line tools and automate everyday processes using Python.
 
 ## Building Command-Line Scripts with argparse
 
@@ -143,7 +143,7 @@ If you find yourself using the same script frequently, you can package it so it'
 
 ### Creating a Package Structure
 
-First, organize your files like this:
+First, organise your files like this:
 
 ```
 finance_tools/
@@ -199,7 +199,7 @@ As a finance professional, you probably deal with lots of reports, spreadsheets,
 
 ### Basic File Operations with os and shutil
 
-Here's a script that organizes financial statements by month and type:
+Here's a script that organises financial statements by month and type:
 
 ```python
 import os
@@ -209,7 +209,7 @@ import argparse
 from datetime import datetime
 
 def organize_financial_statements(source_dir, target_dir):
-    """Organize financial statements into folders by month and type.
+    """Organise financial statements into folders by month and type.
     
     Assumes filenames like: 'Income_Statement_2023-05-15.xlsx' or 'Balance_Sheet_05_15_2023.pdf'
     """
@@ -277,14 +277,14 @@ def organize_financial_statements(source_dir, target_dir):
         print(f"Copied {filename} to {dest_path}")
 
 def main():
-    parser = argparse.ArgumentParser(description='Organize financial statements by date and type')
+    parser = argparse.ArgumentParser(description='Organise financial statements by date and type')
     parser.add_argument('source_dir', help='Directory containing financial statements')
-    parser.add_argument('--target-dir', default='./Organized_Statements',
-                       help='Target directory for organized files (default: ./Organized_Statements)')
+    parser.add_argument('--target-dir', default='./Organised_Statements',
+                       help='Target directory for organised files (default: ./Organised_Statements)')
     
     args = parser.parse_args()
     organize_financial_statements(args.source_dir, args.target_dir)
-    print("Financial statement organization complete!")
+    print("Financial statement organisation complete!")
 
 if __name__ == "__main__":
     main()
@@ -293,7 +293,7 @@ if __name__ == "__main__":
 This script:
 1. Scans a directory for financial documents
 2. Extracts dates and document types from filenames
-3. Creates an organized folder structure by year, month, and document type
+3. Creates an organised folder structure by year, month, and document type
 4. Copies files to the appropriate locations
 
 ### Understanding Key File Operations
@@ -461,9 +461,9 @@ if __name__ == "__main__":
 ## Putting It All Together: Sample Financial Automation Project
 
 Let's build a financial quarter-end automation tool that:
-1. Creates organized backup of last quarter's data
+1. Creates organised backup of last quarter's data
 2. Generates reports using a GUI application
-3. Organizes the reports into the correct folders
+3. Organises the reports into the correct folders
 
 ```python
 import os
@@ -657,7 +657,7 @@ def main():
     reports_dir = f"./Reports_Q{args.quarter}_{args.year}"
     reports_path = generate_quarterly_reports(args.year, args.quarter, reports_dir)
     
-    # Step 3: Organize reports
+    # Step 3: Organise reports
     print("\n-- Step 3: Organizing Reports --")
     organized_dir = organize_reports(reports_path)
     
@@ -676,7 +676,7 @@ Automation is where Python really shines for finance professionals. Even if you 
 
 - CLI tools with `argparse` help you build flexible, reusable scripts
 - Package entry points let you install your tools system-wide
-- File operations with `os` and `shutil` organize your financial documents
+- File operations with `os` and `shutil` organise your financial documents
 - PyAutoGUI can automate interactions with desktop financial applications
 
 As you build your automation toolkit, start small with scripts that solve specific pain points in your workflow. Over time, you'll develop a collection of tools that dramatically increase your productivity.
@@ -685,10 +685,10 @@ As you build your automation toolkit, start small with scripts that solve specif
 
 - Try automating a simple task you perform regularly
 - Build a command-line tool for a financial calculation you frequently need
-- Create a script to organize a messy folder of financial documents
+- Create a script to organise a messy folder of financial documents
 - Consider which parts of your quarter-end process could be automated
 
-Remember that the best automations are the ones that solve your specific problems. The scripts in this post are just starting points - customize them to fit your unique workflow needs.
+Remember that the best automations are the ones that solve your specific problems. The scripts in this post are just starting points - customise them to fit your unique workflow needs.
 
 ## Resources
 
