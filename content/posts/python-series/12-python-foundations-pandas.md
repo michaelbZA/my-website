@@ -20,9 +20,7 @@ draft: false
 
 # Data Analysis with pandas for Finance and Accounting
 
-Welcome to post #12 in our Python journey! In the previous post, we explored NumPy and its powerful numerical capabilities. Now we're taking a step up to pandas, which builds on NumPy's foundation to provide specialized tools for working with tabular and time series data—exactly the kind of data we deal with daily in finance and accounting.
-
-As a finance professional, I've found pandas to be one of the most valuable tools in my Python toolkit. It's transformed how I handle everything from financial statements to transaction records. Let's dive in!
+Welcome to post #12 in our Python journey! In the previous post, we explored NumPy and its powerful numerical capabilities. Now we're taking a step up to pandas, which builds on NumPy's foundation to provide specialised tools for working with tabular and time series data—exactly the kind of data we deal with daily in finance and accounting.
 
 ## Why pandas for Finance?
 

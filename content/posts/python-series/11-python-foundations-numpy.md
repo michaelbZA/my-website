@@ -403,9 +403,3 @@ Create an array with monthly sales data for a year, then:
 2. Find the highest and lowest sales months
 3. Calculate the quarter-by-quarter growth rate
 4. Determine if any month had sales 20% above the yearly average
-
-Good luck, and feel free to share your solutions in the comments!
-
----
-
-*This post is part of my journey learning Python. I'm a chartered accountant exploring programming to enhance my financial analysis toolkit. Follow along as we discover together how Python can transform our work in finance and accounting!*

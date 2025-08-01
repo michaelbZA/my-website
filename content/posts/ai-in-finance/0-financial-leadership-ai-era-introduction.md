@@ -1,6 +1,6 @@
 ---
 title: "Financial Leadership in the AI Era: Series Introduction"
-date: 2025-07-15
+date: 2025-12-31
 draft: false
 description: "Introduction to a comprehensive series exploring how AI is transforming finance leadership and providing practical guidance for finance professionals."
 slug: "financial-leadership-ai-era-introduction"
