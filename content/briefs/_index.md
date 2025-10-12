@@ -1,6 +1,6 @@
 ---
 title: "Daily News Briefs"
-date: 2025-10-11T06:30:52.002Z
+date: 2025-10-12T06:30:58.283Z
 draft: false
 summary: "Daily intelligence briefs covering tech, AI, politics, UK and world news"
 ---
@@ -17,4 +17,4 @@ If an AI key is available, these stories are passed to a language model (current
 
 The end result is a balanced, daily digest — summarising essential developments across technology, politics, finance, and more — ready to be published as a markdown file to the site using GitHub Actions.
 
-*Last updated: 2025-10-11T06:30:52.002Z*
+*Last updated: 2025-10-12T06:30:58.283Z*
