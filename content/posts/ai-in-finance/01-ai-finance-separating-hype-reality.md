@@ -1,6 +1,6 @@
 ---
 title: "AI in Finance: Separating Hype from Reality"
-date: 2025-12-31
+date: 2026-12-31
 draft: false
 description: "Learn to distinguish between realistic AI applications in finance and overhyped claims, with practical frameworks for finance leaders to evaluate AI solutions."
 slug: "ai-finance-separating-hype-reality"

@@ -1,6 +1,6 @@
 ---
 title: "AI for Financial Forecasting and Planning"
-date: 2025-12-31
+date: 2026-12-31
 draft: true
 description: "Transform your financial planning and forecasting processes with AI technologies, balancing machine learning capabilities with human expertise."
 slug: "ai-financial-forecasting-planning"

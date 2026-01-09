@@ -1,6 +1,6 @@
 ---
 title: "Building Your Finance Team's AI Literacy"
-date: 2025-12-31
+date: 2026-12-31
 draft: false
 description: "A comprehensive guide to developing essential AI knowledge across your finance team, with practical learning paths and assessment frameworks."
 slug: "building-finance-team-ai-literacy"
