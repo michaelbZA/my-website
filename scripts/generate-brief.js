@@ -198,64 +198,55 @@ async function generateSummary(articles) {
   try {
     console.log('Generating AI summary...');
     
-    const articleTexts = articles.map(article => 
+    const articleTexts = articles.map(article =>
       `**${article.source}** (${article.lean}): ${article.title}\n${article.content.slice(0, 1200)}...`
     ).join('\n\n');
 
-    const prompt = `You are an intelligence analyst creating a daily brief. Your task is to analyse these news articles and create a concise, well-structured summary.
+    const systemPrompt = `You are a senior intelligence analyst preparing a daily brief. Your analysis should be:
+- **Objective**: Present facts from multiple perspectives without bias
+- **Concise**: Every word must add value
+- **Actionable**: Focus on implications and what to watch
+- **Balanced**: Note when sources disagree or show different emphasis
 
-Please follow this structure:
+Prioritise by impact, not just recency. Flag single-source claims. Note what's missing or underreported.`;
+
+    const userPrompt = `Analyse these ${articles.length} articles and create an executive brief.
 
 ## Executive Summary
-Provide 1-2 paragraphs summarising the most critical developments.
+1-2 paragraphs summarising the most critical developments.
 
 ## Key Trends & Sentiment
-- List 2 key emerging trends
-- Note 1-2 significant sentiment shifts
-- Highlight 1 key future implication
+- 2 key emerging trends
+- 1-2 significant sentiment shifts
+- 1 key future implication
 
 ## Key Developments
-For each category below, provide a single paragraph summary (50-75 words) focusing on the most important development:
+For each category below, provide a single paragraph (50-75 words) on the most important development. Skip any category with no meaningful news. Note significance (High/Medium/Low).
 
-1. Tech & AI Developments
-   - Focus on the most significant announcement or breakthrough
-   - Note any immediate market impact
-
-2. UK Political News
-   - Highlight the most important policy change or announcement
-   - Note key party reactions
-
-3. Global Affairs
-   - Focus on the most significant international development
-   - Note regional implications
-
-4. Economic & Financial Updates
-   - Highlight the most important market movement
-   - Note policy impacts
-
-5. Climate & Environment
-   - Focus on the most significant environmental development
-   - Note policy changes
-
-For each category:
-- Focus on the single most significant development
-- Rate its significance (High/Medium/Low)
-- Keep to 50-75 words maximum
+1. **Tech & AI** - Most significant announcement or breakthrough
+2. **UK Politics** - Most important policy change or announcement
+3. **Global Affairs** - Most significant international development
+4. **Economy & Markets** - Most important market or policy movement
+5. **Climate & Environment** - Most significant environmental development
 
 ## Key Takeaways
-- List 3 most important implications
-- Note 1-2 developments to watch
+- 3 most important implications
+- 1-2 developments to watch in the next 48 hours
 
-Articles to analyse:
-${articleTexts}
+**Guidelines**: 500-600 words total. Be specific and analytical, not just descriptive. Reference source names when perspectives differ.
 
-Create a concise brief that's informative and well-structured. Total length should be 500-600 words, with each category summary being 50-75 words maximum (no need to show the word count). Focus on actionable insights.`;
+## Articles
+
+${articleTexts}`;
 
 const response = await axios.post('https://api.x.ai/v1/chat/completions', {
   model: 'grok-3-mini',
-  messages: [{ role: 'user', content: prompt }],
+  messages: [
+    { role: 'system', content: systemPrompt },
+    { role: 'user', content: userPrompt }
+  ],
   max_tokens: 2500,
-  temperature: 0.7,
+  temperature: 0.5,
   stream: false
 }, {
   headers: {

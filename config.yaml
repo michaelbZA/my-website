@@ -453,16 +453,6 @@ imaging:
     includeFields: ".*"
     excludeFields: ""
 
-# Minification settings
-minify:
-  disableHTML: false
-  disableCSS: false
-  disableJS: false
-  disableJSON: false
-  disableSVG: false
-  disableXML: false
-  minifyOutput: true
-
 # Cache settings
 caches:
   assets:

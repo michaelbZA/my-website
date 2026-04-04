@@ -1,7 +1,7 @@
 ---
 title: "Terms of Use"
 date: 2025-04-26T10:10:00+01:00
-type: "terms"
+type: "legal"
 draft: false
 description: "Terms of Use for Michael's Website"
 ShowToc: false
