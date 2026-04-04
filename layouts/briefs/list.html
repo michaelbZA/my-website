@@ -17,8 +17,9 @@
       </div>
 
     <!-- Cards Grid with Improved Spacing -->
+    {{ $paginator := .Paginate (.RegularPages.ByDate.Reverse) 30 }}
     <div class="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-      {{ range $index, $page := .RegularPages.ByDate.Reverse }}
+      {{ range $index, $page := $paginator.Pages }}
         <article class="group bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 hover:border-slate-200">
           <!-- Add a divider at the top of each card except the first one -->
           {{ if ne $index 0 }}
@@ -44,11 +45,23 @@
       {{ end }}
     </div>
 
-    <!-- Load More or Pagination (if needed) -->
-    <div class="text-center mt-16">
-      <div class="inline-flex items-center gap-2 text-slate-500 text-sm bg-slate-50 px-4 py-2 rounded-full">
-      </div>
-    </div>
+    <!-- Pagination -->
+    {{ if gt $paginator.TotalPages 1 }}
+    <footer class="page-footer" style="margin-top: 2rem;">
+      <nav class="pagination">
+        {{ if $paginator.HasPrev }}
+        <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
+          &laquo;&nbsp;Newer
+        </a>
+        {{ end }}
+        {{ if $paginator.HasNext }}
+        <a class="next" href="{{ $paginator.Next.URL | absURL }}">
+          Older&nbsp;&raquo;
+        </a>
+        {{ end }}
+      </nav>
+    </footer>
+    {{ end }}
   </div>
 </div>
 {{ end }}
