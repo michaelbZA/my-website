@@ -1,85 +1,130 @@
 ---
 title: "Links"
-description: "A collection of resources I've found helpful in my learning journey"
+description: "Blogs, tools, and thinkers that have shaped how I think about finance, technology, and learning"
 date: 2025-04-24
+updated: "April 2026"
 draft: false
+links:
+  - category: "Thinking & Decision-Making"
+    icon: "\U0001F9E0"
+    items:
+      - name: "Farnam Street"
+        url: "https://fs.blog"
+        description: "Mental models, decision-making, and lifelong learning from Shane Parrish."
+      - name: "Wait But Why"
+        url: "https://waitbutwhy.com"
+        description: "Deep, entertaining dives into complex topics — from AI to procrastination."
+      - name: "The Knowledge Project"
+        url: "https://fs.blog/knowledge-project-podcast/"
+        description: "Podcast exploring better thinking and decision-making with world-class guests."
+      - name: "Michael Mauboussin"
+        url: "https://www.morganstanley.com/im/en-us/institutional-investor/insights/author/michael-mauboussin.html"
+        description: "Behavioural finance and decision-making research from Morgan Stanley."
+      - name: "James Clear"
+        url: "https://jamesclear.com"
+        description: "Building better habits and long-term behaviour change."
+
+  - category: "Tech, Startups & Strategy"
+    icon: "\U0001F4A1"
+    items:
+      - name: "Paul Graham Essays"
+        url: "https://paulgraham.com/articles.html"
+        description: "Timeless essays on startups, technology, and clear thinking."
+      - name: "Stratechery"
+        url: "https://stratechery.com"
+        description: "In-depth analysis of tech and media business strategy by Ben Thompson."
+      - name: "Lenny's Newsletter"
+        url: "https://www.lennysnewsletter.com"
+        description: "Product management, growth strategy, and career advice."
+      - name: "Not Boring"
+        url: "https://www.notboring.co"
+        description: "Making business and technology genuinely fascinating."
+      - name: "a16z"
+        url: "https://a16z.com"
+        description: "Innovation and technology insights from Andreessen Horowitz."
+
+  - category: "Finance & Investing"
+    icon: "\U0001F4CA"
+    items:
+      - name: "Aswath Damodaran"
+        url: "https://aswathdamodaran.blogspot.com"
+        description: "Valuation and corporate finance from NYU's 'Dean of Valuation'."
+      - name: "David Parmenter"
+        url: "https://davidparmenter.com"
+        description: "Finance team performance, KPIs, and reporting best practices."
+      - name: "CFO Brew"
+        url: "https://www.cfobrew.com"
+        description: "Daily financial leadership news and insights."
+      - name: "Koyfin"
+        url: "https://www.koyfin.com"
+        description: "Financial data dashboards and market analytics."
+      - name: "ROIC.ai"
+        url: "https://www.roic.ai"
+        description: "Quick financial summaries and metrics for public companies."
+
+  - category: "AI & Machine Learning"
+    icon: "\U0001F916"
+    items:
+      - name: "Anthropic Blog"
+        url: "https://www.anthropic.com/research"
+        description: "Research and safety insights from the makers of Claude."
+      - name: "Simon Willison's Weblog"
+        url: "https://simonwillison.net"
+        description: "Practical AI tools, LLMs, and data journalism."
+      - name: "The Batch by Andrew Ng"
+        url: "https://www.deeplearning.ai/the-batch/"
+        description: "Weekly AI news and insights from DeepLearning.AI."
+      - name: "Google DeepMind Blog"
+        url: "https://deepmind.google/discover/blog/"
+        description: "Research and breakthroughs in artificial intelligence."
+      - name: "arXiv CS.AI"
+        url: "https://arxiv.org/list/cs.AI/recent"
+        description: "Latest academic AI research papers."
+
+  - category: "Python & Development"
+    icon: "\U0001F40D"
+    items:
+      - name: "Real Python"
+        url: "https://realpython.com"
+        description: "Comprehensive tutorials and Python learning resources."
+      - name: "Automate the Boring Stuff"
+        url: "https://automatetheboringstuff.com"
+        description: "Practical Python projects for everyday automation."
+      - name: "Talk Python to Me"
+        url: "https://talkpython.fm"
+        description: "Python podcast covering tools, libraries, and the community."
+      - name: "Awesome Python"
+        url: "https://github.com/vinta/awesome-python"
+        description: "Community-curated list of Python frameworks and libraries."
+      - name: "Hugo Documentation"
+        url: "https://gohugo.io/documentation/"
+        description: "Static site generator docs — what this site runs on."
+
+  - category: "Newsletters & Podcasts"
+    icon: "\U0001F4EC"
+    items:
+      - name: "Morning Brew"
+        url: "https://www.morningbrew.com"
+        description: "Daily business and tech news, concisely written."
+      - name: "Invest Like the Best"
+        url: "https://www.joincolossus.com/episodes"
+        description: "Long-form investing and business podcasts from Colossus."
+      - name: "Import AI"
+        url: "https://importai.substack.com"
+        description: "Weekly AI research and industry updates by Jack Clark."
+
+  - category: "Tools & Visual Storytelling"
+    icon: "\U0001F6E0"
+    items:
+      - name: "Notion"
+        url: "https://www.notion.so"
+        description: "All-in-one workspace for notes, docs, and building a second brain."
+      - name: "The Pudding"
+        url: "https://pudding.cool"
+        description: "Visual essays and data-driven storytelling."
+      - name: "Excalidraw"
+        url: "https://excalidraw.com"
+        description: "Simple, collaborative whiteboarding and diagramming."
 ---
 
-## About This Collection
-
-This is a list of resources that I've found useful or thought-provoking. I update this collection regularly as I discover new resources. The links span across various topics including programming, technology, science, productivity, and more.
-
-Feel free to explore based on your interests. If you have suggestions for resources that should be included here, please [contact me](/contact/).
-
----
-
-## Mental Models & Thoughtful Living
-
-- [Farnam Street](https://fs.blog) — Mental models, decision-making, and lifelong learning.
-- [Wait But Why](https://waitbutwhy.com) — Deep dives into complex topics.
-- [James Clear](https://jamesclear.com) — Habits and behavior change.
-- [The Knowledge Project](https://fs.blog/knowledge-project/) — Podcast exploring better thinking.
-- [Julian Shapiro](https://www.julian.com/) — Clear writing and idea exploration.
-- [Mark Manson](https://markmanson.net) — Life advice backed by psychology.
-- [Michael Mauboussin Research](https://www.morganstanley.com/im/en-us/institutional-investor/insights/author/michael-mauboussin.html) — Behavioral finance and decision-making.
-
----
-
-## Tech, Startups & Strategy
-
-- [Paul Graham Essays](https://paulgraham.com/articles.html) — Essays on startups, tech, and life.
-- [Stratechery](https://stratechery.com) — Tech and media strategy analysis.
-- [a16z](https://a16z.com) — Tech and innovation insights from Andreessen Horowitz.
-- [NFX](https://www.nfx.com/library) — Network effects and founder resources.
-- [Lenny’s Newsletter](https://www.lennysnewsletter.com) — Product and growth strategies.
-- [Elad Gil](https://blog.eladgil.com) — High-growth startup advice.
-- [Not Boring](https://www.notboring.co) — Business and technology.
-
----
-
-## Curated Content & Newsletters
-
-- [David Perell’s Friday Finds](https://perell.com/friday-finds-links) — A goldmine of links from David's Friday Finds newsletter.
-- [Morning Brew](https://www.morningbrew.com) — Business and tech news.
-- [CFO Brew](https://www.morningbrew.com/cfo) — Financial leadership and CFO insights.
-- [Colossus Weekly](https://www.joincolossus.com/episodes) — Investing and business podcasts.
-
----
-
-## Finance & Investing
-
-- [Aswath Damodaran Blog](https://aswathdamodaran.blogspot.com) — Valuation and corporate finance.
-- [David Parmenter](https://davidparmenter.com) — Finance team performance, KPIs, and reporting.
-- [Koyfin](https://www.koyfin.com) — Financial dashboards and market data.
-- [ROIC.ai](https://www.roic.ai) — Financial summaries of public companies.
-
----
-
-## Python & Learning to Code
-
-- [Real Python](https://realpython.com) — Tutorials and Python resources.
-- [Automate the Boring Stuff](https://automatetheboringstuff.com) — Practical projects in Python.
-- [Python Cheatsheet](https://gto76.github.io/python-cheatsheet/) — In-depth reference guide.
-- [Talk Python to Me](https://talkpython.fm) — Python podcast for developers.
-- [Awesome Python](https://github.com/vinta/awesome-python) — Curated Python libraries.
-
----
-
-## AI & Research
-
-- [Import AI](https://jack-clark.net) — Weekly AI research updates.
-- [MIT Tech Review – The Algorithm](https://www.technologyreview.com/newsletters/the-algorithm/) — AI news and industry developments.
-- [Google DeepMind Blog](https://www.deepmind.com/blog) — Research and breakthroughs in AI.
-- [OpenAI Blog](https://openai.com/blog) — Research and updates from OpenAI.
-- [arXiv CS.AI](https://arxiv.org/list/cs.AI/recent) — Latest academic AI papers.
-
----
-
-## Tools & Visual Storytelling
-
-- [The Pudding](https://pudding.cool) — Visual essays and data storytelling.
-- [Notion](https://www.notion.so) — All-in-one workspace for notes, docs, and systems. I've created my 'second brain' (have a look at Tiago Forte) using Notion.
-
----
-
-*Have a suggestion for this list? Found a broken link? [Let me know](/contact/)!*
+These are the blogs, tools, and thinkers I keep coming back to. I update this page as I discover new resources worth sharing. If you think something belongs here, [let me know](/contact/).

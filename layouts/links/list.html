@@ -1,0 +1,41 @@
+{{- define "main" }}
+<article class="links-page">
+  <header class="page-header">
+    <h1>{{ .Title }}</h1>
+    {{- with .Description }}
+    <p class="post-description">{{ . }}</p>
+    {{- end }}
+    {{- with .Params.updated }}
+    <p class="links-updated">Last updated {{ . }}</p>
+    {{- end }}
+  </header>
+
+  {{- if .Content }}
+  <div class="links-intro">
+    {{ .Content }}
+  </div>
+  {{- end }}
+
+  {{- range .Params.links }}
+  <section class="links-category">
+    <h2 class="links-category-header">
+      <span class="links-category-icon">{{ .icon }}</span>
+      {{ .category }}
+    </h2>
+    <div class="links-grid">
+      {{- range .items }}
+      <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" class="link-card">
+        <div class="link-card-name">{{ .name }}</div>
+        <div class="link-card-description">{{ .description }}</div>
+        <div class="link-card-url">{{ .url | replaceRE "^https?://(www\\.)?" "" | replaceRE "/.*$" "" }}</div>
+      </a>
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
+
+  <div class="links-footer">
+    <p>Have a suggestion for this list? Found a broken link? <a href="/contact/">Let me know</a>.</p>
+  </div>
+</article>
+{{- end }}

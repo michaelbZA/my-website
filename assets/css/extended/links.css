@@ -1,0 +1,113 @@
+/* Links Page */
+.links-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.links-updated {
+    font-size: 0.85rem;
+    color: var(--tertiary);
+    margin-top: 0.25rem;
+}
+
+.links-intro {
+    color: var(--secondary);
+    font-size: 1.05rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+    max-width: 720px;
+}
+
+.links-intro p {
+    margin-bottom: 0.75rem;
+}
+
+.links-category {
+    margin-bottom: 2.5rem;
+}
+
+.links-category-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.4rem;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.25rem;
+    margin-top: 0;
+}
+
+.links-category-icon {
+    font-size: 1.3rem;
+}
+
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.link-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    color: inherit;
+}
+
+.link-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: var(--accent);
+    color: inherit;
+}
+
+.link-card-name {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--primary);
+    margin-bottom: 0.4rem;
+}
+
+.link-card:hover .link-card-name {
+    color: var(--link-color);
+}
+
+.link-card-description {
+    font-size: 0.9rem;
+    color: var(--secondary);
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.link-card-url {
+    font-size: 0.8rem;
+    color: var(--tertiary);
+    margin-top: 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.links-footer {
+    text-align: center;
+    margin: 3rem 0 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--secondary);
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .links-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .links-category-header {
+        font-size: 1.25rem;
+    }
+}
