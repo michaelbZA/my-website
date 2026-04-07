@@ -9,440 +9,299 @@ const https = require('https');
 const pLimit = require('p-limit').default;
 const sanitizeHtml = require('sanitize-html');
 
-// Create agents with keepAlive disabled
 const httpAgent = new http.Agent({ keepAlive: false });
 const httpsAgent = new https.Agent({ keepAlive: false });
 
 const parser = new Parser({
-  timeout: 30000, // 30 second timeout
+  timeout: 30000,
   headers: {
-    'User-Agent': 'Mozilla/5.0 (compatible; NewsBot/1.0)'
+    'User-Agent': 'Mozilla/5.0 (compatible; DailyBrief/2.0)'
   }
 });
 
-const limit = pLimit(5); // Max 5 concurrent requests
+const limit = pLimit(5);
 
-// Diverse news sources for balanced perspective
+// Curated feeds — the feed list IS the filter
 const RSS_FEEDS = [
-  // UK Sources
-  { name: 'BBC News', url: 'http://feeds.bbci.co.uk/news/rss.xml', lean: 'center' },
-  { name: 'Guardian', url: 'https://www.theguardian.com/uk/rss', lean: 'left' },
-  { name: 'Telegraph', url: 'https://www.telegraph.co.uk/news/rss.xml', lean: 'right' },
-  { name: 'Sky News', url: 'http://feeds.skynews.com/feeds/rss/home.xml', lean: 'center' },
+  // UK News
+  { name: 'BBC News', url: 'http://feeds.bbci.co.uk/news/rss.xml' },
+  { name: 'Guardian', url: 'https://www.theguardian.com/uk/rss' },
+  { name: 'Telegraph', url: 'https://www.telegraph.co.uk/news/rss.xml' },
 
-  // US Sources
-  { name: 'Fox News', url: 'https://feeds.foxnews.com/foxnews/latest', lean: 'right' },
-  { name: 'NPR', url: 'https://feeds.npr.org/1001/rss.xml', lean: 'left' },
-  { name: 'Politico', url: 'https://rss.politico.com/politics-news.xml', lean: 'center' },
+  // Business & Economy
+  { name: 'The Economist', url: 'https://www.economist.com/latest/rss.xml' },
+  { name: 'Reuters', url: 'https://www.rss.reuters.com/news/world' },
+  { name: 'Politico', url: 'https://rss.politico.com/politics-news.xml' },
 
-  // Tech Sources
-  { name: 'TechCrunch', url: 'https://techcrunch.com/feed/', lean: 'center' },
-  { name: 'Ars Technica', url: 'http://feeds.arstechnica.com/arstechnica/index', lean: 'center' },
-  { name: 'The Verge', url: 'https://www.theverge.com/rss/index.xml', lean: 'center' },
+  // Tech & AI
+  { name: 'TechCrunch', url: 'https://techcrunch.com/feed/' },
+  { name: 'Ars Technica', url: 'http://feeds.arstechnica.com/arstechnica/index' },
 
-  // AI Specific
-  { name: 'AI News', url: 'https://artificialintelligence-news.com/feed/', lean: 'center' },
-
-  // International News
-  { name: 'Al Jazeera', url: 'https://www.aljazeera.com/xml/rss/all.xml', lean: 'center-left' },
-  { name: 'Nikkei Asia', url: 'https://asia.nikkei.com/rss/feed/nar', lean: 'center' },
-  { name: 'The Hindu', url: 'https://www.thehindu.com/news/national/feeder/default.rss', lean: 'center' },
-
-  // Economy / Business
-  { name: 'The Economist', url: 'https://www.economist.com/latest/rss.xml', lean: 'center' },
-  { name: 'Yahoo Finance', url: 'https://finance.yahoo.com/news/rssindex', lean: 'center' }
+  // International
+  { name: 'Al Jazeera', url: 'https://www.aljazeera.com/xml/rss/all.xml' },
+  { name: 'Nikkei Asia', url: 'https://asia.nikkei.com/rss/feed/nar' },
 ];
 
-const KEYWORDS = [
-    // Technology & AI
-    'tech', 'technology', 'artificial intelligence', 'AI', 'machine learning',
-    'chatbot', 'openai', 'grok', 'xai', 'deep learning', 'neural network', 'generative ai',
-
-    // Politics & Government
-    'politics', 'election', 'government', 'policy', 'parliament', 'whitehall',
-    'prime minister', 'labour party', 'conservative party', 'tory', 'keir starmer', 'rishi sunak',
-
-    // UK Specific
-    'UK', 'Britain', 'British', 'Westminster', 'Scotland', 'Wales', 'Northern Ireland',
-
-    // Global Affairs
-    'international', 'geopolitics', 'diplomacy', 'war', 'conflict', 'united nations', 'EU', 'NATO',
-
-    // Economy & Finance
-    'economy', 'economic', 'inflation', 'interest rate', 'cost of living', 'recession', 'GDP', 'bank of england',
-
-    // Climate & Environment
-    'climate', 'climate change', 'global warming', 'carbon', 'sustainability', 'green energy', 'net zero',
-
-    // Security & Defence
-    'security', 'cybersecurity', 'national security', 'terrorism', 'military', 'defence', 'intelligence', 'MI5', 'MI6'
-];
-
-const MAX_ARTICLE_AGE_HOURS = 48; // Only include articles from the last 48 hours
+const MAX_ARTICLE_AGE_HOURS = 36;
+const MAX_ARTICLES_PER_FEED = 4;
+const MAX_ARTICLES_TOTAL = 30;
 
 /**
- * Fetches and filters articles from RSS feeds with improved error handling
- * @returns {Promise<Array>} Array of relevant articles
+ * Fetches recent articles from all feeds
  */
 async function fetchArticles() {
   const allArticles = [];
   const now = new Date();
   const errors = [];
-  
-  console.log(`Starting to fetch from ${RSS_FEEDS.length} RSS feeds...`);
-  
-  // Process feeds with individual error handling and rate limiting
-  const fetchPromises = RSS_FEEDS.map(feed => 
+
+  console.log(`Fetching from ${RSS_FEEDS.length} feeds...`);
+
+  const fetchPromises = RSS_FEEDS.map(feed =>
     limit(async () => {
       try {
-        console.log(`Fetching from ${feed.name}...`);
-        
+        console.log(`  ${feed.name}...`);
         const feedData = await parser.parseURL(feed.url);
-        
+
         if (!feedData.items || feedData.items.length === 0) {
-          console.warn(`No items found in feed: ${feed.name}`);
+          console.warn(`  No items: ${feed.name}`);
           return [];
         }
-        
-        const relevantArticles = feedData.items
+
+        return feedData.items
           .filter(item => {
-            // Check if article has required fields
-            if (!item.title || !item.link || !item.pubDate) {
-              return false;
-            }
-
-            // First check if article is within time window
+            if (!item.title || !item.link || !item.pubDate) return false;
             const articleDate = new Date(item.pubDate);
-            if (isNaN(articleDate.getTime())) {
-              console.warn(`Invalid date for article: ${item.title}`);
-              return false;
-            }
-            
+            if (isNaN(articleDate.getTime())) return false;
             const hoursOld = (now - articleDate) / (1000 * 60 * 60);
-            if (hoursOld > MAX_ARTICLE_AGE_HOURS) {
-              return false;
-            }
-
-            // Then check if it matches keywords
-            const text = `${item.title} ${item.contentSnippet || item.content || ''}`.toLowerCase();
-            return KEYWORDS.some(keyword => text.includes(keyword.toLowerCase()));
+            return hoursOld <= MAX_ARTICLE_AGE_HOURS;
           })
-          .slice(0, 3) // Max 3 articles per source
+          .slice(0, MAX_ARTICLES_PER_FEED)
           .map(item => ({
-            title: sanitizeHtml(item.title, { 
-              allowedTags: [],
-              allowedAttributes: {}
-            }),
+            title: sanitizeHtml(item.title, { allowedTags: [], allowedAttributes: {} }),
             link: item.link,
             pubDate: item.pubDate,
             content: sanitizeHtml(item.contentSnippet || item.content || '', {
-              allowedTags: [], // or ['p', 'br'] if you want to keep some basic formatting
+              allowedTags: [],
               allowedAttributes: {}
             }),
             source: feed.name,
-            lean: feed.lean
           }));
-        
-        console.log(`Found ${relevantArticles.length} relevant articles from ${feed.name}`);
-        return relevantArticles;
-        
+
       } catch (error) {
-        const errorMsg = `Error fetching ${feed.name}: ${error.message}`;
-        console.error(errorMsg);
-        errors.push(errorMsg);
+        const msg = `Error fetching ${feed.name}: ${error.message}`;
+        console.error(`  ${msg}`);
+        errors.push(msg);
         return [];
       }
     })
   );
-  
-  // Wait for all feeds to complete
+
   const results = await Promise.allSettled(fetchPromises);
-  
-  // Collect all successful results
+
   results.forEach((result, index) => {
     if (result.status === 'fulfilled') {
       allArticles.push(...result.value);
     } else {
-      errors.push(`Feed ${RSS_FEEDS[index].name} failed: ${result.reason}`);
+      errors.push(`${RSS_FEEDS[index].name} failed: ${result.reason}`);
     }
   });
-  
-  console.log(`Total articles collected: ${allArticles.length}`);
-  console.log(`Total errors: ${errors.length}`);
-  
+
+  console.log(`Collected ${allArticles.length} articles, ${errors.length} errors`);
+
   if (errors.length > 0) {
-    console.warn('Errors encountered:', errors.join('\n'));
+    console.warn('Feed errors:\n' + errors.join('\n'));
   }
-  
+
   if (allArticles.length === 0) {
-    throw new Error('No articles could be fetched from any RSS feed. Check network connectivity and feed URLs.');
+    throw new Error('No articles fetched from any feed. Check connectivity and feed URLs.');
   }
-  
-  // Sort by date, most recent first
-  return allArticles
+
+  const unique = deduplicateArticles(allArticles);
+  console.log(`Deduplicated to ${unique.length} articles`);
+
+  return unique
     .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
-    .slice(0, 35); // Top 35 articles
+    .slice(0, MAX_ARTICLES_TOTAL);
 }
 
 /**
- * Generates a summary of articles using AI or fallback method
- * @param {Array} articles - Array of articles to summarize
- * @returns {Promise<string>} Generated summary
+ * Generates summary using Claude API, with fallback
  */
 async function generateSummary(articles) {
-  if (!process.env.XAI_API_KEY) {
-    console.log('No XAI API key found, generating simple summary...');
+  if (!process.env.ANTHROPIC_API_KEY) {
+    console.log('No ANTHROPIC_API_KEY found, using fallback summary...');
     return generateSimpleSummary(articles);
   }
 
   try {
-    console.log('Generating AI summary...');
-    
+    console.log('Generating summary with Claude...');
+
     const articleTexts = articles.map(article =>
-      `**${article.source}** (${article.lean}): ${article.title}\n${article.content.slice(0, 1200)}...`
-    ).join('\n\n');
+      `[${article.source}] ${article.title}\n${article.content.slice(0, 800)}`
+    ).join('\n\n---\n\n');
 
-    const systemPrompt = `You are a senior intelligence analyst preparing a daily brief. Your analysis should be:
-- **Objective**: Present facts from multiple perspectives without bias
-- **Concise**: Every word must add value
-- **Actionable**: Focus on implications and what to watch
-- **Balanced**: Note when sources disagree or show different emphasis
+    const systemPrompt = `You are writing a morning briefing for a UK-based finance professional who cares about: UK economic policy, global macro trends, AI and technology that affects business, and major geopolitical shifts.
 
-Prioritise by impact, not just recency. Flag single-source claims. Note what's missing or underreported.`;
+Write like a sharp colleague sending a morning email, not like a report template. Be direct. Skip anything trivial.
 
-    const userPrompt = `Analyse these ${articles.length} articles and create an executive brief.
+Use British English throughout.`;
 
-## Executive Summary
-1-2 paragraphs summarising the most critical developments.
+    const userPrompt = `Here are ${articles.length} articles from the last 24-48 hours. Pick the 5-7 that actually matter and write a concise brief.
 
-## Key Trends & Sentiment
-- 2 key emerging trends
-- 1-2 significant sentiment shifts
-- 1 key future implication
+Structure:
+- Open with 2-3 sentences on the single most important story and why it matters
+- Cover the remaining stories in short paragraphs (2-3 sentences each), grouped naturally — not forced into fixed categories
+- End with one line on what to watch over the next day or two
 
-## Key Developments
-For each category below, provide a single paragraph (50-75 words) on the most important development. Skip any category with no meaningful news. Note significance (High/Medium/Low).
+Rules:
+- If a story is about product deals, celebrity gossip, sport, or lifestyle content, skip it entirely
+- Don't pad. If it's a quiet news day, write fewer words rather than filling space
+- No significance ratings, no word counts in parentheses, no "Key Emerging Trends" headers
+- No bullet-pointed lists of "implications" or "sentiment shifts"
+- Reference the source when it matters for credibility or when sources disagree on the facts
+- Keep it under 500 words total
 
-1. **Tech & AI** - Most significant announcement or breakthrough
-2. **UK Politics** - Most important policy change or announcement
-3. **Global Affairs** - Most significant international development
-4. **Economy & Markets** - Most important market or policy movement
-5. **Climate & Environment** - Most significant environmental development
-
-## Key Takeaways
-- 3 most important implications
-- 1-2 developments to watch in the next 48 hours
-
-**Guidelines**: 500-600 words total. Be specific and analytical, not just descriptive. Reference source names when perspectives differ.
-
-## Articles
+Articles:
 
 ${articleTexts}`;
 
-const response = await axios.post('https://api.x.ai/v1/chat/completions', {
-  model: 'grok-3-mini',
-  messages: [
-    { role: 'system', content: systemPrompt },
-    { role: 'user', content: userPrompt }
-  ],
-  max_tokens: 2500,
-  temperature: 0.5,
-  stream: false
-}, {
-  headers: {
-    'Authorization': `Bearer ${process.env.XAI_API_KEY}`,
-    'Content-Type': 'application/json',
-    'Accept': 'application/json'
-  },
-  timeout: 60000,
-  httpAgent: httpAgent,
-  httpsAgent: httpsAgent
-});
+    const response = await axios.post('https://api.anthropic.com/v1/messages', {
+      model: 'claude-sonnet-4-6',
+      max_tokens: 1500,
+      system: systemPrompt,
+      messages: [
+        { role: 'user', content: userPrompt }
+      ],
+    }, {
+      headers: {
+        'x-api-key': process.env.ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01',
+        'Content-Type': 'application/json',
+      },
+      timeout: 60000,
+      httpAgent: httpAgent,
+      httpsAgent: httpsAgent,
+    });
 
-    if (!response.data || !response.data.choices || !response.data.choices[0] || !response.data.choices[0].message) {
-      throw new Error('Invalid response format from XAI API');
+    if (!response.data || !response.data.content || !response.data.content[0]) {
+      throw new Error('Invalid response from Anthropic API');
     }
 
-    const summary = response.data.choices[0].message.content;
-    console.log('AI summary generated successfully');
+    const summary = response.data.content[0].text;
+    console.log('Claude summary generated successfully');
     return summary;
+
   } catch (error) {
-    console.error('Error with AI summary:', error.message);
+    console.error('Claude API error:', error.message);
     if (error.response) {
-      console.error('API Response Status:', error.response.status);
-      console.error('API Response Data:', error.response.data);
+      console.error('Status:', error.response.status);
+      console.error('Data:', JSON.stringify(error.response.data, null, 2));
     }
     console.log('Falling back to simple summary...');
     return generateSimpleSummary(articles);
   }
 }
 
+/**
+ * Fallback summary when no API key is available
+ */
 function generateSimpleSummary(articles) {
-  console.log('Generating simple fallback summary...');
-  
-  const categories = {
-    tech: articles.filter(a => {
-      const text = a.title.toLowerCase();
-      return text.includes('tech') || text.includes('ai') || text.includes('artificial intelligence') ||
-             text.includes('machine learning') || text.includes('chatbot') || text.includes('openai') ||
-             text.includes('grok') || text.includes('xai') || text.includes('deep learning') ||
-             text.includes('neural network') || text.includes('generative ai');
-    }),
-    politics: articles.filter(a => {
-      const text = a.title.toLowerCase();
-      return text.includes('politic') || text.includes('election') || text.includes('government') ||
-             text.includes('policy') || text.includes('parliament') || text.includes('whitehall') ||
-             text.includes('prime minister') || text.includes('labour party') || text.includes('conservative party') ||
-             text.includes('tory') || text.includes('keir starmer') || text.includes('rishi sunak');
-    }),
-    uk: articles.filter(a => {
-      const text = a.title.toLowerCase();
-      return text.includes('uk') || text.includes('britain') || text.includes('british') ||
-             text.includes('westminster') || text.includes('scotland') || text.includes('wales') ||
-             text.includes('northern ireland');
-    }),
-    global: articles.filter(a => {
-      const text = a.title.toLowerCase();
-      return text.includes('international') || text.includes('geopolitics') || text.includes('diplomacy') ||
-             text.includes('war') || text.includes('conflict') || text.includes('united nations') ||
-             text.includes('eu') || text.includes('nato');
-    }),
-    economy: articles.filter(a => {
-      const text = a.title.toLowerCase();
-      return text.includes('economy') || text.includes('economic') || text.includes('inflation') ||
-             text.includes('interest rate') || text.includes('cost of living') || text.includes('recession') ||
-             text.includes('gdp') || text.includes('bank of england');
-    }),
-    climate: articles.filter(a => {
-      const text = a.title.toLowerCase();
-      return text.includes('climate') || text.includes('climate change') || text.includes('global warming') ||
-             text.includes('carbon') || text.includes('sustainability') || text.includes('green energy') ||
-             text.includes('net zero');
-    }),
-    security: articles.filter(a => {
-      const text = a.title.toLowerCase();
-      return text.includes('security') || text.includes('cybersecurity') || text.includes('national security') ||
-             text.includes('terrorism') || text.includes('military') || text.includes('defence') ||
-             text.includes('intelligence') || text.includes('mi5') || text.includes('mi6');
-    })
-  };
+  console.log('Generating fallback summary...');
 
-  let summary = '## Daily News Brief\n\n';
-  summary += `Generated on ${format(new Date(), 'EEEE, MMMM do, yyyy')} at ${format(new Date(), 'HH:mm')} UTC\n\n`;
-  summary += `**Total Articles Analysed**: ${articles.length}\n\n`;
-  
-  Object.entries(categories).forEach(([category, categoryArticles]) => {
-    if (categoryArticles.length > 0) {
-      summary += `### ${category.toUpperCase()} (${categoryArticles.length} articles)\n`;
-      categoryArticles.slice(0, 3).forEach(article => {
-        summary += `- **${article.source}**: [${article.title}](${article.link})\n`;
-        summary += `  *${new Date(article.pubDate).toLocaleDateString('en-GB')}*\n`;
-      });
-      summary += '\n';
-    }
+  let summary = `*${format(new Date(), 'EEEE, MMMM do, yyyy')} — ${articles.length} articles scanned*\n\n`;
+
+  const grouped = {};
+  articles.forEach(a => {
+    if (!grouped[a.source]) grouped[a.source] = [];
+    grouped[a.source].push(a);
+  });
+
+  Object.entries(grouped).forEach(([source, items]) => {
+    summary += `**${source}**\n`;
+    items.slice(0, 3).forEach(item => {
+      summary += `- [${item.title}](${item.link})\n`;
+    });
+    summary += '\n';
   });
 
   return summary;
 }
 
+/**
+ * Builds the Hugo markdown file
+ */
 async function generateHugoMarkdown(summary, articles) {
   const today = new Date();
-  const dateStr = format(today, 'yyyy-MM-dd');
   const readableDate = format(today, 'EEEE, MMMM do, yyyy');
-  
-  // Clean summary for markdown (remove HTML if AI returns any)
-  const cleanSummary = summary
-    .replace(/<[^>]*>/g, '') // Remove HTML tags
-    .replace(/\*\*(.*?)\*\*/g, '**$1**'); // Keep markdown bold
-  
-  const frontMatter = `---
-title: "Daily Brief - ${readableDate}"
+
+  const cleanSummary = summary.replace(/<[^>]*>/g, '');
+
+  // Simple linked list of sources — no snippets
+  const sourceLinks = articles
+    .map(a => `- [${a.title}](${a.link}) — *${a.source}*`)
+    .join('\n');
+
+  const sources = [...new Set(articles.map(a => a.source))].join(', ');
+
+  return `---
+title: "Daily Brief — ${readableDate}"
 date: ${today.toISOString()}
 draft: false
 type: "brief"
-summary: "Daily intelligence brief covering tech, AI, politics, UK and world news"
-tags: ["news", "daily-brief", "tech", "politics", "ai"]
+summary: "Morning brief covering what matters in UK policy, global macro, AI, and geopolitics"
+tags: ["daily-brief"]
 showReadingTime: false
 showToc: false
 ---
 
 ${cleanSummary}
 
-## Source Articles
-
-${articles.map(article => `
-### ${article.source} ${getBadge(article.lean)}
-**[${article.title}](${article.link})**  
-*${new Date(article.pubDate).toLocaleDateString('en-GB')}*
-
-${article.content ? article.content.slice(0, 150) + '...' : ''}
-`).join('\n')}
-
 ---
 
-**Source Balance**: This brief includes perspectives from left-leaning, center/neutral, and right-leaning sources to provide balanced coverage.
+## Sources
 
-**Sources**: ${[...new Set(articles.map(a => a.source))].join(', ')}
+${sourceLinks}
 
-**Generated**: ${today.toISOString()}
+*${sources} — ${today.toISOString().slice(0, 10)}*
 `;
-
-  return frontMatter;
 }
 
-function getBadge(lean) {
-  const badges = {
-    'left': '🔵',
-    'center': '⚪',
-    'right': '🔴'
-  };
-  return badges[lean] || '⚪';
-}
-
+/**
+ * Deduplicates articles by title similarity
+ */
 function deduplicateArticles(articles) {
-  const uniqueArticles = [];
-  const seenTitles = new Set();
+  const unique = [];
+  const seen = new Set();
 
   articles.forEach(article => {
-    // Normalize the title for comparison
-    const normalizedTitle = article.title
+    const normalised = article.title
       .toLowerCase()
-      .replace(/[^a-z0-9\s]/g, '') // Remove special characters
-      .replace(/\s+/g, ' ')        // Normalize whitespace
+      .replace(/[^a-z0-9\s]/g, '')
+      .replace(/\s+/g, ' ')
       .trim();
 
-    // Check if this is a duplicate
-    const isDuplicate = Array.from(seenTitles).some(existingTitle => {
-      // Check if either title contains the other
-      return normalizedTitle.includes(existingTitle) || 
-             existingTitle.includes(normalizedTitle) ||
-             // Add Levenshtein distance check for similar titles
-             levenshteinDistance(normalizedTitle, existingTitle) < 10;
-    });
+    const isDuplicate = Array.from(seen).some(existing =>
+      normalised.includes(existing) ||
+      existing.includes(normalised) ||
+      levenshteinDistance(normalised, existing) < 10
+    );
 
     if (!isDuplicate) {
-      seenTitles.add(normalizedTitle);
-      uniqueArticles.push(article);
+      seen.add(normalised);
+      unique.push(article);
     }
   });
 
-  return uniqueArticles;
+  return unique;
 }
 
-// Helper function to calculate Levenshtein distance
 function levenshteinDistance(a, b) {
   if (a.length === 0) return b.length;
   if (b.length === 0) return a.length;
 
   const matrix = [];
-
-  for (let i = 0; i <= b.length; i++) {
-    matrix[i] = [i];
-  }
-
-  for (let j = 0; j <= a.length; j++) {
-    matrix[0][j] = j;
-  }
+  for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+  for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
 
   for (let i = 1; i <= b.length; i++) {
     for (let j = 1; j <= a.length; j++) {
@@ -461,105 +320,65 @@ function levenshteinDistance(a, b) {
   return matrix[b.length][a.length];
 }
 
+/**
+ * Main entry point
+ */
 async function main() {
   try {
-    console.log('Starting daily brief generation...');
-    console.log('Environment check:');
-    console.log('- Node.js version:', process.version);
-    console.log('- Working directory:', process.cwd());
-    console.log('- XAI API key present:', !!process.env.XAI_API_KEY);
-    console.log('- Date/time:', new Date().toISOString());
-    
+    console.log('=== Daily Brief Generation ===');
+    console.log(`Node ${process.version} | ${new Date().toISOString()}`);
+    console.log(`API: ${process.env.ANTHROPIC_API_KEY ? 'Anthropic Claude' : 'Fallback (no key)'}`);
+
     const articles = await fetchArticles();
-    console.log(`✅ Found ${articles.length} relevant articles`);
-    
-    const sourceCounts = {};
-    articles.forEach(article => {
-      sourceCounts[article.source] = (sourceCounts[article.source] || 0) + 1;
-    });
-    console.log('📊 Articles by source:', sourceCounts);
-    
-    const uniqueArticles = deduplicateArticles(articles);
-    console.log(`✅ Deduplicated to ${uniqueArticles.length} unique articles`);
-    
-    const summary = await generateSummary(uniqueArticles);
-    console.log('✅ Summary generated successfully');
-    
-    const markdown = await generateHugoMarkdown(summary, uniqueArticles);
-    console.log('✅ Markdown generated successfully');
-    
-    // Create content/briefs directory if it doesn't exist
+    console.log(`${articles.length} articles ready`);
+
+    const summary = await generateSummary(articles);
+    console.log('Summary complete');
+
+    const markdown = await generateHugoMarkdown(summary, articles);
+
     const briefsDir = path.join(process.cwd(), 'content', 'briefs');
     try {
       await fs.access(briefsDir);
-      console.log('📁 Briefs directory exists');
     } catch {
       await fs.mkdir(briefsDir, { recursive: true });
-      console.log('📁 Created briefs directory');
     }
-    
-    // Save today's brief as Hugo markdown
+
     const today = format(new Date(), 'yyyy-MM-dd');
-    const filename = `${today}.md`;
-    const filePath = path.join(briefsDir, filename);
-    
+    const filePath = path.join(briefsDir, `${today}.md`);
     await fs.writeFile(filePath, markdown);
-    console.log(`✅ Brief saved as ${filename}`);
-    
-    // Verify file was written
+
     const stats = await fs.stat(filePath);
-    console.log(`📄 File size: ${stats.size} bytes`);
-    
-    // Create briefs section index page
-    await createBriefsSection();
-    console.log('✅ Briefs section index created');
-    
-    console.log(`🎉 Brief generation completed successfully: ${filename}`);
-    
-    // Final verification
-    const finalCheck = await fs.readFile(filePath, 'utf8');
-    console.log(`📝 Final file preview (first 200 chars):`);
-    console.log(finalCheck.substring(0, 200) + '...');
+    console.log(`Saved: ${today}.md (${stats.size} bytes)`);
+
+    await createBriefsIndex(briefsDir);
+    console.log('Done.');
 
     process.exit(0);
-    
+
   } catch (error) {
-    console.error('❌ Error generating brief:', error);
-    console.error('Stack trace:', error.stack);
+    console.error('FAILED:', error.message);
+    console.error(error.stack);
     process.exit(1);
   }
 }
 
-async function createBriefsSection() {
-  const briefsIndexContent = `---
-title: "Daily News Briefs"
+async function createBriefsIndex(briefsDir) {
+  const content = `---
+title: "Daily Briefs"
 date: ${new Date().toISOString()}
 draft: false
-summary: "Daily intelligence briefs covering tech, AI, politics, UK and world news"
+summary: "Morning briefs covering UK policy, global macro, AI, and geopolitics"
 ---
 
-# Daily Intelligence Briefs
-
-## How This Brief Is Made
-
-Each morning, an automated script scans a curated selection of over 15 trusted RSS news feeds from across the political and geographic spectrum — including sources like BBC, The Guardian, Fox News, Al Jazeera, The Economist, and more. These feeds are filtered for relevance using a custom set of keywords spanning tech, politics, the economy, global affairs, climate, and security.
-
-Articles published within the last 48 hours are extracted, de-duplicated, and sorted by recency. A maximum of 35 of the most relevant stories are selected.
-
-If an AI key is available, these stories are passed to a language model (currently Grok-3 Mini) along with a structured prompt that generates a concise and readable intelligence-style brief. If no AI is available, a fallback system categorises and lists articles in markdown format under key topics.
-
-The end result is a balanced, daily digest — summarising essential developments across technology, politics, finance, and more — ready to be published as a markdown file to the site using GitHub Actions.
-
-*Last updated: ${new Date().toISOString()}*
+Each morning, an automated script scans ${RSS_FEEDS.length} curated RSS feeds, selects the most relevant stories from the last 36 hours, and passes them to Claude for synthesis into a concise briefing.
 `;
 
-  const briefsDir = path.join(process.cwd(), 'content', 'briefs');
-  await fs.writeFile(path.join(briefsDir, '_index.md'), briefsIndexContent);
+  await fs.writeFile(path.join(briefsDir, '_index.md'), content);
 }
 
-// Handle unhandled rejections
 process.on('unhandledRejection', (reason, promise) => {
-  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+  console.error('Unhandled Rejection:', reason);
   process.exit(1);
 });
 

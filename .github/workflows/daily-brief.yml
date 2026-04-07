@@ -33,7 +33,7 @@ jobs:
     - name: Generate news brief
       timeout-minutes: 8  # Add timeout to this specific step
       env:
-        XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+        ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         # Remove NODE_TLS_REJECT_UNAUTHORIZED unless absolutely necessary
       run: |
         echo "Starting brief generation..."
@@ -74,7 +74,7 @@ jobs:
            
             Common issues to check:
             - Network connectivity to RSS feeds
-            - XAI API key validity
+            - Anthropic API key validity
             - File system permissions
             - RSS feed availability`
           })
