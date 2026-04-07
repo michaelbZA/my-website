@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Automation on Michael Brunger</title><link>https://michaelbrunger.com/tags/automation/</link><description>Recent content in Automation on Michael Brunger</description><image><title>Michael Brunger</title><url>https://michaelbrunger.com/site-feature-image.jpg</url><link>https://michaelbrunger.com/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Mon, 12 May 2025 11:13:25 +0100</lastBuildDate><atom:link href="https://michaelbrunger.com/tags/automation/index.xml" rel="self" type="application/rss+xml"/><item><title>Technology Enablement for Modern Finance</title><link>https://michaelbrunger.com/technology-enablement-modern-finance/</link><pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/technology-enablement-modern-finance/</guid><description>Essential technologies and implementation strategies for the modern finance function</description><content:encoded><![CDATA[<h1 id="part-8-technology-enablement-for-modern-finance">Part 8: Technology Enablement for Modern Finance</h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Automation on Michael Brunger</title><link>http://localhost:1313/tags/automation/</link><description>Recent content in Automation on Michael Brunger</description><image><title>Michael Brunger</title><url>http://localhost:1313/site-feature-image.jpg</url><link>http://localhost:1313/site-feature-image.jpg</link></image><generator>Hugo -- 0.146.7</generator><language>en-GB</language><lastBuildDate>Mon, 23 Jun 2025 14:40:44 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/automation/index.xml" rel="self" type="application/rss+xml"/><item><title>Technology Enablement for Modern Finance</title><link>http://localhost:1313/technology-enablement-modern-finance/</link><pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/technology-enablement-modern-finance/</guid><description>Essential technologies and implementation strategies for the modern finance function</description><content:encoded><![CDATA[<h1 id="part-8-technology-enablement-for-modern-finance">Part 8: Technology Enablement for Modern Finance</h1>
 <p><em>This is part 8 of my &ldquo;Modern Financial Controller&rdquo; series, documenting my journey from chartered accountant to strategic finance manager. I&rsquo;m learning in public and sharing insights primarily drawn from David Parmenter&rsquo;s work and other finance thought leaders.</em></p>
 <h2 id="introduction">Introduction</h2>
-<p>Technology has transformed the finance function more dramatically in the last decade than perhaps any other aspect of our work. As David Parmenter emphasizes in his book &ldquo;The Leading-Edge Manager&rsquo;s Guide to Success,&rdquo; finance leaders who fail to embrace technological innovation risk becoming irrelevant in the modern business landscape.</p>
-<p>In this post, I&rsquo;ll explore how finance managers can evaluate, implement, and leverage technology to elevate their team&rsquo;s performance and strategic contribution to the organization.</p>
+<p>Technology has transformed the finance function more dramatically in the last decade than perhaps any other aspect of our work. As David Parmenter emphasises in his book &ldquo;The Leading-Edge Manager&rsquo;s Guide to Success,&rdquo; finance leaders who fail to embrace technological innovation risk becoming irrelevant in the modern business landscape.</p>
+<p>In this post, I&rsquo;ll explore how finance managers can evaluate, implement, and leverage technology to elevate their team&rsquo;s performance and strategic contribution to the organisation.</p>
 <h2 id="evaluating-your-current-technology-stack">Evaluating Your Current Technology Stack</h2>
 <p>Before rushing to adopt new tools, Parmenter recommends conducting a thorough assessment of your existing technology infrastructure. This starts with:</p>
 <h3 id="1-systems-inventory">1. Systems Inventory</h3>
@@ -12,11 +12,11 @@
 <li>Financial reporting tools</li>
 <li>Budgeting and forecasting applications</li>
 <li>Data warehousing solutions</li>
-<li>Specialized applications (tax, treasury, etc.)</li>
+<li>Specialised applications (tax, treasury, etc.)</li>
 <li>Spreadsheets and manual processes</li>
 </ul>
 <h3 id="2-pain-point-analysis">2. Pain Point Analysis</h3>
-<p>Parmenter suggests organizing facilitated sessions with your finance team to identify:</p>
+<p>Parmenter suggests organising facilitated sessions with your finance team to identify:</p>
 <ul>
 <li>Which processes consume the most time?</li>
 <li>Where do errors commonly occur?</li>
@@ -30,14 +30,14 @@
 <li><strong>Developing</strong> - Core systems in place, but limited integration</li>
 <li><strong>Defined</strong> - Integrated systems with some automation</li>
 <li><strong>Advanced</strong> - Highly automated with predictive capabilities</li>
-<li><strong>Optimized</strong> - AI-driven, continuous innovation</li>
+<li><strong>Optimised</strong> - AI-driven, continuous innovation</li>
 </ol>
-<p>Where does your finance function sit today? According to Parmenter&rsquo;s research, most organizations remain stuck between stages 2 and 3, with significant opportunity for advancement.</p>
+<p>Where does your finance function sit today? According to Parmenter&rsquo;s research, most organisations remain stuck between stages 2 and 3, with significant opportunity for advancement.</p>
 <h2 id="key-technologies-for-the-modern-finance-function">Key Technologies for the Modern Finance Function</h2>
 <p>Based on Parmenter&rsquo;s framework and supplemented by insights from KPMG&rsquo;s Finance Technology 2025 report, here are the essential technology components for forward-thinking finance teams:</p>
 <h3 id="1-cloud-based-erp-systems">1. Cloud-Based ERP Systems</h3>
 <p>The foundation of modern finance technology is a robust, cloud-based ERP system. As Parmenter notes, &ldquo;Cloud-based solutions offer faster implementation, lower total cost of ownership, and more frequent updates that keep pace with evolving business needs.&rdquo;</p>
-<p>Key capabilities to prioritize:</p>
+<p>Key capabilities to prioritise:</p>
 <ul>
 <li>Real-time reporting and analytics</li>
 <li>Process automation capabilities</li>
@@ -46,16 +46,16 @@
 <li>Scalability to support growth</li>
 </ul>
 <h3 id="2-advanced-analytics-and-business-intelligence">2. Advanced Analytics and Business Intelligence</h3>
-<p>According to McKinsey &amp; Company&rsquo;s research, finance teams that develop strong data analytics capabilities are 2.5x more likely to be viewed as valuable strategic partners by their organization.</p>
+<p>According to McKinsey &amp; Company&rsquo;s research, finance teams that develop strong data analytics capabilities are 2.5x more likely to be viewed as valuable strategic partners by their organisation.</p>
 <p>Key components include:</p>
 <ul>
 <li><strong>Self-service dashboards</strong>: Empowering stakeholders to access financial insights without requiring finance team intervention</li>
-<li><strong>Data visualization tools</strong>: Transforming complex financial data into intuitive visual formats</li>
+<li><strong>Data visualisation tools</strong>: Transforming complex financial data into intuitive visual formats</li>
 <li><strong>Predictive analytics</strong>: Moving beyond historical reporting to forecast future outcomes</li>
 </ul>
 <p>Parmenter recommends starting with targeted analytics projects that directly address business pain points rather than attempting comprehensive analytics transformations.</p>
 <h3 id="3-robotic-process-automation-rpa">3. Robotic Process Automation (RPA)</h3>
-<p>Deloitte&rsquo;s Global RPA Survey found that 53% of organizations have begun their RPA journey, with an average cost reduction of 22% and significantly improved accuracy in finance processes.</p>
+<p>Deloitte&rsquo;s Global RPA Survey found that 53% of organisations have begun their RPA journey, with an average cost reduction of 22% and significantly improved accuracy in finance processes.</p>
 <p>Parmenter identifies these high-value RPA opportunities:</p>
 <ul>
 <li>Account reconciliations</li>
@@ -73,7 +73,7 @@
 <li>Collaborative budgeting across departments</li>
 </ul>
 <h3 id="5-document-management-and-workflow-systems">5. Document Management and Workflow Systems</h3>
-<p>Parmenter emphasizes that paperless finance operations are not just environmentally responsible but dramatically more efficient. Key capabilities include:</p>
+<p>Parmenter emphasises that paperless finance operations are not just environmentally responsible but dramatically more efficient. Key capabilities include:</p>
 <ul>
 <li>Digital document storage with robust search functionality</li>
 <li>Automated approval workflows</li>
@@ -89,7 +89,7 @@
 <ul>
 <li>Understanding how to identify and handle outliers</li>
 <li>Techniques for dealing with missing data</li>
-<li>Methods for standardizing inconsistent information</li>
+<li>Methods for standardising inconsistent information</li>
 </ul>
 </li>
 <li>
@@ -101,7 +101,7 @@
 </ul>
 </li>
 <li>
-<p><strong>Data Visualization Principles</strong></p>
+<p><strong>Data Visualisation Principles</strong></p>
 <ul>
 <li>Choosing appropriate chart types for different data stories</li>
 <li>Effective dashboard design</li>
@@ -127,7 +127,7 @@
 </ol>
 <p>As Parmenter notes, &ldquo;The controller who can translate complex data into actionable business insights will always have a seat at the strategic table.&rdquo;</p>
 <h2 id="implementation-strategies-that-wont-break-the-bank">Implementation Strategies That Won&rsquo;t Break the Bank</h2>
-<p>Parmenter emphasizes that technology implementation doesn&rsquo;t have to be an all-or-nothing proposition. His phased approach includes:</p>
+<p>Parmenter emphasises that technology implementation doesn&rsquo;t have to be an all-or-nothing proposition. His phased approach includes:</p>
 <h3 id="1-the-pilot-approach">1. The Pilot Approach</h3>
 <p>Start with small, high-impact projects that demonstrate value quickly. For example:</p>
 <ul>
@@ -136,11 +136,11 @@
 <li>Implement RPA for a repetitive task</li>
 </ul>
 <h3 id="2-the-land-and-expand-strategy">2. The &ldquo;Land and Expand&rdquo; Strategy</h3>
-<p>Begin with a limited deployment to a specific team or department, refine based on feedback, then expand across the organization.</p>
+<p>Begin with a limited deployment to a specific team or department, refine based on feedback, then expand across the organisation.</p>
 <h3 id="3-the-quick-wins-portfolio">3. The &ldquo;Quick Wins&rdquo; Portfolio</h3>
 <p>Identify 5-10 technology initiatives that can be implemented in under 90 days with minimal investment. According to Parmenter, these quick wins build momentum and credibility for larger transformation efforts.</p>
 <h3 id="4-leveraging-existing-tools">4. Leveraging Existing Tools</h3>
-<p>Before investing in new technology, Parmenter suggests exploring untapped capabilities in your existing systems. Many organizations use less than 50% of their current systems&rsquo; functionality.</p>
+<p>Before investing in new technology, Parmenter suggests exploring untapped capabilities in your existing systems. Many organisations use less than 50% of their current systems&rsquo; functionality.</p>
 <h3 id="5-cloud-based-subscription-models">5. Cloud-Based Subscription Models</h3>
 <p>Rather than large capital expenditures, leverage SaaS solutions with monthly subscription costs that can scale with your needs.</p>
 <p>According to Parmenter: &ldquo;The most successful finance technology implementations are those that balance ambition with pragmatism, focusing on delivering tangible business value rather than technology for technology&rsquo;s sake.&rdquo;</p>
@@ -173,16 +173,16 @@
 <ul>
 <li>Virtual models of financial operations</li>
 <li>&ldquo;What-if&rdquo; scenario testing</li>
-<li>Process optimization simulation</li>
+<li>Process optimisation simulation</li>
 </ul>
 <h2 id="conclusion-the-technologically-empowered-controller">Conclusion: The Technologically Empowered Controller</h2>
-<p>As David Parmenter emphasizes throughout his work, technology is not an end in itself but a means to elevate the finance function from transactional processor to strategic business partner.</p>
+<p>As David Parmenter emphasises throughout his work, technology is not an end in itself but a means to elevate the finance function from transactional processor to strategic business partner.</p>
 <p>The successful controller doesn&rsquo;t need to be a technology expert but must be a savvy technology consumer - understanding business needs, evaluating solutions pragmatically, and implementing thoughtfully.</p>
 <h2 id="self-assessment-questions">Self-Assessment Questions</h2>
 <ol>
 <li>Where does your finance function sit on Gartner&rsquo;s five-stage maturity model?</li>
 <li>Which manual processes in your department consume the most time and are most prone to error?</li>
-<li>Do you have the analytics capabilities to answer your organization&rsquo;s most pressing business questions?</li>
+<li>Do you have the analytics capabilities to answer your organisation&rsquo;s most pressing business questions?</li>
 <li>What untapped functionality exists in your current systems?</li>
 <li>How well does your team embrace technological change?</li>
 </ol>
@@ -194,7 +194,6 @@
 <li>Enroll in an online data analytics course (I recommend [specific course])</li>
 <li>Identify one finance process to pilot an RPA solution</li>
 </ol>
-<p><em>What technology changes have made the biggest impact in your finance function? I&rsquo;d love to hear about your experiences in the comments below.</em></p>
 <hr>
 <p><em>References:</em></p>
 <ul>
@@ -205,8 +204,8 @@
 <li>Accenture. (2021). Finance 2025: Digital Transformation in Finance.</li>
 <li>Tucker, T. (2018). The Continuous Accounting Revolution. BlackLine Press.</li>
 </ul>
-]]></content:encoded></item><item><title>Part 9: Command-Line Tools &amp; Automation with Python</title><link>https://michaelbrunger.com/python-command-line-automation/</link><pubDate>Thu, 26 Jun 2025 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/python-command-line-automation/</guid><description>Build command-line interfaces with argparse, create installable CLI tools, automate file operations, control GUI applications, and develop practical automation projects.</description><content:encoded><![CDATA[<h1 id="command-line-tools--automation-in-python">Command-Line Tools &amp; Automation in Python</h1>
-<p>As a finance professional learning to code, I&rsquo;ve discovered that some of the most practical Python applications aren&rsquo;t fancy data visualizations or machine learning models, but rather simple automation scripts that save time on repetitive tasks. In this post, I&rsquo;ll walk through how to build command-line tools and automate everyday processes using Python.</p>
+]]></content:encoded></item><item><title>Part 9: Command-Line Tools &amp; Automation with Python</title><link>http://localhost:1313/python-command-line-automation/</link><pubDate>Thu, 26 Jun 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/python-command-line-automation/</guid><description>Build command-line interfaces with argparse, create installable CLI tools, automate file operations, control GUI applications, and develop practical automation projects.</description><content:encoded><![CDATA[<h1 id="command-line-tools--automation-in-python">Command-Line Tools &amp; Automation in Python</h1>
+<p>I&rsquo;ve discovered that some of the most practical Python applications aren&rsquo;t fancy data visualisations or machine learning models, but rather simple automation scripts that save time on repetitive tasks. In this post, I&rsquo;ll walk through how to build command-line tools and automate everyday processes using Python.</p>
 <h2 id="building-command-line-scripts-with-argparse">Building Command-Line Scripts with argparse</h2>
 <p>When you&rsquo;re working with financial data, you often need flexible tools that can handle different inputs. The <code>argparse</code> module lets you build command-line scripts that accept various arguments and options.</p>
 <h3 id="basic-argparse-structure">Basic argparse Structure</h3>
@@ -300,7 +299,7 @@ optional arguments:
 <h2 id="packaging-entry-points-for-installable-commands">Packaging Entry Points for Installable Commands</h2>
 <p>If you find yourself using the same script frequently, you can package it so it&rsquo;s available as a system-wide command.</p>
 <h3 id="creating-a-package-structure">Creating a Package Structure</h3>
-<p>First, organize your files like this:</p>
+<p>First, organise your files like this:</p>
 <pre tabindex="0"><code>finance_tools/
 ├── finance_tools/
 │   ├── __init__.py
@@ -334,7 +333,7 @@ optional arguments:
 </code></pre><h2 id="automating-file-and-folder-tasks">Automating File and Folder Tasks</h2>
 <p>As a finance professional, you probably deal with lots of reports, spreadsheets, and data files. Python can help automate file handling tasks.</p>
 <h3 id="basic-file-operations-with-os-and-shutil">Basic File Operations with os and shutil</h3>
-<p>Here&rsquo;s a script that organizes financial statements by month and type:</p>
+<p>Here&rsquo;s a script that organises financial statements by month and type:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> os
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> shutil
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> re
@@ -342,7 +341,7 @@ optional arguments:
 </span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">organize_financial_statements</span>(source_dir, target_dir):
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Organize financial statements into folders by month and type.
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Organise financial statements into folders by month and type.
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Assumes filenames like: &#39;Income_Statement_2023-05-15.xlsx&#39; or &#39;Balance_Sheet_05_15_2023.pdf&#39;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
@@ -410,14 +409,14 @@ optional arguments:
 </span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Copied </span><span style="color:#e6db74">{</span>filename<span style="color:#e6db74">}</span><span style="color:#e6db74"> to </span><span style="color:#e6db74">{</span>dest_path<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
-</span></span><span style="display:flex;"><span>    parser <span style="color:#f92672">=</span> argparse<span style="color:#f92672">.</span>ArgumentParser(description<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Organize financial statements by date and type&#39;</span>)
+</span></span><span style="display:flex;"><span>    parser <span style="color:#f92672">=</span> argparse<span style="color:#f92672">.</span>ArgumentParser(description<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Organise financial statements by date and type&#39;</span>)
 </span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;source_dir&#39;</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Directory containing financial statements&#39;</span>)
-</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--target-dir&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;./Organized_Statements&#39;</span>,
-</span></span><span style="display:flex;"><span>                       help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Target directory for organized files (default: ./Organized_Statements)&#39;</span>)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--target-dir&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;./Organised_Statements&#39;</span>,
+</span></span><span style="display:flex;"><span>                       help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Target directory for organised files (default: ./Organised_Statements)&#39;</span>)
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    args <span style="color:#f92672">=</span> parser<span style="color:#f92672">.</span>parse_args()
 </span></span><span style="display:flex;"><span>    organize_financial_statements(args<span style="color:#f92672">.</span>source_dir, args<span style="color:#f92672">.</span>target_dir)
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Financial statement organization complete!&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Financial statement organisation complete!&#34;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
 </span></span><span style="display:flex;"><span>    main()
@@ -425,7 +424,7 @@ optional arguments:
 <ol>
 <li>Scans a directory for financial documents</li>
 <li>Extracts dates and document types from filenames</li>
-<li>Creates an organized folder structure by year, month, and document type</li>
+<li>Creates an organised folder structure by year, month, and document type</li>
 <li>Copies files to the appropriate locations</li>
 </ol>
 <h3 id="understanding-key-file-operations">Understanding Key File Operations</h3>
@@ -574,9 +573,9 @@ optional arguments:
 <h2 id="putting-it-all-together-sample-financial-automation-project">Putting It All Together: Sample Financial Automation Project</h2>
 <p>Let&rsquo;s build a financial quarter-end automation tool that:</p>
 <ol>
-<li>Creates organized backup of last quarter&rsquo;s data</li>
+<li>Creates organised backup of last quarter&rsquo;s data</li>
 <li>Generates reports using a GUI application</li>
-<li>Organizes the reports into the correct folders</li>
+<li>Organises the reports into the correct folders</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> os
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> argparse
@@ -769,7 +768,7 @@ optional arguments:
 </span></span><span style="display:flex;"><span>    reports_dir <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;./Reports_Q</span><span style="color:#e6db74">{</span>args<span style="color:#f92672">.</span>quarter<span style="color:#e6db74">}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">{</span>args<span style="color:#f92672">.</span>year<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 </span></span><span style="display:flex;"><span>    reports_path <span style="color:#f92672">=</span> generate_quarterly_reports(args<span style="color:#f92672">.</span>year, args<span style="color:#f92672">.</span>quarter, reports_dir)
 </span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Step 3: Organize reports</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Step 3: Organise reports</span>
 </span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">-- Step 3: Organizing Reports --&#34;</span>)
 </span></span><span style="display:flex;"><span>    organized_dir <span style="color:#f92672">=</span> organize_reports(reports_path)
 </span></span><span style="display:flex;"><span>    
@@ -785,7 +784,7 @@ optional arguments:
 <ul>
 <li>CLI tools with <code>argparse</code> help you build flexible, reusable scripts</li>
 <li>Package entry points let you install your tools system-wide</li>
-<li>File operations with <code>os</code> and <code>shutil</code> organize your financial documents</li>
+<li>File operations with <code>os</code> and <code>shutil</code> organise your financial documents</li>
 <li>PyAutoGUI can automate interactions with desktop financial applications</li>
 </ul>
 <p>As you build your automation toolkit, start small with scripts that solve specific pain points in your workflow. Over time, you&rsquo;ll develop a collection of tools that dramatically increase your productivity.</p>
@@ -793,10 +792,10 @@ optional arguments:
 <ul>
 <li>Try automating a simple task you perform regularly</li>
 <li>Build a command-line tool for a financial calculation you frequently need</li>
-<li>Create a script to organize a messy folder of financial documents</li>
+<li>Create a script to organise a messy folder of financial documents</li>
 <li>Consider which parts of your quarter-end process could be automated</li>
 </ul>
-<p>Remember that the best automations are the ones that solve your specific problems. The scripts in this post are just starting points - customize them to fit your unique workflow needs.</p>
+<p>Remember that the best automations are the ones that solve your specific problems. The scripts in this post are just starting points - customise them to fit your unique workflow needs.</p>
 <h2 id="resources">Resources</h2>
 <ul>
 <li><a href="https://docs.python.org/3/library/argparse.html">argparse documentation</a></li>
