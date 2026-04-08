@@ -1,4 +1,47 @@
 {{- /* Head custom content area start */ -}}
+
+{{- /* Person structured data for SEO / Knowledge Panel */ -}}
+{{ if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Michael Brunger",
+  "url": "https://michaelbrunger.com",
+  "jobTitle": "Chartered Accountant",
+  "description": "South African chartered accountant and finance manager based in England, writing about Python programming, finance leadership, and AI in finance.",
+  "sameAs": [
+    "https://github.com/michaelbZA",
+    "https://linkedin.com/in/michael-brunger"
+  ],
+  "knowsAbout": ["Finance", "Accounting", "Python", "AI in Finance", "Financial Reporting"],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Self-employed"
+  },
+  "image": "https://michaelbrunger.com/site-feature-image.jpg"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Michael Brunger",
+  "url": "https://michaelbrunger.com",
+  "description": "Michael Brunger's personal website covering Python programming, finance leadership, AI in finance, and professional development.",
+  "author": {
+    "@type": "Person",
+    "name": "Michael Brunger"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://michaelbrunger.com/search/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+{{ end }}
+
 <!-- Favicon -->
 <link rel="icon" href="/assets/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">

@@ -115,14 +115,16 @@ menu:
 # as well as custom parameters you define for your templates.
 params:
   # Meta description for the site homepage (good for SEO).
-  description: Michael Brunger's website
+  description: "Michael Brunger — South African chartered accountant and finance manager based in England. Writing about Python programming, finance leadership, AI in finance, and professional development."
 
   # Meta keywords for the site homepage (less critical for SEO than description, but can be helpful).
   keywords:
-    - Personal website
-    - Python
-    - Finance
-    - Learning
+    - Michael Brunger
+    - Chartered Accountant
+    - Finance Manager
+    - Python Programming
+    - Finance Leadership
+    - AI in Finance
 
   # Author name used by the theme (can be redundant with top-level author, but common).
   author: Michael Brunger
@@ -247,20 +249,15 @@ params:
       - summary
       - content
 
-search:
-  enable: true
-
   # Paths for favicons and touch icons. Should be absolute paths from the site root.
-  # Ensure these files exist in your static directory (e.g., static/assets/).
   assets:
     favicon: /assets/favicon.ico
     favicon16x16: /assets/favicon-16x16.png
     favicon32x32: /assets/favicon-32x32.png
     apple_touch_icon: /assets/apple-touch-icon.png
     safari_pinned_tab: /assets/safari-pinned-tab.svg
-    # Additional options like custom favicon sizes can sometimes be added here or handled by the theme/partials.
 
-  # Schema.org settings
+  # Schema.org settings (used by PaperMod for JSON-LD)
   schema:
     type: Person
     name: Michael Brunger
@@ -273,23 +270,8 @@ search:
       type: Organization
       name: Self-employed
 
-  # Social media settings
-  social:
-    # ... existing social settings ...
-    openGraph:
-      type: website
-      locale: en_GB
-      siteName: Michael Brunger
-      title: Michael Brunger - Chartered Accountant & Finance Manager
-      description: Personal website covering Python programming, finance insights, and more
-      images:
-        - url: /site-feature-image.jpg
-          width: 1200
-          height: 630
-          alt: Michael Brunger's website
-
-  # Disable Twitter cards temporarily
-  twitterCard: false
+search:
+  enable: true
 
 ########################################################################################################################
 # PRIVACY SETTINGS (GDPR, etc.)
