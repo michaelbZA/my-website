@@ -97,6 +97,10 @@ menu:
       name: Links
       url: /links/
       weight: 40
+    - identifier: tools
+      name: Tools
+      url: /tools/
+      weight: 42
     - identifier: search
       name: Search
       url: /search/
