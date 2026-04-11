@@ -20,6 +20,17 @@
     margin-top: 0;
 }
 
+.series-badge {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.2rem 0.6rem;
+    background-color: var(--accent-alpha);
+    color: var(--accent);
+    border-radius: 20px;
+    margin-top: 0.25rem;
+}
+
 .entry-content {
     color: var(--secondary);
     font-size: 0.95rem;

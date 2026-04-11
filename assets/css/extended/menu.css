@@ -179,8 +179,24 @@ body.no-scroll {
     position: relative;
 }
 
+.desktop-menu a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: var(--link-hover-color);
+    transition: width 0.3s ease;
+}
+
 .desktop-menu a:hover {
     color: var(--link-hover-color);
+    text-decoration: none;
+}
+
+.desktop-menu a:hover::after {
+    width: 100%;
 }
 
 .desktop-menu a span.active {

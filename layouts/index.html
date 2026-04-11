@@ -41,6 +41,10 @@
           {{- .Title }}
           {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>{{- end }}
         </h2>
+        {{- with .Params.series }}
+        {{- $seriesName := index . 0 }}
+        <span class="series-badge">{{ $seriesName }}{{ with $.Params.series_order }} · Part {{ . }}{{ end }}</span>
+        {{- end }}
       </header>
       {{- if (ne (.Param "hideSummary") true) }}
       <div class="entry-content">
