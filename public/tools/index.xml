@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Tools on Michael Brunger</title><link>https://michaelbrunger.com/tools/</link><description>Recent content in Tools on Michael Brunger</description><generator>Hugo -- 0.146.7</generator><language>en-GB</language><atom:link href="https://michaelbrunger.com/tools/index.xml" rel="self" type="application/rss+xml"/><item><title>X Article to PDF Converter</title><link>https://michaelbrunger.com/tools/x-article-to-pdf/</link><pubDate>Wed, 08 Apr 2026 00:00:00 +0000</pubDate><guid>https://michaelbrunger.com/tools/x-article-to-pdf/</guid><description>Convert X (Twitter) long-form articles to clean, downloadable PDFs</description><content:encoded><![CDATA[<p>Paste a public X (Twitter) article URL below to convert it into a clean PDF. Navigation, sidebars, and other clutter are stripped out so you get just the article content.</p>
+
+
+<div class="article-converter">
+  <form id="converter-form" onsubmit="return false;">
+    <p>
+      <label for="article-url">X Article URL</label>
+      <input
+        type="url"
+        id="article-url"
+        name="url"
+        placeholder="https://x.com/username/status/123456..."
+        required
+      />
+    </p>
+    <p>
+      <button type="submit" id="convert-btn">Convert to PDF</button>
+    </p>
+  </form>
+
+  <div id="converter-status" class="converter-status" style="display: none;"></div>
+</div>
+
+<style>
+   
+  .article-converter {
+    max-width: 600px;
+    margin: 2rem auto;
+  }
+
+   
+  .converter-status {
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .converter-status.loading {
+    background-color: var(--accent-alpha);
+    color: var(--primary);
+    border: 1px solid var(--border);
+  }
+
+  .converter-status.error {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #e74c3c;
+    border: 1px solid rgba(220, 53, 69, 0.25);
+  }
+
+  .converter-status.success {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: #27ae60;
+    border: 1px solid rgba(40, 167, 69, 0.25);
+  }
+
+   
+  #convert-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+   
+  .spinner {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: converter-spin 0.75s linear infinite;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+  }
+
+  @keyframes converter-spin {
+    to { transform: rotate(360deg); }
+  }
+</style>
+
+<script>
+  document.getElementById('converter-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    var urlInput = document.getElementById('article-url');
+    var btn = document.getElementById('convert-btn');
+    var status = document.getElementById('converter-status');
+    var url = urlInput.value.trim();
+
+    
+    var pattern = /^https:\/\/(x\.com|twitter\.com)\/[A-Za-z0-9_]+\/(status|articles)\/[0-9]+/;
+    if (!pattern.test(url)) {
+      status.style.display = 'block';
+      status.className = 'converter-status error';
+      status.textContent = 'Please enter a valid X URL (e.g. https://x.com/username/status/123...)';
+      return;
+    }
+
+    
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Converting\u2026';
+    status.style.display = 'block';
+    status.className = 'converter-status loading';
+    status.textContent = 'Loading article and generating PDF\u2026 This may take up to 30 seconds.';
+
+    var API_BASE = 'https://x-article-api.vercel.app';
+
+    try {
+      var response = await fetch(API_BASE + '/api/convert-article', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: url }),
+      });
+
+      if (!response.ok) {
+        var data = await response.json();
+        throw new Error(data.error || 'Conversion failed');
+      }
+
+      
+      var blob = await response.blob();
+      var downloadUrl = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = downloadUrl;
+
+      
+      var disposition = response.headers.get('Content-Disposition') || '';
+      var match = disposition.match(/filename="(.+?)"/);
+      a.download = match ? match[1] : 'x-article.pdf';
+
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(downloadUrl);
+
+      status.className = 'converter-status success';
+      status.textContent = 'PDF downloaded successfully!';
+    } catch (err) {
+      status.className = 'converter-status error';
+      status.textContent = err.message || 'An unexpected error occurred. Please try again.';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Convert to PDF';
+    }
+  });
+</script>
+
+<h3 id="how-it-works">How it works</h3>
+<ol>
+<li>Paste a public X article URL (format: <code>https://x.com/username/status/123456...</code>)</li>
+<li>Click <strong>Convert to PDF</strong></li>
+<li>The article is rendered and converted to a clean A4 PDF</li>
+<li>Your PDF downloads automatically</li>
+</ol>
+<h3 id="limitations">Limitations</h3>
+<ul>
+<li>Only works with <strong>public articles</strong> — content behind login walls cannot be converted</li>
+<li>The URL must be an X long-form article, not a regular tweet or thread</li>
+<li>Conversion may take up to 30 seconds depending on article length</li>
+<li>Limited to one conversion every 10 seconds</li>
+</ul>
+]]></content:encoded></item></channel></rss>

@@ -170,9 +170,8 @@
     gap: 0.5rem;
 }
 
-.post-meta i {
-    font-size: 1rem;
-    color: var(--accent);
+.post-meta .meta-icon {
+    font-size: 0.9rem;
 }
 
 .post-lastmod {
@@ -186,7 +185,7 @@
     background-color: var(--accent-alpha);
 }
 
-.post-lastmod i {
+.post-lastmod .meta-icon {
     color: var(--accent);
 }
 

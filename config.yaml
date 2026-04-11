@@ -15,7 +15,8 @@ title: Michael Brunger
 
 # Number of posts to show per page in list views (e.g., /posts/, taxonomy pages).
 # Adjust based on how many posts you want visible per page.
-pagerSize: 5
+pagination:
+  pagerSize: 5
 
 # Output configuration for search index
 outputs:
@@ -135,8 +136,9 @@ params:
 
   # Default social preview images (Open Graph / Twitter Cards).
   # Ensure these paths are correct relative to your site's root or static directory.
-  images:
-    - /site-feature-image.jpg # Use absolute path starting with /
+  # TODO: Create a proper OG image (1200x630px) and save to static/site-feature-image.jpg
+  # images:
+  #   - /site-feature-image.jpg
 
   # Date format used throughout the site. Uses Go's layout format.
   # See https://gohugo.io/functions/format/#gos-layout-string for options.
@@ -211,11 +213,11 @@ params:
   # Define custom fonts for different text elements.
   fonts:
     body:
-      - Inter
+      - Lato
       - sans-serif # Fallback font
     heading:
-      - Merriweather
-      - serif # Fallback font
+      - Lato
+      - sans-serif # Fallback font
     mono:
       - Fira Code
       - monospace # Fallback font

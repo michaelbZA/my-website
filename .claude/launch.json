@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Hugo Dev Server",
+      "runtimeExecutable": "hugo",
+      "runtimeArgs": ["server", "-D", "--disableFastRender"],
+      "port": 1313
+    },
+    {
+      "name": "Generate Daily Brief",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["scripts/generate-brief.js"],
+      "port": 0
+    }
+  ]
+}
