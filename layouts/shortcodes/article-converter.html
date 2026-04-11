@@ -11,7 +11,7 @@
         type="url"
         id="article-url"
         name="url"
-        placeholder="https://x.com/username/articles/..."
+        placeholder="https://x.com/username/status/123456..."
         required
       />
     </p>
@@ -90,12 +90,12 @@
     var status = document.getElementById('converter-status');
     var url = urlInput.value.trim();
 
-    // Client-side validation — must be an X article URL
-    var pattern = /^https:\/\/(x\.com|twitter\.com)\/[A-Za-z0-9_]+\/articles\/[A-Za-z0-9]+/;
+    // Client-side validation — must be an X post or article URL
+    var pattern = /^https:\/\/(x\.com|twitter\.com)\/[A-Za-z0-9_]+\/(status|articles)\/[0-9]+/;
     if (!pattern.test(url)) {
       status.style.display = 'block';
       status.className = 'converter-status error';
-      status.textContent = 'Please enter a valid X article URL (e.g. https://x.com/username/articles/...)';
+      status.textContent = 'Please enter a valid X URL (e.g. https://x.com/username/status/123...)';
       return;
     }
 

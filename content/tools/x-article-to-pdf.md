@@ -15,7 +15,7 @@ Paste a public X (Twitter) article URL below to convert it into a clean PDF. Nav
 
 ### How it works
 
-1. Paste a public X article URL (format: `https://x.com/username/articles/...`)
+1. Paste a public X article URL (format: `https://x.com/username/status/123456...`)
 2. Click **Convert to PDF**
 3. The article is rendered and converted to a clean A4 PDF
 4. Your PDF downloads automatically
