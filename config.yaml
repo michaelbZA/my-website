@@ -78,10 +78,6 @@ author:
 menu:
   main:
     # Each item in the menu list:
-    - identifier: home   # Unique internal identifier for the menu item.
-      name: Home         # Text displayed in the menu.
-      url: /             # The URL the menu item links to. Use "/" for the homepage.
-      weight: 10 
     - identifier: briefs
       name: Daily Briefs
       url: /briefs/

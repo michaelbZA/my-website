@@ -35,6 +35,20 @@
     text-decoration: none;
 }
 
+/* Homepage Hero/Intro */
+.home-intro {
+    text-align: center;
+    font-size: 1.15rem;
+    color: var(--secondary);
+    max-width: 600px;
+    margin: 2rem auto 2.5rem;
+    line-height: 1.7;
+}
+
+.home-intro p {
+    margin: 0;
+}
+
 /* Homepage Layout */
 .home-info {
     display: none;
