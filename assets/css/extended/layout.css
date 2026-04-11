@@ -1,5 +1,12 @@
 /* Layout Styles */
 
+/* Main Content Container */
+.main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
 /* Navigation */
 .nav {
     display: flex;

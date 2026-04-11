@@ -35,8 +35,8 @@ body.dark {
     --code-border: #404040;
     --link-color: #fc930b;
     --link-hover-color: #ffa726;
-    --accent: #7ba7d7;
-    --accent-alpha: rgba(123, 167, 215, 0.15);
+    --accent: #f0a050;
+    --accent-alpha: rgba(240, 160, 80, 0.15);
     
     /* Box Shadows for Dark Mode */
     --nav-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px;
