@@ -147,7 +147,6 @@ body.no-scroll {
 
 /* Desktop Menu Styling*/
 .desktop-menu {
-    display: flex;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -218,7 +217,7 @@ body.no-scroll {
 }
 
 /* Desktop-Mobile Responsive Behavior */
-@media (min-width: 769px) {
+@media (min-width: 951px) {
     /* Desktop: Show desktop menu, hide mobile elements */
     .desktop-menu {
         display: flex;
@@ -233,7 +232,7 @@ body.no-scroll {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 950px) {
     /* Mobile: Hide desktop menu, show mobile elements */
     .desktop-menu {
         display: none;
