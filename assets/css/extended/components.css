@@ -353,49 +353,71 @@ button[type="submit"]:hover {
     display: flex;
     gap: 0.75rem;
     margin: 1.5rem 0;
+    padding: 1rem 1.25rem;
     align-items: center;
+    justify-content: center;
+    background-color: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
 }
 
-.share-buttons a {
+.share-buttons a,
+.share-buttons button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
     border-radius: 50%;
     background-color: var(--entry);
     color: var(--primary);
     transition: all 0.3s ease;
     border: 1px solid var(--border);
+    cursor: pointer;
+    text-decoration: none;
 }
 
-.share-buttons a:hover {
+.share-buttons a:hover,
+.share-buttons button:hover {
     transform: translateY(-2px);
     box-shadow: var(--card-shadow);
     color: var(--accent);
     border-color: var(--accent);
+    text-decoration: none;
 }
 
 .share-buttons svg {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.4rem;
+    height: 1.4rem;
     stroke-width: 1.5;
 }
 
-/* Platform-specific colors on hover */
+/* Copy Link button */
+.copy-link-btn {
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0;
+}
+
+.copy-link-btn.copied {
+    color: #22c55e;
+    border-color: #22c55e;
+}
+
+/* Platform-specific colours on hover */
 .share-buttons a[href*="twitter"]:hover {
     color: #000000;
     border-color: #000000;
 }
 
+body.dark .share-buttons a[href*="twitter"]:hover {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
 .share-buttons a[href*="linkedin"]:hover {
     color: #0077B5;
     border-color: #0077B5;
-}
-
-.share-buttons a[href*="facebook"]:hover {
-    color: #4267B2;
-    border-color: #4267B2;
 }
 
 .share-buttons a[href*="whatsapp"]:hover {
@@ -406,6 +428,11 @@ button[type="submit"]:hover {
 .share-buttons a[href*="mailto"]:hover {
     color: #EA4335;
     border-color: #EA4335;
+}
+
+.share-buttons .copy-link-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
 }
 
 /* Sticky Header */

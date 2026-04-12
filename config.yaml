@@ -199,7 +199,6 @@ params:
   ShareButtons:
     - twitter
     - linkedin
-    - facebook
     - whatsapp
     - email
 
