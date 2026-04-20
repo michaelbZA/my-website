@@ -24,27 +24,35 @@ const limit = pLimit(5);
 // ---------------------------------------------------------------------------
 // Feed configuration
 // ---------------------------------------------------------------------------
-// The feed list IS the filter. maxItems overrides the default for feeds
-// where you need more articles to find the relevant ones.
+// `rank` is used as a tiebreaker during deduplication: when two feeds cover
+// the same story, the lower rank number wins. This makes the output
+// deterministic across runs rather than depending on which fetch resolved
+// first.
+//
+// Reuters was removed: their public RSS feeds were discontinued and the
+// previous URL was returning nothing.
+//
+// FT, Telegraph, and Economist feeds are typically headline-only due to
+// paywalls. They're kept because they're useful for flagging topics, but
+// Claude has limited context to work with from them.
 const RSS_FEEDS = [
-  // UK News (general — need more items to find policy/macro stories)
-  { name: 'BBC News', url: 'http://feeds.bbci.co.uk/news/rss.xml', maxItems: 8 },
-  { name: 'Guardian', url: 'https://www.theguardian.com/uk/rss', maxItems: 8 },
-  { name: 'Telegraph', url: 'https://www.telegraph.co.uk/news/rss.xml', maxItems: 6 },
+  // UK News
+  { name: 'BBC News', url: 'http://feeds.bbci.co.uk/news/rss.xml', maxItems: 8, rank: 1 },
+  { name: 'Guardian', url: 'https://www.theguardian.com/uk/rss', maxItems: 8, rank: 2 },
+  { name: 'Telegraph', url: 'https://www.telegraph.co.uk/news/rss.xml', maxItems: 6, rank: 3 },
 
   // Business & Economy
-  { name: 'FT', url: 'https://www.ft.com/?format=rss', maxItems: 6 },
-  { name: 'The Economist', url: 'https://www.economist.com/latest/rss.xml', maxItems: 4 },
-  { name: 'Reuters', url: 'https://www.rss.reuters.com/news/world', maxItems: 6 },
-  { name: 'Politico', url: 'https://rss.politico.com/politics-news.xml', maxItems: 4 },
+  { name: 'FT', url: 'https://www.ft.com/?format=rss', maxItems: 6, rank: 4 },
+  { name: 'The Economist', url: 'https://www.economist.com/latest/rss.xml', maxItems: 4, rank: 5 },
+  { name: 'Politico', url: 'https://rss.politico.com/politics-news.xml', maxItems: 4, rank: 6 },
 
   // Tech & AI
-  { name: 'TechCrunch', url: 'https://techcrunch.com/feed/', maxItems: 4 },
-  { name: 'Ars Technica', url: 'http://feeds.arstechnica.com/arstechnica/index', maxItems: 4 },
+  { name: 'TechCrunch', url: 'https://techcrunch.com/feed/', maxItems: 4, rank: 7 },
+  { name: 'Ars Technica', url: 'http://feeds.arstechnica.com/arstechnica/index', maxItems: 4, rank: 8 },
 
   // International
-  { name: 'Al Jazeera', url: 'https://www.aljazeera.com/xml/rss/all.xml', maxItems: 4 },
-  { name: 'Nikkei Asia', url: 'https://asia.nikkei.com/rss/feed/nar', maxItems: 4 },
+  { name: 'Al Jazeera', url: 'https://www.aljazeera.com/xml/rss/all.xml', maxItems: 4, rank: 9 },
+  { name: 'Nikkei Asia', url: 'https://asia.nikkei.com/rss/feed/nar', maxItems: 4, rank: 10 },
 ];
 
 const MAX_ARTICLE_AGE_HOURS = 36;
@@ -55,7 +63,7 @@ const MIN_FEEDS_WARNING = 5;
 const CLAUDE_MODEL = 'claude-sonnet-4-6';
 
 // ---------------------------------------------------------------------------
-// Prompt
+// Prompts
 // ---------------------------------------------------------------------------
 function buildSystemPrompt() {
   const today = format(new Date(), 'EEEE do MMMM yyyy');
@@ -64,18 +72,34 @@ function buildSystemPrompt() {
 
 Audience cares about: UK economic policy, global macro trends, AI and technology that affects business, and major geopolitical shifts.
 
-Tone: Write like a sharp colleague sending a morning email, not like a report template. Be direct. No filler.
+Voice: direct, informed, conversational. Like a colleague who has read the overnight papers and is catching you up over coffee. Not a research note. Not a wire service summary.
 
-Rules:
-- Skip anything about product deals, celebrity gossip, sport, or lifestyle content entirely.
-- If multiple articles cover the same story, treat them as one item. Note where sources disagree on the facts.
-- Don't pad. If it's a quiet news day, write fewer items rather than filling space.
+Example of the register:
+
+"The Bank held rates at 4.25% yesterday. No surprise there, but Bailey's comments on services inflation were sharper than the minutes suggested they would be. Markets took it as mildly hawkish and sterling firmed half a cent against the dollar.
+
+Separately, OpenAI and Microsoft are reportedly close to restructuring their commercial agreement ahead of the IPO timeline. If the reporting is accurate, Microsoft's preferential pricing window shrinks from 2030 to 2028."
+
+Selection rules:
+- Prefer stories that would change how a fund manager thinks about positioning or policy this week. Skip stories that are interesting but not actionable.
+- Skip product launches, celebrity gossip, sport, and lifestyle content entirely.
+- If multiple sources cover the same story, treat them as one item. Note where they disagree on facts.
+- If nothing of consequence happened, say so in one line and stop. Do not manufacture importance.
+
+Writing rules:
+- Report what happened and the direct consequence. Skip speculative second-order takes unless a cited analyst is making them.
+- Only name a source when quoting a specific figure, forecast, or attributed statement. Otherwise write as if the facts are just true.
 - No significance ratings, no word counts in parentheses, no "Key Emerging Trends" headers.
-- No bullet-pointed lists of "implications" or "sentiment shifts."
-- Reference the source when it matters for credibility or when sources conflict.
+- No bulleted lists of implications or sentiment shifts.
 - Keep the whole brief under 600 words.
-- Use British English throughout.
-- Article snippets may be truncated. Work with what you have — don't speculate about missing content.`;
+- Use British English.
+- Article snippets may be truncated. Work with what you have. Do not speculate about missing content.
+
+Output format:
+- Plain paragraphs separated by blank lines.
+- No headers, no bold text, no bullet lists, no section dividers.
+- Order: UK policy and economy first, then global macro, then tech and AI, then geopolitics. Omit sections that have no stories.
+- End with one specific scheduled event in the next 48 hours: a data release, vote, central bank speaker, or earnings print. If nothing specific is on the calendar, omit this line entirely.`;
 }
 
 function buildUserPrompt(articles) {
@@ -83,12 +107,7 @@ function buildUserPrompt(articles) {
     .map((a) => `[${a.source}] ${a.title}\n${a.content}`)
     .join('\n\n---\n\n');
 
-  return `Here are ${articles.length} articles from the last 24-48 hours. Pick the ones that actually matter (usually 3-7) and write a concise brief.
-
-Structure:
-- Open with 2-3 sentences on the single most important story and why it matters
-- Cover the remaining stories in short paragraphs (2-3 sentences each), grouped naturally
-- End with one line on what to watch over the next day or two
+  return `Here are ${articles.length} articles from the last 36 hours. Pick the ones that matter by the criteria in the system prompt (usually 3 to 7) and write the brief.
 
 Articles:
 
@@ -121,8 +140,11 @@ async function fetchArticles() {
 
         const items = feedData.items
           .filter((item) => {
-            if (!item.title || !item.link || !item.pubDate) return false;
-            const articleDate = new Date(item.pubDate);
+            if (!item.title || !item.link) return false;
+            // Some feeds populate isoDate but leave pubDate empty
+            const rawDate = item.pubDate || item.isoDate;
+            if (!rawDate) return false;
+            const articleDate = new Date(rawDate);
             if (isNaN(articleDate.getTime())) return false;
             const hoursOld = (now - articleDate) / (1000 * 60 * 60);
             return hoursOld <= MAX_ARTICLE_AGE_HOURS;
@@ -131,7 +153,7 @@ async function fetchArticles() {
           .map((item) => ({
             title: sanitizeHtml(item.title, { allowedTags: [], allowedAttributes: {} }),
             link: item.link,
-            pubDate: item.pubDate,
+            pubDate: item.pubDate || item.isoDate,
             content: truncateToSentence(
               sanitizeHtml(item.contentSnippet || item.content || '', {
                 allowedTags: [],
@@ -140,6 +162,7 @@ async function fetchArticles() {
               CONTENT_CHAR_LIMIT
             ),
             source: feed.name,
+            sourceRank: feed.rank,
           }));
 
         if (items.length > 0) feedsWithResults++;
@@ -173,7 +196,7 @@ async function fetchArticles() {
 
   if (feedsWithResults < MIN_FEEDS_WARNING) {
     console.warn(
-      `⚠ Only ${feedsWithResults} feeds returned articles. Brief may be running on thin input.`
+      `Only ${feedsWithResults} feeds returned articles. Brief may be running on thin input.`
     );
   }
 
@@ -190,148 +213,21 @@ async function fetchArticles() {
 }
 
 // ---------------------------------------------------------------------------
-// Claude API call with retry
+// Deduplication
 // ---------------------------------------------------------------------------
-async function generateSummary(articles) {
-  if (!process.env.ANTHROPIC_API_KEY) {
-    console.log('No ANTHROPIC_API_KEY found, using fallback summary...');
-    return generateSimpleSummary(articles);
-  }
-
-  const maxAttempts = 2;
-
-  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
-    try {
-      console.log(`Generating summary with Claude (attempt ${attempt})...`);
-
-      const response = await axios.post(
-        'https://api.anthropic.com/v1/messages',
-        {
-          model: CLAUDE_MODEL,
-          max_tokens: 1500,
-          temperature: 0.3,
-          system: buildSystemPrompt(),
-          messages: [{ role: 'user', content: buildUserPrompt(articles) }],
-        },
-        {
-          headers: {
-            'x-api-key': process.env.ANTHROPIC_API_KEY,
-            'anthropic-version': '2023-06-01',
-            'Content-Type': 'application/json',
-          },
-          timeout: 60000,
-          httpAgent,
-          httpsAgent,
-        }
-      );
-
-      if (!response.data?.content?.[0]) {
-        throw new Error('Invalid response from Anthropic API');
-      }
-
-      const summary = response.data.content[0].text;
-      console.log('Claude summary generated successfully');
-      return summary;
-    } catch (error) {
-      console.error(`Claude API error (attempt ${attempt}):`, error.message);
-      if (error.response) {
-        console.error('Status:', error.response.status);
-        console.error('Data:', JSON.stringify(error.response.data, null, 2));
-      }
-
-      const isRetryable =
-        !error.response ||
-        error.response.status >= 500 ||
-        error.response.status === 429;
-
-      if (attempt < maxAttempts && isRetryable) {
-        const backoff = attempt * 3000;
-        console.log(`Retrying in ${backoff / 1000}s...`);
-        await sleep(backoff);
-        continue;
-      }
-
-      console.log('Falling back to simple summary...');
-      return generateSimpleSummary(articles);
-    }
-  }
-}
-
-// ---------------------------------------------------------------------------
-// Fallback summary
-// ---------------------------------------------------------------------------
-function generateSimpleSummary(articles) {
-  console.log('Generating fallback summary...');
-
-  let summary = `*${format(new Date(), 'EEEE, MMMM do, yyyy')} — ${articles.length} articles scanned*\n\n`;
-
-  const grouped = {};
-  articles.forEach((a) => {
-    if (!grouped[a.source]) grouped[a.source] = [];
-    grouped[a.source].push(a);
-  });
-
-  Object.entries(grouped).forEach(([source, items]) => {
-    summary += `**${source}**\n`;
-    items.slice(0, 3).forEach((item) => {
-      summary += `- [${escapeMarkdown(item.title)}](${item.link})\n`;
-    });
-    summary += '\n';
-  });
-
-  return summary;
-}
-
-// ---------------------------------------------------------------------------
-// Hugo output
-// ---------------------------------------------------------------------------
-async function generateHugoMarkdown(summary, articles) {
-  const today = new Date();
-  const readableDate = format(today, 'EEEE, MMMM do, yyyy');
-
-  const cleanSummary = summary.replace(/<[^>]*>/g, '');
-
-  const sourceLinks = articles
-    .map((a) => `- [${escapeMarkdown(a.title)}](${a.link}) — *${a.source}*`)
-    .join('\n');
-
-  const sources = [...new Set(articles.map((a) => a.source))].join(', ');
-
-  return `---
-title: "Daily Brief — ${readableDate}"
-date: ${today.toISOString()}
-draft: false
-type: "brief"
-summary: "Morning brief covering what matters in UK policy, global macro, AI, and geopolitics"
-tags: ["daily-brief"]
-showReadingTime: false
-showToc: false
----
-
-${cleanSummary}
-
----
-
-## Sources
-
-${sourceLinks}
-
-*${sources} — ${today.toISOString().slice(0, 10)}*
-`;
-}
-
-// ---------------------------------------------------------------------------
-// Deduplication — ratio-based similarity
-// ---------------------------------------------------------------------------
+// Deterministic: articles are sorted by source rank before dedup, so the
+// preferred source wins any near-duplicate matchup. Same input always
+// produces the same output regardless of which feed resolves first.
 function deduplicateArticles(articles) {
+  const sorted = [...articles].sort((a, b) => a.sourceRank - b.sourceRank);
   const unique = [];
   const seen = [];
 
-  articles.forEach((article) => {
+  sorted.forEach((article) => {
     const normalised = normaliseTitle(article.title);
 
     const isDuplicate = seen.some((existing) => {
-      // Substring check — but only if the shorter string is reasonably long
+      // Substring check, but only if the shorter string is long enough
       // to avoid false matches on generic fragments
       const shorter = normalised.length < existing.length ? normalised : existing;
       const longer = normalised.length < existing.length ? existing : normalised;
@@ -386,6 +282,150 @@ function levenshteinDistance(a, b) {
 }
 
 // ---------------------------------------------------------------------------
+// Claude API
+// ---------------------------------------------------------------------------
+async function generateSummary(articles) {
+  if (!process.env.ANTHROPIC_API_KEY) {
+    console.log('No ANTHROPIC_API_KEY found, using fallback summary...');
+    return { text: generateSimpleSummary(articles), mode: 'fallback' };
+  }
+
+  const maxAttempts = 3;
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      console.log(`Generating summary with Claude (attempt ${attempt})...`);
+
+      const response = await axios.post(
+        'https://api.anthropic.com/v1/messages',
+        {
+          model: CLAUDE_MODEL,
+          max_tokens: 1500,
+          temperature: 0.6,
+          system: buildSystemPrompt(),
+          messages: [{ role: 'user', content: buildUserPrompt(articles) }],
+        },
+        {
+          headers: {
+            'x-api-key': process.env.ANTHROPIC_API_KEY,
+            'anthropic-version': '2023-06-01',
+            'Content-Type': 'application/json',
+          },
+          timeout: 60000,
+          httpAgent,
+          httpsAgent,
+        }
+      );
+
+      if (!response.data?.content?.[0]?.text) {
+        throw new Error('Invalid response from Anthropic API');
+      }
+
+      console.log('Claude summary generated successfully');
+      return { text: response.data.content[0].text, mode: 'claude' };
+    } catch (error) {
+      const status = error.response?.status;
+      console.error(`Claude API error (attempt ${attempt}):`, error.message);
+      if (error.response) {
+        console.error('Status:', status);
+        console.error('Data:', JSON.stringify(error.response.data, null, 2));
+      }
+
+      const isRetryable = !error.response || status >= 500 || status === 429;
+
+      if (attempt < maxAttempts && isRetryable) {
+        // Honour Retry-After header if present, otherwise exponential with jitter
+        let backoffMs;
+        const retryAfter = error.response?.headers?.['retry-after'];
+        if (retryAfter) {
+          const retryAfterSec = parseInt(retryAfter, 10);
+          backoffMs = isNaN(retryAfterSec) ? 5000 : retryAfterSec * 1000;
+        } else {
+          const base = Math.pow(2, attempt) * 1000;
+          const jitter = Math.random() * 1000;
+          backoffMs = base + jitter;
+        }
+        console.log(`Retrying in ${Math.round(backoffMs / 1000)}s...`);
+        await sleep(backoffMs);
+        continue;
+      }
+
+      console.log('Falling back to simple summary...');
+      return { text: generateSimpleSummary(articles), mode: 'fallback' };
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Fallback summary
+// ---------------------------------------------------------------------------
+// Clearly distinct from the main brief format. This is what readers see
+// when the API is down, so it should look obviously different rather than
+// like a buggy version of the normal brief.
+function generateSimpleSummary(articles) {
+  const lines = [];
+  lines.push('*Automated summary unavailable this morning. Raw headlines below, grouped by source.*');
+  lines.push('');
+
+  const grouped = {};
+  articles.forEach((a) => {
+    if (!grouped[a.source]) grouped[a.source] = [];
+    grouped[a.source].push(a);
+  });
+
+  Object.entries(grouped).forEach(([source, items]) => {
+    lines.push(`**${source}**`);
+    items.slice(0, 3).forEach((item) => {
+      lines.push(`- [${escapeMarkdown(item.title)}](${item.link})`);
+    });
+    lines.push('');
+  });
+
+  return lines.join('\n');
+}
+
+// ---------------------------------------------------------------------------
+// Hugo output
+// ---------------------------------------------------------------------------
+async function generateHugoMarkdown(summary, articles) {
+  const today = new Date();
+  const readableDate = format(today, 'EEEE, MMMM do, yyyy');
+
+  const sourceLinks = articles
+    .map((a) => `- [${escapeMarkdown(a.title)}](${a.link}) — *${a.source}*`)
+    .join('\n');
+
+  const sources = [...new Set(articles.map((a) => a.source))].join(', ');
+
+  // Tag fallback days so they're easy to filter/style differently on the site
+  const tags = summary.mode === 'fallback'
+    ? '["daily-brief", "fallback"]'
+    : '["daily-brief"]';
+
+  return `---
+title: "Daily Brief — ${readableDate}"
+date: ${today.toISOString()}
+draft: false
+type: "brief"
+summary: "Morning brief covering what matters in UK policy, global macro, AI, and geopolitics"
+tags: ${tags}
+showReadingTime: false
+showToc: false
+---
+
+${summary.text}
+
+---
+
+## Sources
+
+${sourceLinks}
+
+*${sources} — ${today.toISOString().slice(0, 10)}*
+`;
+}
+
+// ---------------------------------------------------------------------------
 // Utilities
 // ---------------------------------------------------------------------------
 
@@ -396,7 +436,6 @@ function truncateToSentence(text, maxChars) {
   if (!text || text.length <= maxChars) return text;
 
   const truncated = text.slice(0, maxChars);
-  // Find the last sentence-ending punctuation
   const lastSentenceEnd = Math.max(
     truncated.lastIndexOf('. '),
     truncated.lastIndexOf('? '),
@@ -404,7 +443,6 @@ function truncateToSentence(text, maxChars) {
   );
 
   if (lastSentenceEnd > maxChars * 0.5) {
-    // Only use sentence boundary if it's in the latter half — otherwise we lose too much
     return truncated.slice(0, lastSentenceEnd + 1);
   }
 
@@ -415,7 +453,13 @@ function truncateToSentence(text, maxChars) {
  * Escapes characters that break markdown link syntax.
  */
 function escapeMarkdown(text) {
-  return text.replace(/\[/g, '\\[').replace(/\]/g, '\\]').replace(/\|/g, '\\|');
+  return text
+    .replace(/\\/g, '\\\\')
+    .replace(/\[/g, '\\[')
+    .replace(/\]/g, '\\]')
+    .replace(/\(/g, '\\(')
+    .replace(/\)/g, '\\)')
+    .replace(/\|/g, '\\|');
 }
 
 function sleep(ms) {
@@ -435,16 +479,12 @@ async function main() {
     console.log(`${articles.length} articles ready`);
 
     const summary = await generateSummary(articles);
-    console.log('Summary complete');
+    console.log(`Summary complete (${summary.mode})`);
 
     const markdown = await generateHugoMarkdown(summary, articles);
 
     const briefsDir = path.join(process.cwd(), 'content', 'briefs');
-    try {
-      await fs.access(briefsDir);
-    } catch {
-      await fs.mkdir(briefsDir, { recursive: true });
-    }
+    await fs.mkdir(briefsDir, { recursive: true });
 
     const today = format(new Date(), 'yyyy-MM-dd');
     const filePath = path.join(briefsDir, `${today}.md`);
