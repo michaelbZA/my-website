@@ -1,6 +1,6 @@
 ---
 title: "Daily Briefs"
-date: 2026-06-05T10:00:44.588Z
+date: 2026-06-06T08:39:58.304Z
 draft: false
 summary: "Morning briefs covering UK policy, global macro, AI, and geopolitics"
 ---
